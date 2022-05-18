@@ -1,0 +1,20 @@
+{
+  "name": "projet-final-structure",
+  "version": "1.0.0",
+  "description": "Launch docker config",
+  "main": "index.js",
+  "scripts": {
+    "back": "cd backend && cd src && uvicorn main:app --reload",
+    "front": "cd frontend && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hetic-web2-g1/Projet-Final-Structure.git"
+  },
+  "author": "domino659",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hetic-web2-g1/Projet-Final-Structure/issues"
+  },
+  "homepage": "https://github.com/Hetic-web2-g1/Projet-Final-Structure#readme"
+}

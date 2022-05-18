@@ -1,0 +1,25 @@
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_*
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environments
+.env
+env/
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Log
+backend.log
+
+# Package
+package-lock.json
+
+test.py
