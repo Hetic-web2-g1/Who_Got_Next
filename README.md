@@ -23,7 +23,7 @@ Launch frontend
 
 Access backend dev: http://localhost:8000
 
-Access FastApi docs: http://127.0.0.1:8000/docs
+Access FastApi docs: http://127.0.0.1:8000/docs | http://127.0.0.1:8000/redoc#/
 
 Front: http://localhost:3000
 
