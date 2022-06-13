@@ -11,6 +11,7 @@ Launch docker config
 
 Launch backend
 > npm run back
+
 Launch frontend
 > npm run front
 
