@@ -17,5 +17,5 @@ app.include_router(fields.router)
 app.include_router(events.router)
 app.include_router(messages.router)
 
-from utils.fake import create_fake_data
-create_fake_data()
+# from utils.fake import create_fake_data
+# create_fake_data()
