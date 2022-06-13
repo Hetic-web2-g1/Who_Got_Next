@@ -1,0 +1,13 @@
+Structure : 
+
+Src
+
+- Pages : Chaque page est dans le dossier pages, pour chaque sous-page on crée un nouveau dossier dans le dossier correspondant a la page, par exemple dans la page profile on a une sous-page Data on crée un nouveau dossier appelé data dans lequel on trouve le fichier data.js ainsi qu'un fichier style si nécéssaire
+
+- Components : Dans le dossier components on trouve tout les components qui seront réutilisés a différents endroits de l'app, par exemple un component Button ou une Searchbar, on crée un nouveau dossier pour chaque component qui contient le fichier du component + un fichier de style
+
+Public
+
+- Assets : Si on a besoin d'utiliser des assets dans l'application on les mets dans public/assets
+
+- I18n :On met le texte ici si jamais on prévoit de faire des traductions
