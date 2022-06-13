@@ -1,5 +1,5 @@
 {
-  "name": "Whot_Got_Next",
+  "name": "whot_got_next",
   "version": "1.0.0",
   "description": "Launch docker config",
   "main": "index.js",
