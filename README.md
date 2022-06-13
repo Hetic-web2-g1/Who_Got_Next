@@ -14,6 +14,9 @@ Launch backend
 Launch frontend
 > npm run front
 
+If problem with 'Vite' use
+> npm install
+
 Complete Commande
 Launch backend
 > export ENVIRONMENT=dev && cd backend && uvicorn main:app --reload
