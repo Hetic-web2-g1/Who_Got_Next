@@ -13,13 +13,13 @@ router = APIRouter(
 
 
 @router.get("", response_model=List[Field | None])
-def get_all_fields():
+async def get_all_fields():
     with engine.begin() as conn:
         return list(FieldManager.get_all_field(conn))
 
 
 @router.get("/{field_id}", response_model=Field)
-def get_user(field_id: str):
+async def get_user(field_id: str):
     with engine.begin() as conn:
         field =  FieldManager.get_field_by_id(conn, field_id)
         if field is None:

@@ -13,13 +13,13 @@ router = APIRouter(
 
 
 @router.get("", response_model=List[User | None])
-def get_all_users():
+async def get_all_users():
     with engine.begin() as conn:
         return list(UserManager.get_all_users(conn))
 
 
 @router.get("/{user_id}", response_model=User)
-def get_user(user_id: str):
+async def get_user(user_id: str):
     with engine.begin() as conn:
         user =  UserManager.get_user_by_id(conn, user_id)
         if user is None:

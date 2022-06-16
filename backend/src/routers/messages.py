@@ -13,13 +13,13 @@ router = APIRouter(
 
 
 @router.get("", response_model=List[Message | None])
-def get_all_messages():
+async def get_all_messages():
     with engine.begin() as conn:
         return list(MessageManager.get_all_messages(conn))
 
 
 @router.get("/{message_id}", response_model=Message)
-def get_message(message_id: str):
+async def get_message(message_id: str):
     with engine.begin() as conn:
         message =  MessageManager.get_message_by_id(conn, message_id)
         if message is None:
