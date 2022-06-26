@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Hetic-web2-g1/Projet-Final-Structure/issues"
   },
-  "homepage": "https://github.com/Hetic-web2-g1/Projet-Final-Structure#readme"
+  "homepage": "https://github.com/Hetic-web2-g1/Projet-Final-Structure#readme",
+  "dependencies": {
+    "react-router-dom": "^6.3.0"
+  }
 }
