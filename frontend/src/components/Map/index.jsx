@@ -1,16 +1,18 @@
 import React, { useRef, useEffect, useState } from 'react';
-import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import PropTypes from 'prop-types';
+import mapboxgl from 'mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 
+import './styles.css';
 import Marker from './Marker'
  
 mapboxgl.accessToken = 'pk.eyJ1IjoiZXJ6ZW5rZWwiLCJhIjoiY2t6eHZiempyMDRoZzJucDlmcmxjeTZjcyJ9.aJWheE8snFrd21W1ElV4_g';
 
-export default function Map() {
+const Map = ({userLongitude, userLatitude}) => {
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const [lng, setLng] = useState(-70.9);
-    const [lat, setLat] = useState(42.35);
-    const [zoom, setZoom] = useState(9);
+    const [lng, setLng] = useState(userLongitude ? userLongitude : 0);
+    const [lat, setLat] = useState(userLatitude ? userLatitude : 0);
+    const [zoom, setZoom] = useState(17);
 
     useEffect(() => {
         if (map.current) return; 
@@ -34,13 +36,21 @@ export default function Map() {
     useEffect(() => {
         if (!map.current) return;
         map.current.on('click', function(e) {
+            const lng = e.lngLat["lng"];
+            const lat = e.lngLat["lat"];
+            const coordinates = [lng, lat]
             const el = document.createElement('div');
-            el.className = "marker";
-            console.log(e.point)
-            const lng = e.point["x"];
-            const lat = e.point["y"];
-            const coordinates = [lng,lat]
-            new mapboxgl.Marker(el).setLngLat(coordinates).addTo(map);
+            el.className = 'marker';
+            new mapboxgl.Marker(el)
+            .setLngLat(coordinates)
+            .setPopup(
+                new mapboxgl.Popup({ offset: 25 })
+                .setHTML(
+                    `<h3>zoubi</h3>
+                    <p>les enfants</p>`
+                )
+            )
+            .addTo(map.current);
         });
     });
 
@@ -53,3 +63,10 @@ export default function Map() {
         </div>
     );
 }
+
+Map.propTypes = {
+    userLongitude: PropTypes.number,
+    userLatitude: PropTypes.number,
+}
+
+export default Map
