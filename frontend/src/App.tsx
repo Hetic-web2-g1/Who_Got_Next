@@ -4,9 +4,13 @@ export default function App() {
   return (
     <main>
       <h1>Frontend</h1>
-      <nav>        
-        <Link to="/Evenement">Evenement</Link>
-        <Link to="/JoinGroup">JoinGroup</Link>
+      <nav>
+        <li>    
+          <Link to="/Evenement">Evenement</Link>          
+        </li> 
+        <li>
+          <Link to="/JoinGroup">JoinGroup</Link>
+        </li>
       </nav>
     </main>
   )
