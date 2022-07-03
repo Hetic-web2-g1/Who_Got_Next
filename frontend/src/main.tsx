@@ -11,6 +11,7 @@ import App from "./App";
 import Evenement from "./pages/evenement";
 import JoinGroup from "./pages/joingroup";
 import MapPage from "./pages/map";
+import Login from "./pages/auth/login";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,6 +21,7 @@ ReactDOM.render(
       <Route path="evenement" element={<Evenement />} />
       <Route path="joingroup" element={<JoinGroup />} />
       <Route path="map" element={<MapPage />} />
+      <Route path="login" element={<Login />} />
     </Routes>
     </BrowserRouter>
   </React.StrictMode>,

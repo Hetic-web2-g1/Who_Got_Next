@@ -11,6 +11,9 @@ export default function App() {
         <li>
           <Link to="/JoinGroup">JoinGroup</Link>
         </li>
+        <li>
+          <Link to="/Login">Login</Link>
+        </li>
       </nav>
     </main>
   )
