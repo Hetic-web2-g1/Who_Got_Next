@@ -16,11 +16,11 @@
 }
 
 .marker {
-        background-image: url('../../../public/assets/tag.png');
-        background-size: cover;
-        width: 50px;
+        background-image: url('../../../public/assets/Marker.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
         height: 50px;
-        border-radius: 50%;
         cursor: pointer;
 }
 
