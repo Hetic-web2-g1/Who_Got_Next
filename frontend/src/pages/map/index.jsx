@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Map from '../../components/Map'
+import { useFetch } from '../../services/mapFetch'
 
-export const MapPage = () => {
+const MapPage = () => {
+  const fields = useFetch('http://localhost:8000/fields');
   const [gotPosition, setGotPosition] = useState(false);
   const [lng, setLng] = useState(10);
   const [lat, setLat] = useState(10);
@@ -21,7 +23,7 @@ export const MapPage = () => {
 
   if(gotPosition) {
     return (
-      <Map userLongitude={lng} userLatitude={lat}></Map>
+      <Map userLongitude={lng} userLatitude={lat} fields={fields}></Map>
     );
   } 
   else 
