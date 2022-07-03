@@ -1,3 +1,28 @@
 div {
     height: 100%
 }
+.connect{
+    background-color: #1758FF;
+    border-radius: 50px;
+    width: 180px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.connectext{
+    color: white;
+    font-size: 12pt;
+    font-family: "Qualta";
+    font-weight: 600;
+    text-decoration : none; 
+}
+.connectcontainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.inscrip{
+    /* padding-top: 7%; */
+}

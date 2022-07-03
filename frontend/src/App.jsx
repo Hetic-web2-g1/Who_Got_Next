@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import {Connexion} from "./components/Connexion";
 
 export default function App() {
   return (
@@ -11,7 +12,11 @@ export default function App() {
         <li>
           <Link to="/JoinGroup">JoinGroup</Link>
         </li>
+        <li>
+          <Link to="/Homepage">Homepage</Link>
+        </li>
       </nav>
+      <Connexion/>
     </main>
   )
 }

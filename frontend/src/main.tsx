@@ -11,6 +11,7 @@ import App from "./App";
 import Evenement from "./pages/evenement";
 import JoinGroup from "./pages/joingroup";
 import MapPage from "./pages/map";
+import Homepage from "./pages/homepage";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.render(
       <Route path="/" element={<App />} />
       <Route path="evenement" element={<Evenement />} />
       <Route path="joingroup" element={<JoinGroup />} />
+      <Route path="homepage" element={<Homepage />} />
       <Route path="map" element={<MapPage />} />
     </Routes>
     </BrowserRouter>
