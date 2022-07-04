@@ -1,10 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-const Marker = (id) => {
-    return(
-        <div id={`marker-${id}`} className="marker"/>
-        
-    )
+const pinStyle = {
+    cursor: 'pointer',
+};
+
+function Pin() {
+    return (
+        <img src="../../../../assets/Marker.svg" height="20" alt="Marker" style={pinStyle}/>
+    );
 }
-
-export default Marker
+  
+export default React.memo(Pin);

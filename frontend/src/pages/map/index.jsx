@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Map from '../../components/Map'
+import MapRender from '../../components/Map'
 import { useFetch } from '../../services/mapFetch'
 
 const MapPage = () => {
@@ -23,7 +23,7 @@ const MapPage = () => {
 
   if(gotPosition) {
     return (
-      <Map userLongitude={lng} userLatitude={lat} fields={fields}></Map>
+      <MapRender userLongitude={lng} userLatitude={lat} fields={fields}></MapRender>
     );
   } 
   else 
