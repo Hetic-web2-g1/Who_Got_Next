@@ -31,11 +31,14 @@ p{
     align-content: center;
     align-items: center;
     text-align: center;
-    margin-top: 10%;
+    margin-top: 6%;
 }
 .container > *{
     margin: 1% 0;
 }
 .connectcontainer > *{
     margin: 1% 0;
+}
+.inscrip{
+    font-family: 'Qualta';
 }

@@ -9,7 +9,7 @@ export const Button = () => {
                 <a className='connectext' href=''>Se connecter</a>
             </div>
             <div className='inscrip'>
-                    <span>Vous n'avez pas encore de compte ?<a href=''>Inscrivez-vous</a></span>
+                    <span>Vous n'avez pas encore de compte ? <a href=''>Inscrivez-vous</a></span>
             </div>
         </div>
         )

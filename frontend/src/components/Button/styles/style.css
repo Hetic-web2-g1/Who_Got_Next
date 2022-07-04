@@ -1,6 +1,11 @@
 div {
     height: 100%
 }
+a{
+    text-decoration:  none;
+    color: #1758FF;
+    font-weight: bold;
+}
 .connect{
     background-color: #1758FF;
     border-radius: 50px;
@@ -22,7 +27,4 @@ div {
     display: flex;
     align-items: center;
     flex-direction: column;
-}
-.inscrip{
-    /* padding-top: 7%; */
 }
