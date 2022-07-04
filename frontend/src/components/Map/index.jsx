@@ -12,6 +12,7 @@ import Map, {
 import Pin from './Marker'
 
 import './styles.css';
+import { useEffect } from 'react';
  
 const TOKEN = mapboxgl.accessToken = 'pk.eyJ1IjoiZXJ6ZW5rZWwiLCJhIjoiY2t6eHZiempyMDRoZzJucDlmcmxjeTZjcyJ9.aJWheE8snFrd21W1ElV4_g';
 
@@ -19,6 +20,10 @@ const MapRender = ({userLongitude, userLatitude, fields}) => {
     const [lng, setLng] = useState(userLongitude ? userLongitude : 0);
     const [lat, setLat] = useState(userLatitude ? userLatitude : 0);
     const [popupInfo, setPopupInfo] = useState(null);
+
+    const southWest = new mapboxgl.LngLat(-5.0, 42.5);
+    const northEast = new mapboxgl.LngLat(9.56, 51.15);
+    const bounds = [southWest, northEast]
 
     const pins = useMemo(() =>
       fields.data.map((field) => (
@@ -45,6 +50,7 @@ const MapRender = ({userLongitude, userLatitude, fields}) => {
               latitude: lat,
               longitude: lng,
               zoom: 15,
+              maxBounds: bounds,
             }}
             style={{width: '100vw', height: '100vh'}}
             mapStyle="mapbox://styles/mapbox/light-v10"
