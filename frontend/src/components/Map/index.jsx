@@ -73,7 +73,7 @@ const MapRender = ({userLongitude, userLatitude, fields}) => {
                         Infos
                     </a>
                 </div>
-                <img width="100%" src={popupInfo?.image_path} />
+                <img width="100%" src={popupInfo?.image_path ? popupInfo?.image_path : '../../../assets/kirbok.jpg'} />
               </Popup>
             )}
           </Map>
