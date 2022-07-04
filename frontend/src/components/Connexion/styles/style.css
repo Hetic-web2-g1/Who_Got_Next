@@ -1,6 +1,6 @@
-div {
+/* div {
     height: 100%
-}
+} */
 
 .logo{
     width: 10%;
@@ -9,18 +9,18 @@ div {
 }
 h4{
     font-family: "Monument Condensed";
-    font-size: 28pt;
+    font-size: 2vw;
     color:  #1758FF;
     margin: 0;
 }
 h2{
     font-family: "Monument Condensed";
-    font-size: 40pt;
+    font-size: 2.5vw;
     margin: 0;
 }
 p{
     font-family: "Monument Condensed";
-    font-size: 16pt;
+    font-size: 1.5vw;
     width: 50%;
     margin: 0;
 }
@@ -34,7 +34,7 @@ p{
     margin-top: 6%;
 }
 .container > *{
-    margin: 1% 0;
+    margin: 1vw 0;
 }
 .connectcontainer > *{
     margin: 1% 0;
@@ -42,3 +42,24 @@ p{
 .inscrip{
     font-family: 'Qualta';
 }
+.truc{
+    display: flex;
+    flex-direction: column;
+    height: 99vh;
+    justify-content: space-between;
+}
+.wrap{
+    margin-top: 2vw;
+}
+@media screen and (max-width: 900px) {
+    .asktext{
+      font-size: 13pt;
+    }
+    .titletext{
+        font-size: 16pt;
+    }
+    .lorem{
+        font-size: 8pt;
+    }
+
+  }

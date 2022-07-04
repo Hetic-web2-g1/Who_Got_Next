@@ -147,6 +147,22 @@ export const Banderole= () => {
                         <img src='../../../public/assets/running.svg' className='sport' height="70" width="250" alt="" />
                         <span>Running</span>
                     </div>
+                    <div class="slide">
+                        <img src='../../../public/assets/rugby.svg' className='sport' height="70" width="250" alt="" />
+                        <span>Rugby</span>
+                    </div>
+                    <div class="slide">
+                        <img src='../../../public/assets/natation.svg' className='sport' height="70" width="250" alt="" />
+                        <span>Natation</span>
+                    </div>
+                    <div class="slide">
+                        <img src='../../../public/assets/cyclism.svg' className='sport' height="70" width="250" alt="" />
+                        <span>Cyclisme</span>
+                    </div>
+                    <div class="slide">
+                        <img src='../../../public/assets/gym.svg' className='sport' height="70" width="250" alt="" />
+                        <span>Gym</span>
+                    </div>
                 </div>
             </div>
             

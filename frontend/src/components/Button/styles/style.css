@@ -1,6 +1,6 @@
-div {
+/* div {
     height: 100%
-}
+} */
 a{
     text-decoration:  none;
     color: #1758FF;
@@ -23,6 +23,7 @@ a{
     font-weight: 600;
     text-decoration : none; 
 }
+
 .connectcontainer{
     display: flex;
     align-items: center;
