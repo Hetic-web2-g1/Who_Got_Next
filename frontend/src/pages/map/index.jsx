@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MapRender from '../../components/Map'
+import Spinner from '../../components/Spinner'
 import { useFetch } from '../../services/mapFetch'
 
 const MapPage = () => {
@@ -27,7 +28,7 @@ const MapPage = () => {
     );
   } 
   else 
-    return(null);
+    return(<Spinner/>);
 }
 
 export default MapPage;
