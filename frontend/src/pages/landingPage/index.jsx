@@ -15,8 +15,9 @@ export const LandingPage = () => {
                     </h2>
                     <p className='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing Morbin' Martin Time : Rise of Gru 4 Endgame. Duis pulvinar mauris est faucibus. Vestibulum un urna, lacinia eu sit amet, tempus porta ante. Nullam in velit vitae risus aliquet. </p>
                 </div>
+                <LandingRedirectionButton goto={"login"}/>
             </div>
-            <LandingRedirectionButton goto={"login"}/>
+
             <Banderole/>
             </div>
         </div>
