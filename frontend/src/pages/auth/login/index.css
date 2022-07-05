@@ -4,11 +4,14 @@ html {
 
 body {
     font-family: "Qualta";
+    margin: 0;
+    overflow: hidden;
 }
 
 h1 {
     font-family: "Monument Extended";
     font-size: 32pt;
+    margin: 0;
 }
 
 h4 {
@@ -21,9 +24,15 @@ div {
 
 input {
     height: 30px;
-    /* background: url(./../../../../public/assets/eye.svg) no-repeat top left;
-    position: right;
-    background-size: 20px; */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.connect-title {
+    margin-bottom: 20px;
 }
 
 .flex {
@@ -37,27 +46,48 @@ input {
     position: relative;
 }
 
+.flex-field input[type=password] {
+    padding-right: 35px;
+}
+
+.flex-field input {
+    padding-right: 35px;
+    z-index: 2500;
+}
+
+
 .flex-field img {
     position: absolute;
     left: 420px;
     top: 26px;
-    color: chartreuse;
-    
+    z-index: 2500;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+
+.img-container img {
+    height: 130px;
+}
+
+.container {
+    grid-column: 1 / 2;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .connect-container {
     width: 450px;
 }
 
+
 .margin {
     margin-top: 30px;
 }
-
-.container {
-    width: 40%;
-    border-right: 1px solid black;
-}
-
 
 .hr-div {
     margin-top: 30px;
@@ -73,6 +103,29 @@ input {
 
 .form {
     margin-top: 30px;
+    z-index: 500;
+}
+
+.r-image-container {
+    grid-column: 2 / 2;
+}
+
+.r-image-container img {
+    width: 1870px;
+}
+
+.basket-img {
+    position: absolute;
+    top: 360px;
+    left: 450px;
+
+}
+
+.basket-img img {
+    z-index: 0;
+    width: 610px;
+    pointer-events: none;
+    
 }
 
 
