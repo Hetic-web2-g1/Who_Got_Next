@@ -9,7 +9,7 @@ body {
 }
 
 h1 {
-    font-family: "Monument Extended";
+    font-family: "Monument";
     font-size: 32pt;
     margin: 0;
 }
@@ -28,7 +28,7 @@ input {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 50%);
 }
 
 .connect-title {
@@ -47,20 +47,26 @@ input {
 }
 
 .flex-field input[type=password] {
-    padding-right: 35px;
+    width: 99%;
+    z-index: 1;
+    width: -webkit-fill-available;
 }
 
 .flex-field input {
-    padding-right: 35px;
     z-index: 2500;
+    border: 1px solid #E3E4E8;
+    border-radius: 8px;
+    margin-top: 12px;
 }
 
 
 .flex-field img {
     position: absolute;
-    left: 420px;
-    top: 26px;
-    z-index: 2500;
+    /* left: 0%; */
+    top: 54%;
+    display: inline-table;
+    z-index: 2;
+    padding-right: 2%;
 }
 
 .img-container {
@@ -76,34 +82,47 @@ input {
 
 .container {
     grid-column: 1 / 2;
-    padding-left: 30px;
-    padding-right: 30px;
 }
 
 .connect-container {
-    width: 450px;
+    width: 75%;
+}
+.inputwrapper{
+    display: flex;
+
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+
 }
 
-
 .margin {
-    margin-top: 30px;
+    margin-top: 27px;
 }
 
 .hr-div {
     margin-top: 30px;
+    color: #878AAB;
+}
+
+.title h4{
+    font-weight: 200;
 }
 
 .line {
     width: 250px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #878AAB;
     margin-bottom: 10px;
     margin-left: 15px;
     margin-right: 15px;
 }
 
 .form {
-    margin-top: 30px;
+    margin-top: 27px;
     z-index: 500;
+    font-size: 12px;
+    font-family: qualta;
+    color: #878AAB;
 }
 
 .r-image-container {
@@ -111,7 +130,7 @@ input {
 }
 
 .r-image-container img {
-    width: 1870px;
+    width: 2116px;
 }
 
 .basket-img {
@@ -128,5 +147,12 @@ input {
     
 }
 
-
+@media  screen and (max-width: 1280px) {
+    .r-image-container{
+        display: none;
+    }
+    .grid-container{
+        display: block;
+    }
+}
 
