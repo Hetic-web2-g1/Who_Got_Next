@@ -20,7 +20,7 @@ Launch frontend
 
 Complete Commande
 Launch backend
-> export ENVIRONMENT=dev && cd backend && uvicorn main:app --reload
+> export ENVIRONMENT=dev && cd backend/src && uvicorn main:app --reload
 
 Launch frontend
 > cd frontend && npm run dev
@@ -45,7 +45,7 @@ Install requirements front:
 > npm install
 
 Install requirements back without poetry:
-> pip install fastapi uvicorn pydantic sqlalchemy sqlalchemy_utils python-dotenv psycopg2 faker
+> pip install fastapi uvicorn pydantic sqlalchemy sqlalchemy_utils python-dotenv psycopg2-binary faker
 
 Can also install with poetry and the pyproject.toml file from the backend:
 > cd backend
