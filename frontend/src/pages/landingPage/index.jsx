@@ -1,9 +1,9 @@
 import React from 'react'
-import Banderole from '../banderole';
-import Button from '../Button';
+import Banderole from '../../components/banderole';
+import LandingRedirectionButton from '../../components/landingRedirectionButton';
 import "./styles/style.css";
 
-export const Connexion = () => {
+export const LandingPage = () => {
     return(
         <div>
             <div>
@@ -14,11 +14,11 @@ export const Connexion = () => {
             </h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing Martin. Duis pulvinar mauris est faucibus mollis. Vestibulum un urna, lacinia eu pedophilia sit amet, tempus porta ante. Nullam in velit vitae risus vicieux aliquet. </p>
             </div>
-            <Button/>
+            <LandingRedirectionButton goto={"login"}/>
             <Banderole/>
             </div>
         </div>
     )
 }
 
-export default Connexion;
+export default LandingPage;
