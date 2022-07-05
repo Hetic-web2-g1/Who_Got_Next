@@ -1,38 +1,41 @@
-import React, { useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
-import mapboxgl from 'mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import React, { useMemo, useState } from "react";
+import PropTypes from "prop-types";
+import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import Map, {
-    Marker,
-    Popup,
-    NavigationControl,
-    FullscreenControl,
-    ScaleControl,
-    GeolocateControl
-  } from 'react-map-gl';
-import Pin from './Marker'
+  Marker,
+  Popup,
+  NavigationControl,
+  FullscreenControl,
+  ScaleControl,
+  GeolocateControl,
+  Layer,
+} from "react-map-gl";
+import Pin from "./Marker";
 
-import './styles.css';
-import { useEffect } from 'react';
- 
-const TOKEN = mapboxgl.accessToken = 'pk.eyJ1IjoiZXJ6ZW5rZWwiLCJhIjoiY2t6eHZiempyMDRoZzJucDlmcmxjeTZjcyJ9.aJWheE8snFrd21W1ElV4_g';
+import "./styles.css";
+import { useEffect } from "react";
 
-const MapRender = ({userLongitude, userLatitude, fields}) => {
-    const [lng, setLng] = useState(userLongitude ? userLongitude : 0);
-    const [lat, setLat] = useState(userLatitude ? userLatitude : 0);
-    const [popupInfo, setPopupInfo] = useState(null);
+const TOKEN = (mapboxgl.accessToken =
+  "pk.eyJ1IjoiZXJ6ZW5rZWwiLCJhIjoiY2t6eHZiempyMDRoZzJucDlmcmxjeTZjcyJ9.aJWheE8snFrd21W1ElV4_g");
 
-    const southWest = new mapboxgl.LngLat(-5.0, 42.5);
-    const northEast = new mapboxgl.LngLat(9.56, 51.15);
-    const bounds = [southWest, northEast]
+const MapRender = ({ userLongitude, userLatitude, fields }) => {
+  const [lng, setLng] = useState(userLongitude ? userLongitude : 0);
+  const [lat, setLat] = useState(userLatitude ? userLatitude : 0);
+  const [popupInfo, setPopupInfo] = useState(null);
 
-    const pins = useMemo(() =>
+  const southWest = new mapboxgl.LngLat(-5.0, 42.5);
+  const northEast = new mapboxgl.LngLat(9.56, 51.15);
+  const bounds = [southWest, northEast];
+
+  const pins = useMemo(
+    () =>
       fields.data.map((field) => (
         <Marker
           key={`marker-${field.id}`}
           longitude={field.location[1]}
           latitude={field.location[0]}
           anchor="bottom"
-          onClick={e => {
+          onClick={(e) => {
             e.originalEvent.stopPropagation();
             setPopupInfo(field);
           }}
@@ -41,56 +44,65 @@ const MapRender = ({userLongitude, userLatitude, fields}) => {
         </Marker>
       )),
     []
-    );  
+  );
 
-    return (
-        <>
-          <Map
-            initialViewState={{
-              latitude: lat,
-              longitude: lng,
-              zoom: 15,
-              maxBounds: bounds,
-            }}
-            style={{width: '100vw', height: '100vh'}}
-            mapStyle="mapbox://styles/mapbox/light-v10"
-            mapboxAccessToken={TOKEN}
+  return (
+    <>
+      <Map
+        initialViewState={{
+          latitude: lat,
+          longitude: lng,
+          zoom: 15,
+          maxBounds: bounds,
+        }}
+        style={{ width: "100vw", height: "100vh" }}
+        mapStyle="mapbox://styles/mapbox/light-v10"
+        mapboxAccessToken={TOKEN}
+      >
+        <GeolocateControl position="top-left" />
+        <FullscreenControl position="top-left" />
+        <NavigationControl position="top-left" />
+        <ScaleControl />
+
+        {/* <Layer type={"symbol"} source={"map"}> */}
+        {pins}
+
+        {popupInfo && (
+          <Popup
+            anchor="top"
+            longitude={popupInfo.location[1]}
+            latitude={popupInfo.location[0]}
+            onClose={() => setPopupInfo(null)}
           >
-            <GeolocateControl position="top-left" />
-            <FullscreenControl position="top-left" />
-            <NavigationControl position="top-left" />
-            <ScaleControl />
-    
-            {pins}
-    
-            {popupInfo && (
-              <Popup
-                anchor="top"
-                longitude={popupInfo.location[1]}
-                latitude={popupInfo.location[0]}
-                onClose={() => setPopupInfo(null)}
+            <div>
+              {popupInfo.description} |{" "}
+              <a
+                target="_new"
+                href={`https://www.youtube.com/watch?v=dQw4w9WgXcQ`}
               >
-                <div>
-                  {popupInfo.description} | {' '}
-                    <a
-                        target="_new"
-                        href={`https://www.youtube.com/watch?v=dQw4w9WgXcQ`}
-                        >
-                        Infos
-                    </a>
-                </div>
-                <img width="100%" src={popupInfo?.image_path ? popupInfo?.image_path : '../../../assets/kirbok.jpg'} />
-              </Popup>
-            )}
-          </Map>
-        </>
-      );
-}
+                Infos
+              </a>
+            </div>
+            <img
+              width="100%"
+              src={
+                popupInfo?.image_path
+                  ? popupInfo?.image_path
+                  : "../../../assets/kirbok.jpg"
+              }
+            />
+          </Popup>
+        )}
+        {/* </Layer> */}
+      </Map>
+    </>
+  );
+};
 
 Map.propTypes = {
-    userLongitude: PropTypes.number,
-    userLatitude: PropTypes.number,
-    fields: PropTypes.object,
-}
+  userLongitude: PropTypes.number,
+  userLatitude: PropTypes.number,
+  fields: PropTypes.object,
+};
 
-export default MapRender
+export default MapRender;
