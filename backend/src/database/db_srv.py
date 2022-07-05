@@ -94,10 +94,14 @@ def update_object(
 
 
 def delete_object(
-    conn: Connection, object_name: str, object_id: Any, id_key: str = "id"
+    conn: Connection,
+    object_name: str,
+    object_id: Union[str, UUID, int],
+    id_key: str = "id"
 ):
     table = get_table_object(object_name)
-    conn.execute(table.delete(table.c[id_key] == object_id))
+    result = conn.execute(table.delete(table.c[id_key] == object_id))
+    return result.rowcount
 
 
 def delete_multi(conn: Connection, object_name: str, object_key: str, object_id: Any):

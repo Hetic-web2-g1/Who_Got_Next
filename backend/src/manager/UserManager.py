@@ -5,6 +5,7 @@ from database import db_srv
 from schema.user import User, UserCreate
 from database.tables.user import user_table
 
+
 def get_all_users(conn):
     result = conn.execute(sa.select([user_table]))
     if result is None:
@@ -25,3 +26,11 @@ def get_user_by_id(conn: Connection, id: str):
 
 def create_user(conn: Connection, user: UserCreate) -> User | None:
     return db_srv.create_object(conn, 'user', user)
+
+
+def update_user(conn: Connection, user: User) -> User | None:
+    return db_srv.update_object(conn, 'user', user.id, user)
+
+
+def delete_user_by_id(conn: Connection, id: str) -> User | None:
+    return db_srv.delete_object(conn, 'user', id)
