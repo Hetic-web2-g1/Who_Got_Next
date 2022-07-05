@@ -11,7 +11,7 @@ import App from "./App";
 import Evenement from "./pages/evenement";
 import JoinGroup from "./pages/joingroup";
 import MapPage from "./pages/map";
-import Homepage from "./pages/homepage";
+import Homepage from "./pages/landing_page";
 
 ReactDOM.render(
   <React.StrictMode>
