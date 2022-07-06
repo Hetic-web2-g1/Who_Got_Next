@@ -30,9 +30,6 @@ export const Login = () => {
     google.accounts.id.prompt();
   }, []);
 
-  // No user => Sign in button
-  // User => Log out button
-
     return (
       <main>
 
