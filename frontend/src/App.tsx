@@ -14,6 +14,9 @@ export default function App() {
         <li>
           <Link to="/Login">Login</Link>
         </li>
+        <li>
+          <Link to="/Signup">Signup</Link>
+        </li>
       </nav>
     </main>
   )
