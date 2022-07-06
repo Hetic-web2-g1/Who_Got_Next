@@ -153,6 +153,10 @@ input {
 .connectcontainer{
     margin-top: 27px;
 }
+#signInDiv{
+    margin-top: 27px;
+}
+
 
 @media  screen and (max-width: 1280px) {
     .r-image-container{

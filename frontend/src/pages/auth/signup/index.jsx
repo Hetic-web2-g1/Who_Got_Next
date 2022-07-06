@@ -1,12 +1,36 @@
-import React from "react";
+import { React, useEffect, useState } from 'react'
+import './index.css'
+import jwt_decode from 'jwt-decode'
 import LandingRedirectionButton
  from '../../../components/landingRedirectionButton'
-import { Link } from "react-router-dom";
+import {Link} from 'react-router-dom'
 
 export const Signup = () => {
-  return (
-      <main>
+  
+  const [ user, setUser ] = useState({});
+  function handleCallbackResponse(response) {
+    console.log("Encoded JWT ID token: " + response.credential);
+    var usrObject = jwt_decode(response.credential);
+    console.log(usrObject);
+    setUser(usrObject);
+  }
 
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+      client_id: "709733567706-5vqp12ru9cjqevbeetpvudn8qoube6hb.apps.googleusercontent.com",
+      callback: handleCallbackResponse
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("signInDiv"),
+      { theme: "outline", size: "large"}
+    );
+
+    google.accounts.id.prompt();
+  }, []);
+    return (
+      <main>
         <div className='grid-container'>
           <div className='containerz flex'>
 
@@ -16,24 +40,36 @@ export const Signup = () => {
               </div>
 
               <div className='flex'>
-                  <h1 className='connect-title'>Se connecter</h1>
+                  <h1 className='connect-title'>S'inscrire</h1>
               </div>
 
               <div className='flex title'>
                   <h4>Ask Who Got Next</h4>
               </div>
 
-              <div className='hr-div flex'>
-            
-                <div className='line'></div>
+              <div className='flex' id='signInDiv'></div>
+              { user &&
+                <div>
+                  <img src={user.picture}></img>
+                  <h3>{user.name}</h3>
+                </div>
+              }
 
+              <div className='hr-div flex'> 
+                <div className='line'></div>
                 <span>Ou</span>
                 <div className='line'></div>
 
               </div>
 
               <form className='form'>
-                <div className='flex-field'>
+
+              <div className='flex-field'>
+                  <label htmlFor="prenom">Prenom</label>
+                  <input placeholder='Prenom' type="text" />
+              </div>
+
+                <div className='flex-field margin'>
                   <label htmlFor="mail">Mail</label>
                   <input placeholder='Entrez votre mail' type="text" />
                 </div>
@@ -45,11 +81,26 @@ export const Signup = () => {
                   <img src="./../../../../public/assets/eye.svg" alt="see password" />
                   </div>
                 </div>
+                <div className='flex-field margin'>
+                  <label htmlFor="age">Age</label>
+                  <div className='inputwrappertwo'>
+                    <input className='age' placeholder='Jour' type="day"/>
+                    <input className='age' placeholder='Mois' type="month"/>
+                    <input className='age' placeholder='Annee' type="year"/>
+                  </div>
+                </div>
+                <div className='flex-field margin'>
+                  <label htmlFor='sexe'>Sexe</label>
+                  <div className='inputwrapperthree'>
+                  <input value='Femme' type="button"/>
+                  <input value='Homme' type="button"/>
+                  </div>
+                </div>
                 <LandingRedirectionButton goto={"login"}/>
               </form>
 
             </div>
-            
+          
           </div>
 
           <div className='r-image-container'>
@@ -57,12 +108,9 @@ export const Signup = () => {
           </div>
         </div>
 
-        {/* <div className='basket-img'>
-          <img draggable='false' src="./../../../../public/assets/basket.svg" alt="" />
-        </div> */}
 
       </main>
-  );
-};
+    );
+  }
 
 export default Signup;
