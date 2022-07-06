@@ -38,6 +38,7 @@ input {
 .flex {
     display: flex;
     justify-content: center;
+    align-items:  center;
 }
 
 .flex-field {
@@ -80,8 +81,10 @@ input {
     height: 130px;
 }
 
-.container {
+.containerz {
     grid-column: 1 / 2;
+    margin-bottom: 10%;
+    height: 99vh;
 }
 
 .connect-container {
@@ -147,6 +150,10 @@ input {
     
 }
 
+.connectcontainer{
+    margin-top: 27px;
+}
+
 @media  screen and (max-width: 1280px) {
     .r-image-container{
         display: none;
@@ -154,5 +161,11 @@ input {
     .grid-container{
         display: block;
     }
+    .inscrip {
+        width: 100%;
+        text-align: center;
+    }
+    .connect{
+        width: 100%;
+    }
 }
-

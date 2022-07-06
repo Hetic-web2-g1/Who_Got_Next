@@ -1,5 +1,7 @@
 import React from 'react'
 import './index.css'
+import LandingRedirectionButton
+ from '../../../components/landingRedirectionButton'
 import {Link} from 'react-router-dom'
 
 export const Login = () => {
@@ -7,7 +9,7 @@ export const Login = () => {
       <main>
 
         <div className='grid-container'>
-          <div className='container flex'>
+          <div className='containerz flex'>
 
             <div className='connect-container'>
               <div className='img-container'>
@@ -44,10 +46,11 @@ export const Login = () => {
                   <img src="./../../../../public/assets/eye.svg" alt="see password" />
                   </div>
                 </div>
-
+                <LandingRedirectionButton goto={"login"}/>
               </form>
 
             </div>
+            
           </div>
 
           <div className='r-image-container'>
