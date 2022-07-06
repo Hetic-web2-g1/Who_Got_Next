@@ -1,85 +1,108 @@
-import React, { useRef, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import mapboxgl from 'mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import React, { useMemo, useState } from "react";
+import PropTypes from "prop-types";
+import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import Map, {
+  Marker,
+  Popup,
+  NavigationControl,
+  FullscreenControl,
+  ScaleControl,
+  GeolocateControl,
+  Layer,
+} from "react-map-gl";
+import Pin from "./Marker";
 
-import './styles.css';
-import Marker from './Marker'
- 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZXJ6ZW5rZWwiLCJhIjoiY2t6eHZiempyMDRoZzJucDlmcmxjeTZjcyJ9.aJWheE8snFrd21W1ElV4_g';
+import "./styles.css";
+import { useEffect } from "react";
 
-const Map = ({userLongitude, userLatitude, fields}) => {
-    const mapContainer = useRef(null);
-    const map = useRef(null);
-    const [lng, setLng] = useState(userLongitude ? userLongitude : 0);
-    const [lat, setLat] = useState(userLatitude ? userLatitude : 0);
-    const [zoom, setZoom] = useState(17);
+const TOKEN = (mapboxgl.accessToken =
+  "pk.eyJ1IjoiZXJ6ZW5rZWwiLCJhIjoiY2t6eHZiempyMDRoZzJucDlmcmxjeTZjcyJ9.aJWheE8snFrd21W1ElV4_g");
 
-    const createMarker = (map, lat, lng, popup) => {
-        const loc = [lng, lat]
-        const el = document.createElement('div');
-        el.className = 'marker';
-        if(popup){
-            new mapboxgl.Marker(el)
-            .setLngLat(loc)
-            .addTo(map.current)
-            .setPopup(
-                new mapboxgl.Popup({ offset: 25 })
-                .setHTML(
-                    `<h3>zoubi</h3>
-                    <p>les enfants</p>`
-                )
-            );
-        }
-        else {            
-            new mapboxgl.Marker(el)
-            .setLngLat(loc)
-            .addTo(map.current)
-        }
-    }
+const MapRender = ({ userLongitude, userLatitude, fields }) => {
+  const [lng, setLng] = useState(userLongitude ? userLongitude : 0);
+  const [lat, setLat] = useState(userLatitude ? userLatitude : 0);
+  const [popupInfo, setPopupInfo] = useState(null);
 
-    useEffect(() => {
-        if (map.current) return; 
-        map.current = new mapboxgl.Map({
-            container: mapContainer.current,
-            style: 'mapbox://styles/mapbox/light-v10',
-            center: [lng, lat],
-            zoom: zoom
-        });
-        fields.data.map(field => {    
-            createMarker(map, field.location[0], field.location[1])
-        });
-    });
+  const southWest = new mapboxgl.LngLat(-5.0, 42.5);
+  const northEast = new mapboxgl.LngLat(9.56, 51.15);
+  const bounds = [southWest, northEast];
 
-    useEffect(() => {
-        if (!map.current) return; 
-        map.current.on('move', () => {
-            setLng(map.current.getCenter().lng.toFixed(4));
-            setLat(map.current.getCenter().lat.toFixed(4));
-            setZoom(map.current.getZoom().toFixed(2));
-        });
-    });    
+  const pins = useMemo(
+    () =>
+      fields.data.map((field) => (
+        <Marker
+          key={`marker-${field.id}`}
+          longitude={field.location[1]}
+          latitude={field.location[0]}
+          anchor="bottom"
+          onClick={(e) => {
+            e.originalEvent.stopPropagation();
+            setPopupInfo(field);
+          }}
+        >
+          <Pin />
+        </Marker>
+      )),
+    []
+  );
 
-    useEffect(() => {
-        if (!map.current) return;
-        map.current.on('click', function(e) {
-            createMarker(map, e.lngLat["lat"], e.lngLat["lng"], true)
-        });
-    });
+  return (
+    <>
+      <Map
+        initialViewState={{
+          latitude: lat,
+          longitude: lng,
+          zoom: 15,
+          maxBounds: bounds,
+        }}
+        style={{ width: "100vw", height: "100vh" }}
+        mapStyle="mapbox://styles/mapbox/light-v10"
+        mapboxAccessToken={TOKEN}
+      >
+        <GeolocateControl position="top-left" />
+        <FullscreenControl position="top-left" />
+        <NavigationControl position="top-left" />
+        <ScaleControl />
 
-    return (
-        <div>
-            <div className="sidebar">
-                Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+        {/* <Layer type={"symbol"} source={"map"}> */}
+        {pins}
+
+        {popupInfo && (
+          <Popup
+            anchor="top"
+            longitude={popupInfo.location[1]}
+            latitude={popupInfo.location[0]}
+            onClose={() => setPopupInfo(null)}
+          >
+            <div>
+              {popupInfo.description} |{" "}
+              <a
+                target="_new"
+                href={`https://www.youtube.com/watch?v=dQw4w9WgXcQ`}
+              >
+                Infos
+              </a>
             </div>
-            <div ref={mapContainer} className="map-container" />
-        </div>
-    );
-}
+            <img
+              width="100%"
+              src={
+                popupInfo?.image_path
+                  ? popupInfo?.image_path
+                  : "../../../assets/kirbok.jpg"
+              }
+            />
+          </Popup>
+        )}
+        {/* </Layer> */}
+      </Map>
+    </>
+  );
+};
 
 Map.propTypes = {
-    userLongitude: PropTypes.number,
-    userLatitude: PropTypes.number,
-    fields: PropTypes.object,
-}
+  userLongitude: PropTypes.number,
+  userLatitude: PropTypes.number,
+  fields: PropTypes.object,
+};
 
-export default Map
+export default MapRender;
