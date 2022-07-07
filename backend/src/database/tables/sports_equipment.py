@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy.dialects.postgresql import UUID
 from uuid import uuid4
 
-from ..db_engine import metadata
+from database.db_engine import metadata
 
 sports_equipment_table = Table(
     "sports_equipment",

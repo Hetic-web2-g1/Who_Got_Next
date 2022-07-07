@@ -6,8 +6,6 @@ from pathlib import Path
 from database.tables import user, field, event, message, sports_equipment
 from routers import index, users, fields, events, messages
 from database.db_engine import metadata, engine
-from utils.data_sport_importer import process_data
-from utils.fake import create_fake_data
 
 CUR_DIR = Path(__file__).parent.parent.parent
 metadata.create_all(bind=engine)
