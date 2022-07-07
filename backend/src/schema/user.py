@@ -13,7 +13,8 @@ class UserCreate(BaseModel):
     sport_level: int
     favorite: List[str]
     date_of_birth: datetime
-    location: List[float]
+    longitude: float
+    latitude: float
     img_path: str
 
 
