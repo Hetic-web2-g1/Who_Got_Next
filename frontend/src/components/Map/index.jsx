@@ -55,11 +55,16 @@ const MapRender = ({ userLongitude, userLatitude }) => {
   }
 
   async function onMoveMapEnd(longitude, latitude, zoom) {
-    const radius = 1 / (zoom);
-    console.log(radius)
-    await useFetchCircle(
-      `http://localhost:8000/fields/location/${longitude}&${latitude}&${radius}`
-    );
+    console.log(zoom)
+    if (zoom >= 15) {
+      const radius = 1 / zoom;
+      console.log(radius);
+      await useFetchCircle(
+        `http://localhost:8000/fields/location/${longitude}&${latitude}&${radius}`
+      );
+    } else {
+      setFields(null);
+    }
     console.log(fields);
   }
 
