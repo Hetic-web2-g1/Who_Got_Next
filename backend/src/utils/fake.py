@@ -14,6 +14,7 @@ from manager.MessageManager import create_message
 
 fake = Faker(locale="fr_FR")
 
+
 def coordinate():
     lat = 48.8737
     long = 2.2950
@@ -23,6 +24,7 @@ def coordinate():
     # coordinate.append((lat * 10000 - randint(0, 50)) / 10000)
     # coordinate.append((long * 10000 - randint(0, 50)) / 10000)
     return coordinate
+
 
 def create_fake_user():
     with engine.begin() as conn:
@@ -35,10 +37,12 @@ def create_fake_user():
             'sport_level': fake.random_digit(),
             'favorite': [fake.first_name(), fake.first_name()],
             'date_of_birth': datetime.now(),
-            'location': coordinate(),
+            'longitude': coordinate()[0],
+            'latitude': coordinate()[1],
             'img_path': fake.file_path(depth=5, category='image')
         })
         create_user(conn, user)
+
 
 def create_fake_current_user():
     with engine.begin() as conn:
@@ -47,6 +51,7 @@ def create_fake_current_user():
         })
         create_user(conn, user)
 
+
 def create_fake_subscribed_user():
     with engine.begin() as conn:
         user = UserCreate(**{
@@ -54,17 +59,19 @@ def create_fake_subscribed_user():
         })
         create_user(conn, user)
 
+
 def create_fake_field():
     with engine.begin() as conn:
         field = FieldCreate(**{
             'id_user': fake.uuid4(),
             'name': fake.unique.first_name(),
             'description': fake.text(),
-            'location': coordinate(),
-            'data': {"is_data": "True"},
+            'longitude': coordinate()[0],
+            'latitude': coordinate()[1],
             'img_path': fake.file_path(depth=5, category='image')
         })
         create_field(conn, field)
+
 
 def create_fake_event():
     with engine.begin() as conn:
@@ -73,9 +80,10 @@ def create_fake_event():
             'id_field': fake.uuid4(),
             'name': fake.unique.first_name(),
             'description': fake.text(),
-            'data': {"is_data": "True"}
+            'data': {"is_data": "True"},
         })
         create_event(conn, event)
+
 
 def create_fake_message():
     with engine.begin() as conn:
@@ -87,6 +95,7 @@ def create_fake_message():
             'content': fake.text()
         })
         create_message(conn, message)
+
 
 def create_fake_data():
     for _ in range(5):
