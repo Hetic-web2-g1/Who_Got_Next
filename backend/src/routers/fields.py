@@ -3,9 +3,11 @@ from typing import List
 from fastapi.exceptions import HTTPException
 
 from database.db_engine import engine
-from schema.field import Field, GPSBounds
+from schema.field import Field, FieldCreate
 from manager import FieldManager
 
+
+# TODO Need to be completed with more specific errror
 router = APIRouter(
     prefix="/fields",
     tags=["Fields"],
@@ -32,9 +34,9 @@ def get_field(field_id: str):
 
 # Create field
 @router.post("/create")
-def create_field(field):
+def create_field(field: FieldCreate):
     with engine.begin() as conn:
-        field = FieldManager.create_field(conn, field)
+        FieldManager.create_field(conn, field)
         if field == 0:
             return False
         else:
@@ -42,15 +44,14 @@ def create_field(field):
 
 
 # Update field by id
-@router.put("/update/{field_id}")
-def update_field(field):
+@router.put("/update/{id}")
+def update_field(field: FieldCreate, id: UUID):
     with engine.begin() as conn:
-        field = FieldManager.update_field(conn, field)
+        FieldManager.update_field(conn, field, id)
         if field == 0:
             return False
         else:
             return True
-# TODO Tester et vérifier les inputs a envoyer a field missing data to test
 
 
 # Delete one field by id

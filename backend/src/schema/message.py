@@ -1,12 +1,13 @@
 from datetime import datetime
 from pydantic import BaseModel
 from uuid import UUID
+from typing import Optional
 
 
 class MessageCreate(BaseModel):
-    id_user: UUID | None
-    id_field: UUID | None
-    id_event: UUID | None
+    id_user: Optional[UUID] = None
+    id_field: Optional[UUID] = None
+    id_event: Optional[UUID] = None
     message_type: str
     content: str
 

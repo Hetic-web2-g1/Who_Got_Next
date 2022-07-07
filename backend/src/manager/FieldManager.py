@@ -1,3 +1,4 @@
+from uuid import UUID
 import sqlalchemy as sa
 from sqlalchemy.engine import Connection
 
@@ -41,8 +42,8 @@ def create_sports_equipment(conn: Connection, sports_equipment: SportsEquipmentC
     return db_srv.create_object(conn, 'sports_equipment', sports_equipment)
 
 
-def update_field(conn: Connection, field: Field) -> Field | None:
-    return db_srv.update_object(conn, 'field', field.id, field)
+def update_field(conn: Connection, field: FieldCreate, id: UUID) -> Field | None:
+    return db_srv.update_object(conn, 'field', id, field)
 
 
 def delete_field_by_id(conn: Connection, id: str) -> Field | None:
