@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react'
 import jwt_decode from 'jwt-decode'
-import './index.css'
+// import './index.css'
 import LandingRedirectionButton
  from '../../../components/landingRedirectionButton'
 import {Link} from 'react-router-dom'

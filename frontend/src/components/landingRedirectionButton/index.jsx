@@ -12,7 +12,7 @@ export const LandingRedirectionButton = ({goto, innerButton}) => {
       <div className="inscrip">
         <span>
           Vous n'avez pas encore de compte ? 
-          <Link to={"signup"} href="">Inscrivez-vous</Link>
+          <Link to={"signup"} href=""> Inscrivez-vous</Link>
         </span>
       </div>
     </div>
