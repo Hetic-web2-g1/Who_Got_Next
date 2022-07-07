@@ -26,7 +26,8 @@ user_table = Table(
     Column('sport_level', Integer),
     Column('favorite', ARRAY(String(), dimensions=1)),
     Column('date_of_birth', DateTime()),
-    Column('location', ARRAY(Float, dimensions=1)),
+    Column('longitude', Float),
+    Column('latitude', Float),
     Column('img_path', String()),
     Column("created_at", DateTime(), default=datetime.utcnow),
     Column("edited_at", DateTime(), default=datetime.utcnow)
