@@ -1,12 +1,75 @@
-import { React, useEffect, useState } from 'react'
+import { React, useEffect, useState, useRef } from 'react'
 import './index.css'
 import jwt_decode from 'jwt-decode'
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged
+} from 'firebase/auth'
+import {auth} from '../../../firebase-config'
 import LandingRedirectionButton
  from '../../../components/landingRedirectionButton'
 import {Link} from 'react-router-dom'
+import { async } from '@firebase/util'
 
 export const Signup = () => {
+  const [buttonTitle, setButtonTitle] = useState("S'inscrire");
+  const [validation, setValidation] = useState("");
+  const [currentUser, setCurrentUser] = useState();
+  const [loadingData, setLoadingData] = useState(true);
+  const inputs = useRef([])
+
+  const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd);
   
+  // Login view
+  useEffect (() => {
+    if (window.location.pathname.includes('Login')) {
+      setButtonTitle('Se connecter');
+      document.getElementById('title').innerHTML = 'Se connecter';
+      let hiddenDiv = document.getElementsByClassName('hidden');
+      for (let item of hiddenDiv) {
+        item.style.display = 'none';
+      };
+    }
+  })
+
+  const addInputs = el => {
+    if(el && !inputs.current.includes(el)){
+      inputs.current.push(el)
+    }
+  }
+
+  const formRef = useRef();
+
+  const handleForm = async (e) => {
+    e.preventDefault();
+
+    if ((inputs.current[1].value.length < 6)) {
+      setValidation("6 characters min")
+      return;
+    }
+
+    try {
+      const cred = await signUp(
+        inputs.current[0].value,
+        inputs.current[1].value
+      )
+      formRef.current.reset();
+      setValidation("");
+      console.log(cred);
+
+    } catch (err) {
+      if (err.code === "auth/invalid-email") {
+        setValidation("Email format invalid");
+      }
+      if (err.code === "auth/email-already-in-use") {
+        setValidation("Email already used");
+      }
+      console.log(err);
+    }
+  }
+  
+  // Continue with google option
   const [ user, setUser ] = useState({});
   function handleCallbackResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
@@ -23,12 +86,13 @@ export const Signup = () => {
     });
 
     google.accounts.id.renderButton(
-      document.getElementById("signInDiv"),
-      { theme: "outline", size: "large"}
+      document.getElementById('signInDiv'),
+      { theme: 'outline', size: 'large'}
     );
 
     google.accounts.id.prompt();
   }, []);
+
     return (
       <main>
         <div className='grid-container'>
@@ -40,7 +104,7 @@ export const Signup = () => {
               </div>
 
               <div className='flex'>
-                  <h1 className='connect-title'>S'inscrire</h1>
+                  <h1 id='title' className='title'>S'inscrire</h1>
               </div>
 
               <div className='flex title'>
@@ -62,41 +126,46 @@ export const Signup = () => {
 
               </div>
 
-              <form className='form'>
+              <form className='form' ref={formRef} onSubmit={handleForm}>
 
-              <div className='flex-field'>
-                  <label htmlFor="prenom">Prenom</label>
-                  <input placeholder='Prenom' type="text" />
-              </div>
-
-                <div className='flex-field margin'>
-                  <label htmlFor="mail">Mail</label>
-                  <input placeholder='Entrez votre mail' type="text" />
+                <div className='hidden flex-field'>
+                    <label htmlFor="prenom">Prenom</label>
+                    <input placeholder='Prenom' type="text" />
                 </div>
 
-                <div className='flex-field margin'>
-                  <label htmlFor="password">Mot de passe</label>
-                  <div className='inputwrapper'>
-                  <input className='input' placeholder='Entrez votre mot de passe' type="password" />
-                  <img src="./../../../../public/assets/eye.svg" alt="see password" />
+                  <div className='flex-field margin'>
+                    <label htmlFor="mail">Mail</label>
+                    <input ref={addInputs} placeholder='Entrez votre mail' type="email" />
                   </div>
-                </div>
-                <div className='flex-field margin'>
-                  <label htmlFor="age">Age</label>
-                  <div className='inputwrappertwo'>
-                    <input className='age' placeholder='Jour' type="day"/>
-                    <input className='age' placeholder='Mois' type="month"/>
-                    <input className='age' placeholder='Annee' type="year"/>
+
+                  <div className='flex-field margin'>
+                    <label htmlFor="password">Mot de passe</label>
+                    <div className='inputwrapper'>
+                    <input ref={addInputs} className='input' placeholder='Entrez votre mot de passe' type="password" />
+                    <img src="./../../../../public/assets/eye.svg" alt="see password" />
+                    </div>
                   </div>
-                </div>
-                <div className='flex-field margin'>
-                  <label htmlFor='sexe'>Sexe</label>
-                  <div className='inputwrapperthree'>
-                  <input value='Femme' type="button"/>
-                  <input value='Homme' type="button"/>
+
+                  <div className='hidden flex-field margin'>
+                    <label htmlFor="age">Age</label>
+                    <div className='inputwrappertwo'>
+                      <input className='age' placeholder='Mois' type="date"/>
+                    </div>
                   </div>
-                </div>
-                <LandingRedirectionButton goto={"login"}/>
+
+                  <div className='hidden flex-field margin'>
+                    <label htmlFor='sexe'>Sexe</label>
+                    <div className='inputwrapperthree'>
+                    <input value='Femme' type="button"/>
+                    <input value='Homme' type="button"/>
+                    </div>
+                  
+                  </div>
+                  {/* <LandingRedirectionButton goto={"login"} innerButton={buttonTitle}/> */}
+                  <button>Submit</button>
+                  <p>
+                    {validation}
+                  </p>
               </form>
 
             </div>

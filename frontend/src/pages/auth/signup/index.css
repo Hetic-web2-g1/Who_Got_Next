@@ -32,14 +32,14 @@ input {
     grid-template-columns: repeat(2, 50%);
 }
 
-.connect-title {
+.title {
     margin-bottom: 20px;
 }
 
 .flex {
     display: flex;
     justify-content: center;
-    align-items:  center;
+    /* align-items:  center; */
 }
 
 .flex-field {
@@ -86,6 +86,7 @@ input {
     grid-column: 1 / 2;
     margin-bottom: 10%;
     height: 99vh;
+    align-items: center;
 }
 
 .connect-container {
