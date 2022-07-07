@@ -2,20 +2,21 @@ from datetime import datetime, date
 from typing import List
 from pydantic import BaseModel
 from uuid import UUID
+from typing import Optional
 
 
 class UserCreate(BaseModel):
-    is_admin: bool
+    is_admin: Optional[bool] = False
     pseudo: str
     password: str
     email: str
-    description: str
-    sport_level: int
-    favorite: List[str]
-    date_of_birth: datetime
-    longitude: float
-    latitude: float
-    img_path: str
+    description: Optional[str] = None
+    sport_level: Optional[int] = None
+    favorite: Optional[List[str]] = None
+    date_of_birth: Optional[date] = None
+    longitude: Optional[float] = None
+    latitude: Optional[float] = None
+    img_path: Optional[str] = None
 
 
 class User(UserCreate):
