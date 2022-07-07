@@ -32,7 +32,7 @@ input {
     grid-template-columns: repeat(2, 50%);
 }
 
-.connect-title {
+.title {
     margin-bottom: 20px;
 }
 

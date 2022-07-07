@@ -6,6 +6,19 @@ import LandingRedirectionButton
 import {Link} from 'react-router-dom'
 
 export const Signup = () => {
+  const [buttonTitle, setButtonTitle] = useState("S'inscrire")
+
+  // Login view
+  useEffect (() => {
+    if (window.location.pathname.includes('Login')) {
+      setButtonTitle('Se connecter');
+      document.getElementById('title').innerHTML = 'Se connecter';
+      let hiddenDiv = document.getElementsByClassName('hidden');
+      for (let item of hiddenDiv) {
+        item.style.display = 'none';
+      };
+    }
+  })
   
   const [ user, setUser ] = useState({});
   function handleCallbackResponse(response) {
@@ -23,8 +36,8 @@ export const Signup = () => {
     });
 
     google.accounts.id.renderButton(
-      document.getElementById("signInDiv"),
-      { theme: "outline", size: "large"}
+      document.getElementById('signInDiv'),
+      { theme: 'outline', size: 'large'}
     );
 
     google.accounts.id.prompt();
@@ -40,7 +53,7 @@ export const Signup = () => {
               </div>
 
               <div className='flex'>
-                  <h1 className='connect-title'>S'inscrire</h1>
+                  <h1 id='title' className='title'>S'inscrire</h1>
               </div>
 
               <div className='flex title'>
@@ -64,39 +77,43 @@ export const Signup = () => {
 
               <form className='form'>
 
-              <div className='flex-field'>
-                  <label htmlFor="prenom">Prenom</label>
-                  <input placeholder='Prenom' type="text" />
-              </div>
-
-                <div className='flex-field margin'>
-                  <label htmlFor="mail">Mail</label>
-                  <input placeholder='Entrez votre mail' type="text" />
+                <div className='hidden flex-field'>
+                    <label htmlFor="prenom">Prenom</label>
+                    <input placeholder='Prenom' type="text" />
                 </div>
 
-                <div className='flex-field margin'>
-                  <label htmlFor="password">Mot de passe</label>
-                  <div className='inputwrapper'>
-                  <input className='input' placeholder='Entrez votre mot de passe' type="password" />
-                  <img src="./../../../../public/assets/eye.svg" alt="see password" />
+                  <div className='flex-field margin'>
+                    <label htmlFor="mail">Mail</label>
+                    <input placeholder='Entrez votre mail' type="text" />
                   </div>
-                </div>
-                <div className='flex-field margin'>
-                  <label htmlFor="age">Age</label>
-                  <div className='inputwrappertwo'>
-                    <input className='age' placeholder='Jour' type="day"/>
-                    <input className='age' placeholder='Mois' type="month"/>
-                    <input className='age' placeholder='Annee' type="year"/>
+
+                  <div className='flex-field margin'>
+                    <label htmlFor="password">Mot de passe</label>
+                    <div className='inputwrapper'>
+                    <input className='input' placeholder='Entrez votre mot de passe' type="password" />
+                    <img src="./../../../../public/assets/eye.svg" alt="see password" />
+                    </div>
                   </div>
-                </div>
-                <div className='flex-field margin'>
-                  <label htmlFor='sexe'>Sexe</label>
-                  <div className='inputwrapperthree'>
-                  <input value='Femme' type="button"/>
-                  <input value='Homme' type="button"/>
+
+                  <div className='hidden flex-field margin'>
+                    <label htmlFor="age">Age</label>
+                    <div className='inputwrappertwo'>
+                      <input className='age' placeholder='Jour' type="day"/>
+                      <input className='age' placeholder='Mois' type="month"/>
+                      <input className='age' placeholder='Annee' type="year"/>
+                    </div>
                   </div>
-                </div>
-                <LandingRedirectionButton goto={"login"}/>
+
+                  <div className='hidden flex-field margin'>
+                    <label htmlFor='sexe'>Sexe</label>
+                    <div className='inputwrapperthree'>
+                    <input value='Femme' type="button"/>
+                    <input value='Homme' type="button"/>
+                    </div>
+                  
+                  </div>
+                  <LandingRedirectionButton goto={"login"} innerButton={buttonTitle}/>
+
               </form>
 
             </div>
