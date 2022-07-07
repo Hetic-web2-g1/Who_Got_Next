@@ -1,11 +1,14 @@
+from uuid import UUID
 from fastapi import APIRouter
 from typing import List
 from fastapi.exceptions import HTTPException
 
 from database.db_engine import engine
-from schema.message import Message
+from schema.message import Message, MessageCreate
 from manager import MessageManager
 
+
+# TODO Need to be completed with more specific errror
 router = APIRouter(
     prefix="/messages",
     tags=["Messages"],
@@ -20,7 +23,7 @@ def get_all_messages():
 
 
 # Get one message by id
-@router.get("/{message_id}", response_model=Message)
+@router.get("/id/{message_id}", response_model=Message)
 def get_message(message_id: str):
     with engine.begin() as conn:
         message = MessageManager.get_message_by_id(conn, message_id)
@@ -32,9 +35,9 @@ def get_message(message_id: str):
 
 # Create message
 @router.post("/create")
-def create_message(message):
+def create_message(message: MessageCreate):
     with engine.begin() as conn:
-        message = MessageManager.create_message(conn, message)
+        MessageManager.create_message(conn, message)
         if message == 0:
             return False
         else:
@@ -42,15 +45,14 @@ def create_message(message):
 
 
 # Update message by id
-@router.put("/update/{message_id}")
-def update_message(message):
+@router.put("/update/id/{id}")
+def update_message(message: MessageCreate, id: UUID):
     with engine.begin() as conn:
-        message = MessageManager.update_message(conn, message)
+        MessageManager.update_message(conn, message, id)
         if message == 0:
             return False
         else:
             return True
-# TODO Tester et vérifier les inputs a envoyer a message missing data to test
 
 
 # Delete one message by id

@@ -1,3 +1,4 @@
+from utils.fake import create_fake_data
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pathlib import Path

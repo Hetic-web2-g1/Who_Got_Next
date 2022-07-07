@@ -1,12 +1,16 @@
+from uuid import UUID
+from pydantic import BaseModel
 import time
 from fastapi import APIRouter
 from typing import List
 from fastapi.exceptions import HTTPException
 
 from database.db_engine import engine
-from schema.field import Field
+from schema.field import Field, FieldCreate
 from manager import FieldManager
 
+
+# TODO Need to be completed with more specific errror
 router = APIRouter(
     prefix="/fields",
     tags=["Fields"],
@@ -21,7 +25,7 @@ def get_all_fields():
 
 
 # Get one field by id
-@router.get("/{field_id}", response_model=Field)
+@router.get("/id/{field_id}", response_model=Field)
 def get_field(field_id: str):
     with engine.begin() as conn:
         field = FieldManager.get_field_by_id(conn, field_id)
@@ -33,9 +37,9 @@ def get_field(field_id: str):
 
 # Create field
 @router.post("/create")
-def create_field(field):
+def create_field(field: FieldCreate):
     with engine.begin() as conn:
-        field = FieldManager.create_field(conn, field)
+        FieldManager.create_field(conn, field)
         if field == 0:
             return False
         else:
@@ -43,15 +47,14 @@ def create_field(field):
 
 
 # Update field by id
-@router.put("/update/{field_id}")
-def update_field(field):
+@router.put("/update/id/{id}")
+def update_field(field: FieldCreate, id: UUID):
     with engine.begin() as conn:
-        field = FieldManager.update_field(conn, field)
+        FieldManager.update_field(conn, field, id)
         if field == 0:
             return False
         else:
             return True
-# TODO Tester et vérifier les inputs a envoyer a field missing data to test
 
 
 # Delete one field by id
@@ -66,15 +69,15 @@ def delete_field(field_id: str):
 
 
 # Get field by location
-@router.get("/location/{circle_x}&{circle_y}&{circle_radius}")
+@router.get("/location")
 def get_field_by_pos_radius(circle_x: float, circle_y: float, circle_radius: float):
     start = time.time()
     with engine.begin() as conn:
         field = FieldManager.get_field_by_pos_radius(
             conn, circle_x, circle_y, circle_radius)
-        if field is None:
-            raise HTTPException(404, "Field not found")
-        else:
-            end = time.time()
-            print(format(end-start))
-            return field
+    if field is None:
+        raise HTTPException(404, "Field not found")
+    else:
+        end = time.time()
+        print(format(end-start))
+        return field

@@ -1,3 +1,4 @@
+from uuid import UUID
 import sqlalchemy as sa
 from sqlalchemy.engine import Connection
 
@@ -27,8 +28,8 @@ def create_event(conn: Connection, event: EventCreate) -> Event | None:
     return db_srv.create_object(conn, 'event', event)
 
 
-def update_event(conn: Connection, event: Event) -> Event | None:
-    return db_srv.update_object(conn, 'event', event.id, event)
+def update_event(conn: Connection, event: EventCreate, id: UUID) -> Event | None:
+    return db_srv.update_object(conn, 'event', id, event)
 
 
 def delete_event_by_id(conn: Connection, id: str) -> Event | None:
