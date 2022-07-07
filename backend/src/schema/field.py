@@ -1,14 +1,14 @@
 from datetime import datetime
-from typing import List
+from typing import Dict
 from pydantic import BaseModel
 from uuid import UUID
 from typing import Optional
 
 
 class FieldCreate(BaseModel):
-    id_user: UUID
+    id_user: Optional[UUID] = None
     name: str
-    description: str
+    type: str
     longitude: float
     latitude: float
     img_path: Optional[str] = None
@@ -28,6 +28,10 @@ class FieldCreate(BaseModel):
 
 
 class Field(FieldCreate):
-    id: UUID
     created_at: datetime
     edited_at: datetime
+
+
+class GPSBounds(BaseModel):
+    north_east: Dict[str, str]
+    south_west: Dict[str, str]

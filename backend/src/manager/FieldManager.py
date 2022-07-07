@@ -61,3 +61,18 @@ def get_field_by_pos_radius(conn: Connection, circle_x, circle_y, circle_radius)
         return []
     else:
         return validated_data
+
+
+def get_field_by_position(conn: Connection, south_east_coord: dict, north_west_coord: dict):
+    stmt = (sa.select([field_table])
+            .where(field_table.c.longitude > south_east_coord['lng'])
+            .where(field_table.c.latitude > south_east_coord['lat'])
+            .where(field_table.c.longitude < north_west_coord['lng'])
+            .where(field_table.c.latitude < north_west_coord['lat'])
+            .order_by(field_table.c.free_access, field_table.c.parking, field_table.c.public_transport)
+            .limit(50)
+            )
+    result = conn.execute(stmt)
+
+    for field in result:
+        yield Field(**field)

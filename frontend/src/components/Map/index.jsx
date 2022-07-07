@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import Map, {
@@ -26,6 +26,8 @@ const MapRender = ({ userLongitude, userLatitude }) => {
   const northEast = new mapboxgl.LngLat(9.56, 51.15);
   const bounds = [southWest, northEast];
 
+  const mapRef = useRef();
+
   const pins = fields?.map((field) => (
     <Marker
       key={`marker-${field.id}`}
@@ -41,33 +43,31 @@ const MapRender = ({ userLongitude, userLatitude }) => {
     </Marker>
   ));
 
-  async function useFetchCircle(
-    url = `http://localhost:8000/fields/location/${longitude}&${latitude}&${radius}`
-  ) {
-    await fetch(url)
-      .then((response) => response.json())
-      .then((response) => {
-        setFields(response);
-      })
-      .catch(() => {
-        console.log("error fetching data");
-      });
-  }
+  async function onMoveMapEnd(map) {
+    let bounds = mapRef.current.getMap().getBounds()
 
-  async function onMoveMapEnd(longitude, latitude, zoom) {
-    if (zoom >= 15) {
-      const radius = 1 / zoom;
-      await useFetchCircle(
-        `http://localhost:8000/fields/location/${longitude}&${latitude}&${radius}`
-      );
-    } else {
-      setFields(null);
+    let body = {
+      north_east: {lat: bounds._ne.lat, lng: bounds._ne.lng},
+      south_west: {lat: bounds._sw.lat, lng: bounds._sw.lng}
     }
+    
+    fetch('http://localhost:8000/fields/location/',
+    {
+      method: "POST", 
+      headers: {'Content-Type': 'application/json'},
+      body:JSON.stringify(body)
+    }
+    )
+    .then(response => response.json())
+    .then(response => setFields(response)
+    .catch(() => {
+      console.log("Error fetching data");
+    }))
   }
-
   return (
     <>
       <Map
+      ref={mapRef}
         initialViewState={{
           latitude: lat,
           longitude: lng,
@@ -77,13 +77,7 @@ const MapRender = ({ userLongitude, userLatitude }) => {
         style={{ width: "100vw", height: "100vh" }}
         mapStyle="mapbox://styles/mapbox/light-v10"
         mapboxAccessToken={TOKEN}
-        onMoveEnd={(e) =>
-          onMoveMapEnd(
-            e.viewState.longitude,
-            e.viewState.latitude,
-            e.viewState.zoom
-          )
-        }
+        onMoveEnd={onMoveMapEnd}
       >
         <GeolocateControl position="top-left" />
         <FullscreenControl position="top-left" />
