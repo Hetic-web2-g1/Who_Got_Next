@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react'
+import { React, useEffect, useState, useRef } from 'react'
 import './index.css'
 import jwt_decode from 'jwt-decode'
 import LandingRedirectionButton
@@ -6,8 +6,10 @@ import LandingRedirectionButton
 import {Link} from 'react-router-dom'
 
 export const Signup = () => {
-  const [buttonTitle, setButtonTitle] = useState("S'inscrire")
-
+  const [buttonTitle, setButtonTitle] = useState("S'inscrire");
+  const [validation, setValidation] = useState("");
+  const inputs = useRef([])
+  
   // Login view
   useEffect (() => {
     if (window.location.pathname.includes('Login')) {
@@ -19,7 +21,22 @@ export const Signup = () => {
       };
     }
   })
+
+  const addInputs = el => {
+    if(el && !inputs.current.includes(el)){
+      inputs.current.push(el)
+    }
+  }
+
+  const handleForm = e => {
+    e.preventDefault();
+    console.log(inputs);
+    if ((inputs.current[1].value.length < 6)) {
+      setValidation("6 characters min")
+    }
+  }
   
+  // Continue with google option
   const [ user, setUser ] = useState({});
   function handleCallbackResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
@@ -42,6 +59,7 @@ export const Signup = () => {
 
     google.accounts.id.prompt();
   }, []);
+
     return (
       <main>
         <div className='grid-container'>
@@ -75,7 +93,7 @@ export const Signup = () => {
 
               </div>
 
-              <form className='form'>
+              <form className='form' onSubmit={handleForm}>
 
                 <div className='hidden flex-field'>
                     <label htmlFor="prenom">Prenom</label>
@@ -84,13 +102,13 @@ export const Signup = () => {
 
                   <div className='flex-field margin'>
                     <label htmlFor="mail">Mail</label>
-                    <input placeholder='Entrez votre mail' type="text" />
+                    <input ref={addInputs} placeholder='Entrez votre mail' type="email" />
                   </div>
 
                   <div className='flex-field margin'>
                     <label htmlFor="password">Mot de passe</label>
                     <div className='inputwrapper'>
-                    <input className='input' placeholder='Entrez votre mot de passe' type="password" />
+                    <input ref={addInputs} className='input' placeholder='Entrez votre mot de passe' type="password" />
                     <img src="./../../../../public/assets/eye.svg" alt="see password" />
                     </div>
                   </div>
@@ -98,9 +116,7 @@ export const Signup = () => {
                   <div className='hidden flex-field margin'>
                     <label htmlFor="age">Age</label>
                     <div className='inputwrappertwo'>
-                      <input className='age' placeholder='Jour' type="day"/>
-                      <input className='age' placeholder='Mois' type="month"/>
-                      <input className='age' placeholder='Annee' type="year"/>
+                      <input className='age' placeholder='Mois' type="date"/>
                     </div>
                   </div>
 
@@ -112,8 +128,11 @@ export const Signup = () => {
                     </div>
                   
                   </div>
-                  <LandingRedirectionButton goto={"login"} innerButton={buttonTitle}/>
-
+                  {/* <LandingRedirectionButton goto={"login"} innerButton={buttonTitle}/> */}
+                  <button>Submit</button>
+                  <p>
+                    {validation}
+                  </p>
               </form>
 
             </div>
