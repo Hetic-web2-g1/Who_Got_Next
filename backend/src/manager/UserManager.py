@@ -7,7 +7,7 @@ from database.tables.user import user_table
 
 
 def get_all_users(conn):
-    result = conn.execute(sa.select([user_table]))
+    result = conn.execute(sa.select([user_table]).limit(100))
     if result is None:
         return []
     else:
