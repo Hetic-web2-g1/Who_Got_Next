@@ -1,3 +1,4 @@
+from uuid import UUID
 import sqlalchemy as sa
 from sqlalchemy.engine import Connection
 
@@ -28,8 +29,8 @@ def create_user(conn: Connection, user: UserCreate) -> User | None:
     return db_srv.create_object(conn, 'user', user)
 
 
-def update_user(conn: Connection, user: User) -> User | None:
-    return db_srv.update_object(conn, 'user', user.id, user)
+def update_user(conn: Connection, user: UserCreate, id: UUID) -> User | None:
+    return db_srv.update_object(conn, 'user', id, user)
 
 
 def delete_user_by_id(conn: Connection, id: str) -> User | None:
