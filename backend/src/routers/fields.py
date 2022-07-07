@@ -1,9 +1,10 @@
+from uuid import UUID
 from fastapi import APIRouter
 from typing import List
 from fastapi.exceptions import HTTPException
 
 from database.db_engine import engine
-from schema.field import Field, FieldCreate
+from schema.field import Field, FieldCreate, GPSBounds
 from manager import FieldManager
 
 
