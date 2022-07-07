@@ -4,7 +4,6 @@ import Spinner from '../../components/Spinner'
 import { useFetch } from '../../services/mapFetch'
 
 const MapPage = () => {
-  //const fields = useFetch('http://localhost:8000/fields');
   const [gotPosition, setGotPosition] = useState(false);
   const [lng, setLng] = useState(10);
   const [lat, setLat] = useState(10);
