@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import MapRender from '../../components/Map'
 import Spinner from '../../components/Spinner'
-import { useFetch } from '../../services/mapFetch'
 
 const MapPage = () => {
-  const fields = useFetch('http://localhost:8000/fields');
   const [gotPosition, setGotPosition] = useState(false);
   const [lng, setLng] = useState(10);
   const [lat, setLat] = useState(10);
@@ -24,7 +22,7 @@ const MapPage = () => {
 
   if(gotPosition) {
     return (
-      <MapRender userLongitude={lng} userLatitude={lat} fields={fields}></MapRender>
+      <MapRender userLongitude={lng} userLatitude={lat}></MapRender>
     );
   } 
   else 
