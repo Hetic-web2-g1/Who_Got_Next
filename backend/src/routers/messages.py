@@ -23,7 +23,7 @@ def get_all_messages():
 
 
 # Get one message by id
-@router.get("/id/{message_id}", response_model=Message)
+@router.get("/{message_id}", response_model=Message)
 def get_message(message_id: str):
     with engine.begin() as conn:
         message = MessageManager.get_message_by_id(conn, message_id)
@@ -45,7 +45,7 @@ def create_message(message: MessageCreate):
 
 
 # Update message by id
-@router.put("/update/id/{id}")
+@router.put("/update/{id}")
 def update_message(message: MessageCreate, id: UUID):
     with engine.begin() as conn:
         MessageManager.update_message(conn, message, id)

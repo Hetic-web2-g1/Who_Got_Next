@@ -25,7 +25,7 @@ def get_all_users():
 
 
 # Get one user by id
-@router.get("/id/{user_id}", response_model=User)
+@router.get("/{user_id}", response_model=User)
 def get_user(user_id: str):
     with engine.begin() as conn:
         user = UserManager.get_user_by_id(conn, user_id)

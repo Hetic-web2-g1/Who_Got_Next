@@ -25,7 +25,7 @@ def get_all_fields():
 
 
 # Get one field by id
-@router.get("/id/{field_id}", response_model=Field)
+@router.get("/{field_id}", response_model=Field)
 def get_field(field_id: str):
     with engine.begin() as conn:
         field = FieldManager.get_field_by_id(conn, field_id)
@@ -47,7 +47,7 @@ def create_field(field: FieldCreate):
 
 
 # Update field by id
-@router.put("/update/id/{id}")
+@router.put("/update/{id}")
 def update_field(field: FieldCreate, id: UUID):
     with engine.begin() as conn:
         FieldManager.update_field(conn, field, id)
@@ -69,7 +69,7 @@ def delete_field(field_id: str):
 
 
 # Get field by location
-@router.get("/location")
+@router.get("/location/")
 def get_field_by_pos_radius(circle_x: float, circle_y: float, circle_radius: float):
     start = time.time()
     with engine.begin() as conn:

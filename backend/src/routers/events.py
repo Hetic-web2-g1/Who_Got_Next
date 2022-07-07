@@ -23,7 +23,7 @@ def get_all_events():
 
 
 # Get one event by id
-@router.get("/id/{event_id}", response_model=Event)
+@router.get("/{event_id}", response_model=Event)
 def get_event(event_id: str):
     with engine.begin() as conn:
         event = EventManager.get_event_by_id(conn, event_id)
@@ -45,7 +45,7 @@ def create_event(event: EventCreate):
 
 
 # Update event by id
-@ router.put("/update/id/{id}")
+@ router.put("/update/{id}")
 def update_event(event: EventCreate, id: UUID):
     with engine.begin() as conn:
         EventManager.update_event(conn, event, id)
