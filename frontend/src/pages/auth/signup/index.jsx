@@ -1,14 +1,25 @@
 import { React, useEffect, useState, useRef } from 'react'
 import './index.css'
 import jwt_decode from 'jwt-decode'
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged
+} from 'firebase/auth'
+import {auth} from '../../../firebase-config'
 import LandingRedirectionButton
  from '../../../components/landingRedirectionButton'
 import {Link} from 'react-router-dom'
+import { async } from '@firebase/util'
 
 export const Signup = () => {
   const [buttonTitle, setButtonTitle] = useState("S'inscrire");
   const [validation, setValidation] = useState("");
+  const [currentUser, setCurrentUser] = useState();
+  const [loadingData, setLoadingData] = useState(true);
   const inputs = useRef([])
+
+  const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd);
   
   // Login view
   useEffect (() => {
@@ -28,11 +39,33 @@ export const Signup = () => {
     }
   }
 
-  const handleForm = e => {
+  const formRef = useRef();
+
+  const handleForm = async (e) => {
     e.preventDefault();
-    console.log(inputs);
+
     if ((inputs.current[1].value.length < 6)) {
       setValidation("6 characters min")
+      return;
+    }
+
+    try {
+      const cred = await signUp(
+        inputs.current[0].value,
+        inputs.current[1].value
+      )
+      formRef.current.reset();
+      setValidation("");
+      console.log(cred);
+
+    } catch (err) {
+      if (err.code === "auth/invalid-email") {
+        setValidation("Email format invalid");
+      }
+      if (err.code === "auth/email-already-in-use") {
+        setValidation("Email already used");
+      }
+      console.log(err);
     }
   }
   
@@ -93,7 +126,7 @@ export const Signup = () => {
 
               </div>
 
-              <form className='form' onSubmit={handleForm}>
+              <form className='form' ref={formRef} onSubmit={handleForm}>
 
                 <div className='hidden flex-field'>
                     <label htmlFor="prenom">Prenom</label>
