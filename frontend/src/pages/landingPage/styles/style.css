@@ -12,20 +12,6 @@
     font-weight: normal;
 }
 
-@font-face {
-    font-family: "QualtaBold";
-    src: local("QualtaBold"),
-    url("../../../fonts/Qualta/Fontspring-DEMO-pgf-qualta-bold.otf") format("opentype");
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: "QualtaRegular";
-    src: local("QualtaRegular"),
-    url("../../../fonts/Qualta/Fontspring-DEMO-pgf-qualta-regular.otf") format("opentype");
-    font-weight: normal;
-}
-
 .landingWrapper{
     display: flex;
     flex-direction: column;
