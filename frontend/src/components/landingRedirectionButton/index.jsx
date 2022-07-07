@@ -1,5 +1,7 @@
 import React from "react";
 import "./styles/style.css";
+import "../../fonts/Qualta/Fontspring-DEMO-pgf-qualta-bold.otf";
+import "../../fonts/Qualta/Fontspring-DEMO-pgf-qualta-regular.otf";
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 

@@ -5,8 +5,9 @@ from database import db_srv
 from schema.event import Event, EventCreate
 from database.tables.event import event_table
 
+
 def get_all_events(conn):
-    result = conn.execute(sa.select([event_table]))
+    result = conn.execute(sa.select([event_table]).limit(100))
     if result is None:
         return []
     else:
@@ -24,3 +25,11 @@ def get_event_by_id(conn: Connection, id: str):
 
 def create_event(conn: Connection, event: EventCreate) -> Event | None:
     return db_srv.create_object(conn, 'event', event)
+
+
+def update_event(conn: Connection, event: Event) -> Event | None:
+    return db_srv.update_object(conn, 'event', event.id, event)
+
+
+def delete_event_by_id(conn: Connection, id: str) -> Event | None:
+    return db_srv.delete_object(conn, 'event', id)

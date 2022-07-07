@@ -3,9 +3,20 @@ from sqlalchemy.engine import Connection
 
 from database import db_srv
 from schema.field import Field, FieldCreate
+from schema.sports_equipment import SportsEquipment, SportsEquipmentCreate
 from database.tables.field import field_table
 
+
 def get_all_field(conn):
+    result = conn.execute(sa.select([field_table]).limit(100))
+    if result is None:
+        return []
+    else:
+        for field in result:
+            yield Field(**field)
+
+
+def get_all_field_unlimited(conn):
     result = conn.execute(sa.select([field_table]))
     if result is None:
         return []
@@ -21,5 +32,32 @@ def get_field_by_id(conn: Connection, id: str):
     if row is not None:
         return Field(**row)
 
+
 def create_field(conn: Connection, field: FieldCreate) -> Field | None:
     return db_srv.create_object(conn, 'field', field)
+
+
+def create_sports_equipment(conn: Connection, sports_equipment: SportsEquipmentCreate) -> SportsEquipment | None:
+    return db_srv.create_object(conn, 'sports_equipment', sports_equipment)
+
+
+def update_field(conn: Connection, field: Field) -> Field | None:
+    return db_srv.update_object(conn, 'field', field.id, field)
+
+
+def delete_field_by_id(conn: Connection, id: str) -> Field | None:
+    return db_srv.delete_object(conn, 'field', id)
+
+
+def get_field_by_pos_radius(conn: Connection, circle_x, circle_y, circle_radius):
+    data = get_all_field_unlimited(conn)
+    validated_data = []
+    for field in data:
+        condition = (field.longitude - circle_x)**2 + \
+            (field.latitude - circle_y)**2 < circle_radius**2
+        if condition:
+            validated_data.append(field)
+    if validated_data is None:
+        return []
+    else:
+        return validated_data
