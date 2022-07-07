@@ -10,4 +10,16 @@ export const useFetch = (url = 'http://localhost:8000/fields', options = null) =
     return {data}
 }
 
+export const useFetchCircle = (url = `http://localhost:8000/fields/location/${longitude}&${latitude}&${radius}`, options=null) => {
+  console.log(url)
+
+   const [data, setData] = useState(null);
+   useEffect(() => {
+     fetch(url, options)
+       .then(res => res.json())
+       .then(data => setData(data));
+   }, [url, options]);
+  return {data}
+}
+
 export default {}
