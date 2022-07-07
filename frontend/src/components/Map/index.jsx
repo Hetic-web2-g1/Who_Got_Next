@@ -65,7 +65,6 @@ const MapRender = ({ userLongitude, userLatitude }) => {
     } else {
       setFields(null);
     }
-    console.log(fields);
   }
 
   return (
@@ -78,7 +77,7 @@ const MapRender = ({ userLongitude, userLatitude }) => {
           maxBounds: bounds,
         }}
         style={{ width: "100vw", height: "100vh" }}
-        mapStyle="mapbox://styles/mapbox/streets-v11"
+        mapStyle="mapbox://styles/mapbox/light-v10"
         mapboxAccessToken={TOKEN}
         onMoveEnd={(e) =>
           onMoveMapEnd(
@@ -103,7 +102,16 @@ const MapRender = ({ userLongitude, userLatitude }) => {
             onClose={() => setPopupInfo(null)}
           >
             <div>
-              {popupInfo.description} |{" "}
+              {popupInfo.name} <br/>
+              {popupInfo.description} <br/>
+              <br/>
+              Acces Handicapé : {popupInfo.handicap ?  "oui" : "non"}<br/>
+              Toilettes : {popupInfo.bathroom ? "oui" : "non"}<br/>
+              Douches : {popupInfo.shower ? "oui" : "non"}<br/>
+              Vestiaires : {popupInfo.dressing_room ? "oui" : "non"}<br/>
+              Chauffage : {popupInfo.heating ? "oui" : "non"}<br/>
+              Parking : {popupInfo.parking ? "oui" : "non"}<br/>
+              Transport en commun : {popupInfo.public_transport ? "oui" : "non"}<br/>
               <a
                 target="_new"
                 href={`https://www.youtube.com/watch?v=dQw4w9WgXcQ`}
