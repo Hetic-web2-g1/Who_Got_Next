@@ -50,7 +50,7 @@ def create_user(user: UserCreate):
 
 
 # Update user by id
-@router.put("/update/id/{id}")
+@router.put("/update/{id}")
 def update_user(user: UserCreate, id: UUID):
     with engine.begin() as conn:
         UserManager.update_user(conn, user, id)
