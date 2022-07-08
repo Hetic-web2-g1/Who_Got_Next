@@ -22,7 +22,7 @@ def get_all_fields():
         return list(FieldManager.get_all_field(conn))
 
 
-# Get one field by id
+# Get field by id
 @router.get("/{field_id}", response_model=Field)
 def get_field(field_id: str):
     with engine.begin() as conn:

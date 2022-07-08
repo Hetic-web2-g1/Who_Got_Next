@@ -22,7 +22,7 @@ def get_all_events():
         return list(EventManager.get_all_events(conn))
 
 
-# Get one event by id
+# Get event by id
 @router.get("/{event_id}", response_model=Event)
 def get_event(event_id: str):
     with engine.begin() as conn:
