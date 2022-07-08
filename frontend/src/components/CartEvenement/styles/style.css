@@ -1,0 +1,95 @@
+@font-face {
+    font-family: "QualtaBold";
+    src: local("QualtaBold"),
+    url("../../../fonts/Qualta/Qualta-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "MonumentBold";
+    src: local("MonumentBold"),
+    url("../../../fonts/Monument/PPMonumentExtended-Black.otf") format("opentype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "QualtaRegular";
+    src: local("QualtaRegular"),
+    url("../../../fonts/Qualta/Qualta-Regular.ttf") format("truetype");
+    font-weight: normal;
+}
+
+.cart-container {
+    box-sizing: border-box;
+    padding: 24px;
+    border-radius: 15px;
+    max-width: 404px;
+    row-gap: 24px;
+    align-items: flex-start;
+    background: white;
+    position: relative;
+}
+
+.heading, .details {
+    display: flex;
+}
+
+.heading {
+    text-align: left;
+    column-gap: 24px;
+    width: 100%;
+}
+
+.image {
+    border-radius: 5px;
+}
+
+.heading_details {
+    height: 88px;
+}
+
+.sport {
+    font-family: QualtaBold;
+    color: #1758FF;
+    font-size: 12px;
+    margin: 0;
+    line-height: 20px;
+}
+
+
+.title {
+    margin: 0;
+    font-family: MonumentBold;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.place {
+    font-family: QualtaRegular;
+    color: #878AAB;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.details {
+    column-gap: 24px;
+    font-family: QualtaRegular;
+}
+
+.details div {
+    width: 70px;
+    border: solid 1px #F2F2F3;
+    border-radius: 10px;
+    padding: 10px 0;
+    font-size: 12px;
+}
+
+.details span {
+    color: #878AAB;
+}
+
+.heart {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}
