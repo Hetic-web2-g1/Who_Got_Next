@@ -21,6 +21,19 @@ export const Signup = () => {
 
   const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd);
   
+  const [email, setEmail] = useState('');
+  const [prenom, setPrenom] = useState('');
+  const [sexe, setSexe] = useState('');
+  const [age, setAge] = useState("")
+
+  const details = {
+    'prenom' : prenom,
+    'email' : email,
+    'sexe' : sexe,
+    'age' : age,
+  }
+  console.log(details)
+
   // Login view
   useEffect (() => {
     if (window.location.pathname.includes('Login')) {
@@ -131,12 +144,12 @@ export const Signup = () => {
 
                 <div className='hidden flex-field'>
                     <label htmlFor="prenom">Prenom</label>
-                    <input placeholder='Prenom' type="text" />
+                    <input onChange={e => setPrenom(e.target.value)} placeholder='Prenom' type="text" />
                 </div>
 
                   <div className='flex-field margin'>
                     <label htmlFor="mail">Mail</label>
-                    <input ref={addInputs} placeholder='Entrez votre mail' type="email" />
+                    <input onChange={e => setEmail(e.target.value)} ref={addInputs} placeholder='Entrez votre mail' type="email" />
                   </div>
 
                   <div className='flex-field margin'>
@@ -150,15 +163,15 @@ export const Signup = () => {
                   <div className='hidden flex-field margin'>
                     <label htmlFor="age">Age</label>
                     <div className='inputwrappertwo'>
-                      <input className='age' placeholder='Mois' type="date"/>
+                      <input onChange={e => setAge(e.target.value)} className='age' placeholder='Mois' type="date"/>
                     </div>
                   </div>
 
                   <div className='hidden flex-field margin'>
                     <label htmlFor='sexe'>Sexe</label>
                     <div className='inputwrapperthree'>
-                    <input value='Femme' type="button"/>
-                    <input value='Homme' type="button"/>
+                    <input onClick={e => setSexe(e.target.value)} value='Femme' type="button"/>
+                    <input onClick={e => setSexe(e.target.value)} value='Homme' type="button"/>
                     </div>
                   
                   </div>
