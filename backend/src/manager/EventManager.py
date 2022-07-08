@@ -7,7 +7,7 @@ from schema.event import Event, EventCreate
 from database.tables.event import event_table
 
 
-def get_all_events(conn):
+def get_all_events(conn: Connection):
     result = conn.execute(sa.select([event_table]).limit(100))
     if result is None:
         return []

@@ -7,7 +7,7 @@ from schema.message import Message, MessageCreate
 from database.tables.message import message_table
 
 
-def get_all_messages(conn):
+def get_all_messages(conn: Connection):
     result = conn.execute(sa.select([message_table]).limit(100))
     if result is None:
         return []
