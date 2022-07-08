@@ -26,6 +26,7 @@ user_table = Table(
     Column('sport_level', Integer),
     Column('favorite', ARRAY(String(), dimensions=1)),
     Column('date_of_birth', Date()),
+    Column('sexe', String()),
     Column('longitude', Float),
     Column('latitude', Float),
     Column('img_path', String()),

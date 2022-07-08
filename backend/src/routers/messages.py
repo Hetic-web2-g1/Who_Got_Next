@@ -22,7 +22,7 @@ def get_all_messages():
         return list(MessageManager.get_all_messages(conn))
 
 
-# Get one message by id
+# Get message by id
 @router.get("/{message_id}", response_model=Message)
 def get_message(message_id: str):
     with engine.begin() as conn:
