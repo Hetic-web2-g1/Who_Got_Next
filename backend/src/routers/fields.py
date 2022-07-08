@@ -1,12 +1,10 @@
 from uuid import UUID
-from pydantic import BaseModel
-import time
 from fastapi import APIRouter
 from typing import List
 from fastapi.exceptions import HTTPException
 
 from database.db_engine import engine
-from schema.field import Field, FieldCreate
+from schema.field import Field, FieldCreate, GPSBounds
 from manager import FieldManager
 
 
@@ -69,15 +67,8 @@ def delete_field(field_id: str):
 
 
 # Get field by location
-@router.get("/location/")
-def get_field_by_pos_radius(circle_x: float, circle_y: float, circle_radius: float):
-    start = time.time()
+@router.post("/location/", response_model=List[Field | None])
+def get_field_by_pos_radius(gps_bounds: GPSBounds):
     with engine.begin() as conn:
-        field = FieldManager.get_field_by_pos_radius(
-            conn, circle_x, circle_y, circle_radius)
-    if field is None:
-        raise HTTPException(404, "Field not found")
-    else:
-        end = time.time()
-        print(format(end-start))
-        return field
+        return list(FieldManager.get_field_by_position(
+            conn, gps_bounds.south_west, gps_bounds.north_east))
