@@ -16,7 +16,7 @@ export const LandingPage = () => {
                         <h2 className='titletext'>Who Got Next<br/>Cherchez votre partenaire</h2>
                         <p className='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing Morbin' Martin Time : Rise of Gru 4 Endgame. Duis pulvinar mauris est faucibus. Vestibulum un urna, lacinia eu sit amet, tempus porta ante. Nullam in velit vitae risus aliquet. </p>
                     </div>
-                    <LandingRedirectionButton goto={"login"}/>
+                    <LandingRedirectionButton goto={"login"} innerButton={"Se connecter"}/>
                 </div>
                 <Banderole/>
             </div>
