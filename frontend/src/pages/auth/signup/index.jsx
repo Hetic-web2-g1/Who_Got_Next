@@ -12,7 +12,6 @@ import {auth} from '../../../firebase-config'
 import LandingRedirectionButton
  from '../../../components/landingRedirectionButton'
 import {Link} from 'react-router-dom'
-import { async } from '@firebase/util'
 
 
 export const Signup = () => {
@@ -30,7 +29,6 @@ export const Signup = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setCurrentUser(currentUser)
-      console.log('coucou', currentUser);
       setLoadingData(false)
     })
     return unsubscribe;
@@ -85,12 +83,12 @@ export const Signup = () => {
         return;
       }
 
-      //birth validator
+      // Birth validator
       if (DateTime.fromFormat(details.age, "yyyy-MM-dd").isValid === false) {
         setValidation("Mauvais format pour votre date de naissance");
         return;
       }
-      // sex validator
+      // SeX validator
       if (details.sexe === '') {
         setValidation("Veuillez renseignez votre sexe");
         return;
@@ -113,7 +111,6 @@ export const Signup = () => {
         if (err.code === "auth/email-already-in-use") {
           setValidation("Email already used");
         }
-        console.log(err);
       }
     }
   }
@@ -121,9 +118,7 @@ export const Signup = () => {
   // Continue with google option
   const [ user, setUser ] = useState({});
   function handleCallbackResponse(response) {
-    console.log("Encoded JWT ID token: " + response.credential);
     var usrObject = jwt_decode(response.credential);
-    console.log(usrObject);
     setUser(usrObject);
   }
 

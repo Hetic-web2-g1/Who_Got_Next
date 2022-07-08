@@ -1,18 +1,12 @@
 import { React, useEffect, useState } from 'react'
 import jwt_decode from 'jwt-decode'
-// import './index.css'
-import LandingRedirectionButton
- from '../../../components/landingRedirectionButton'
-import {Link} from 'react-router-dom'
 import Signup from '../signup'
 
 export const Login = () => {
 
   const [ user, setUser ] = useState({});
   function handleCallbackResponse(response) {
-    console.log("Encoded JWT ID token: " + response.credential);
     var usrObject = jwt_decode(response.credential);
-    console.log(usrObject);
     setUser(usrObject);
   }
 
