@@ -24,11 +24,22 @@ def get_all_users():
         return list(UserManager.get_all_users(conn))
 
 
-# Get one user by id
+# Get user by id
 @router.get("/{user_id}", response_model=User)
 def get_user(user_id: str):
     with engine.begin() as conn:
         user = UserManager.get_user_by_id(conn, user_id)
+        if user is None:
+            raise HTTPException(404, "User not found")
+        else:
+            return user
+
+
+# Get id by email
+@router.get("/get/{email}")
+def get_email(email: str):
+    with engine.begin() as conn:
+        user = UserManager.get_id_by_email(conn, email)
         if user is None:
             raise HTTPException(404, "User not found")
         else:
