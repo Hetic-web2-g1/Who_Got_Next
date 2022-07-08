@@ -24,7 +24,7 @@ def get_data_data_es():
 
             fields.append({
                 'id_user': '96df7371-473e-41d3-b8a0-71c76b190215',
-                'id_facility_number': row[30],
+                'id_facility': row[30],
                 'name': row[31],
                 'type': row[33],
                 'longitude': row[36],

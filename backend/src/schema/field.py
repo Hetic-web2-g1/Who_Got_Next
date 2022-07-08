@@ -6,7 +6,7 @@ from typing import Optional
 
 
 class FieldCreate(BaseModel):
-    id: Optional[str] = None
+    id_facility: Optional[str] = None
     id_user: Optional[UUID] = None
     name: str
     type: str
