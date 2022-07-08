@@ -41,6 +41,7 @@ export const Signup = () => {
 
   const formRef = useRef();
 
+  // Firebase auth for signup
   const handleForm = async (e) => {
     e.preventDefault();
 
