@@ -14,6 +14,7 @@ class UserCreate(BaseModel):
     sport_level: Optional[int] = None
     favorite: Optional[List[str]] = None
     date_of_birth: Optional[date] = None
+    sexe: Optional[str] = None
     longitude: Optional[float] = None
     latitude: Optional[float] = None
     img_path: Optional[str] = None
