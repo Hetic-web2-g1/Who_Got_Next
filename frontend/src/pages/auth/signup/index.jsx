@@ -1,6 +1,7 @@
 import { React, useEffect, useState, useRef } from 'react'
 import './index.css'
 import jwt_decode from 'jwt-decode'
+import { DateTime } from "luxon";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -25,6 +26,11 @@ export const Signup = () => {
   const [prenom, setPrenom] = useState('');
   const [sexe, setSexe] = useState('');
   const [age, setAge] = useState("")
+  const addInputs = el => {
+    if(el && !inputs.current.includes(el)){
+      inputs.current.push(el)
+    }
+  }
 
   const details = {
     'prenom' : prenom,
@@ -32,11 +38,10 @@ export const Signup = () => {
     'sexe' : sexe,
     'age' : age,
   }
-  console.log(details)
 
   // Login view
   useEffect (() => {
-    if (window.location.pathname.includes('Login')) {
+    if (window.location.pathname.includes('login')) {
       setButtonTitle('Se connecter');
       document.getElementById('title').innerHTML = 'Se connecter';
       let hiddenDiv = document.getElementsByClassName('hidden');
@@ -46,40 +51,56 @@ export const Signup = () => {
     }
   })
 
-  const addInputs = el => {
-    if(el && !inputs.current.includes(el)){
-      inputs.current.push(el)
-    }
-  }
 
   const formRef = useRef();
 
-  // Firebase auth for signup
   const handleForm = async (e) => {
     e.preventDefault();
 
+    // Password validation (common signUp / signIn)
     if ((inputs.current[1].value.length < 6)) {
-      setValidation("6 characters min")
+      setValidation("Votre mot de passe doit contenir au moins 6 caractères")
       return;
     }
 
-    try {
-      const cred = await signUp(
-        inputs.current[0].value,
-        inputs.current[1].value
-      )
-      formRef.current.reset();
-      setValidation("");
-      console.log(cred);
+    // Validation signup
+    if (window.location.pathname.includes('signup')) {
 
-    } catch (err) {
-      if (err.code === "auth/invalid-email") {
-        setValidation("Email format invalid");
+      // Pseudo validation
+      if (details.prenom === '') {
+        setValidation("Veuillez renseignez votre pseudonyme");
+        return;
       }
-      if (err.code === "auth/email-already-in-use") {
-        setValidation("Email already used");
+
+      //birth validator
+      if (DateTime.fromFormat(details.age, "yyyy-MM-dd").isValid === false) {
+        setValidation("Mauvais format pour votre date de naissance");
+        return;
       }
-      console.log(err);
+      // sex validator
+      if (details.sexe === '') {
+        setValidation("Veuillez renseignez votre sexe");
+        return;
+      }
+
+      try {
+        const cred = await signUp(
+          inputs.current[0].value,
+          inputs.current[1].value
+        )
+        formRef.current.reset();
+        setValidation("");
+        console.log(cred);
+  
+      } catch (err) {
+        if (err.code === "auth/invalid-email") {
+          setValidation("Email format invalid");
+        }
+        if (err.code === "auth/email-already-in-use") {
+          setValidation("Email already used");
+        }
+        console.log(err);
+      }
     }
   }
   
