@@ -7,7 +7,7 @@ from schema.user import User, UserCreate
 from database.tables.user import user_table
 
 
-def get_all_users(conn):
+def get_all_users(conn: Connection):
     result = conn.execute(sa.select([user_table]).limit(100))
     if result is None:
         return []

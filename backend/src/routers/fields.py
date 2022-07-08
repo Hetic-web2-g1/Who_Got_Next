@@ -46,7 +46,7 @@ def create_field(field: FieldCreate):
 
 # Update field by id
 @router.put("/update/{id}")
-def update_field(field: FieldCreate, id: UUID):
+def update_field(field: FieldCreate, id: str):
     with engine.begin() as conn:
         FieldManager.update_field(conn, field, id)
         if field == 0:

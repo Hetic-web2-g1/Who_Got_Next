@@ -6,13 +6,13 @@ from typing import Optional
 
 
 class FieldCreate(BaseModel):
+    id: Optional[str] = None
     id_user: Optional[UUID] = None
     name: str
     type: str
     longitude: float
     latitude: float
     img_path: Optional[str] = None
-    id_facility_number: Optional[str] = None
     id_sports_equipment: Optional[str] = None
     handicap: Optional[bool] = None
     parking: Optional[bool] = None

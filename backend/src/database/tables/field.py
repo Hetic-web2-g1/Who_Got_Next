@@ -8,7 +8,7 @@ from database.db_engine import metadata
 field_table = Table(
     "field",
     metadata,
-    Column('id_facility_number', String(),
+    Column('id', String(),
            primary_key=True,
            unique=True
            ),

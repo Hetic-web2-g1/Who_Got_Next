@@ -1,3 +1,4 @@
+from faker import Faker
 from uuid import UUID
 import sqlalchemy as sa
 from sqlalchemy.engine import Connection
@@ -8,7 +9,7 @@ from schema.sports_equipment import SportsEquipment, SportsEquipmentCreate
 from database.tables.field import field_table
 
 
-def get_all_field(conn):
+def get_all_field(conn: Connection):
     result = conn.execute(sa.select([field_table]).limit(100))
     if result is None:
         return []
@@ -17,7 +18,7 @@ def get_all_field(conn):
             yield Field(**field)
 
 
-def get_all_field_unlimited(conn):
+def get_all_field_unlimited(conn: Connection):
     result = conn.execute(sa.select([field_table]))
     if result is None:
         return []
@@ -35,6 +36,7 @@ def get_field_by_id(conn: Connection, id: str):
 
 
 def create_field(conn: Connection, field: FieldCreate) -> Field | None:
+    field.id = validate_unique_field_id(conn)
     return db_srv.create_object(conn, 'field', field)
 
 
@@ -42,7 +44,7 @@ def create_sports_equipment(conn: Connection, sports_equipment: SportsEquipmentC
     return db_srv.create_object(conn, 'sports_equipment', sports_equipment)
 
 
-def update_field(conn: Connection, field: FieldCreate, id: UUID) -> Field | None:
+def update_field(conn: Connection, field: FieldCreate, id: str) -> Field | None:
     return db_srv.update_object(conn, 'field', id, field)
 
 
@@ -77,3 +79,19 @@ def get_field_by_position(conn: Connection, south_east_coord: dict, north_west_c
 
     for field in result:
         yield Field(**field)
+
+
+def create_field_id():
+    fake = Faker()
+    return fake.numerify("I%%%E%%%%%%%%%")
+
+
+def validate_unique_field_id(conn: Connection):
+    id = create_field_id()
+    stmt = sa.select([field_table]).where(
+        field_table.c.id == id)
+    row = conn.execute(stmt).first()
+    if row == None:
+        return id
+    else:
+        return validate_unique_field_id(conn)

@@ -14,7 +14,7 @@ event_table = Table(
            unique=True
            ),
     Column('id_user', UUID(as_uuid=True)),
-    Column('id_field', UUID(as_uuid=True)),
+    Column('id_field', String()),
     Column('name', String()),
     Column('description', String()),
     Column('data', JSON),
