@@ -29,7 +29,7 @@ const MapRender = ({ userLongitude, userLatitude }) => {
 
   const pins = fields?.map((field) => (
     <Marker
-      key={`marker-${field.name}-${field.id_facility_number}`}
+      key={`marker-${field.name}-${field.id}`}
       longitude={field.longitude}
       latitude={field.latitude}
       anchor="bottom"
@@ -57,11 +57,7 @@ const MapRender = ({ userLongitude, userLatitude }) => {
         body: JSON.stringify(body),
       })
         .then((response) => response.json())
-        .then((response) =>
-          setFields(response).catch((error) => {
-            console.log(error);
-          })
-        );
+        .then((response) => setFields(response));
     } else {
       setFields(null);
     }
