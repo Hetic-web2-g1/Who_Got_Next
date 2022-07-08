@@ -1,4 +1,4 @@
-from sqlalchemy import Table, Column, Integer, Float, String, DateTime, Boolean, ARRAY
+from sqlalchemy import Table, Column, Integer, Float, String, DateTime, Date, Boolean, ARRAY
 from datetime import datetime
 from sqlalchemy.dialects.postgresql import UUID
 from uuid import uuid4
@@ -25,7 +25,8 @@ user_table = Table(
     Column('description', String()),
     Column('sport_level', Integer),
     Column('favorite', ARRAY(String(), dimensions=1)),
-    Column('date_of_birth', DateTime()),
+    Column('date_of_birth', Date()),
+    Column('sexe', String()),
     Column('longitude', Float),
     Column('latitude', Float),
     Column('img_path', String()),

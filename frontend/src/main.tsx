@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Private from "./pages/Private/private"
@@ -13,7 +13,9 @@ import LandingPage from "./pages/landingPage";
 import Login from "./pages/auth/login";
 import Signup from "./pages/auth/signup";
 
-ReactDOM.render(
+const container = document.getElementById("root")
+
+ReactDOM.createRoot(container).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
@@ -30,5 +32,4 @@ ReactDOM.render(
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById("root")
 );

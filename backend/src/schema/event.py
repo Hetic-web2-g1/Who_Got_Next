@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 from uuid import UUID
+from typing import Optional
 
 
 class EventCreate(BaseModel):
@@ -8,7 +9,7 @@ class EventCreate(BaseModel):
     id_field: UUID
     name: str
     description: str
-    data: dict
+    data: Optional[dict] = None
 
 
 class Event(EventCreate):

@@ -1,3 +1,4 @@
+from uuid import UUID
 import sqlalchemy as sa
 from sqlalchemy.engine import Connection
 
@@ -6,7 +7,7 @@ from schema.user import User, UserCreate
 from database.tables.user import user_table
 
 
-def get_all_users(conn):
+def get_all_users(conn: Connection):
     result = conn.execute(sa.select([user_table]).limit(100))
     if result is None:
         return []
@@ -24,12 +25,20 @@ def get_user_by_id(conn: Connection, id: str):
         return User(**row)
 
 
+def get_id_by_email(conn: Connection, email: str):
+    stmt = sa.select([user_table.c.id]).where(user_table.c.email == email)
+    row = conn.execute(stmt).first()
+
+    if row is not None:
+        return row
+
+
 def create_user(conn: Connection, user: UserCreate) -> User | None:
     return db_srv.create_object(conn, 'user', user)
 
 
-def update_user(conn: Connection, user: User) -> User | None:
-    return db_srv.update_object(conn, 'user', user.id, user)
+def update_user(conn: Connection, user: UserCreate, id: UUID) -> User | None:
+    return db_srv.update_object(conn, 'user', id, user)
 
 
 def delete_user_by_id(conn: Connection, id: str) -> User | None:
