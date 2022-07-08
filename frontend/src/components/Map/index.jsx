@@ -18,7 +18,6 @@ const TOKEN = (mapboxgl.accessToken =
 const MapRender = ({ userLongitude, userLatitude }) => {
   const [lng, setLng] = useState(userLongitude ? userLongitude : 0);
   const [lat, setLat] = useState(userLatitude ? userLatitude : 0);
-  const [radius, setRadius] = useState(0);
   const [zoom, setZoom] = useState(15);
   const [fields, setFields] = useState();
   const [popupInfo, setPopupInfo] = useState(null);
@@ -30,7 +29,7 @@ const MapRender = ({ userLongitude, userLatitude }) => {
 
   const pins = fields?.map((field) => (
     <Marker
-      key={`marker-${field.id}`}
+      key={`marker-${field.name}-${field.id_facility_number}`}
       longitude={field.longitude}
       latitude={field.latitude}
       anchor="bottom"
@@ -43,31 +42,35 @@ const MapRender = ({ userLongitude, userLatitude }) => {
     </Marker>
   ));
 
-  async function onMoveMapEnd(map) {
-    let bounds = mapRef.current.getMap().getBounds()
+  async function onMoveMapEnd(zoom) {
+    let bounds = mapRef.current.getMap().getBounds();
 
     let body = {
-      north_east: {lat: bounds._ne.lat, lng: bounds._ne.lng},
-      south_west: {lat: bounds._sw.lat, lng: bounds._sw.lng}
+      north_east: { lat: bounds._ne.lat, lng: bounds._ne.lng },
+      south_west: { lat: bounds._sw.lat, lng: bounds._sw.lng },
+    };
+
+    if (zoom >= 10) {
+      fetch("http://localhost:8000/fields/location/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      })
+        .then((response) => response.json())
+        .then((response) =>
+          setFields(response).catch((error) => {
+            console.log(error);
+          })
+        );
+    } else {
+      setFields(null);
     }
-    
-    fetch('http://localhost:8000/fields/location/',
-    {
-      method: "POST", 
-      headers: {'Content-Type': 'application/json'},
-      body:JSON.stringify(body)
-    }
-    )
-    .then(response => response.json())
-    .then(response => setFields(response)
-    .catch(() => {
-      console.log("Error fetching data");
-    }))
   }
+
   return (
     <>
       <Map
-      ref={mapRef}
+        ref={mapRef}
         initialViewState={{
           latitude: lat,
           longitude: lng,
@@ -77,7 +80,7 @@ const MapRender = ({ userLongitude, userLatitude }) => {
         style={{ width: "100vw", height: "100vh" }}
         mapStyle="mapbox://styles/mapbox/light-v10"
         mapboxAccessToken={TOKEN}
-        onMoveEnd={onMoveMapEnd}
+        onMoveEnd={(e) => onMoveMapEnd(e.viewState.zoom)}
       >
         <GeolocateControl position="top-left" />
         <FullscreenControl position="top-left" />
@@ -94,16 +97,23 @@ const MapRender = ({ userLongitude, userLatitude }) => {
             onClose={() => setPopupInfo(null)}
           >
             <div>
-              {popupInfo.name} <br/>
-              {popupInfo.description} <br/>
-              <br/>
-              Acces Handicapé : {popupInfo.handicap ?  "oui" : "non"}<br/>
-              Toilettes : {popupInfo.bathroom ? "oui" : "non"}<br/>
-              Douches : {popupInfo.shower ? "oui" : "non"}<br/>
-              Vestiaires : {popupInfo.dressing_room ? "oui" : "non"}<br/>
-              Chauffage : {popupInfo.heating ? "oui" : "non"}<br/>
-              Parking : {popupInfo.parking ? "oui" : "non"}<br/>
-              Transport en commun : {popupInfo.public_transport ? "oui" : "non"}<br/>
+              {popupInfo.name} <br />
+              {popupInfo.description} <br />
+              <br />
+              Acces Handicapé : {popupInfo.handicap ? "oui" : "non"}
+              <br />
+              Toilettes : {popupInfo.bathroom ? "oui" : "non"}
+              <br />
+              Douches : {popupInfo.shower ? "oui" : "non"}
+              <br />
+              Vestiaires : {popupInfo.dressing_room ? "oui" : "non"}
+              <br />
+              Chauffage : {popupInfo.heating ? "oui" : "non"}
+              <br />
+              Parking : {popupInfo.parking ? "oui" : "non"}
+              <br />
+              Transport en commun : {popupInfo.public_transport ? "oui" : "non"}
+              <br />
               <a
                 target="_new"
                 href={`https://www.youtube.com/watch?v=dQw4w9WgXcQ`}
