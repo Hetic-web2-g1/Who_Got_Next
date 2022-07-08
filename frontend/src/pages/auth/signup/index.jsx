@@ -1,7 +1,8 @@
-import { React, useEffect, useState, useRef } from 'react'
+import { React, useEffect, useState, useRef, createContext } from 'react'
 import './index.css'
 import jwt_decode from 'jwt-decode'
 import { DateTime } from "luxon";
+import { useNavigate } from 'react-router-dom';
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -13,19 +14,32 @@ import LandingRedirectionButton
 import {Link} from 'react-router-dom'
 import { async } from '@firebase/util'
 
+
 export const Signup = () => {
+  const userContext = createContext();
   const [buttonTitle, setButtonTitle] = useState("S'inscrire");
   const [validation, setValidation] = useState("");
+  const inputs = useRef([])
+  const navigate = useNavigate();
+  
+  const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd);
+
   const [currentUser, setCurrentUser] = useState();
   const [loadingData, setLoadingData] = useState(true);
-  const inputs = useRef([])
 
-  const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setCurrentUser(currentUser)
+      console.log('coucou', currentUser);
+      setLoadingData(false)
+    })
+    return unsubscribe;
+  }, [])
   
   const [email, setEmail] = useState('');
   const [prenom, setPrenom] = useState('');
   const [sexe, setSexe] = useState('');
-  const [age, setAge] = useState("")
+  const [age, setAge] = useState("");
   const addInputs = el => {
     if(el && !inputs.current.includes(el)){
       inputs.current.push(el)
@@ -50,7 +64,6 @@ export const Signup = () => {
       };
     }
   })
-
 
   const formRef = useRef();
 
@@ -90,7 +103,8 @@ export const Signup = () => {
         )
         formRef.current.reset();
         setValidation("");
-        console.log(cred);
+        navigate("/private/private-home")
+
   
       } catch (err) {
         if (err.code === "auth/invalid-email") {
@@ -163,10 +177,10 @@ export const Signup = () => {
 
               <form className='form' ref={formRef} onSubmit={handleForm}>
 
-                <div className='hidden flex-field'>
-                    <label htmlFor="prenom">Prenom</label>
-                    <input onChange={e => setPrenom(e.target.value)} placeholder='Prenom' type="text" />
-                </div>
+                  <div className='hidden flex-field'>
+                      <label htmlFor="prenom">Prenom</label>
+                      <input onChange={e => setPrenom(e.target.value)} placeholder='Prenom' type="text" />
+                  </div>
 
                   <div className='flex-field margin'>
                     <label htmlFor="mail">Mail</label>
@@ -197,7 +211,7 @@ export const Signup = () => {
                   
                   </div>
                   {/* <LandingRedirectionButton goto={"login"} innerButton={buttonTitle}/> */}
-                  <button>Submit</button>
+                    <button>Submit</button>
                   <p>
                     {validation}
                   </p>
@@ -211,8 +225,6 @@ export const Signup = () => {
             <img src="./../../../../public/assets/right-login.png" alt="" />
           </div>
         </div>
-
-
       </main>
     );
   }
