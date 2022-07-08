@@ -42,23 +42,25 @@ const MapRender = ({ userLongitude, userLatitude }) => {
   ));
 
   async function useFetchCircle(
-    url = `http://localhost:8000/fields/location/${longitude}&${latitude}&${radius}`
+    url = `http://localhost:8000/fields/location`, options = {circle_x, circle_y, circle_radius}
   ) {
-    await fetch(url)
+    console.log(options)
+    await fetch(url, {method: 'post', body : options})
       .then((response) => response.json())
       .then((response) => {
         setFields(response);
       })
-      .catch(() => {
-        console.log("error fetching data");
+      .catch((response) => {
+        console.log(response);
       });
   }
 
-  async function onMoveMapEnd(longitude, latitude, zoom) {
+  async function onMoveMapEnd(circle_x, circle_y, zoom) {
     if (zoom >= 15) {
-      const radius = 1 / zoom;
+      const circle_radius = 1 / zoom;
+      const options = {circle_x, circle_y, circle_radius}
       await useFetchCircle(
-        `http://localhost:8000/fields/location/${longitude}&${latitude}&${radius}`
+        `http://localhost:8000/fields/location`, options
       );
     } else {
       setFields(null);
