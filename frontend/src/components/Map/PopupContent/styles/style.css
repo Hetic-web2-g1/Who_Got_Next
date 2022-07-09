@@ -1,0 +1,9 @@
+.popup-container {
+    box-sizing: border-box;
+    padding: 24px;
+    border-radius: 15px;
+    row-gap: 24px;
+    align-items: flex-start;
+    background: white;
+    position: relative;
+}
