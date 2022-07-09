@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Dict
+from typing import Dict, List
 from pydantic import BaseModel
 from uuid import UUID
 from typing import Optional
@@ -7,8 +7,10 @@ from typing import Optional
 
 class FieldCreate(BaseModel):
     id_facility: Optional[str] = None
+    id_equipment: Optional[List[str]] = None
     id_user: Optional[UUID] = None
-    name: str
+    name_facility: str
+    name_equipment: Optional[List[str]] = None
     type: str
     longitude: float
     latitude: float

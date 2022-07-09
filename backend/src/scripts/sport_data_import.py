@@ -1,3 +1,4 @@
+from collections import defaultdict
 import csv
 
 import sqlalchemy as sa
@@ -24,8 +25,10 @@ def get_data_data_es():
 
             fields.append({
                 'id_user': '96df7371-473e-41d3-b8a0-71c76b190215',
-                'id_facility': row[30],
-                'name': row[31],
+                'id_facility': row[0],
+                'id_equipment': [row[30]],
+                'name_facility': row[1],
+                'name_equipment': [row[31]],
                 'type': row[33],
                 'longitude': row[36],
                 'latitude': row[37],
@@ -42,9 +45,27 @@ def get_data_data_es():
                 'nature_place': row[182]
             })
 
+    datas = {}
+
+    for field in fields:
+        if field['id_facility'] in datas:
+            # Concatenate the list of name_equipment and id_equipment
+            datas[field['id_facility']
+                  ]["name_equipment"] += (field["name_equipment"])
+            datas[field['id_facility']
+                  ]["id_equipment"] += (field["id_equipment"])
+            # Make an average of the localisation
+            datas[field['id_facility']]["longitude"] = (
+                float(datas[field['id_facility']]["longitude"]) + float(field["longitude"])) / 2
+            datas[field['id_facility']]["latitude"] = (
+                float(datas[field['id_facility']]["latitude"]) + float(field["latitude"])) / 2
+        else:
+            datas[field["id_facility"]] = field
+
     with engine.begin() as conn:
-        stmt = sa.insert(field_table).values(fields)
-        conn.execute(stmt)
+        for data in datas.values():
+            stmt = sa.insert(field_table).values(data)
+            conn.execute(stmt)
 
 
 def get_data_es_activites():
@@ -74,7 +95,3 @@ def get_data_es_activites():
 
         conn.execute(sa.insert(sports_equipment_table).values(
             filtered_activities))
-
-
-get_data_data_es()
-get_data_es_activites()
