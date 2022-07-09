@@ -208,7 +208,7 @@ export const Signup = () => {
                   {/* <LandingRedirectionButton goto={"login"} innerButton={buttonTitle}/> */}
                     <button>Submit</button>
                     <div className="inscrip">
-                      <Link to="/private/forgot-password">Vous avez oublié votre mot de passe ?</Link>
+                      <Link to="/forgot-password">Vous avez oublié votre mot de passe ?</Link>
                     </div>
                   <p>
                     {validation}

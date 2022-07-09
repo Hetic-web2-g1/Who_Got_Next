@@ -30,7 +30,7 @@ ReactDOM.createRoot(container).render(
           <Route path="/private/private-home" element={<PrivateHome />} />
           <Route path="/private/update-profile" element={<UpdateProfile />} />
         </Route>
-        <Route path="/private/forgot-password" element={<ForgotPassword />} />
+        <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="evenement" element={<Evenement />} />
         <Route path="joingroup" element={<JoinGroup />} />
         <Route path="landingPage" element={<LandingPage />} />
