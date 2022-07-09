@@ -3,15 +3,9 @@ import './index.css'
 import jwt_decode from 'jwt-decode'
 import { DateTime } from "luxon";
 import { useNavigate } from 'react-router-dom';
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  onAuthStateChanged
-} from 'firebase/auth'
-import {auth} from '../../../firebase-config'
+import { useAuth } from '../../../contexts/AuthContext';
 import LandingRedirectionButton
  from '../../../components/landingRedirectionButton'
-import {Link} from 'react-router-dom'
 
 
 export const Signup = () => {
@@ -20,19 +14,7 @@ export const Signup = () => {
   const [validation, setValidation] = useState("");
   const inputs = useRef([])
   const navigate = useNavigate();
-  
-  const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd);
-
-  const [currentUser, setCurrentUser] = useState();
-  const [loadingData, setLoadingData] = useState(true);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setCurrentUser(currentUser)
-      setLoadingData(false)
-    })
-    return unsubscribe;
-  }, [])
+  const { signUp } = useAuth();
   
   const [email, setEmail] = useState('');
   const [prenom, setPrenom] = useState('');
@@ -101,7 +83,8 @@ export const Signup = () => {
         )
         formRef.current.reset();
         setValidation("");
-        navigate("/private/private-home")
+        // console.log(cred);
+        // navigate("/private/private-home")
 
   
       } catch (err) {
@@ -171,7 +154,6 @@ export const Signup = () => {
               </div>
 
               <form className='form' ref={formRef} onSubmit={handleForm}>
-
                   <div className='hidden flex-field'>
                       <label htmlFor="prenom">Prenom</label>
                       <input onChange={e => setPrenom(e.target.value)} placeholder='Prenom' type="text" />

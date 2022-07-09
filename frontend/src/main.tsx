@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Private from "./pages/Private/private"
 import PrivateHome from "./pages/Private/PrivateHome/PrivateHome"
+import { AuthProvider } from "./contexts/AuthContext"
 
 import App from "./App";
 import Evenement from "./pages/evenement";
@@ -16,6 +17,7 @@ import Signup from "./pages/auth/signup";
 const container = document.getElementById("root")
 
 ReactDOM.createRoot(container).render(
+<AuthProvider>
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
@@ -32,4 +34,5 @@ ReactDOM.createRoot(container).render(
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
+</AuthProvider>
 );

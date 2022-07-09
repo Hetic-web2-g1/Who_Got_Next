@@ -5,7 +5,7 @@ html {
 body {
     font-family: "Qualta";
     margin: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 h1 {
