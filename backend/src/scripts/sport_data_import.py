@@ -50,28 +50,32 @@ def get_data_data_es():
                 'nature_place': row[182]
             })
 
+    filter = {"Bassin ludique de natation", "Boucle de randonnÃ©e", "Court de tennis", "Dojo / Salle d'arts martiaux", "Piste d'athlÃ©tisme isolÃ©e", "Plateau EPS/Multisports/city-stades", "Salle de cours collectifs", "Salle de musculation/cardiotraining",
+              "Salle multisports (gymnase)", "Salles polyvalentes / des fÃªtes / non spÃ©cialisÃ©es", "Terrain de basket-ball", "Terrain de boules", "Terrain de football", "Terrain de pÃ©tanque", "Terrain de rugby", "Terrain mixte"}
+
     data = []
 
     for facility_id in fields.keys():
-        field_numbers = len(fields[facility_id])
-        equipment_names = []
-        equipment_ids = []
-        facility_lat = 0
-        facility_lng = 0
-        for field in fields[facility_id]:
-            facility_lat += float(field["latitude"])
-            facility_lng += float(field["longitude"])
+        if fields[facility_id][0]['type'] in filter:
+            field_numbers = len(fields[facility_id])
+            equipment_names = []
+            equipment_ids = []
+            facility_lat = 0
+            facility_lng = 0
+            for field in fields[facility_id]:
+                facility_lat += float(field["latitude"])
+                facility_lng += float(field["longitude"])
 
-            equipment_names += (field["equipments_name"])
-            equipment_ids += (field["equipment_id"])
+                equipment_names += (field["equipments_name"])
+                equipment_ids += (field["equipment_id"])
 
-        data.append({
-            **fields[facility_id][0],
-            'latitude': facility_lat / field_numbers,
-            'longitude': facility_lng / field_numbers,
-            'equipments_name': equipment_names,
-            'equipment_id': equipment_ids
-        })
+            data.append({
+                **fields[facility_id][0],
+                'latitude': facility_lat / field_numbers,
+                'longitude': facility_lng / field_numbers,
+                'equipments_name': equipment_names,
+                'equipment_id': equipment_ids
+            })
 
     with engine.begin() as conn:
         stmt = sa.insert(field_table).values(data)
