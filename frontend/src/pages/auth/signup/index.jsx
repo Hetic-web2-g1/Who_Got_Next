@@ -12,7 +12,6 @@ export const Signup = () => {
   const userContext = createContext();
   const [buttonTitle, setButtonTitle] = useState("S'inscrire");
   const [validation, setValidation] = useState("");
-  const inputs = useRef([])
   const navigate = useNavigate();
   const { signUp } = useAuth();
   const { login } = useAuth();
@@ -21,12 +20,8 @@ export const Signup = () => {
   const [prenom, setPrenom] = useState('');
   const [sexe, setSexe] = useState('');
   const [age, setAge] = useState("");
-  const addInputs = el => {
-    if(el && !inputs.current.includes(el)){
-      inputs.current.push(el)
-    }
-  }
-
+  const [password, setPassword] = useState("");
+  
   const details = {
     'prenom' : prenom,
     'email' : email,
@@ -55,7 +50,7 @@ export const Signup = () => {
     if (window.location.pathname.includes('signup')) {
 
       // Password validation
-      if ((inputs.current[1].value.length < 6)) {
+      if ((password < 6)) {
         setValidation("Votre mot de passe doit contenir au moins 6 caractères")
         return;
       }
@@ -78,15 +73,13 @@ export const Signup = () => {
       }
 
       try {
-        const cred = await signUp(
-          inputs.current[0].value,
-          inputs.current[1].value
+        await signUp(
+          email,
+          password
         )
         formRef.current.reset();
         setValidation("");
         navigate("/private/private-home")
-        // console.log(cred);
-
   
       } catch (err) {
         if (err.code === "auth/invalid-email") {
@@ -99,16 +92,14 @@ export const Signup = () => {
     }
 
     if (window.location.pathname.includes('login')) {
-      console.log('Login')
       try {
-        const cred = await login(
-          inputs.current[0].value,
-          inputs.current[1].value
+        await login(
+          email,
+          password
         )
         formRef.current.reset();
         setValidation("");
         navigate("/private/private-home")
-        console.log(cred);
 
       } catch {
         setValidation("Impossible de se connecter, veuillez vérifier vos informations.")
@@ -179,13 +170,13 @@ export const Signup = () => {
 
                   <div className='flex-field margin'>
                     <label htmlFor="mail">Mail</label>
-                    <input onChange={e => setEmail(e.target.value)} ref={addInputs} placeholder='Entrez votre mail' type="email" />
+                    <input onChange={e => setEmail(e.target.value)} placeholder='Entrez votre mail' type="email" />
                   </div>
 
                   <div className='flex-field margin'>
                     <label htmlFor="password">Mot de passe</label>
                     <div className='inputwrapper'>
-                    <input ref={addInputs} className='input' placeholder='Entrez votre mot de passe' type="password" />
+                    <input onChange={e => setPassword(e.target.value)} className='input' placeholder='Entrez votre mot de passe' type="password" />
                     <img src="./../../../../public/assets/eye.svg" alt="see password" />
                     </div>
                   </div>

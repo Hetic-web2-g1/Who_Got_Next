@@ -15,18 +15,44 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState()
+
+    const [currentUser, setCurrentUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    
+    const signUp = (email, pwd) => {
+      const body =
+      {
+        "pseudo": "pseudo",
+        "password": pwd,
+        "email": email,
+      };
+      fetch("http://localhost:8000/users/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      })
+      .then(createUserWithEmailAndPassword(auth, email, pwd));
+    };
 
-    const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd);
-
-    const login = (email, pwd) => signInWithEmailAndPassword(auth, email, pwd);
+    const login = (email, pwd) => {
+      const body =
+      {
+        "email": email,
+      };
+      fetch("http://localhost:8000/users/get", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      })
+      .then(SignInWithEmailAndPassword(auth, email, pwd));
+    }
 
     const logout = () => signOut(auth);
 
     const resetPassword = (email) => sendPasswordResetEmail(auth, email);
 
     useEffect(() => {
+
       const unsubscribe = onAuthStateChanged(auth , (user) => {
         setCurrentUser(user);
         setLoading(false)
