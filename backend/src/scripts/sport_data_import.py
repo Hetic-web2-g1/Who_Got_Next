@@ -49,7 +49,7 @@ def get_data_data_es():
 
     for field in fields:
         if field['id_facility'] in datas:
-            # Concatenate respectivelythe list of name_equipment and id_equipment
+            # Concatenate respectively the list of name_equipment and id_equipment
             datas[field['id_facility']
                   ]["name_equipment"] += (field["name_equipment"])
             datas[field['id_facility']
