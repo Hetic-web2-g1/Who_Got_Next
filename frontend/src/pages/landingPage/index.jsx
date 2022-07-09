@@ -21,7 +21,6 @@ export const LandingPage = () => {
 
             <Banderole/>
             </div>
-        </div>
     )
 }
 
