@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/Hetic-web2-g1/Projet-Final-Structure#readme",
   "dependencies": {
+    "@react-oauth/google": "^0.2.6",
+    "gapi-script": "^1.2.0",
+    "react-dotenv": "^0.1.3",
+    "react-google-login": "^5.2.2",
     "react-router-dom": "^6.3.0"
   }
 }

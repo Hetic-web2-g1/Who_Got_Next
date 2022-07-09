@@ -1,0 +1,126 @@
+@font-face {
+    font-family: "QualtaBold";
+    src: local("QualtaBold"),
+    url("../../../fonts/Qualta/Qualta-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "MonumentBold";
+    src: local("MonumentBold"),
+    url("../../../fonts/Monument/PPMonumentExtended-Black.otf") format("opentype");
+    font-weight: bold;
+}
+
+body {
+    margin: 0;
+}
+
+.evenement-container {
+    background: #F7F7FC;
+    padding: 0 170px;
+    height: 100%;
+}
+
+.carts-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 45px;
+}
+
+a {
+    font-family: QualtaBold;
+    color: #1758FF;
+    text-decoration: none;
+}
+
+a img {
+    margin-right: 8px;
+    vertical-align: top;
+}
+
+.create-evenement {
+    background: white;
+    width: 100%;
+    position: relative;
+    margin: 80px 0;
+}
+
+.create-evenement div {
+    box-sizing: border-box;
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-evenement h2 {
+    font-family: MonumentBold;
+    font-size: 32px;
+    line-height: 40px;
+    margin: 0;
+    margin-bottom: 24px;
+}
+
+.create-evenement p {
+    font-family: QualtaBold;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+    margin-bottom: 24px;
+}
+
+.create-evenement a {
+    font-family: QualtaBold;
+    color: white;
+    background: #1758FF;
+    padding: 15px 0;
+    border-radius: 70px;
+    text-align: center;
+}
+
+.create-mobile-img {
+    display: block;
+    margin-bottom: 39px;
+    align-self: center;
+}
+
+.create-desktop-img {
+    display: none;
+}
+
+@media (min-width: 1360px) {
+
+    .create-evenement div {
+        width: 704px;
+    }
+
+    .create-desktop-img {
+        display: block;
+        position: absolute;
+        right: 16px;
+        top: -80px;
+    }
+
+    .create-mobile-img {
+        display: none !important;
+    }
+
+    .create-evenement p {
+        margin-bottom: 39px;
+    }
+
+    .create-evenement a {
+        width: 121px;
+    }
+
+}
