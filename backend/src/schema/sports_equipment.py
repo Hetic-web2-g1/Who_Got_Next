@@ -5,7 +5,7 @@ from uuid import UUID
 
 
 class SportsEquipmentCreate(BaseModel):
-    id_facility: str
+    facility_id: str
     id_sports_equipment: str
     type_equipement: str
     family_equipement: str

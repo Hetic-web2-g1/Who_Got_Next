@@ -1,4 +1,3 @@
-from collections import defaultdict
 import csv
 
 import sqlalchemy as sa
@@ -11,24 +10,30 @@ from database.tables.sports_equipment import sports_equipment_table
 # data-es.csv
 # data-es-activites.csv
 
+# Start the script with
+# > poetry run python -m scripts.sport_data_import
+
 
 def get_data_data_es():
-    fields = []
+    fields = {}
     with open('./scripts/data-es.csv', "r", encoding='utf-8') as file:
         counter = 0
         csvreader = csv.reader(file, delimiter=";", )
         next(csvreader, None)  # Skip header
         for row in csvreader:
             counter += 1
-            if counter % 1000 == 0:
+            if counter % 100000 == 0:
                 print(counter)
 
-            fields.append({
+            if fields.get(row[0]) is None:
+                fields[row[0]] = []
+
+            fields[row[0]].append({
                 'id_user': '96df7371-473e-41d3-b8a0-71c76b190215',
-                'id_facility': row[0],
-                'id_equipment': [row[30]],
-                'name_facility': row[1],
-                'name_equipment': [row[31]],
+                'facility_id': row[0],
+                'equipment_id': [row[30]],
+                'facility_name': row[1],
+                'equipments_name': [row[31]],
                 'type': row[33],
                 'longitude': row[36],
                 'latitude': row[37],
@@ -45,27 +50,32 @@ def get_data_data_es():
                 'nature_place': row[182]
             })
 
-    datas = {}
+    data = []
 
-    for field in fields:
-        if field['id_facility'] in datas:
-            # Concatenate respectively the list of name_equipment and id_equipment
-            datas[field['id_facility']
-                  ]["name_equipment"] += (field["name_equipment"])
-            datas[field['id_facility']
-                  ]["id_equipment"] += (field["id_equipment"])
-            # Make an average of the localisation
-            datas[field['id_facility']]["longitude"] = (
-                float(datas[field['id_facility']]["longitude"]) + float(field["longitude"])) / 2
-            datas[field['id_facility']]["latitude"] = (
-                float(datas[field['id_facility']]["latitude"]) + float(field["latitude"])) / 2
-        else:
-            datas[field["id_facility"]] = field
+    for facility_id in fields.keys():
+        field_numbers = len(facility_id)
+        equipment_names = []
+        equipment_ids = []
+        facility_lat = 0
+        facility_lng = 0
+        for field in fields[facility_id]:
+            facility_lng += float(field["latitude"])
+            facility_lat += float(field["longitude"])
+
+            equipment_names += (field["equipments_name"])
+            equipment_ids += (field["equipment_id"])
+
+        data.append({
+            **fields[facility_id][0],
+            'longitude': facility_lat / field_numbers,
+            'latitude': facility_lng / field_numbers,
+            'equipments_name': equipment_names,
+            'equipment_id': equipment_ids
+        })
 
     with engine.begin() as conn:
-        for data in datas.values():
-            stmt = sa.insert(field_table).values(data)
-            conn.execute(stmt)
+        stmt = sa.insert(field_table).values(data)
+        conn.execute(stmt)
 
 
 def get_data_es_activites():
@@ -76,22 +86,27 @@ def get_data_es_activites():
         next(csvreader, None)  # Skip header
         for row in csvreader:
             counter += 1
-            if counter % 1000 == 0:
+            if counter % 100000 == 0:
                 print(counter)
 
             activities.append({
-                'id_facility_number': row[3],
+                'facility_id': row[0],
                 'equipment_type': row[5],
                 'equipment_family': row[6],
                 'activity': row[10]})
 
     with engine.begin() as conn:
         result = conn.execute(
-            sa.select(field_table.c.id_facility_number))
+            sa.select(field_table.c.facility_id))
 
-        field_id_mapping = {row.id_facility_number for row in result}
+        field_id_mapping = {row.facility_id for row in result}
         filtered_activities = list(filter(
-            lambda x: x['id_facility_number'] in field_id_mapping, activities))
+            lambda x: x['facility_id'] in field_id_mapping, activities))
 
         conn.execute(sa.insert(sports_equipment_table).values(
             filtered_activities))
+
+
+# Comment line for import the needed table
+get_data_data_es()
+get_data_es_activites()

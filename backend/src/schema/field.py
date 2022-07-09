@@ -6,11 +6,11 @@ from typing import Optional
 
 
 class FieldCreate(BaseModel):
-    id_facility: Optional[str] = None
-    id_equipment: Optional[List[str]] = None
+    facility_id: Optional[str] = None
+    equipment_id: Optional[List[str]] = None
     id_user: Optional[UUID] = None
-    name_facility: str
-    name_equipment: Optional[List[str]] = None
+    facility_name: str
+    equipments_name: Optional[List[str]] = None
     type: str
     longitude: float
     latitude: float

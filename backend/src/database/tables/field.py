@@ -8,14 +8,14 @@ from database.db_engine import metadata
 field_table = Table(
     "field",
     metadata,
-    Column('id_facility', String(),
+    Column('facility_id', String(),
            primary_key=True,
            unique=True
            ),
-    Column('id_equipment', ARRAY(String(), dimensions=1)),
+    Column('equipment_id', ARRAY(String(), dimensions=1)),
     Column('id_user', UUID(as_uuid=True)),
-    Column('name_facility', String()),
-    Column('name_equipment', ARRAY(String(), dimensions=1)),
+    Column('facility_name', String()),
+    Column('equipments_name', ARRAY(String(), dimensions=1)),
     Column('type', String()),
     Column('longitude', Float),
     Column('latitude', Float),
