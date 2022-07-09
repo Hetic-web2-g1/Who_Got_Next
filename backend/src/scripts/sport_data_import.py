@@ -53,22 +53,22 @@ def get_data_data_es():
     data = []
 
     for facility_id in fields.keys():
-        field_numbers = len(facility_id)
+        field_numbers = len(fields[facility_id])
         equipment_names = []
         equipment_ids = []
         facility_lat = 0
         facility_lng = 0
         for field in fields[facility_id]:
-            facility_lng += float(field["latitude"])
-            facility_lat += float(field["longitude"])
+            facility_lat += float(field["latitude"])
+            facility_lng += float(field["longitude"])
 
             equipment_names += (field["equipments_name"])
             equipment_ids += (field["equipment_id"])
 
         data.append({
             **fields[facility_id][0],
-            'longitude': facility_lat / field_numbers,
-            'latitude': facility_lng / field_numbers,
+            'latitude': facility_lat / field_numbers,
+            'longitude': facility_lng / field_numbers,
             'equipments_name': equipment_names,
             'equipment_id': equipment_ids
         })
