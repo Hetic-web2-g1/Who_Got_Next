@@ -52,12 +52,14 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: absolute;
+    left: 92%;
   }
   
   .menu-bars {
     display: flex;
-    margin-left: 2rem;
-    font-size: 2rem;
+    /* margin-left: 2rem; */
+    font-size: 1.1rem;
     background: none;
   }
   
@@ -76,15 +78,31 @@
   .nav-menu.active {
     right: 0;
     transition: 350ms;
+    background: white;
+    z-index: 4;
   }
+
+  .nav-flou{
+    right: 0;
+    transition: 350ms;
+    background: #171C4F;
+    opacity: 50%;
+    z-index: -1;
+    margin-top: -1vh;
+    width: 100%;
+    height: 100.3vh;
+    /* overflow: hidden; */
+    position: absolute;
+}
+
   
   .nav-text {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 12px 24px;
-    gap: 10px;
+    /* padding: 12px 24px; */
+    /* gap: 10px; */
     width: 133px;
     height: 99.01px;
     border: 1px solid #C6C7D2;
@@ -94,13 +112,13 @@
   
   .nav-text a  {
     text-decoration: none;
-    color: #f5f5f5;
-    font-size: 18px;
-    width: 95%;
+    /* color: #f5f5f5;
+    font-size: 18px; */
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 0 16px;
+    /* padding: 0 16px; */
     border-radius: 4px;
     /* Qualta / Caption / Regular */
 
@@ -109,31 +127,68 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
       /* Grayscale/4 */
 
       color: #474D85;
   }
   
-  
+  .user{
+    width:14px;
+    height:14px
+  }
+  .username{
+    font-size: 40px;
+    font-family: 'Monument Condensed';
+    color: #1758FF;
+  }
+
+  .q{
+    font-family: 'Qualta-Regular';
+  }
+
+  .account{
+    display: flex;
+    width: 20%;
+    padding: 10px;
+    border-radius: 25px;
+    flex-direction: row;
+    background-color: white;
+    font-family: 'Monument Condensed';
+    font-size: 12px;
+    align-items: center;
+    justify-content: space-between;
+    color: #1758FF;
+  }
+
+  .deco{
+    align-items: center;
+    padding-top: 70px;
+    text-decoration: none;
+  }
   
   .nav-menu-items {
     width: 100%;
+    margin:0
   }
   
   .navbar-toggle {
-    
-    width: 100%;
-    height: 80px;
+    width: 105%;
+    height: 200px;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+    margin-left: -5%;
+    background: #F7F7FC;
+    flex-direction: row;
+    justify-content: space-around;
   }
   
   span {
     width: 85px;
     height: 40px;
-    
+    text-align: center;
     /* Qualta / Caption / Regular */
     
     font-family: 'Qualta-Regular';
@@ -151,8 +206,8 @@
   }
   
 .sidebarTitle {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 45px;
+    padding-bottom: 45px;
     display: flex;
     flex-direction: column;
     font-family: "QualtaBold";
@@ -165,5 +220,27 @@
 
 .sidebarContainer{
     display: flex;
-    gap:24px;
+    gap: 24px;
+}
+
+.trait{
+  height: 1px;
+    width: 93%;
+    /* border: 0; */
+    /* border-top: 1px solid #ccc; */
+    /* margin: 1em 0; */
+    /* padding: 0; */
+    background: #E3E4E8;
+}
+
+.trait-vert{
+  height: 18px;
+  width: 2px;
+  background-color: #E3E4E8;
+}
+
+@media screen and (max-width:1200px) { 
+  .nav-menu.active{
+    width: 100%;
+  }
 }

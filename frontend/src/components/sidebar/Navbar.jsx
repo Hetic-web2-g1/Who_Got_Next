@@ -13,19 +13,31 @@ function Navbar() {
   const showSidebar = () => setSidebar(!sidebar);
 
   return (
-    <>
+    <>      
+
       <IconContext.Provider value={{ color: '#171C4F' }}>
+
         <div className='navbar'>
           <Link to='#' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
         </div>
+        <div className='nav-flou'>
+    </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          
           <ul className='nav-menu-items'>
             <li className='navbar-toggle' onClick={showSidebar}>
+              <div className='q'>Bonjour,<br></br><div className='username'>Sammy</div></div>
+              <div className='account'>
+              <img className='user' src='assets\user.png'></img>
+              <div className='trait-vert'></div>
+              <div>Mon Compte</div>
+              <div className='trait-vert'></div>
               <Link to='#' className='menu-bars'>
                 <AiIcons.AiOutlineClose />
               </Link>
+              </div>              
             </li>
             <div className='sidebarTitle'>Compte
             <div className='sidebarContainer'>
@@ -40,7 +52,7 @@ function Navbar() {
                 </li>
               );
             })}</div></div>
-
+<div className='trait' ></div>
             <div className='sidebarTitle'> Rencontre et événements 
             <div className='sidebarContainer'>
             {SidebarData2.map((item, index) => {
@@ -54,7 +66,7 @@ function Navbar() {
                 </li>
               );
             })}</div></div>
-
+<div className='trait' ></div>
             <div className='sidebarTitle'> Aides
             <div className='sidebarContainer'>
             {SidebarData3.map((item, index) => {
@@ -68,7 +80,10 @@ function Navbar() {
                 </li>
               );
             })}</div></div>
-
+        <div className='trait' ></div>
+        <div className='sidebarTitle deco'>
+        <a className='deco' href="">Se deconnecter</a>
+        </div>
           </ul>
         </nav>
       </IconContext.Provider>
