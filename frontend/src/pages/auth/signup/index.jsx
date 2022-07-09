@@ -2,7 +2,7 @@ import { React, useEffect, useState, useRef, createContext } from 'react'
 import './index.css'
 import jwt_decode from 'jwt-decode'
 import { DateTime } from "luxon";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 import LandingRedirectionButton
  from '../../../components/landingRedirectionButton'
@@ -15,6 +15,7 @@ export const Signup = () => {
   const inputs = useRef([])
   const navigate = useNavigate();
   const { signUp } = useAuth();
+  const { login } = useAuth();
   
   const [email, setEmail] = useState('');
   const [prenom, setPrenom] = useState('');
@@ -49,15 +50,15 @@ export const Signup = () => {
 
   const handleForm = async (e) => {
     e.preventDefault();
-
-    // Password validation (common signUp / signIn)
-    if ((inputs.current[1].value.length < 6)) {
-      setValidation("Votre mot de passe doit contenir au moins 6 caractères")
-      return;
-    }
-
+    
     // Validation signup
     if (window.location.pathname.includes('signup')) {
+
+      // Password validation
+      if ((inputs.current[1].value.length < 6)) {
+        setValidation("Votre mot de passe doit contenir au moins 6 caractères")
+        return;
+      }
 
       // Pseudo validation
       if (details.prenom === '') {
@@ -83,8 +84,8 @@ export const Signup = () => {
         )
         formRef.current.reset();
         setValidation("");
+        navigate("/private/private-home")
         // console.log(cred);
-        // navigate("/private/private-home")
 
   
       } catch (err) {
@@ -94,6 +95,23 @@ export const Signup = () => {
         if (err.code === "auth/email-already-in-use") {
           setValidation("Email already used");
         }
+      }
+    }
+
+    if (window.location.pathname.includes('login')) {
+      console.log('Login')
+      try {
+        const cred = await login(
+          inputs.current[0].value,
+          inputs.current[1].value
+        )
+        formRef.current.reset();
+        setValidation("");
+        navigate("/private/private-home")
+        console.log(cred);
+
+      } catch {
+        setValidation("Impossible de se connecter, veuillez vérifier vos informations.")
       }
     }
   }
@@ -189,6 +207,9 @@ export const Signup = () => {
                   </div>
                   {/* <LandingRedirectionButton goto={"login"} innerButton={buttonTitle}/> */}
                     <button>Submit</button>
+                    <div className="inscrip">
+                      <Link to="/private/forgot-password">Vous avez oublié votre mot de passe ?</Link>
+                    </div>
                   <p>
                     {validation}
                   </p>

@@ -5,6 +5,8 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Private from "./pages/Private/private"
 import PrivateHome from "./pages/Private/PrivateHome/PrivateHome"
 import { AuthProvider } from "./contexts/AuthContext"
+import ForgotPassword from "./pages/auth/ForgotPassword/ForgotPassword"
+import UpdateProfile from "./pages/auth/UpdateProfile/UpdateProfile.jsx"
 
 import App from "./App";
 import Evenement from "./pages/evenement";
@@ -26,7 +28,9 @@ ReactDOM.createRoot(container).render(
         <Route path="signup" element={<Signup />} />
         <Route path="/private" element={<Private />}>
           <Route path="/private/private-home" element={<PrivateHome />} />
+          <Route path="/private/update-profile" element={<UpdateProfile />} />
         </Route>
+        <Route path="/private/forgot-password" element={<ForgotPassword />} />
         <Route path="evenement" element={<Evenement />} />
         <Route path="joingroup" element={<JoinGroup />} />
         <Route path="landingPage" element={<LandingPage />} />
