@@ -18,7 +18,7 @@ export function AuthProvider({ children }) {
 
     const [currentUser, setCurrentUser] = useState(null)
     const [loading, setLoading] = useState(true)
-    
+
     const signUp = (email, pwd) => {
       const body =
       {
@@ -35,14 +35,9 @@ export function AuthProvider({ children }) {
     };
 
     const login = (email, pwd) => {
-      const body =
-      {
-        "email": email,
-      };
-      fetch("http://localhost:8000/users/get", {
+      fetch(`http://localhost:8000/users/get/${email}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
       })
       .then(SignInWithEmailAndPassword(auth, email, pwd));
     }
