@@ -17,30 +17,35 @@ export function useAuth() {
 export function AuthProvider({ children }) {
 
   fetch("http://localhost:8000/users/")        
-  .then((response) => response.json())
-  .then((response) => console.log(response))
+  // .then((response) => response.json())
+  // .then((response) => console.log(response))
 
     const [currentUser, setCurrentUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    const signUp = (email, pwd, pseudo) => {
-      const body = {"pseudo": pseudo,"password": pwd,"email": email};
+    const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd);
+
+    const signUpBack = (email, pseudo, age, sexe) => {
+      console.log('test');
+      const body = {"pseudo": pseudo, "email": email, "date_of_birth": age, "sexe": sexe};
       fetch("http://localhost:8000/users/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
+        body: JSON.stringify(body)
       })
-      .then(createUserWithEmailAndPassword(auth, email, pwd));
+      setCurrentUser(body);
     };
 
-    const login = (email, pwd) => {
+    const login = (email, pwd) => signInWithEmailAndPassword(auth, email, pwd);
+
+    const loginBack = (email, pwd) => {
       fetch(`http://localhost:8000/users/get/${email}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => response.json())
       .then((response) => console.log(response))
-      .then(signInWithEmailAndPassword(auth, email, pwd))
+      signInWithEmailAndPassword(auth, email, pwd)
     }
 
     const logout = () => signOut(auth);
@@ -51,7 +56,7 @@ export function AuthProvider({ children }) {
 
       const unsubscribe = onAuthStateChanged(auth , (user) => {
         setCurrentUser(user);
-        setLoading(false)
+        setLoading(false);
       })
 
       return unsubscribe
@@ -60,7 +65,9 @@ export function AuthProvider({ children }) {
     const value = {
         currentUser,
         login,
+        loginBack,
         signUp,
+        signUpBack,
         logout,
         resetPassword
     }

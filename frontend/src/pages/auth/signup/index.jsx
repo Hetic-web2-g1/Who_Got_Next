@@ -11,19 +11,22 @@ import LandingRedirectionButton
 export const Signup = () => {
   const userContext = createContext();
   const [buttonTitle, setButtonTitle] = useState("S'inscrire");
+  const [isLogin, setIsLogin] = useState(true);
   const [validation, setValidation] = useState("");
   const navigate = useNavigate();
   const { signUp } = useAuth();
+  const { signUpBack } = useAuth();
   const { login } = useAuth();
+  const { loginBack } = useAuth();
   
   const [email, setEmail] = useState('');
-  const [prenom, setPrenom] = useState('');
+  const [pseudo, setPseudo] = useState('');
   const [sexe, setSexe] = useState('');
   const [age, setAge] = useState("");
   const [password, setPassword] = useState("");
   
   const details = {
-    'prenom' : prenom,
+    'prenom' : pseudo,
     'email' : email,
     'sexe' : sexe,
     'age' : age,
@@ -32,6 +35,7 @@ export const Signup = () => {
   // Login view
   useEffect (() => {
     if (window.location.pathname.includes('login')) {
+      setIsLogin(false);
       setButtonTitle('Se connecter');
       document.getElementById('title').innerHTML = 'Se connecter';
       let hiddenDiv = document.getElementsByClassName('hidden');
@@ -76,18 +80,25 @@ export const Signup = () => {
         await signUp(
           email,
           password,
-          prenom,
+          pseudo,
+          age,
+          sexe
+        )
+        await signUpBack(
+          email,
+          pseudo,
+          age,
+          sexe
         )
         formRef.current.reset();
         setValidation("");
         navigate("/private/private-home")
-  
       } catch (err) {
-        if (err.code === "auth/invalid-email") {
-          setValidation("Email format invalid");
-        }
         if (err.code === "auth/email-already-in-use") {
           setValidation("Email already used");
+        }
+        if (err.code === "auth/invalid-email") {
+          setValidation("Email format invalid");
         }
       }
     }
@@ -97,6 +108,10 @@ export const Signup = () => {
         await login(
           email,
           password
+        )
+        await loginBack(
+          email,
+          loginBack
         )
         formRef.current.reset();
         setValidation("");
@@ -165,8 +180,8 @@ export const Signup = () => {
 
               <form className='form' ref={formRef} onSubmit={handleForm}>
                   <div className='hidden flex-field'>
-                      <label htmlFor="prenom">Prenom</label>
-                      <input onChange={e => setPrenom(e.target.value)} placeholder='Prenom' type="text" />
+                      <label htmlFor="prenom">Pseudo</label>
+                      <input onChange={e => setPseudo(e.target.value)} placeholder='Pseudo' type="text" />
                   </div>
 
                   <div className='flex-field margin'>
@@ -198,13 +213,16 @@ export const Signup = () => {
                   
                   </div>
                   {/* <LandingRedirectionButton goto={"login"} innerButton={buttonTitle}/> */}
+                  <div className='flex' style={{paddingTop: "30px"}}>
                     <button>Submit</button>
-                    <div className="inscrip">
-                      <Link to="/forgot-password">Vous avez oublié votre mot de passe ?</Link>
-                    </div>
+                  </div>
                   <p>
                     {validation}
                   </p>
+                  <div className='flex' style={{paddingTop: "15px"}}>
+                    <Link hidden={isLogin} to="/forgot-password">Vous avez oublié votre mot de passe ?</Link>
+                    <Link hidden={!isLogin} to="/login">Déjà un compte ?</Link>
+                  </div>
               </form>
 
             </div>
