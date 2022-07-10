@@ -73,7 +73,7 @@ def get_field_by_position(conn: Connection, south_east_coord: dict, north_west_c
             .where(field_table.c.longitude < north_west_coord['lng'])
             .where(field_table.c.latitude < north_west_coord['lat'])
             .order_by(field_table.c.free_access, field_table.c.parking, field_table.c.public_transport)
-            .limit(50)
+            .limit(500)
             )
     result = conn.execute(stmt)
 
