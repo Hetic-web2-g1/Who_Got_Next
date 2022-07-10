@@ -1,5 +1,4 @@
 from faker import Faker
-from uuid import UUID
 import sqlalchemy as sa
 from sqlalchemy.engine import Connection
 

@@ -1,21 +1,19 @@
-from uuid import UUID
 from fastapi import APIRouter
 from typing import List
-from fastapi.exceptions import HTTPException
 
+from utils.error_handelers import check_no_data
 from database.db_engine import engine
 from schema.field import Field, FieldCreate, GPSBounds
 from manager import FieldManager
 
 
-# TODO Need to be completed with more specific errror
 router = APIRouter(
     prefix="/fields",
     tags=["Fields"],
 )
 
 
-# Get all field
+# Get all fields
 @router.get("", response_model=List[Field | None])
 def get_all_fields():
     with engine.begin() as conn:
@@ -26,11 +24,9 @@ def get_all_fields():
 @router.get("/{field_id}", response_model=Field)
 def get_field(field_id: str):
     with engine.begin() as conn:
-        field = FieldManager.get_field_by_id(conn, field_id)
-        if field is None:
-            raise HTTPException(404, "Field not found")
-        else:
-            return field
+        data = FieldManager.get_field_by_id(conn, field_id)
+        check_no_data(data, "field")
+        return data
 
 
 # Create field
@@ -38,10 +34,6 @@ def get_field(field_id: str):
 def create_field(field: FieldCreate):
     with engine.begin() as conn:
         FieldManager.create_field(conn, field)
-        if field == 0:
-            return False
-        else:
-            return True
 
 
 # Update field by id
@@ -49,21 +41,13 @@ def create_field(field: FieldCreate):
 def update_field(field: FieldCreate, id: str):
     with engine.begin() as conn:
         FieldManager.update_field(conn, field, id)
-        if field == 0:
-            return False
-        else:
-            return True
 
 
 # Delete one field by id
 @router.delete("/delete/{field_id}", response_model=bool)
 def delete_field(field_id: str):
     with engine.begin() as conn:
-        field = FieldManager.delete_field_by_id(conn, field_id)
-        if field == 0:
-            return False
-        else:
-            return True
+        FieldManager.delete_field_by_id(conn, field_id)
 
 
 # Get field by location

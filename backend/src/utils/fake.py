@@ -36,6 +36,7 @@ def create_fake_user():
             'sport_level': fake.random_digit(),
             'favorite': [fake.first_name(), fake.first_name()],
             'date_of_birth': datetime.now(),
+            'sexe': "Femme",
             'longitude': coordinate()[0],
             'latitude': coordinate()[1],
             'img_path': fake.file_path(depth=5, category='image')
@@ -112,6 +113,6 @@ def create_fake_message():
 def create_fake_data():
     for _ in range(5):
         create_fake_user()
-        create_fake_field()
-        create_fake_event()
-        create_fake_message()
+        # create_fake_field()
+        # create_fake_event()
+        # create_fake_message()

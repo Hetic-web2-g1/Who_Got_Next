@@ -1,7 +1,8 @@
-# Flexible event logging system
 import logging
 from pathlib import Path
 
+
+# Flexible event logging system
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 

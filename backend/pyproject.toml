@@ -7,6 +7,7 @@ authors = ["domino659 <martin@sionfamily.com>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 psycopg2-binary = "^2.9.3"
+firebase-admin = "^5.2.0"
 
 [tool.poetry.dev-dependencies]
 fastapi = "*"
