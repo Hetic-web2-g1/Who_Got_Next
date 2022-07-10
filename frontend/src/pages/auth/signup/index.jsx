@@ -75,7 +75,8 @@ export const Signup = () => {
       try {
         await signUp(
           email,
-          password
+          password,
+          prenom,
         )
         formRef.current.reset();
         setValidation("");

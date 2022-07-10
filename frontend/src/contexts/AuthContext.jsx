@@ -23,8 +23,8 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    const signUp = (email, pwd) => {
-      const body = {"pseudo": "pseudo","password": pwd,"email": email};
+    const signUp = (email, pwd, pseudo) => {
+      const body = {"pseudo": pseudo,"password": pwd,"email": email};
       fetch("http://localhost:8000/users/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
