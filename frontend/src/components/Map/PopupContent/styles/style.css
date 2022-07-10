@@ -1,0 +1,55 @@
+.popup-container {
+    box-sizing: border-box;
+    padding: 12px;
+    border-radius: 15px;
+    row-gap: 24px;
+    align-items: flex-start;
+    background: white;
+    position: relative;
+}
+
+.popup-heading {
+    display: flex;
+    text-align: left;
+    column-gap: 24px;
+    width: 100%;
+}
+
+.popup-heading-detail {
+    display: grid;
+    align-items: start;
+}
+
+.image {
+    border-radius: 5px;
+}
+
+.facility_name {
+    font-family: QualtaBold;
+    color: #1758FF;
+    font-size: 18px;
+    margin: 0;
+    line-height: 20px;
+}
+
+.facility_type {
+    margin: 0;
+    font-family: MonumentBold;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    font-family: MonumentBold;
+}
+
+.dropdown-header {
+    color: #1758FF;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: QualtaBold;
+    margin-bottom: 0.8em;
+    font-size: 1.3rem;
+}

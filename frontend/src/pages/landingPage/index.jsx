@@ -9,7 +9,7 @@ export const LandingPage = () => {
     return(
         <div>
             <div className='landingWrapper'>
-                <img className='logo' src="../../../public/assets/whogotnextlogo.png"></img>
+                <img className='logo' src="../../../public/assets/whogotnext_logo.svg"></img>
                 <div>
                     <div className='container'>
                         <h4 className='asktext'>Ask</h4>

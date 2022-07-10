@@ -9,6 +9,7 @@ import Map, {
   ScaleControl,
   GeolocateControl,
 } from "react-map-gl";
+import PopupContent from "./PopupContent"
 import Pin from "./Marker";
 import "./styles.css";
 
@@ -29,7 +30,7 @@ const MapRender = ({ userLongitude, userLatitude }) => {
 
   const pins = fields?.map((field) => (
     <Marker
-      key={`marker-${field.name}-${field.id}`}
+      key={`marker-${field.facility_name}-${field.facility_id}`}
       longitude={field.longitude}
       latitude={field.latitude}
       anchor="bottom"
@@ -91,40 +92,9 @@ const MapRender = ({ userLongitude, userLatitude }) => {
             longitude={popupInfo.longitude}
             latitude={popupInfo.latitude}
             onClose={() => setPopupInfo(null)}
+            maxWidth={"500px"}
           >
-            <div>
-              {popupInfo.name} <br />
-              {popupInfo.description} <br />
-              <br />
-              Acces Handicapé : {popupInfo.handicap ? "oui" : "non"}
-              <br />
-              Toilettes : {popupInfo.bathroom ? "oui" : "non"}
-              <br />
-              Douches : {popupInfo.shower ? "oui" : "non"}
-              <br />
-              Vestiaires : {popupInfo.dressing_room ? "oui" : "non"}
-              <br />
-              Chauffage : {popupInfo.heating ? "oui" : "non"}
-              <br />
-              Parking : {popupInfo.parking ? "oui" : "non"}
-              <br />
-              Transport en commun : {popupInfo.public_transport ? "oui" : "non"}
-              <br />
-              <a
-                target="_new"
-                href={`https://www.youtube.com/watch?v=dQw4w9WgXcQ`}
-              >
-                Infos
-              </a>
-            </div>
-            <img
-              width="100%"
-              src={
-                popupInfo?.image_path
-                  ? popupInfo?.image_path
-                  : "../../../assets/kirbok.jpg"
-              }
-            />
+            <PopupContent content={popupInfo}/>
           </Popup>
         )}
       </Map>
