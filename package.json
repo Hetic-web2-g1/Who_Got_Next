@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Hetic-web2-g1/Projet-Final-Structure#readme",
   "dependencies": {
+    "antd": "^4.21.5",
     "react-router-dom": "^6.3.0"
   }
 }

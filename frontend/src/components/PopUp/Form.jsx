@@ -34,21 +34,21 @@ export const Form = ({ onSubmit }) => {
 
             <div className="form-group">
                 <label htmlFor="location">Photo du terrain (facultatif) </label>
-                <input className="form-control" id="location" />
+                <input type="file" className="form-control" id="location" />
             </div>
 
             <div className="form-date">
                 <div className='date'>
                     <label htmlFor="location"> Date </label>
-                    <input className="form-control-date" id="location" />
+                    <input type="date" className="form-control-date" id="location" />
                 </div>
                 <div className='date'>
                     <label htmlFor="location"> À partir de </label>
-                    <input className="form-control-hour" id="location" />
+                    <input type="time" className="form-control-hour" id="location" />
                 </div>
                 <div className='date'>
                     <label htmlFor="location"> Jusqu'à </label>
-                    <input className="form-control-hour" id="location" />
+                    <input type="time" className="form-control-hour" id="location" />
                 </div>
             </div>
 
@@ -78,11 +78,11 @@ export const Form = ({ onSubmit }) => {
 
 
             <div className="form-submit">
-                <button className="form-control btn btn-primary" type="submit">
+                <button className="form-cancel" type="submit">
                     Annuler
                 </button>
-                <button className="form-control btn btn-primary" type="submit">
-                    Continuer
+                <button className="form-next" type="submit">
+                    Confirmer
                 </button>
             </div>
         </form>

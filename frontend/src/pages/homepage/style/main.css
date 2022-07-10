@@ -24,6 +24,7 @@ body {
     margin: 0;
 }
 
+
 /* header */
 
 .header {
@@ -374,8 +375,8 @@ p.lorem-text {
 
 .form-date {
     display: flex;
-    flex-direction : row;
-    justify-content: flex-start ;
+    flex-direction: row;
+    justify-content: flex-start;
     gap: 2em;
 }
 
@@ -383,6 +384,11 @@ p.lorem-text {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.form-submit {
+    display: flex;
+    justify-content: space-between;
 }
 
 @media screen and (min-width: 500px) {
@@ -453,5 +459,50 @@ p.lorem-text {
     overflow: hidden;
     margin-right: 17px;
 }
+
+
+
+.date>input,
+.form-group>input,
+select#lvl {
+    border: 1px solid #E3E4E8;
+    border-radius: 5px px;
+}
+
+.form-group>label,
+.date>label {
+    font-family: Qualta-Regular;
+    color: #878AAB;
+}
+
+.form-toggle>span,
+.form-read>label {
+    font-family: Qualta-Regular;
+    color: #05092E;
+}
+
+button.form-cancel {
+    background: transparent;
+    border: none;
+    font-family: 'QUALTA-BOLD';
+    font-size: 20px;
+    color: #05092E;
+}
+
+button.form-next {
+    font-family: Qualta-Bold;
+    font-size: 20px;
+    background-color: #1758FF;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+    width: 11em;
+}
+
 
 /* End Form  */
