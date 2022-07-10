@@ -5,8 +5,11 @@ import "../../fonts/Monument/PPMonumentExtended-Black.otf";
 import { Link } from "react-router-dom";
 import CartEvenement from "../../components/CartEvenement";
 import { useMemo } from "react";
+import Footer from "../../components/footer";
 
 export const Evenement = () => {
+
+  const bgWhite = false;
   const [cardData, setCardData] = useState(null);
 
   useEffect(() => {
@@ -81,7 +84,7 @@ export const Evenement = () => {
           height="470"
         />
       </div>
-      <br />
+      <Footer bgWhite={bgWhite}/>
     </div>
   );
 };
