@@ -38,6 +38,8 @@ export function AuthProvider({ children }) {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       })
+      .then((response) => response.json())
+      .then((response) => console.log(response))
       .then(signInWithEmailAndPassword(auth, email, pwd))
     }
 
