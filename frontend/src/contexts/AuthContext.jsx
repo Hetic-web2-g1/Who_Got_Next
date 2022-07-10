@@ -16,16 +16,15 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
 
+  fetch("http://localhost:8000/users/")        
+  .then((response) => response.json())
+  .then((response) => console.log(response))
+
     const [currentUser, setCurrentUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
     const signUp = (email, pwd) => {
-      const body =
-      {
-        "pseudo": "pseudo",
-        "password": pwd,
-        "email": email,
-      };
+      const body = {"pseudo": "pseudo","password": pwd,"email": email};
       fetch("http://localhost:8000/users/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -39,7 +38,7 @@ export function AuthProvider({ children }) {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       })
-      .then(SignInWithEmailAndPassword(auth, email, pwd));
+      .then(SignInWithEmailAndPassword(auth, email, pwd))
     }
 
     const logout = () => signOut(auth);
