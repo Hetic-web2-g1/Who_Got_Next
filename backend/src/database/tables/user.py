@@ -5,6 +5,7 @@ from uuid import uuid4
 
 from database.db_engine import metadata
 
+
 user_table = Table(
     "user",
     metadata,

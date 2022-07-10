@@ -4,6 +4,7 @@ import sqlalchemy as sa
 
 from database.db_engine import metadata
 
+
 sports_equipment_table = Table(
     "sports_equipment",
     metadata,
