@@ -38,7 +38,7 @@ export function AuthProvider({ children }) {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       })
-      .then(SignInWithEmailAndPassword(auth, email, pwd))
+      .then(signInWithEmailAndPassword(auth, email, pwd))
     }
 
     const logout = () => signOut(auth);
