@@ -15,8 +15,11 @@ origins = [
     "localhost:3000"
 ]
 
+<<<<<<< HEAD
 
 # Launch api
+=======
+>>>>>>> 54730866347c09436ba5072865209c3e3c03ded4
 app = FastAPI()
 
 
