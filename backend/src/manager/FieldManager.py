@@ -36,7 +36,7 @@ def get_field_by_id(conn: Connection, id: str):
 
 
 def create_field(conn: Connection, field: FieldCreate) -> Field | None:
-    field.id = validate_unique_field_id(conn)
+    field.facility_id = validate_unique_field_id(conn)
     return db_srv.create_object(conn, 'field', field)
 
 
@@ -89,7 +89,7 @@ def create_field_id():
 def validate_unique_field_id(conn: Connection):
     id = create_field_id()
     stmt = sa.select([field_table]).where(
-        field_table.c.id == id)
+        field_table.c.facility_id == id)
     row = conn.execute(stmt).first()
     if row == None:
         return id

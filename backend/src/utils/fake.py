@@ -31,7 +31,6 @@ def create_fake_user():
         user = UserCreate(**{
             'is_admin': fake.boolean(),
             'pseudo': fake.unique.first_name(),
-            'password': fake.password(),
             'email': fake.unique.email(),
             'description': fake.text(),
             'sport_level': fake.random_digit(),
@@ -63,12 +62,25 @@ def create_fake_subscribed_user():
 def create_fake_field():
     with engine.begin() as conn:
         field = FieldCreate(**{
+            'facility_id': fake.numerify("I%%%E%%%%%%%%%"),
             'id_user': fake.uuid4(),
-            'name': fake.unique.first_name(),
-            'description': fake.text(),
+            'facility_name': fake.unique.first_name(),
+            'equipments_name': [fake.first_name(), fake.first_name()],
+            'type': fake.text(),
             'longitude': coordinate()[0],
             'latitude': coordinate()[1],
-            'img_path': fake.file_path(depth=5, category='image')
+            'img_path': fake.file_path(depth=5, category='image'),
+            'handicap': fake.boolean(),
+            'parking': fake.boolean(),
+            'public_transport': fake.boolean(),
+            'lightening': fake.boolean(),
+            'free_access': fake.boolean(),
+            'dressing_room': fake.boolean(),
+            'shower': fake.boolean(),
+            'bathroom': fake.boolean(),
+            'heating': fake.boolean(),
+            'ground_type': fake.text(),
+            'nature_place': fake.text()
         })
         create_field(conn, field)
 
