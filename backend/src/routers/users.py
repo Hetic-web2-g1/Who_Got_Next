@@ -39,7 +39,7 @@ def get_user(user_id: str):
 @router.get("/get/{email}")
 def get_email(email: str):
     with engine.begin() as conn:
-        user = UserManager.get_id_by_email(conn, email)
+        user = UserManager.get_user_by_email(conn, email)
         if user is None:
             raise HTTPException(404, "User not found")
         else:

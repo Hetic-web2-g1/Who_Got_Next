@@ -25,8 +25,8 @@ def get_user_by_id(conn: Connection, id: str):
         return User(**row)
 
 
-def get_id_by_email(conn: Connection, email: str):
-    stmt = sa.select([user_table.c.id]).where(user_table.c.email == email)
+def get_user_by_email(conn: Connection, email: str):
+    stmt = sa.select([user_table]).where(user_table.c.email == email)
     row = conn.execute(stmt).first()
 
     if row is not None:
