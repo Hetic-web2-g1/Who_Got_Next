@@ -18,7 +18,6 @@ user_table = Table(
     Column('pseudo', String(),
            unique=True
            ),
-    Column('password', String()),
     Column('email', String(),
            unique=True
            ),

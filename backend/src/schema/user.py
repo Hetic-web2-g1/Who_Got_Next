@@ -8,7 +8,6 @@ from typing import Optional
 class UserCreate(BaseModel):
     is_admin: Optional[bool] = False
     pseudo: str
-    password: str
     email: str
     description: Optional[str] = None
     sport_level: Optional[int] = None
