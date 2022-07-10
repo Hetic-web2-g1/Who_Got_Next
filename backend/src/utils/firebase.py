@@ -27,7 +27,7 @@ def authentificate(cred):
 
 def CustomSecurity(res: Response, cred: HTTPAuthorizationCredentials = Depends(HTTPBearer(auto_error=False))):
     # decoded_token = authentificate(cred)
-    res.headers['WWW-Authenticate'] = 'Bearer realm="auth_required"'
+    print(cred)
     return res
     # return decoded_token
 
