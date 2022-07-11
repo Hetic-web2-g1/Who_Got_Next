@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "mapbox-gl/dist/mapbox-gl.css";
+
 import Private from "./pages/Private/private";
 import PrivateHome from "./pages/Private/PrivateHome/PrivateHome";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -11,10 +12,12 @@ import UpdateProfile from "./pages/auth/UpdateProfile/UpdateProfile.jsx";
 import App from "./App";
 import Evenement from "./pages/evenement";
 import JoinGroup from "./pages/joingroup";
+
 import MapPage from "./pages/map";
-import LandingPage from "./pages/landingPage";
-import Login from "./pages/auth/login";
-import Signup from "./pages/auth/signup";
+import LandingPage from './pages/landingPage';
+import Login from './pages/auth/login';
+import Signup from './pages/auth/signup';
+import Homepage from "./pages/homepage"
 
 const container = document.getElementById("root");
 

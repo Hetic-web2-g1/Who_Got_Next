@@ -1,0 +1,604 @@
+/* Font */
+@font-face {
+    font-family: Monument Extended Regular;
+    src: url(../../../font/MonumentExtended-Regular.otf);
+}
+
+@font-face {
+    font-family: Monument Extended UltraBold;
+    src: url(../../../font/MonumentExtended-Ultrabold.otf);
+}
+
+@font-face {
+    font-family: Qualta-Bold;
+    src: url(../../../font/Qualta-Bold.ttf);
+}
+
+@font-face {
+    font-family: Qualta-Regular;
+    src: url(../../../font/Qualta-Regular.ttf);
+}
+
+/* Font end  */
+body {
+    margin: 0;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+/* header */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/* Logo */
+.logoAccount {
+    order: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 24px 10px 24px 10px;
+}
+
+/* End Logo */
+
+/* Router */
+.list {
+    display: flex;
+    flex-direction: row;
+    column-gap: 80px;
+    padding: 0;
+}
+
+li>a {
+    font-family: Monument Extended Regular;
+    color: inherit;
+    list-style-type: none;
+    text-decoration: none;
+
+
+}
+
+ul,
+li,
+a {
+    font-family: Monument Extended Regular;
+    list-style-type: none;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Router End */
+
+/* Account */
+
+.account {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    gap: 1em;
+
+}
+
+.account>p {
+    font-family: Monument Extended Regular;
+    color: #1758FF
+}
+
+.imgUser {
+    width: 1em;
+}
+
+/* Account End */
+
+/* Search Filter */
+label {
+    font-family: Qualta-Bold;
+}
+
+.play {
+    display: flex;
+    justify-content: space-around;
+    order: 2;
+}
+
+.playContainer {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0px 10px 0px 0px;
+    gap: 30px;
+    width: 55em;
+    height: 5em;
+    background: #F7F7FC;
+    border: 1px solid #E3E4E8;
+    border-radius: 140px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+}
+
+.playContainer>button {
+    font-family: Qualta-Bold;
+    font-size: 20px;
+    color: #1758FF;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+.lieu {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type=text] {
+    height: 17px;
+    border: 0;
+    width: 15EM;
+    margin-left: 1px;
+    box-shadow: -8px 10px 0px -7px #ebebeb, 8px 10px 0px -7px #ebebeb;
+    -webkit-transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s;
+}
+
+input[type=text]:focus {
+    outline: none;
+    box-shadow: -8px 10px 0px -7px #4EA6EA, 8px 10px 0px -7px #4EA6EA;
+}
+
+
+.searchInput,
+.datePicker {
+    border: none;
+    background: #F7F7FC;
+}
+
+.dateInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.numberInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.numberInput>span:first-of-type {
+    font-family: Qualta-Regular;
+    font-size: 12px;
+    margin-top: 5px;
+    color: #2E336B;
+}
+
+.numberInput>span:first-of-type:hover {
+    cursor: pointer;
+}
+
+
+.option>p:first-of-type {
+    font-family: Qualta-Bold;
+}
+
+.option>p:last-child {
+    color: #878AAB;
+    font-size: 12px;
+}
+
+
+.option {
+    font-family: Qualta-Regular;
+    /* display */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* position */
+    position: absolute;
+    width: 440px;
+    height: 290px;
+    top: 230px;
+    padding: 5px 70px;
+    background-color: white;
+    /* shadow */
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05), 0px 1px 10px rgba(0, 0, 0, 0.03), 0px 4px 5px rgba(0, 0, 0, 0.04);
+    border-radius: 20px;
+    z-index: 10;
+}
+
+.selectNumber {
+    display: flex;
+    justify-content: space-between;
+}
+
+.selectNumber>span {
+    font-size: 14px;
+}
+
+/* Search Filter End  */
+
+/* List Sport */
+
+.sport {
+    order: 3;
+}
+
+.sportsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 0px;
+    gap: 24px;
+    margin: 80px 80px 10px 80px;
+    justify-content: space-evenly;
+}
+
+.insideSportsContainer>p {
+    font-family: Qualta-Regular;
+}
+
+.insideSportsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 2;
+    flex-grow: 0;
+}
+
+.insideSportsContainer img,
+.insideSportsContainer svg {
+    height: 3em;
+}
+
+
+
+/* End List Sport */
+
+/* Hero */
+
+.heroImg {
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(360deg, white, transparent), url('../img/MapsicleMap.png');
+    height: 50em;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.searchHero {
+    /* search bar */
+    box-sizing: border-box;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 6px 6px 24px;
+    gap: 10px;
+    width: 1080px;
+    height: 56px;
+    /* Grayscale/White */
+    background: #FFFFFF;
+    /* Grayscale/9 */
+    border: 1px solid #E3E4E8;
+    border-radius: 136px;
+    margin-top: 25px;
+}
+
+.searchBar {
+    border-radius: 8px;
+    background-color: transparent;
+    border: none;
+    width: 30em;
+}
+
+.searchBtn {
+    font-family: Qualta-Bold;
+    font-size: 16px;
+    background-color: #1758FF;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+    width: 11em;
+}
+
+
+/* Hero end */
+
+/* Form Let's Go */
+
+
+.App {
+    width: 90%;
+    max-width: 700px;
+    margin: 2em auto;
+}
+
+p.lorem-text {
+    text-align: justify;
+}
+
+.modal-cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    transform: translateZ(0);
+    background-color: #171c4f96;
+}
+
+.modal-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 4em 4em;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.form-group>h4 {
+    font-family: Monument Extended UltraBold;
+    font-size: 28px;
+    color: #1758FF;
+    padding: 0;
+    margin: 0;
+}
+
+.form-group>span:last-child {
+    font-family: Qualta-Regular;
+    font-size: 14px;
+    color: #05092E;
+}
+
+.date {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.form-toggle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+
+}
+
+.form-date {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 2em;
+}
+
+.form-read {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-submit {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 500px) {
+
+    /* Center the Modal! */
+    .modal-area {
+        left: 50%;
+        top: 50%;
+        height: auto;
+        transform: translate(-50%, -50%);
+        max-width: 45em;
+        max-height: calc(100% - 1em);
+    }
+}
+
+._modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5em;
+    line-height: 1;
+    background: #f6f6f7;
+    border: 0;
+    box-shadow: 0;
+    cursor: pointer;
+}
+
+._modal-close-icon {
+    width: 25px;
+    height: 25px;
+    fill: transparent;
+    stroke: black;
+    strokeLinecap: round;
+    strokeWidth: 2;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.25em;
+}
+
+.modal-body>form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 3em;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+._hide-visual {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+}
+
+.scroll-lock {
+    overflow: hidden;
+    margin-right: 17px;
+}
+
+
+
+.date>input,
+.form-group>input,
+select#lvl {
+    border: 1px solid #E3E4E8;
+    border-radius: 5px px;
+}
+
+.form-group>label,
+.date>label {
+    font-family: Qualta-Regular;
+    color: #878AAB;
+}
+
+.form-toggle>span,
+.form-read>label {
+    font-family: Qualta-Regular;
+    color: #05092E;
+}
+
+button.form-cancel {
+    background: transparent;
+    border: none;
+    font-family: 'QUALTA-BOLD';
+    font-size: 20px;
+    color: #05092E;
+}
+
+button.form-next {
+    font-family: Qualta-Bold;
+    font-size: 20px;
+    background-color: #1758FF;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+    width: 11em;
+}
+
+/* End Form  */
+
+/* Explorer Start */
+.explorer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.slideshow-container>img {
+    width: 40em;
+}
+
+.evnCreation {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 3em;
+    width: 69em;
+}
+
+.titleEvn>h3 {
+    font-family: Monument Extended UltraBold;
+    font-size: 45px;
+    margin: 0;
+}
+
+.textEvn>p {
+    font-family: Qualta-Bold;
+    font-size: 20px;
+    width: 40em;
+    margin: 0;
+}
+
+button.evnButton {
+    font-family: Qualta-Bold;
+    font-size: 20px;
+    background-color: #1758FF;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+    width: 11em;
+    cursor:pointer;
+}
+
+/* Explorer End */
+
+
+
+/* Hero end */
+
+.insideSportsContainer{
+    cursor: pointer;
+}
+
+.insideSportsContainer:hover{
+    color: red;
+}
+
+.insideSportsContainer:hover svg path{
+    fill: red;
+}
+
+select#lvl{
+    height: 30px;
+    border-radius: 5px;
+    color: #1758FF;
+    outline: none;
+}
+
+.searchBarPerso{
+    width: 60em !important;
+}
+
+
