@@ -573,3 +573,32 @@ button.evnButton {
 }
 
 /* Explorer End */
+
+
+
+/* Hero end */
+
+.insideSportsContainer{
+    cursor: pointer;
+}
+
+.insideSportsContainer:hover{
+    color: red;
+}
+
+.insideSportsContainer:hover svg path{
+    fill: red;
+}
+
+select#lvl{
+    height: 30px;
+    border-radius: 5px;
+    color: #1758FF;
+    outline: none;
+}
+
+.searchBarPerso{
+    width: 60em !important;
+}
+
+

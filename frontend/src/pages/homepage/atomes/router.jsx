@@ -9,8 +9,8 @@ function Router() {
                 <div className='navbar'>
                     <ul className='list'>
                         <li> <Link to="/"> Jouer </Link> </li>
-                        <li> <Link to="/"> Rejoindre </Link> </li>
-                        <li> <Link to="/Evenement"> Evenements </Link> </li>
+                        <li> <Link to="/join"> Rejoindre </Link> </li>
+                        <li> <Link to="/event"> Evenements </Link> </li>
                     </ul>
                 </div>
         </>
