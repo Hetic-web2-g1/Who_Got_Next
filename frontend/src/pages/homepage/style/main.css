@@ -66,6 +66,7 @@ html {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 5em;
+    padding: 0 !important;
 }
 
 .list {
@@ -664,11 +665,11 @@ button.evnButton {
 }
 
 .insideSportsContainer:hover {
-    color: red;
+    color: #1758FF;
 }
 
 .insideSportsContainer:hover svg path {
-    fill: red;
+    fill: #1758FF;
 }
 
 select#lvl {
@@ -680,4 +681,8 @@ select#lvl {
 
 .searchBarPerso {
     width: 60em !important;
+}
+
+.activelink{
+    color: #1758FF;
 }
