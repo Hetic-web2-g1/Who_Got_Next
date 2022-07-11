@@ -23,7 +23,7 @@ def get_all_messages():
 
 # Get message by id
 @router.get("/{message_id}", response_model=Message)
-def get_message(message_id: str, uid: str, authentified_user=Depends(SecurityCheck)):
+def get_message(message_id: str):
     with engine.begin() as conn:
         message = MessageManager.get_message_by_id(conn, message_id)
         if message is None:

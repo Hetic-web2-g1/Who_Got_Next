@@ -23,7 +23,7 @@ def get_all_events():
 
 # Get event by id
 @router.get("/{event_id}", response_model=Event)
-def get_event(event_id: str, uid: str, authentified_user=Depends(SecurityCheck)):
+def get_event(event_id: str):
     with engine.begin() as conn:
         event = EventManager.get_event_by_id(conn, event_id)
         if event is None:
