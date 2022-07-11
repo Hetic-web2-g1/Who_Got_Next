@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 export const LandingRedirectionButton = ({goto, innerButton}) => {
   return (
     <div className="connectcontainer">
-      <div className="connect">
+      <div className="connect redirect-button">
           <Link to={goto} className="connectext">{innerButton}</Link>
       </div>
       <div className="inscrip">

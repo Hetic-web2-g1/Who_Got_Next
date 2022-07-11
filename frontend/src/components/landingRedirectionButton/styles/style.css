@@ -28,6 +28,18 @@
     font-family: QualtaBold;
 }
 
+.redirect-button {
+    cursor:pointer;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.redirect-button:hover {
+    transition-duration: 0.1s;
+    background-color: #002EA3;
+  }
+
 .connect{
     background-color: #1758FF;
     border-radius: 50px;

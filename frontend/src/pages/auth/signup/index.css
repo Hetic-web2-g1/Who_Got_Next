@@ -49,18 +49,15 @@ div {
 
 .password-field input[type=password] {
     width: 99%;
-    z-index: 1;
     width: -webkit-fill-available;
 }
 
 .password-field input[type=text] {
     width: 99%;
-    z-index: 1;
     width: -webkit-fill-available;
 }
 
 .flex-field input {
-    z-index: 2500;
     border: 1px solid #E3E4E8;
     border-radius: 8px;
     margin-top: 12px;
@@ -123,7 +120,6 @@ div {
 
 .form {
     margin-top: 27px;
-    z-index: 500;
     font-size: 12px;
     font-family: qualta;
     color: #878AAB;
@@ -145,7 +141,6 @@ div {
 }
 
 .basket-img img {
-    z-index: 0;
     width: 610px;
     pointer-events: none;
 }
@@ -158,6 +153,10 @@ div {
     align-items: center;
     flex-direction: row;
     justify-content: flex-start;
+}
+
+.inputwrappertwo input{
+    width: 100%;
 }
 
 .inputwrapperthree{
@@ -213,7 +212,7 @@ div {
     height: 100%;
     opacity: 0;
     transition: all 0.5s;
-    box-shadow: 0 0 10px 20px #1758FF;
+    box-shadow: 0 0 10px 10px #1758FF;
   }
 
   .submit-sign-form:active:after {
@@ -227,16 +226,14 @@ div {
   }
 
 @media  screen and (max-width: 1280px) {
-    .r-image-container{
+    .right-container{
         display: none;
     }
-    .grid-container{
-        display: block;
+
+    #authentification-ui {
+        justify-content: center;
     }
-    .inscrip {
-        width: 100%;
-        text-align: center;
-    }
+
     .connect{
         width: 100%;
     }
