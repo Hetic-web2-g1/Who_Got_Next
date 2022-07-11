@@ -23,7 +23,7 @@ export const Evenement = () => {
 
   return (
     <div className="evenement-container">
-      <Link to="/">Home</Link>
+      <Link to="/homepage">Home</Link>
       <div className="carts-container">
         {cardData
           ? cardData.map((cart, index) => (

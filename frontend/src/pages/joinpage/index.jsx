@@ -1,4 +1,4 @@
-import HeaderJoin from '../homepage/molecule/header_join';
+import HeaderJoin from './components/header_join';
 import Hero from '../homepage/molecule/hero';
 import '../homepage/style/main.css'
 

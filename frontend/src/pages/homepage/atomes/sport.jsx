@@ -1,19 +1,6 @@
 import React from 'react'
-import coeur from '../img/coeur.svg'
-import rugby from '../img/rugby.svg'
-import cyclism from '../img/cyclism.svg'
-import gym from '../img/gym.svg'
-import basket from '../img/Basket-ball.svg'
-import child from '../img/child.svg'
-import football from '../img/football.svg'
-import handball from '../img/handball.svg'
-import running from '../img/Running.svg'
-import volleyball from '../img/volleyball.svg'
-import tennis from '../img/tennis.svg'
-
 
 function Sports() {
-
     return (
         <div className='sportsContainer'>
             <div className='insideSportsContainer'>
