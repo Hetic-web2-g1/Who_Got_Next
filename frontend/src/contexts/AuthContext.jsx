@@ -18,7 +18,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  let navigate = useNavigate()
+    let navigate = useNavigate()
     let firebaseCurrentUser = null
     const [currentUser,setCurrentUser] = useState(null)
     const [loading, setLoading] = useState(true)
