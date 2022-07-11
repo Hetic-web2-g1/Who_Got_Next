@@ -200,10 +200,10 @@ input {
 
 #authentification-ui > .left-container{
     width: 50%;
-    padding: 5em;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 #authentification-ui > .right-container{
