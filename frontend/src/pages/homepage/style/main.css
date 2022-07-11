@@ -271,12 +271,8 @@ input[type=text]:focus {
 .heroImg {
     display: flex;
     justify-content: center;
-    background-image: linear-gradient(360deg, white, transparent), url('../img/MapsicleMap.png');
-    height: 50em;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
+    position: absolute;
+    z-index: 100;
 }
 
 .searchHero {
@@ -291,12 +287,11 @@ input[type=text]:focus {
     gap: 10px;
     width: 1080px;
     height: 56px;
-    /* Grayscale/White */
     background: #FFFFFF;
-    /* Grayscale/9 */
     border: 1px solid #E3E4E8;
     border-radius: 136px;
     margin-top: 25px;
+    margin-left: 20vw;
 }
 
 .searchBar {
