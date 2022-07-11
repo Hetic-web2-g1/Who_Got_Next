@@ -15,7 +15,7 @@ function Router() {
             <Link to="/join"> Rejoindre </Link>{" "}
           </li>
           <li className="event">
-            <Link to="/event"> Evenements </Link>{" "}
+            <Link to="/evenement"> Evenements </Link>{" "}
           </li>
         </ul>
       </div>
