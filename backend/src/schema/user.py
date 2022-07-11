@@ -6,7 +6,6 @@ from typing import Optional
 
 
 class UserCreate(BaseModel):
-    is_admin: Optional[bool] = False
     pseudo: str
     email: str
     description: Optional[str] = None
@@ -23,3 +22,4 @@ class User(UserCreate):
     id: UUID
     created_at: datetime
     edited_at: datetime
+    is_admin: Optional[bool] = False
