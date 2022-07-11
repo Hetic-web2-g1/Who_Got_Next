@@ -75,6 +75,10 @@ html {
     padding: 0;
 }
 
+.activelink{
+    color: blue;
+}
+
 li>a {
     font-family: Monument Extended Regular;
     color: inherit;
@@ -120,6 +124,10 @@ a {
 /* Search Filter */
 label {
     font-family: Qualta-Bold;
+}
+
+.searchBarPerso{
+    width: 60em !important;
 }
 
 .play {
@@ -194,6 +202,16 @@ label {
 .numberInput {
     display: flex;
     flex-direction: column;
+}
+
+.numberPerson{
+    border-radius: 5px;
+    color: #1758FF;
+    width: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: none;
+    background-color: lightgrey;
 }
 
 .numberInput>span:first-of-type {
@@ -279,6 +297,18 @@ label {
 .insideSportsContainer img,
 .insideSportsContainer svg {
     height: 3em;
+}
+
+.insideSportsContainer{
+    cursor: pointer;
+}
+
+.insideSportsContainer:hover{
+    color: #1758FF;
+}
+
+.insideSportsContainer:hover svg path{
+    fill: #1758FF;
 }
 
 
@@ -601,83 +631,11 @@ button.evnButton {
 
 /* Explorer End */
 
-/* Handisport start  */
-.backcomp1 {
-    background-image: url('../img/backpap_2.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    height: 60em;
-    overflow: hidden;
-    margin-top: 10em;
-}
-
-.infoHandi {
-    margin: 7em 0 0 7em;
-}
-
-.titleHandi>h1 {
-    font-family: Monument Extended UltraBold;
-    font-size: 70px;
-    color: #171c4f;
-}
-
-.textHandi>p {
-    font-family: Qualta-Bold;
-    font-size: 31px;
-    width: 37em;
-    color: #171c4f;
-
-}
-
-.slideshow-handisport > img {
-    position: absolute;
-    bottom: -150px;
-    right: 0;
-    width: 45em;
-}
-
-.handiButton {
-    font-family: Qualta-Bold;
-    font-size: 20px;
-    background-color: #171c4f;
-    border: none;
-    color: white;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    height: 50px;
-    width: 11em;
-    cursor: pointer;
-}
-
-/* Handisport end  */
-
-
-
-
-.insideSportsContainer {
-    cursor: pointer;
-}
-
-.insideSportsContainer:hover {
-    color: red;
-}
-
-.insideSportsContainer:hover svg path {
-    fill: red;
-}
+/* Niveau */
 
 select#lvl {
     height: 30px;
     border-radius: 5px;
     color: #1758FF;
     outline: none;
-}
-
-.searchBarPerso {
-    width: 60em !important;
 }

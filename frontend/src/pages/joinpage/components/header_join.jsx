@@ -1,9 +1,9 @@
 import React from 'react';
-import Logo from '../atomes/logo';
-import Router from '../atomes/router';
-import Account from '../atomes/account'
-import PlayJoin from '../atomes/play_join'
-import Sports from '../atomes/sport';
+import Logo from '../../homepage/atomes/logo';
+import RouterJoin from './router_join';
+import Account from '../../homepage/atomes/account'
+import PlayJoin from './play_join'
+import Sports from '../../homepage/atomes/sport';
 
 export const HeaderJoin = () => {
     return (
@@ -11,7 +11,7 @@ export const HeaderJoin = () => {
             <div className='header' >
                 <div className='logoAccount' >
                     <Logo />
-                    <Router />
+                    <RouterJoin />
                     <Account />
                 </div>
 
