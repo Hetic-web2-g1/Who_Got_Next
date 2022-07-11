@@ -1,6 +1,7 @@
 import React from "react";
 import { FavSports } from "../sidebar/usersports";
 import '../sidebar/Navbar.css';
+import { Link } from "react-router-dom";
 
 export const Favsport = () => {
 
@@ -11,7 +12,7 @@ export const Favsport = () => {
                 <div className='favsport'>Choisissez vos sports favoris</div>
                 <div>Indiquez les sports que vous souhaitez pratiquer souvent</div>
                 </div>
-                <div className='grid'>
+                <div className='griddy'>
                 {FavSports.map((item, index) => {
               return (
               <div className='box'>
@@ -22,8 +23,10 @@ export const Favsport = () => {
             })}
                 </div>
                 <div className='box2'>
-                <span className="spam">Annuler</span>
-                <div>Enregistrer</div>
+                <Link to='/landingpage' className="spam">Annuler</Link>
+                <div className="enregistre">
+                <Link to='/landingpage' >Enregistrer</Link>
+                </div>
                 </div>
               </div>
   );

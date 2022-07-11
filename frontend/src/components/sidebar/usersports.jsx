@@ -2,6 +2,9 @@ import React from 'react';
 
 
 export const UserData = [
+
+    
+
     {
     title:'Rugby',
     path: '/',
@@ -10,6 +13,7 @@ export const UserData = [
     cName: 'nav-text2',
     chev: '../../../public/assets/chevron-down.svg',
     ccname:'sportpage',
+    idname:'level'
     },
 
     {
@@ -20,6 +24,7 @@ export const UserData = [
       cName: 'nav-text2',
       chev: '../../../public/assets/chevron-down.svg',
       ccname:'sportpage',
+      idname:'level'
     },  
     {
       title:'Basketball',
@@ -29,6 +34,7 @@ export const UserData = [
       cName: 'nav-text2',
       chev: '../../../public/assets/chevron-down.svg',
       ccname:'sportpage',
+      idname:'level'
     },
 
     {
@@ -38,6 +44,7 @@ export const UserData = [
         level:"",
         cName:'addsport',
         ccname:'addersport',
+        idname:'none'
     }
 ]
 
