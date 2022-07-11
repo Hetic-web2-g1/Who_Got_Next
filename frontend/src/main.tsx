@@ -7,7 +7,6 @@ import Private from "./pages/Private/private"
 import PrivateHome from "./pages/Private/PrivateHome/PrivateHome"
 import App from './App';
 import Evenement from './pages/evenement';
-import JoinGroup from './pages/joingroup';
 import Join from './join';
 import MapPage from "./pages/map";
 import LandingPage from './pages/landingPage';
@@ -30,7 +29,6 @@ ReactDOM.createRoot(container).render(
           <Route path="/private/private-home" element={<PrivateHome />} />
         </Route>
         <Route path="evenement" element={<Evenement />} />
-        <Route path="joingroup" element={<JoinGroup />} />
         <Route path="landingPage" element={<LandingPage />} />
         <Route path="map" element={<MapPage />} />
       </Routes>
