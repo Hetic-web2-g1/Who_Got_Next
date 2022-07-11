@@ -33,8 +33,8 @@ export const ForgotPassword = () => {
 
     return (
       <main>
-        <div className='grid-container'>
-          <div className='containerz flex'>
+        <div id="authentification-ui">
+          <div className='left-container'>
 
             <div className='connect-container'>
               <div className='img-container'>
@@ -67,7 +67,7 @@ export const ForgotPassword = () => {
           
           </div>
 
-          <div className='r-image-container'>
+          <div className='right-container'>
             <img src="./../../../../public/assets/right-login.png" alt="" />
           </div>
         </div>
