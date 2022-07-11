@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useState } from "react";
-import searchWhite from "../search-white.svg";
+import searchWhite from "../../../../public/assets/search-white.svg";
 import "./styles.css";
 
 const SearchBarDropdown = ({ options, onInputChange, mapRef }) => {
