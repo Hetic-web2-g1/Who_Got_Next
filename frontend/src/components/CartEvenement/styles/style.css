@@ -38,6 +38,7 @@
     text-align: left;
     column-gap: 24px;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .image {
@@ -57,7 +58,7 @@
 }
 
 
-.title {
+.evenement_title {
     margin: 0;
     font-family: MonumentBold;
     font-size: 14px;
