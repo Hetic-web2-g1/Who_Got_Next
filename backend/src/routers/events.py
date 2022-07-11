@@ -2,7 +2,6 @@ from uuid import UUID
 from fastapi import APIRouter, HTTPException, Depends
 from typing import List
 
-from utils.error_handelers import check_no_data
 from utils.firebase import SecurityCheck
 from database.db_engine import engine
 from schema.event import Event, EventCreate
