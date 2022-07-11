@@ -1,9 +1,8 @@
 import React from "react";
-import { FavSports } from "../sidebar/usersports";
 import '../sidebar/Navbar.css';
 import { UserData } from "../sidebar/usersports";
 import { Link } from 'react-router-dom';
-import Favsport from "../favsport";
+import Favsport from "../favsport/index";
 import { useState } from "react";
 
 

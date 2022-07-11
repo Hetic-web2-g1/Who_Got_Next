@@ -89,7 +89,7 @@
     z-index: 3;
     margin-top: -1vh;
     width: 100%;
-    height: 100.3vh;
+    height: 101%;
     position: absolute;
 }
 
@@ -118,6 +118,16 @@
     border-radius: 8px;
   }
   
+  .nav-text2{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    width: 133px;
+    height: 99.01px;
+    border-radius: 8px;
+  }
   .nav-text a  {
     text-decoration: none;
     width: 100%;
@@ -142,7 +152,7 @@
   }
   .username{
     font-size: 40px;
-    font-family: 'Monument Condensed';
+    font-family: Monument Extended Regular;
     color: #1758FF;
   }
 
@@ -165,7 +175,6 @@
     position: absolute; */
     padding: 0 6% 0px 0;
   }
-
   .sidebar_back-link {
     display: flex;
     font-family: QualtaRegular;
@@ -186,153 +195,122 @@
     flex-direction: column;
   }
 
-.griddy{
-  display: grid;
-  grid-template-columns: repeat(5, auto);
-  height: 60vh;
-  /* margin-top: 40px; */
-  justify-items: center;
-  align-items: center;
-}
-
-.box{
-  display: flex;
-  flex-direction: column;
-}
-.box2{
-  display: flex;
-  justify-content: space-around;
-  /* margin-top: 40px; */
-
-}
-.sportpage{
-  display: flex;
-  border: 1px solid #E3E4E8;
-  border-radius: 7px;
-  align-items: center;
-  color: #1758FF;
-  width: 100%;
-  justify-content: center;
-}
-
-/* #drop{
-  height: 40px;
-  position: relative;
-}
-.dropdowncontent{
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  top: 107%;
-  border: 1px solid #E3E4E8;
-  border-radius: 10px;
-  width: 100%;
-}
-.dropdowncontent h4 {
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  font-family: 'Qualta';
-  font-size:14px;
-  width: 100%;
-  
-}
-#drop:hover .dropdowncontent{
-  display: block;
-}
-.dropdown-content a:hover {background-color: #f1f1f1} */
-
-
-#level{
-  height: auto;
-  color: #1758FF;
-  width: 100%;
-  border: none;
-  background-color:#F7F7FC
-}
-
-.dhead{
-  display: flex;
-  justify-content: space-between;
-}
-
-#none{
-  display: none;
-}
-
-  .favsport{
-    font-family: "Monument Condensed";
-    font-size: 28px;
-    color: #1758FF;
-  }
-  
-  .ed{
-    /* padding-left: 5%; */
-    /* padding-top: 3%; */
-  }
-
-  a{
-    text-decoration: none;
-  }
-  .enregistre > *{
-    color: white;
-    font-family: 'Qualta';
-  }
-  .box2 > div{
-    width: 150px;
-        border-radius: 25px;
-    background-color: #1758FF;
-    /* text-align: center; */
-    display: flex;
-    justify-content: center;
+  .griddy{
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    height: 60vh;
+    /* margin-top: 40px; */
+    justify-items: center;
     align-items: center;
-    color: white;
   }
 
-  .box2 > .spam{
-    color: #1758FF;
-    font-family: 'Qualta-Bold';
-  }
-
-
-  .margfix{
-    margin-top: 28px;
-  }
-
-  .favsport + div{
-    font-family: 'Qualta';
-  }
-  .addsport{
-    border: 2px dashed #1758FF;
-    list-style-type: none;
-  }
-
-  .sportadd{
+  .box{
     display: flex;
     flex-direction: column;
-    text-decoration: none;
+  }
+  .box2{
+    display: flex;
+    justify-content: space-around;
+    /* margin-top: 40px; */
+  
+  }
+  .sportpage{
+    display: flex;
+    border: 1px solid #E3E4E8;
+    border-radius: 7px;
+    align-items: center;
+    color: #1758FF;
+    width: 100%;
+    justify-content: center;
   }
 
-  .sportadd > img{
-    height: 50px;
-    margin-bottom: 15%;
+  #level{
+    height: auto;
+    color: #1758FF;
+    width: 100%;
+    border: none;
+    background-color:#F7F7FC
   }
 
-
-  .addsport > img{
-    height: 200px;
+  .dhead{
+    display: flex;
+    justify-content: space-between;
   }
-
+  
+  #none{
+    display: none;
+  }
+  
+    .favsport{
+      font-family: "MonumentRegular";
+      font-size: 28px;
+      color: #1758FF;
+    }
+    .favsport > div{
+      font-family: "MonumentRegular";
+      font-size: 28px;
+      color: #1758FF;
+    }
+  
+    a{
+      text-decoration: none;
+    }
+    .enregistre > *{
+      color: white;
+      font-family: 'Qualta';
+    }
+    .box2 > div{
+      width: 150px;
+          border-radius: 25px;
+      background-color: #1758FF;
+      /* text-align: center; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+  
+    .box2 > .spam{
+      color: #1758FF;
+      font-family: 'Qualta-Bold';
+    }
+  
+  
+    .margfix{
+      margin-top: 28px;
+    }
+  
+    .favsport + div{
+      font-family: 'Qualta';
+    }
+    .addsport{
+      border: 2px dashed #1758FF;
+      list-style-type: none;
+    }
+  
+    .sportadd{
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+  
+    .sportadd > img{
+      height: 50px;
+      margin-bottom: 15%;
+    }
+  
+  
+    .addsport > img{
+      height: 200px;
+    }
   .account{
     display: flex;
-    width: 20%;
+    gap: 1em;
     padding: 10px;
     border-radius: 25px;
     flex-direction: row;
     background-color: white;
-    font-family: 'Monument Condensed';
+    font-family: Monument Extended Regular;
     font-size: 12px;
     align-items: center;
     justify-content: space-between;
@@ -341,7 +319,7 @@
 
   .deco{
     align-items: center;
-    padding-top: 70px;
+    padding-top: 4%;
     text-decoration: none;
   }
   
@@ -361,7 +339,18 @@
     justify-content: space-around;
   }
 
-
+  .spam {
+    width: 85px;
+    height: 40px;
+    text-align: center;
+    font-family: 'Qualta-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #474D85;
+    text-decoration: none;
+  }
   
   .spam {
     width: 85px;
@@ -427,7 +416,6 @@
   font-family: 'Qualta';
   font-size: 18px;
 }
-
 
 @media screen and (max-width:1200px) { 
   .nav-menu.active{
