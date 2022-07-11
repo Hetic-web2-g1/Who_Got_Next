@@ -25,21 +25,18 @@ def get_all_events():
 @router.get("/{event_id}", response_model=Event)
 def get_event(event_id: str, uid: str, authentified_user: str = Depends(SecurityCheck)):
     with engine.begin() as conn:
-        if authentified_user.id == uid:
-            event = EventManager.get_event_by_id(conn, event_id)
-            if event is None:
-                raise HTTPException(404, "Event not found")
-            else:
-                return event
+        event = EventManager.get_event_by_id(conn, event_id)
+        if event is None:
+            raise HTTPException(404, "Event not found")
         else:
-            raise HTTPException(403, "Action not permitted")
+            return event
 
 
 # Create event
 @router.post("/create")
 def create_event(event: EventCreate, uid: str, authentified_user: str = Depends(SecurityCheck)):
     with engine.begin() as conn:
-        if authentified_user.id == uid:
+        if authentified_user.id == uid or authentified_user.is_admin:
             return EventManager.create_event(conn, event)
         else:
             raise HTTPException(409, "Event already exists")
@@ -49,10 +46,10 @@ def create_event(event: EventCreate, uid: str, authentified_user: str = Depends(
 @router.put("/update/{id}")
 def update_event(event: EventCreate, event_id: UUID, uid: str, authentified_user: str = Depends(SecurityCheck)):
     with engine.begin() as conn:
-        if authentified_user.id == uid:
+        if authentified_user.id == uid or authentified_user.is_admin:
             return EventManager.update_event(conn, event, event_id)
         else:
-            raise HTTPException(409, "Event already exists")
+            raise HTTPException(404, "Event not found")
 
 
 # Delete one event by id

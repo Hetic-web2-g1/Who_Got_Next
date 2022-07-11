@@ -53,7 +53,7 @@ def create_user(create_user: UserCreate, bearer_token: str = Depends(APIKeyHeade
 @router.put("/update/{uid}")
 def update_user(user: UserCreate, uid: str, authentified_user: str = Depends(SecurityCheck)):
     with engine.begin() as conn:
-        if authentified_user.id == uid:
+        if authentified_user.id == uid or authentified_user.is_admin:
             return UserManager.update_user(conn, user, uid)
         else:
             raise HTTPException(404, "User not found")
