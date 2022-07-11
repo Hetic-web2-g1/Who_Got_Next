@@ -14,6 +14,7 @@ export const CartEvenement = ({
   capacity,
   level,
 }) => {
+  const formated_date = new Date(date)
   return (
     <div className="cart-container">
       <div className="heading">
@@ -36,17 +37,17 @@ export const CartEvenement = ({
         )}
         <div className="heading_details">
           <span className="sport">{sport}</span>
-          <h4 className="title">{title}</h4>
+          <h4 className="evenement_title">{title}</h4>
           <span className="place">{place}</span>
         </div>
       </div>
       <div className="details">
         <div>
-          {date?.getDate()} {date?.toLocaleString("default", { month: "long" })}{" "}
+          {formated_date?.getDate()} {formated_date?.toLocaleString("default", { month: "long" })}{" "}
           <br /> <span>Date</span>
         </div>
         <div>
-          {date?.getHours()} {date?.getMinutes()} <br /> <span>Heure</span>
+          {formated_date?.getHours()} {formated_date?.getMinutes()} <br /> <span>Heure</span>
         </div>
         <div>
           {capacity} <br /> <span>Capacité</span>
@@ -71,8 +72,8 @@ CartEvenement.propTypes = {
   sport: PropTypes.string,
   title: PropTypes.string,
   place: PropTypes.string,
-  date: PropTypes.instanceOf(Date),
-  capacity: PropTypes.number,
+  date: PropTypes.string,
+  capacity: PropTypes.string,
   level: PropTypes.string,
 };
 
