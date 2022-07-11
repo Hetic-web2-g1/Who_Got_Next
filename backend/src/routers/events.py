@@ -1,8 +1,9 @@
 from uuid import UUID
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException, Depends
 from typing import List
 
 from utils.error_handelers import check_no_data
+from utils.firebase import SecurityCheck
 from database.db_engine import engine
 from schema.event import Event, EventCreate
 from manager import EventManager
@@ -23,29 +24,43 @@ def get_all_events():
 
 # Get event by id
 @router.get("/{event_id}", response_model=Event)
-def get_event(event_id: str):
+def get_event(event_id: str, uid: str, authentified_user: str = Depends(SecurityCheck)):
     with engine.begin() as conn:
-        data = EventManager.get_event_by_id(conn, event_id)
-        check_no_data(data, "event")
-        return data
+        if authentified_user.id == uid:
+            event = EventManager.get_event_by_id(conn, event_id)
+            if event is None:
+                raise HTTPException(404, "Event not found")
+            else:
+                return event
+        else:
+            raise HTTPException(403, "Action not permitted")
 
 
 # Create event
 @router.post("/create")
-def create_event(event: EventCreate):
+def create_event(event: EventCreate, uid: str, authentified_user: str = Depends(SecurityCheck)):
     with engine.begin() as conn:
-        EventManager.create_event(conn, event)
+        if authentified_user.id == uid:
+            return EventManager.create_event(conn, event)
+        else:
+            raise HTTPException(409, "Event already exists")
 
 
 # Update event by id
-@ router.put("/update/{id}")
-def update_event(event: EventCreate, id: UUID):
+@router.put("/update/{id}")
+def update_event(event: EventCreate, event_id: UUID, uid: str, authentified_user: str = Depends(SecurityCheck)):
     with engine.begin() as conn:
-        EventManager.update_event(conn, event, id)
+        if authentified_user.id == uid:
+            return EventManager.update_event(conn, event, event_id)
+        else:
+            raise HTTPException(409, "Event already exists")
 
 
 # Delete one event by id
-@ router.delete("/delete/{event_id}", response_model=bool)
-def delete_event(event_id: str):
+@router.delete("/delete/{event_id}", response_model=bool)
+def delete_event(event_id: UUID, uid: str, authentified_user: str = Depends(SecurityCheck)):
     with engine.begin() as conn:
-        EventManager.delete_event_by_id(conn, event_id)
+        if authentified_user.id == uid or authentified_user.is_admin:
+            return EventManager.delete_event_by_id(conn, event_id)
+        else:
+            raise HTTPException(403, "Action not permitted")
