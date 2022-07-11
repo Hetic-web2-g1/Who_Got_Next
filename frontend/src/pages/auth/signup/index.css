@@ -22,7 +22,7 @@ div {
     margin: 0;
 }
 
-input {
+.flex-field input {
     height: 30px;
 }
 

@@ -56,12 +56,12 @@ export const ForgotPassword = () => {
                   <div className='flex' style={{paddingTop: "15px"}}>
                     <button>Submit</button>
                   </div>
+                  {error}
+                  {message}
+                  <div className='flex' style={{paddingTop: "15px", fontSize: "12px"}}>
+                    <Link to="/login">Se connecter ?</Link>
+                  </div>
               </form>
-              {error}
-              {message}
-              <div className='flex' style={{paddingTop: "15px", fontSize: "12px"}}>
-                <Link to="/login">Se connecter ?</Link>
-              </div>
 
             </div>
           

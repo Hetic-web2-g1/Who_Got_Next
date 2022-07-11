@@ -181,7 +181,7 @@ export const Signup = () => {
               <form className='form' ref={formRef} onSubmit={handleForm}>
                   <div className='hidden flex-field'>
                       <label htmlFor="prenom">Pseudo</label>
-                      <input onChange={e => setPseudo(e.target.value)} placeholder='Pseudo' type="text" />
+                      <input onChange={e => setPseudo(e.target.value)} placeholder='Pseudo' />
                   </div>
 
                   <div className='flex-field margin'>
