@@ -8,12 +8,7 @@ export default function PrivateHome() {
     const [error, setError] = useState("");
     const { currentUser, logout } = useAuth();
     const navigate = useNavigate();
-
-    // if (!currentUser) {
-    //     useNavigate("/")
-    // }
-    console.log('CURRENT USER', currentUser);
-
+    
     async function handleLogout() {
         setError('')
 
@@ -34,16 +29,16 @@ export default function PrivateHome() {
             <div style={{paddingTop: "30px"}}>
                 {error}
                 <div style={{paddingTop: "30px"}}>
-                    <strong>Pseudo: </strong> {currentUser.pseudo}
+                    {/* <strong>Pseudo: </strong> {currentUser.pseudo} */}
                 </div>
                 <div style={{paddingTop: "30px"}}>
                     <strong>Email: </strong> {currentUser.email}
                 </div>
                 <div style={{paddingTop: "30px"}}>
-                    <strong>Date de naissance: </strong> {currentUser.date_of_birth}
+                    {/* <strong>Date de naissance: </strong> {currentUser.date_of_birth} */}
                 </div>
                 <div style={{paddingTop: "30px"}}>
-                    <strong>Sexe: </strong> {currentUser.sexe}
+                    {/* <strong>Sexe: </strong> {currentUser.sexe} */}
                 </div>
                 <div style={{paddingTop: "30px"}}>
                     <Link to="/private/update-profile">Update profile</Link>

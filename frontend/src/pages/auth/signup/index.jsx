@@ -85,9 +85,6 @@ export const Signup = () => {
         await signUp(
           email,
           password,
-          pseudo,
-          age,
-          sexe
         )
         await signUpBack(
           email,
