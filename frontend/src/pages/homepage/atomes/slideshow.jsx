@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import img1 from '../img/comp1.png'
 import img2 from '../img/comp2.png'
 
@@ -30,7 +29,7 @@ class Slideshow extends React.Component {
     }
 
     componentDidMount() {
-        setInterval(this.switchImage, 5000);
+        setInterval(this.switchImage, 8000);
     }
 
     render() {

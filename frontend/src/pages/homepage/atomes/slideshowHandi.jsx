@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import img1 from '../img/handi1.png'
-import img2 from '../img/handi2.png'
+import image1 from '../img/handi1.png'
+import image2 from '../img/handi2.png'
 
 class SlideshowHandi extends React.Component {
     constructor(props) {
@@ -10,8 +10,8 @@ class SlideshowHandi extends React.Component {
         this.state = {
             currentImage: 0,
             images: [
-                img1,
-                img2
+                image1,
+                image2
             ]
         };
     }

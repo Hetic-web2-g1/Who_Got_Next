@@ -80,6 +80,7 @@ li>a {
     color: inherit;
     list-style-type: none;
     text-decoration: none;
+    color: #171c4f;
 
 
 }
@@ -120,6 +121,7 @@ a {
 /* Search Filter */
 label {
     font-family: Qualta-Bold;
+    color: #171c4f;
 }
 
 .play {
@@ -573,12 +575,15 @@ button.form-next {
 .titleEvn>h3 {
     font-family: Monument Extended UltraBold;
     font-size: 45px;
+    color: #171c4f;
     margin: 0;
+    width:16em ;
 }
 
 .textEvn>p {
     font-family: Qualta-Bold;
     font-size: 20px;
+    color: #171c4f;
     width: 40em;
     margin: 0;
 }
@@ -597,6 +602,16 @@ button.evnButton {
     height: 50px;
     width: 11em;
     cursor: pointer;
+}
+
+@media only screen and (max-width:1750px) {
+    .explorer {
+        display: grid;
+        grid-template-columns: 1fr ;
+        align-items: center;
+        justify-items: center;
+    }
+    
 }
 
 /* Explorer End */
@@ -664,11 +679,11 @@ button.evnButton {
 }
 
 .insideSportsContainer:hover {
-    color: red;
+    color: #1758FF;
 }
 
 .insideSportsContainer:hover svg path {
-    fill: red;
+    fill: #1758FF;
 }
 
 select#lvl {
@@ -681,3 +696,10 @@ select#lvl {
 .searchBarPerso {
     width: 60em !important;
 }
+
+
+/* responsive */
+
+@media only screen and (max-width: 1750px) {
+   
+  }
