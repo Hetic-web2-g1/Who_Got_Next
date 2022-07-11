@@ -1,14 +1,11 @@
 from datetime import datetime, date
 from typing import List
 from pydantic import BaseModel
-from uuid import UUID
 from typing import Optional
 
 
 class UserCreate(BaseModel):
-    is_admin: Optional[bool] = False
     pseudo: str
-    password: str
     email: str
     description: Optional[str] = None
     sport_level: Optional[int] = None
@@ -21,6 +18,7 @@ class UserCreate(BaseModel):
 
 
 class User(UserCreate):
-    id: UUID
+    id: str
     created_at: datetime
     edited_at: datetime
+    is_admin: Optional[bool] = False

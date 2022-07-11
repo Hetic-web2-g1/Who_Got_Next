@@ -5,12 +5,12 @@ from uuid import uuid4
 
 from database.db_engine import metadata
 
+
 user_table = Table(
     "user",
     metadata,
-    Column('id', UUID(as_uuid=True),
+    Column('id', String(),
            primary_key=True,
-           default=uuid4,
            unique=True
            ),
     Column('is_admin', Boolean),
@@ -18,7 +18,6 @@ user_table = Table(
     Column('pseudo', String(),
            unique=True
            ),
-    Column('password', String()),
     Column('email', String(),
            unique=True
            ),
