@@ -1,7 +1,9 @@
 import React from "react";
 import "./styles/style.css";
+import "../../fonts/Qualta/Qualta-Bold.ttf";
+import "../../fonts/Qualta/Qualta-Regular.ttf";
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export const LandingRedirectionButton = ({goto, innerButton}) => {
   return (
@@ -11,13 +13,21 @@ export const LandingRedirectionButton = ({goto, innerButton}) => {
       </div>
       <div className="inscrip">
         <span>
-          Vous n'avez pas encore de compte ? 
-          <Link to={"signup"} href=""> Inscrivez-vous</Link>
+          Vous n'avez pas encore de compte ?
+          <Link
+            to={{
+              pathname: "/signup",
+            }}
+            href=""
+          >
+            {" "}
+            Inscrivez-vous
+          </Link>
         </span>
       </div>
     </div>
   );
-}
+};
 
 LandingRedirectionButton.propTypes = {
     goto: PropTypes.string,

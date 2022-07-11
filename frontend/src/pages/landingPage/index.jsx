@@ -1,6 +1,8 @@
 import React from 'react'
 import Banderole from '../../components/banderole';
 import LandingRedirectionButton from '../../components/landingRedirectionButton';
+import "../../fonts/Monument/PPMonumentExtended-Black.otf";
+import "../../fonts/Monument/PPMonumentExtended-Regular.otf";
 import "./styles/style.css";
 
 export const LandingPage = () => {
@@ -16,11 +18,9 @@ export const LandingPage = () => {
                     </div>
                     <LandingRedirectionButton goto={"login"} innerButton={"Se connecter"}/>
                 </div>
-                <LandingRedirectionButton goto={"login"}/>
+                <Banderole/>
             </div>
-
-            <Banderole/>
-            </div>
+        </div>
     )
 }
 
