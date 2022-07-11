@@ -9,7 +9,8 @@ import Map, {
   ScaleControl,
   GeolocateControl,
 } from "react-map-gl";
-import PopupContent from "./PopupContent"
+import PopupContent from "./PopupContent";
+import SearchBarDropdown from "./SearchBarDropdown";
 import Pin from "./Marker";
 import "./styles.css";
 
@@ -21,6 +22,7 @@ const MapRender = ({ userLongitude, userLatitude }) => {
   const [lat, setLat] = useState(userLatitude ? userLatitude : 0);
   const [zoom, setZoom] = useState(15);
   const [fields, setFields] = useState();
+  const [searchOptions, setSearchOptions] = useState();
   const [popupInfo, setPopupInfo] = useState(null);
   const southWest = new mapboxgl.LngLat(-5.0, 42.5);
   const northEast = new mapboxgl.LngLat(9.56, 51.15);
@@ -64,40 +66,58 @@ const MapRender = ({ userLongitude, userLatitude }) => {
     }
   }
 
+  const onInputChange = (event) => {
+    const newOptions = fields?.filter((option) =>
+      option.facility_name
+        .toLowerCase()
+        .includes(event.target.value.toLowerCase())
+    );
+    setSearchOptions(newOptions);
+  };
+
   return (
     <>
-      <Map
-        ref={mapRef}
-        initialViewState={{
-          latitude: lat,
-          longitude: lng,
-          zoom: zoom,
-          maxBounds: bounds,
-        }}
-        style={{ width: "100%", height: "100vh" }}
-        mapStyle="mapbox://styles/mapbox/light-v10"
-        mapboxAccessToken={TOKEN}
-        onMoveEnd={(e) => onMoveMapEnd(e.viewState.zoom)}
-      >
-        <GeolocateControl position="top-left" />
-        <FullscreenControl position="top-left" />
-        <NavigationControl position="top-left" />
-        <ScaleControl />
+      <div className="heroImg">
+        <Map
+          ref={mapRef}
+          initialViewState={{
+            latitude: lat,
+            longitude: lng,
+            zoom: zoom,
+            maxBounds: bounds,
+          }}
+          style={{ width: "100%", height: "100vh" }}
+          mapStyle="mapbox://styles/mapbox/light-v10"
+          mapboxAccessToken={TOKEN}
+          onMoveEnd={(e) => onMoveMapEnd(e.viewState.zoom)}
+        >
+          <div className="searchHero">
+            <SearchBarDropdown
+              options={searchOptions}
+              onInputChange={onInputChange}
+              mapRef={mapRef}
+            />
+          </div>
+          <GeolocateControl position="top-left" />
+          <FullscreenControl position="top-left" />
+          <NavigationControl position="top-left" />
+          <ScaleControl />
 
-        {pins}
+          {pins}
 
-        {popupInfo && (
-          <Popup
-            anchor="top"
-            longitude={popupInfo.longitude}
-            latitude={popupInfo.latitude}
-            onClose={() => setPopupInfo(null)}
-            maxWidth={"500px"}
-          >
-            <PopupContent content={popupInfo}/>
-          </Popup>
-        )}
-      </Map>
+          {popupInfo && (
+            <Popup
+              anchor="top"
+              longitude={popupInfo.longitude}
+              latitude={popupInfo.latitude}
+              onClose={() => setPopupInfo(null)}
+              maxWidth={"500px"}
+            >
+              <PopupContent content={popupInfo} />
+            </Popup>
+          )}
+        </Map>
+      </div>
     </>
   );
 };
