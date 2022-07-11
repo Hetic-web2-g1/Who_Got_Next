@@ -29,7 +29,6 @@ export function AuthProvider({ children }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
       })
-      // setCurrentUser(body);
     };
 
     const login = (email, pwd) => signInWithEmailAndPassword(auth, email, pwd);

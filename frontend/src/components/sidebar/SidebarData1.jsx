@@ -1,55 +1,47 @@
-import React from 'react';
-import * as FiIcons from 'react-icons/fi';
-
+import React from "react";
+import * as FiIcons from "react-icons/fi";
 
 export const SidebarData1 = [
   {
-    title: 'Informations du compte',
-    path: '/',
+    title: "Informations du compte",
+    path: "/",
     icon: <FiIcons.FiUser />,
-    cName: 'nav-text'
+    cName: "nav-text",
   },
   {
-    title: 'Sports',
-    path: '/',
+    title: "Sports",
+    path: "/sports",
     icon: <FiIcons.FiUser />,
-    cName: 'nav-text'
+    cName: "nav-text",
   },
-  
-  
 ];
 
 export const SidebarData2 = [
- 
   {
-    title: 'Crées',
-    path: '/',
+    title: "Crées",
+    path: "/",
     icon: <FiIcons.FiSend />,
-    cName: 'nav-text'
+    cName: "nav-text",
   },
   {
-    title: 'Rejoints',
-    path: '/',
+    title: "Rejoints",
+    path: "/",
     icon: <FiIcons.FiUsers />,
-    cName: 'nav-text'
+    cName: "nav-text",
   },
-  
 ];
 
 export const SidebarData3 = [
- 
-  
   {
-    title: 'Nous contacter',
-    path: '/',
+    title: "Nous contacter",
+    path: "/",
     icon: <FiIcons.FiHelpCircle />,
-    cName: 'nav-text'
+    cName: "nav-text",
   },
   {
-    title: 'Mentions légales',
-    path: '/',
+    title: "Mentions légales",
+    path: "/",
     icon: <FiIcons.FiClipboard />,
-    cName: 'nav-text'
-  }
-  
+    cName: "nav-text",
+  },
 ];

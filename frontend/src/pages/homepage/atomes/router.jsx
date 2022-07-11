@@ -6,16 +6,16 @@ import Evenement from "../../evenement";
 function Router() {
   return (
     <>
-      <div className="navbar">
-        <ul className="list">
-          <li>
-            <Link to="/"> Jouer </Link>{" "}
+      <div className="router">
+        <ul className="list-router">
+          <li className="homepage">
+            <Link to="/homepage" className="activelink"> Jouer </Link>{" "}
           </li>
-          <li>
+          <li className="join">
             <Link to="/join"> Rejoindre </Link>{" "}
           </li>
-          <li>
-            <Link to="/event"> Evenements </Link>{" "}
+          <li className="event">
+            <Link to="/evenement"> Evenements </Link>{" "}
           </li>
         </ul>
       </div>

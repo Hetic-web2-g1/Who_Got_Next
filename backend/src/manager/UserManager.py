@@ -1,4 +1,3 @@
-from uuid import UUID
 import sqlalchemy as sa
 from sqlalchemy.engine import Connection
 
@@ -37,7 +36,7 @@ def create_user(conn: Connection, user: UserCreate, uid: str | None = None) -> U
     return User(**row)
 
 
-def update_user(conn: Connection, user: UserCreate, id: UUID) -> User | None:
+def update_user(conn: Connection, user: UserCreate, id: str) -> User | None:
     row = db_srv.update_object(conn, 'user', id, user)
     return User(**row)
 

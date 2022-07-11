@@ -22,7 +22,7 @@ def get_all_fields():
 
 # Get field by id
 @router.get("/{field_id}", response_model=Field)
-def get_field(field_id: str, uid: str, authentified_user=Depends(SecurityCheck)):
+def get_field(field_id: str):
     with engine.begin() as conn:
         field = FieldManager.get_field_by_id(conn, field_id)
         if field is None:

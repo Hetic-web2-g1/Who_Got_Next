@@ -46,9 +46,29 @@ html {
     margin: 24px 10px 24px 10px;
 }
 
+.logoHome {
+    width: 5em;
+}
+
+.logoHome>img {
+    width: 100%;
+}
+
 /* End Logo */
 
 /* Router */
+.homepage>a {
+    color: #1758FF;
+}
+
+.list-router {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5em;
+    padding: 0 !important;
+}
+
 .list {
     display: flex;
     flex-direction: row;
@@ -78,9 +98,15 @@ a {
 
 /* Account */
 
+.account-logo {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    gap: 1em;
+}
 
-
-.account>p {
+.account-logo>p {
     font-family: Monument Extended Regular;
     color: #1758FF
 }
@@ -138,7 +164,7 @@ label {
     flex-direction: column;
 }
 
-input[type=text] {
+.searchInput {
     height: 17px;
     border: 0;
     width: 15EM;
@@ -148,7 +174,7 @@ input[type=text] {
     transition: box-shadow 0.3s;
 }
 
-input[type=text]:focus {
+.searchInput:focus {
     outline: none;
     box-shadow: -8px 10px 0px -7px #4EA6EA, 8px 10px 0px -7px #4EA6EA;
 }
@@ -264,8 +290,7 @@ input[type=text]:focus {
 .heroImg {
     display: flex;
     justify-content: center;
-    position: absolute;
-    z-index: 100;
+    z-index: 1;
 }
 
 .searchHero {
@@ -285,13 +310,23 @@ input[type=text]:focus {
     border-radius: 136px;
     margin-top: 25px;
     margin-left: 20vw;
+    position: absolute;
+    z-index: 2;
 }
 
 .searchBar {
-    border-radius: 8px;
-    background-color: transparent;
-    border: none;
-    width: 30em;
+    height: 17px;
+    border: 0;
+    width: 15EM;
+    margin-left: 1px;
+    box-shadow: -8px 10px 0px -7px #ebebeb, 8px 10px 0px -7px #ebebeb;
+    -webkit-transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s;
+}
+
+.searchBar:focus {
+    outline: none;
+    box-shadow: -8px 10px 0px -7px #4EA6EA, 8px 10px 0px -7px #4EA6EA;
 }
 
 .searchBtn {
@@ -307,6 +342,9 @@ input[type=text]:focus {
     gap: 10px;
     height: 50px;
     width: 11em;
+    position: absolute;
+    margin-left: 80%;
+    transform: translateY(-3.5vh);
 }
 
 
@@ -557,36 +595,92 @@ button.evnButton {
     gap: 10px;
     height: 50px;
     width: 11em;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 /* Explorer End */
 
+/* Handisport start  */
+.backcomp1 {
+    background-image: url('../img/backpap_2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 60em;
+    overflow: hidden;
+    margin-top: 10em;
+}
 
+.infoHandi {
+    margin: 7em 0 0 7em;
+}
 
-/* Hero end */
+.titleHandi>h1 {
+    font-family: Monument Extended UltraBold;
+    font-size: 70px;
+    color: #171c4f;
+}
 
-.insideSportsContainer{
+.textHandi>p {
+    font-family: Qualta-Bold;
+    font-size: 31px;
+    width: 37em;
+    color: #171c4f;
+
+}
+
+.slideshow-handisport > img {
+    position: absolute;
+    bottom: -150px;
+    right: 0;
+    width: 45em;
+}
+
+.handiButton {
+    font-family: Qualta-Bold;
+    font-size: 20px;
+    background-color: #171c4f;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+    width: 11em;
     cursor: pointer;
 }
 
-.insideSportsContainer:hover{
-    color: red;
+/* Handisport end  */
+
+
+
+
+.insideSportsContainer {
+    cursor: pointer;
 }
 
-.insideSportsContainer:hover svg path{
-    fill: red;
+.insideSportsContainer:hover {
+    color: #1758FF;
 }
 
-select#lvl{
+.insideSportsContainer:hover svg path {
+    fill: #1758FF;
+}
+
+select#lvl {
     height: 30px;
     border-radius: 5px;
     color: #1758FF;
     outline: none;
 }
 
-.searchBarPerso{
+.searchBarPerso {
     width: 60em !important;
 }
 
-
+.activelink{
+    color: #1758FF;
+}
