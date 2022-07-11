@@ -17,8 +17,6 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
 
-  fetch("http://localhost:8000/users/")        
-
     const [currentUser, setCurrentUser] = useState(null)
     const [loading, setLoading] = useState(true)
 

@@ -32,5 +32,5 @@ def update_event(conn: Connection, event: EventCreate, id: UUID) -> Event | None
     return db_srv.update_object(conn, 'event', id, event)
 
 
-def delete_event_by_id(conn: Connection, id: str) -> Event | None:
+def delete_event_by_id(conn: Connection, id: UUID) -> Event | None:
     return db_srv.delete_object(conn, 'event', id)
