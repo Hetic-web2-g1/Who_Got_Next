@@ -69,7 +69,7 @@
     height: 113px;
     
 }
- img {
+.imgContainer > img {
     border-radius: 50%;
  }
 
