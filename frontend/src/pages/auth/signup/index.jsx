@@ -2,58 +2,45 @@ import { React, useEffect, useState, useRef, createContext } from 'react'
 import './index.css'
 import jwt_decode from 'jwt-decode'
 import { DateTime } from "luxon";
-import { useNavigate } from 'react-router-dom';
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  onAuthStateChanged
-} from 'firebase/auth'
-import {auth} from '../../../firebase-config'
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../../../contexts/AuthContext';
 import LandingRedirectionButton
  from '../../../components/landingRedirectionButton'
-import {Link} from 'react-router-dom'
 
 
 export const Signup = () => {
   const userContext = createContext();
+  const [passwordShown, setPasswordShown] = useState(false);
   const [buttonTitle, setButtonTitle] = useState("S'inscrire");
+  const [isLogin, setIsLogin] = useState(true);
   const [validation, setValidation] = useState("");
-  const inputs = useRef([])
   const navigate = useNavigate();
-  
-  const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd);
-
-  const [currentUser, setCurrentUser] = useState();
-  const [loadingData, setLoadingData] = useState(true);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setCurrentUser(currentUser)
-      setLoadingData(false)
-    })
-    return unsubscribe;
-  }, [])
+  const { signUp } = useAuth();
+  const { signUpBack } = useAuth();
+  const { login } = useAuth();
+  const { loginBack } = useAuth();
   
   const [email, setEmail] = useState('');
-  const [prenom, setPrenom] = useState('');
+  const [pseudo, setPseudo] = useState('');
   const [sexe, setSexe] = useState('');
   const [age, setAge] = useState("");
-  const addInputs = el => {
-    if(el && !inputs.current.includes(el)){
-      inputs.current.push(el)
-    }
-  }
-
+  const [password, setPassword] = useState("");
+  
   const details = {
-    'prenom' : prenom,
+    'prenom' : pseudo,
     'email' : email,
     'sexe' : sexe,
     'age' : age,
   }
 
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
+
   // Login view
   useEffect (() => {
     if (window.location.pathname.includes('login')) {
+      setIsLogin(false);
       setButtonTitle('Se connecter');
       document.getElementById('title').innerHTML = 'Se connecter';
       let hiddenDiv = document.getElementsByClassName('hidden');
@@ -67,15 +54,15 @@ export const Signup = () => {
 
   const handleForm = async (e) => {
     e.preventDefault();
-
-    // Password validation (common signUp / signIn)
-    if ((inputs.current[1].value.length < 6)) {
-      setValidation("Votre mot de passe doit contenir au moins 6 caractères")
-      return;
-    }
-
+    
     // Validation signup
     if (window.location.pathname.includes('signup')) {
+
+      // Password validation
+      if ((password < 6)) {
+        setValidation("Votre mot de passe doit contenir au moins 6 caractères")
+        return;
+      }
 
       // Pseudo validation
       if (details.prenom === '') {
@@ -95,22 +82,45 @@ export const Signup = () => {
       }
 
       try {
-        const cred = await signUp(
-          inputs.current[0].value,
-          inputs.current[1].value
+        await signUp(
+          email,
+          password,
+        )
+        await signUpBack(
+          email,
+          pseudo,
+          age,
+          sexe
+        )
+        formRef.current.reset();
+        setValidation("");
+        navigate("/private/private-home")
+      } catch (err) {
+        if (err.code === "auth/email-already-in-use") {
+          setValidation("Email already used");
+        }
+        if (err.code === "auth/invalid-email") {
+          setValidation("Email format invalid");
+        }
+      }
+    }
+
+    if (window.location.pathname.includes('login')) {
+      try {
+        await login(
+          email,
+          password
+        )
+        await loginBack(
+          email,
+          loginBack
         )
         formRef.current.reset();
         setValidation("");
         navigate("/private/private-home")
 
-  
-      } catch (err) {
-        if (err.code === "auth/invalid-email") {
-          setValidation("Email format invalid");
-        }
-        if (err.code === "auth/email-already-in-use") {
-          setValidation("Email already used");
-        }
+      } catch {
+        setValidation("Impossible de se connecter, veuillez vérifier vos informations.")
       }
     }
   }
@@ -138,13 +148,11 @@ export const Signup = () => {
   }, []);
 
     return (
-      <main>
-        <div className='grid-container'>
-          <div className='containerz flex'>
-
+        <div id="authentification-ui">
+          <div className='left-container'>
             <div className='connect-container'>
               <div className='img-container'>
-                <img src="./../../../../public/assets/logo.svg" alt="logo" />
+                <img src="./../../../../public/assets/whogotnext_logo.svg" alt="logo" />
               </div>
 
               <div className='flex'>
@@ -171,22 +179,21 @@ export const Signup = () => {
               </div>
 
               <form className='form' ref={formRef} onSubmit={handleForm}>
-
                   <div className='hidden flex-field'>
-                      <label htmlFor="prenom">Prenom</label>
-                      <input onChange={e => setPrenom(e.target.value)} placeholder='Prenom' type="text" />
+                      <label htmlFor="prenom">Pseudo</label>
+                      <input onChange={e => setPseudo(e.target.value)} placeholder='Pseudo' type="text" />
                   </div>
 
                   <div className='flex-field margin'>
                     <label htmlFor="mail">Mail</label>
-                    <input onChange={e => setEmail(e.target.value)} ref={addInputs} placeholder='Entrez votre mail' type="email" />
+                    <input onChange={e => setEmail(e.target.value)} placeholder='Entrez votre mail' type="email" />
                   </div>
 
-                  <div className='flex-field margin'>
+                  <div className='flex-field password-field margin'>
                     <label htmlFor="password">Mot de passe</label>
                     <div className='inputwrapper'>
-                    <input ref={addInputs} className='input' placeholder='Entrez votre mot de passe' type="password" />
-                    <img src="./../../../../public/assets/eye.svg" alt="see password" />
+                    <input onChange={e => setPassword(e.target.value)} className='input' placeholder='Entrez votre mot de passe' type={passwordShown ? "text" : "password"} />
+                    <img onClick={togglePassword} src="./../../../../public/assets/eye.svg" alt="see password" style={{cursor: "pointer"}} />
                     </div>
                   </div>
 
@@ -206,21 +213,28 @@ export const Signup = () => {
                   
                   </div>
                   {/* <LandingRedirectionButton goto={"login"} innerButton={buttonTitle}/> */}
+                  <div className='flex' style={{paddingTop: "30px"}}>
                     <button>Submit</button>
+                  </div>
                   <p>
                     {validation}
                   </p>
+                  <div className='flex' style={{paddingTop: "15px"}}>
+                    <Link hidden={isLogin} to="/forgot-password">Vous avez oublié votre mot de passe ?</Link>
+                    <Link hidden={!isLogin} to="/login">Déjà un compte ?</Link>
+                  </div>
+                  <div hidden={isLogin} className='flex' style={{paddingTop: "15px"}}>
+                    <Link hidden={isLogin} to="/signup">Vous n'avez pas de compte ?</Link>
+                  </div>
               </form>
 
             </div>
           
           </div>
-
-          <div className='r-image-container'>
+          <div className='right-container'>
             <img src="./../../../../public/assets/right-login.png" alt="" />
           </div>
         </div>
-      </main>
     );
   }
 

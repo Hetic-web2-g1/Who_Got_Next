@@ -1,9 +1,9 @@
 from sqlalchemy import Table, Column, Float, String, DateTime, Boolean, ARRAY
 from datetime import datetime
 from sqlalchemy.dialects.postgresql import UUID
-from uuid import uuid4
 
 from database.db_engine import metadata
+
 
 field_table = Table(
     "field",

@@ -1,5 +1,4 @@
 import csv
-
 import sqlalchemy as sa
 
 from database.db_engine import engine
