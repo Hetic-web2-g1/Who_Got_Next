@@ -9,7 +9,6 @@ import Map, {
   ScaleControl,
   GeolocateControl,
 } from "react-map-gl";
-import searchWhite from './search-white.svg'
 import PopupContent from "./PopupContent";
 import SearchBarDropdown from "./SearchBarDropdown";
 import Pin from "./Marker";
@@ -23,7 +22,7 @@ const MapRender = ({ userLongitude, userLatitude }) => {
   const [lat, setLat] = useState(userLatitude ? userLatitude : 0);
   const [zoom, setZoom] = useState(15);
   const [fields, setFields] = useState();
-  const [searchOptions, setSearchOptions] = useState()
+  const [searchOptions, setSearchOptions] = useState();
   const [popupInfo, setPopupInfo] = useState(null);
   const southWest = new mapboxgl.LngLat(-5.0, 42.5);
   const northEast = new mapboxgl.LngLat(9.56, 51.15);
@@ -68,21 +67,17 @@ const MapRender = ({ userLongitude, userLatitude }) => {
   }
 
   const onInputChange = (event) => {
-    const newOptions = fields?.filter((option) => option.facility_name.toLowerCase().includes(event.target.value.toLowerCase()))
-    setSearchOptions(newOptions)
-  }
+    const newOptions = fields?.filter((option) =>
+      option.facility_name
+        .toLowerCase()
+        .includes(event.target.value.toLowerCase())
+    );
+    setSearchOptions(newOptions);
+  };
 
   return (
     <>
       <div className="heroImg">
-        <div className="searchHero">
-          <SearchBarDropdown options={searchOptions} onInputChange={onInputChange}/>
-          <div>
-            <button type="submit" className="searchBtn">
-              Chercher <img src={searchWhite} />
-            </button>
-          </div>
-        </div>
         <Map
           ref={mapRef}
           initialViewState={{
@@ -96,6 +91,13 @@ const MapRender = ({ userLongitude, userLatitude }) => {
           mapboxAccessToken={TOKEN}
           onMoveEnd={(e) => onMoveMapEnd(e.viewState.zoom)}
         >
+          <div className="searchHero">
+            <SearchBarDropdown
+              options={searchOptions}
+              onInputChange={onInputChange}
+              mapRef={mapRef}
+            />
+          </div>
           <GeolocateControl position="top-left" />
           <FullscreenControl position="top-left" />
           <NavigationControl position="top-left" />

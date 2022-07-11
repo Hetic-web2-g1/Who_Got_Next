@@ -271,7 +271,7 @@ input[type=text]:focus {
 .heroImg {
     display: flex;
     justify-content: center;
-    z-index: 100;
+    z-index: 1;
 }
 
 .searchHero {
@@ -292,7 +292,7 @@ input[type=text]:focus {
     margin-top: 25px;
     margin-left: 20vw;
     position: absolute;
-    z-index: 200;
+    z-index: 2;
 }
 
 .searchBar {
@@ -315,6 +315,9 @@ input[type=text]:focus {
     gap: 10px;
     height: 50px;
     width: 11em;
+    position: absolute;
+    margin-left: 80%;
+    transform: translateY(-3.5vh);
 }
 
 
