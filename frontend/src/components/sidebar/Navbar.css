@@ -163,7 +163,16 @@
     margin-top: -69px;
     overflow: visible;
     position: absolute; */
-    padding: 3% 3% 0px 3%;
+    padding: 0 6% 0px 0;
+  }
+
+  .sidebar_back-link {
+    display: flex;
+    font-family: QualtaRegular;
+    font-size: 18px;
+    line-height: 24px;
+    color: #474D85;
+    margin-top: 26px;
   }
 
   .ouimsieur{
@@ -181,7 +190,7 @@
   display: grid;
   grid-template-columns: repeat(5, auto);
   height: 60vh;
-  margin-top: 40px;
+  /* margin-top: 40px; */
   justify-items: center;
   align-items: center;
 }
@@ -193,7 +202,7 @@
 .box2{
   display: flex;
   justify-content: space-around;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 
 }
 .sportpage{
@@ -260,8 +269,8 @@
   }
   
   .ed{
-    padding-left: 5%;
-    padding-top: 3%;
+    /* padding-left: 5%; */
+    /* padding-top: 3%; */
   }
 
   a{

@@ -3,32 +3,24 @@ import { FavSports } from "../sidebar/usersports";
 import '../sidebar/Navbar.css';
 import { UserData } from "../sidebar/usersports";
 import { Link } from 'react-router-dom';
+import Favsport from "../favsport";
+import { useState } from "react";
 
 
-export const Mysport = () => {
+export const Sports = ({setContentSidebar}) => {
 
-  // function sportlevel(level){
-  //   var lvl = document.getElementById('leveldisplay')
-  //   console.log(lvl)
-  //   document.getElementById('leveldisplay').innerText = level
-  // }
-  // function gg(g){
-  //   var l = document.getElementsByClassName('g');
-  //   console.log(l);
-  //   if (g == 'expert'){
-  //     document.getElementById('leveldisplay').innerHTML = 'Expert';
-  //   }
-  // }
-  
+
+  const [contentSidebar2, setContentSidebar2] = useState('sous-menu');
+
   return (
     <div className='yeahboy' >
+          { contentSidebar2 === 'sous-menu' &&
+    <>
       <div className='dhead'>
-      <Link to='/landingpage' className="prec">
-      <img src="../../../public/assets/chevron-left.svg"></img>
-      <div>Precedent</div>
-      </Link>
-      <Link to='/landingpage'>
-      <img src="../../../public/assets/whogotnext_logo.svg"></img></Link>
+                  <Link className="sidebar_back-link" to="#" onClick={() => setContentSidebar('menu')}>
+                <img src="../../../public/assets/chevron-left.svg" alt="left arrow" width="18" height="18"/>
+                Précédent
+            </Link>
       </div>
       <div className='sidebarTitle'>Mes sports</div>
       <span className="spam">Sports favoris et niveaux</span>
@@ -38,28 +30,33 @@ export const Mysport = () => {
       return (
 
         <li key={index} className={item.cName}>
-                            <Link to={item.path} className="sportadd">
+                            <Link to='#' onClick={() => setContentSidebar2(item.tit)} className="sportadd">
             <img src={item.url}></img>
             <span className="spam">{item.title}</span>
           </Link>
           <div id="drop" className={item.ccname}>
-            {/* <div id='leveldisplay' className="spam"></div> */}
-            {/* <form className="dropdowncontent"> */}
+
             <select id={item.idname}>
               <option className="op" value='Expert' >Expert</option>
               <option className="op" value='Intermediaire'>Intermediaire</option>
               <option className="op" value='Debutant'>Debutant</option>
             </select>
-            {/* </form> */}
-            {/* <img src={item.chev}></img> */}
+
           </div>
         </li>
       );
     })}
+
       </div>
+      </>
+  } 
+
+  { contentSidebar2 === 'Favsport' &&
+    <Favsport setContentSidebar2={setContentSidebar2}/>
+}
     </div>
   );
 
 };
 
-export default Mysport;
+export default Sports;

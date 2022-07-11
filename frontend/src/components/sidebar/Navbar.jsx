@@ -3,12 +3,14 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { SidebarData1,SidebarData2,SidebarData3 } from './SidebarData1';
+import Sports from '../mysports';
 
 import './Navbar.css';
 import { IconContext } from 'react-icons';
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
+  const [contentSidebar, setContentSidebar] = useState('menu');
 
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -33,6 +35,7 @@ function Navbar() {
               <div className='account'>
               <img className='user' src='assets\user.png'></img>
               <div className='trait-vert'></div>
+
               <div>Mon Compte</div>
               <div className='trait-vert'></div>
               <Link to='#' className='menu-bars'>
@@ -40,6 +43,8 @@ function Navbar() {
               </Link>
               </div>              
             </li>
+            { contentSidebar === 'menu' &&
+            <>
             <div className='sidebarTitle'>Compte
             <div className='sidebarContainer'>
 
@@ -47,7 +52,7 @@ function Navbar() {
               return (
                 <li key={index} className={item.cName}>
 
-                  <Link to={item.path}>
+                  <Link to='#' onClick={() => setContentSidebar(item.title)}>
                     {item.icon}
                     <span className='spam' >{item.title}</span>
                   </Link>
@@ -61,7 +66,7 @@ function Navbar() {
               return (
                 <li key={index} className={item.cName}>
                     
-                  <Link to={item.path}>
+                  <Link to='#' onClick={() => setContentSidebar(item.title)}>
                     {item.icon}
                     <span className='spam' >{item.title}</span>
                   </Link>
@@ -75,7 +80,7 @@ function Navbar() {
               return (
                 <li key={index} className={item.cName}>
                     
-                  <Link to={item.path}>
+                  <Link to='#' onClick={() => setContentSidebar(item.title)}>
                     {item.icon}
                     <span className='spam' >{item.title}</span>
                   </Link>
@@ -86,10 +91,21 @@ function Navbar() {
         <div className='sidebarTitle deco'>
         <a className='deco' href="">Se deconnecter</a>
         </div>
+        </>
+      }
+      { contentSidebar === 'Rejoints' &&
+    <Rejoints setContentSidebar={setContentSidebar}/>
+}
+{ contentSidebar === 'Sports' &&
+    <Sports setContentSidebar={setContentSidebar}/>
+}
+
+
           </ul>
         </nav>
       </IconContext.Provider>
     </>
+    
   );
 }
 
