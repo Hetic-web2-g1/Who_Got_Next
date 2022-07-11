@@ -1,7 +1,8 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException, Depends
 from typing import List
 
 from utils.error_handelers import check_no_data
+from utils.firebase import SecurityCheck
 from database.db_engine import engine
 from schema.field import Field, FieldCreate, GPSBounds
 from manager import FieldManager
@@ -22,11 +23,16 @@ def get_all_fields():
 
 # Get field by id
 @router.get("/{field_id}", response_model=Field)
-def get_field(field_id: str):
+def get_field(field_id: str, uid: str, authentified_user: str = Depends(SecurityCheck)):
     with engine.begin() as conn:
-        data = FieldManager.get_field_by_id(conn, field_id)
-        check_no_data(data, "field")
-        return data
+        if authentified_user.id == uid:
+            field = FieldManager.get_field_by_id(conn, field_id)
+            if field is None:
+                raise HTTPException(404, "Field not found")
+            else:
+                return field
+        else:
+            raise HTTPException(403, "Action not permitted")
 
 
 # Create field
