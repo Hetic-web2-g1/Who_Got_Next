@@ -47,7 +47,13 @@ input {
     position: relative;
 }
 
-.flex-field input[type=password] {
+.password-field input[type=password] {
+    width: 99%;
+    z-index: 1;
+    width: -webkit-fill-available;
+}
+
+.password-field input[type=text] {
     width: 99%;
     z-index: 1;
     width: -webkit-fill-available;

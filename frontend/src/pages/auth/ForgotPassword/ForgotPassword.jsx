@@ -1,5 +1,4 @@
 import { React, useEffect, useState, useRef, createContext } from 'react'
-import './ForgotPassword.css'
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 import LandingRedirectionButton
@@ -54,12 +53,14 @@ export const ForgotPassword = () => {
                   </div>
 
                   {/* <LandingRedirectionButton goto={"login"} innerButton={buttonTitle}/> */}
+                  <div className='flex' style={{paddingTop: "15px"}}>
                     <button>Submit</button>
+                  </div>
               </form>
               {error}
               {message}
-              <div>
-                <Link to="/login">Se connecter</Link>
+              <div className='flex' style={{paddingTop: "15px", fontSize: "12px"}}>
+                <Link to="/login">Se connecter ?</Link>
               </div>
 
             </div>

@@ -10,6 +10,7 @@ import LandingRedirectionButton
 
 export const Signup = () => {
   const userContext = createContext();
+  const [passwordShown, setPasswordShown] = useState(false);
   const [buttonTitle, setButtonTitle] = useState("S'inscrire");
   const [isLogin, setIsLogin] = useState(true);
   const [validation, setValidation] = useState("");
@@ -31,6 +32,10 @@ export const Signup = () => {
     'sexe' : sexe,
     'age' : age,
   }
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
 
   // Login view
   useEffect (() => {
@@ -152,7 +157,7 @@ export const Signup = () => {
 
             <div className='connect-container'>
               <div className='img-container'>
-                <img src="./../../../../public/assets/logo.svg" alt="logo" />
+                <img src="./../../../../public/assets/whogotnext_logo.svg" alt="logo" />
               </div>
 
               <div className='flex'>
@@ -189,11 +194,11 @@ export const Signup = () => {
                     <input onChange={e => setEmail(e.target.value)} placeholder='Entrez votre mail' type="email" />
                   </div>
 
-                  <div className='flex-field margin'>
+                  <div className='flex-field password-field margin'>
                     <label htmlFor="password">Mot de passe</label>
                     <div className='inputwrapper'>
-                    <input onChange={e => setPassword(e.target.value)} className='input' placeholder='Entrez votre mot de passe' type="password" />
-                    <img src="./../../../../public/assets/eye.svg" alt="see password" />
+                    <input onChange={e => setPassword(e.target.value)} className='input' placeholder='Entrez votre mot de passe' type={passwordShown ? "text" : "password"} />
+                    <img onClick={togglePassword} src="./../../../../public/assets/eye.svg" alt="see password" style={{cursor: "pointer"}} />
                     </div>
                   </div>
 
@@ -222,6 +227,9 @@ export const Signup = () => {
                   <div className='flex' style={{paddingTop: "15px"}}>
                     <Link hidden={isLogin} to="/forgot-password">Vous avez oublié votre mot de passe ?</Link>
                     <Link hidden={!isLogin} to="/login">Déjà un compte ?</Link>
+                  </div>
+                  <div hidden={isLogin} className='flex' style={{paddingTop: "15px"}}>
+                    <Link hidden={isLogin} to="/signup">Vous n'avez pas de compte ?</Link>
                   </div>
               </form>
 
