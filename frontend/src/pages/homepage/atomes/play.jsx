@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import Container from '../../../components/PopUp/Container';
 import ToggleSwitch from '../../../components/ToogleSwitch/ToggleSwitch';
 
-// import '/src/style/main.css'
-
 function Play() {
 
     const [openOptions, setOpenOptions] = useState(false);

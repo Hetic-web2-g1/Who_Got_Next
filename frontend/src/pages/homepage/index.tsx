@@ -9,7 +9,6 @@ export const Homepage = () => {
             <header >
                 <Header />
             </header>
-
             <main>
                 <div className='hero'>
                     <Hero />

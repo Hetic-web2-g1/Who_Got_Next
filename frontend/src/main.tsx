@@ -13,6 +13,7 @@ import MapPage from "./pages/map";
 import LandingPage from './pages/landingPage';
 import Login from './pages/auth/login';
 import Signup from './pages/auth/signup';
+import Homepage from "./pages/homepage"
 
 ReactDOM.render(
   <React.StrictMode>
@@ -22,13 +23,14 @@ ReactDOM.render(
         <Route path="join" element={<Join />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="/homepage" element={<Homepage />} />
         <Route path="/private" element={<Private />}>
           <Route path="/private/private-home" element={<PrivateHome />} />
         </Route>
         <Route path="evenement" element={<Evenement />} />
         <Route path="joingroup" element={<JoinGroup />} />
         <Route path="landingPage" element={<LandingPage />} />
-        {/* <Route path="map" element={<MapPage />} /> */}
+        <Route path="map" element={<MapPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

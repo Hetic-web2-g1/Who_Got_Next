@@ -1,6 +1,5 @@
 import React from 'react'
 import user from '../img/user.svg'
-// import { elastic as Menu } from 'react-burger-menu'
 
 function Account() {
 
