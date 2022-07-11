@@ -22,7 +22,12 @@ def SecurityCheck(only_return_uid: bool = False, bearer_token: str = Depends(API
                 return uid
             else:
                 with engine.begin() as conn:
-                    return UserManager.get_user_by_id(conn, uid)
+                    authentified_user = UserManager.get_user_by_id(conn, uid)
+                    if authentified_user is None:
+                        raise HTTPException(
+                            status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+                    else:
+                        return authentified_user
 
     except Exception as e:
         raise HTTPException(

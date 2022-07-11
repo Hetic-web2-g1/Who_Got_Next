@@ -4,8 +4,7 @@ import jwt_decode from 'jwt-decode'
 import { DateTime } from "luxon";
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
-import LandingRedirectionButton
- from '../../../components/landingRedirectionButton'
+import LandingRedirectionButton from '../../../components/landingRedirectionButton'
 
 
 export const Signup = () => {
@@ -15,10 +14,7 @@ export const Signup = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [validation, setValidation] = useState("");
   const navigate = useNavigate();
-  const { signUp } = useAuth();
-  const { signUpBack } = useAuth();
-  const { login } = useAuth();
-  const { loginBack } = useAuth();
+  const { signUp, login, loginBack, currentUser } = useAuth();
   
   const [email, setEmail] = useState('');
   const [pseudo, setPseudo] = useState('');
@@ -54,12 +50,11 @@ export const Signup = () => {
 
   const handleForm = async (e) => {
     e.preventDefault();
-    
     // Validation signup
     if (window.location.pathname.includes('signup')) {
 
       // Password validation
-      if ((password < 6)) {
+      if ((password.length < 6)) {
         setValidation("Votre mot de passe doit contenir au moins 6 caractères")
         return;
       }
@@ -85,16 +80,13 @@ export const Signup = () => {
         await signUp(
           email,
           password,
-        )
-        await signUpBack(
-          email,
           pseudo,
           age,
           sexe
         )
+
         formRef.current.reset();
         setValidation("");
-        navigate("/private/private-home")
       } catch (err) {
         if (err.code === "auth/email-already-in-use") {
           setValidation("Email already used");
@@ -117,7 +109,7 @@ export const Signup = () => {
         )
         formRef.current.reset();
         setValidation("");
-        navigate("/private/private-home")
+
 
       } catch {
         setValidation("Impossible de se connecter, veuillez vérifier vos informations.")
