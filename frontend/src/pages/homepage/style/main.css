@@ -271,7 +271,6 @@ input[type=text]:focus {
 .heroImg {
     display: flex;
     justify-content: center;
-    position: absolute;
     z-index: 100;
 }
 
@@ -292,6 +291,8 @@ input[type=text]:focus {
     border-radius: 136px;
     margin-top: 25px;
     margin-left: 20vw;
+    position: absolute;
+    z-index: 200;
 }
 
 .searchBar {
