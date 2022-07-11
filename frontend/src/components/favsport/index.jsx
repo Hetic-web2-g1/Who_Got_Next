@@ -21,13 +21,13 @@ export const Favsport = () => {
               return (
               <div className='box'>
                 <img height={"50px"} src={item.url}></img>
-                <span>{item.title}</span>
+                <span className="spam">{item.title}</span>
               </div>
               );
             })}
                 </div>
                 <div className='box2'>
-                <span>Annuler</span>
+                <span className="spam">Annuler</span>
                 <div>Enregistrer</div>
                 </div>
               </div>

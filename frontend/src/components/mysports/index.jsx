@@ -14,7 +14,7 @@ export const Mysport = () => {
       <div>Precedent</div>
       </div>
       <div className='sidebarTitle'>Mes sports</div>
-      <span>Sports favories et niveaux</span>
+      <span className="spam">Sports favories et niveaux</span>
 
       <div className='sidebarContainer margfix'>
         {UserData.map((item, index) => {
@@ -23,10 +23,10 @@ export const Mysport = () => {
         <li key={index} className={item.cName}>
                             <Link to={item.path} className="sportadd">
             <img src={item.url}></img>
-            <span>{item.title}</span>
+            <span className="spam">{item.title}</span>
           </Link>
           <div className={item.ccname}>
-            <span>{item.level}</span>
+            <span className="spam">{item.level}</span>
             <img src={item.chev}></img>
           </div>
         </li>
