@@ -151,10 +151,8 @@ export const Signup = () => {
   }, []);
 
     return (
-      <main>
-        <div className='grid-container'>
-          <div className='containerz flex'>
-
+        <div id="authentification-ui">
+          <div className='left-container'>
             <div className='connect-container'>
               <div className='img-container'>
                 <img src="./../../../../public/assets/whogotnext_logo.svg" alt="logo" />
@@ -236,12 +234,10 @@ export const Signup = () => {
             </div>
           
           </div>
-
-          <div className='r-image-container'>
+          <div className='right-container'>
             <img src="./../../../../public/assets/right-login.png" alt="" />
           </div>
         </div>
-      </main>
     );
   }
 

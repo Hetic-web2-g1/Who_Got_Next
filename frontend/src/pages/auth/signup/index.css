@@ -87,12 +87,6 @@ input {
     height: 130px;
 }
 
-.containerz {
-    grid-column: 1 / 2;
-    margin-bottom: 10%;
-    height: 99vh;
-    align-items: center;
-}
 
 .connect-container {
     width: 75%;
@@ -197,4 +191,28 @@ input {
     .connect{
         width: 100%;
     }
+}
+
+#authentification-ui {
+    display: flex;
+    height: 100vh;
+}
+
+#authentification-ui > .left-container{
+    width: 50%;
+    padding: 5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#authentification-ui > .right-container{
+    width: 50%;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+}
+
+#authentification-ui > .right-container > img{
+    height: 100vh;
 }
