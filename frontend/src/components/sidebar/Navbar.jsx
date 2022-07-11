@@ -3,9 +3,7 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-import { SidebarData1, SidebarData2, SidebarData3 } from "./SidebarData1";
-import Sports from "../mysports";
-import CartEvenement from "../CartEvenement";
+import { SidebarData1, SidebarData2, SidebarData3 } from "./SidebarData1"; 
 import "./Navbar.css";
 import { IconContext } from "react-icons";
 import Rejoints from "./rejoints/rejoints";
