@@ -1,12 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { auth } from "./firebase-config";
 
@@ -18,7 +12,7 @@ import UpdateProfile from "./pages/auth/UpdateProfile/UpdateProfile.jsx";
 
 import App from "./App";
 import Evenement from "./pages/evenement";
-import Handisport from "./pages/handisport";
+
 import MapPage from "./pages/map";
 import LandingPage from "./pages/landingPage";
 import Login from "./pages/auth/login";
@@ -36,27 +30,12 @@ ReactDOM.createRoot(container).render(
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="homepage" element={<Homepage />} />
-          <Route
-            path="/private"
-            element={
-              <RequireAuth>
-                <Private />
-              </RequireAuth>
-            }
-          >
+          <Route path="/private" element={<Private />}>
             <Route path="/private/private-home" element={<PrivateHome />} />
-            <Route
-              path="/private/update-profile"
-              element={
-                <RequireAuth>
-                  <UpdateProfile />
-                </RequireAuth>
-              }
-            />
+            <Route path="/private/update-profile" element={<UpdateProfile />} />
           </Route>
           <Route path="forgot-password" element={<ForgotPassword />} />
           <Route path="evenement" element={<Evenement />} />
-          <Route path="handisport" element={<Handisport />} />
           <Route path="landingPage" element={<LandingPage />} />
           <Route path="map" element={<MapPage />} />
         </Routes>
@@ -64,11 +43,3 @@ ReactDOM.createRoot(container).render(
     </BrowserRouter>
   </React.StrictMode>
 );
-
-function RequireAuth({ children }: { children: JSX.Element }) {
-  if (!auth.currentUser()) {
-    return <Navigate to="/" replace />;
-  }
-
-  return children;
-}

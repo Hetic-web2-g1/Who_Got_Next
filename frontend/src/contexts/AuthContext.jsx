@@ -1,6 +1,6 @@
 import  React, { useContext, useState, useEffect } from 'react'
 import { auth } from '../firebase-config'
-import { useNavigate } from 'react-router-dom';
+
 import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
@@ -9,6 +9,8 @@ import {
     signOut,
   } from 'firebase/auth'
 
+import { useNavigate } from 'react-router-dom';
+
 const AuthContext = React.createContext()
 
 export function useAuth() {
@@ -16,6 +18,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
+    let navigate = useNavigate()
     let firebaseCurrentUser = null
     const [currentUser,setCurrentUser] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -50,6 +53,8 @@ export function AuthProvider({ children }) {
           try{
             setCurrentUser(await fetchUser())}
           catch{}
+        }else{
+          navigate('/login')
         }
         setLoading(false);
       })
