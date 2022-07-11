@@ -19,7 +19,7 @@ class UserCreate(BaseModel):
 
 
 class User(UserCreate):
-    id: UUID
+    id: str
     created_at: datetime
     edited_at: datetime
     is_admin: Optional[bool] = False
