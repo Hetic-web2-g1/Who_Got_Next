@@ -84,7 +84,7 @@
     font-size: 12px;
 }
 
-.details span {
+.details > span {
     color: #878AAB;
 }
 

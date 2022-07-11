@@ -7,8 +7,8 @@ from database.db_engine import metadata
 sports_equipment_table = Table(
     "sports_equipment",
     metadata,
-    Column('id_facility', sa.ForeignKey(
-        "field.id_facility"), nullable=False),
+    Column('facility_id', sa.ForeignKey(
+        "field.facility_id"), nullable=False),
     Column('equipment_type', String()),
     Column('equipment_family', String()),
     Column('activity', String()),
