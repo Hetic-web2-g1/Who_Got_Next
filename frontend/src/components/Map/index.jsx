@@ -10,6 +10,7 @@ import Map, {
   GeolocateControl,
   Layer,
 } from "react-map-gl";
+import PopupContent from "./PopupContent"
 import Pin from "./Marker";
 
 import "./styles.css";
@@ -27,24 +28,43 @@ const MapRender = ({ userLongitude, userLatitude, fields }) => {
   const northEast = new mapboxgl.LngLat(9.56, 51.15);
   const bounds = [southWest, northEast];
 
-  const pins = useMemo(
-    () =>
-      fields.data.map((field) => (
-        <Marker
-          key={`marker-${field.id}`}
-          longitude={field.location[1]}
-          latitude={field.location[0]}
-          anchor="bottom"
-          onClick={(e) => {
-            e.originalEvent.stopPropagation();
-            setPopupInfo(field);
-          }}
-        >
-          <Pin />
-        </Marker>
-      )),
-    []
-  );
+  const mapRef = useRef();
+
+  const pins = fields?.map((field) => (
+    <Marker
+      key={`marker-${field.facility_name}-${field.facility_id}`}
+      longitude={field.longitude}
+      latitude={field.latitude}
+      anchor="bottom"
+      onClick={(e) => {
+        e.originalEvent.stopPropagation();
+        setPopupInfo(field);
+      }}
+    >
+      <Pin />
+    </Marker>
+  ));
+
+  async function onMoveMapEnd(zoom) {
+    let bounds = mapRef.current.getMap().getBounds();
+
+    let body = {
+      north_east: { lat: bounds._ne.lat, lng: bounds._ne.lng },
+      south_west: { lat: bounds._sw.lat, lng: bounds._sw.lng },
+    };
+
+    if (zoom >= 10) {
+      fetch("http://localhost:8000/fields/location/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      })
+        .then((response) => response.json())
+        .then((response) => setFields(response));
+    } else {
+      setFields(null);
+    }
+  }
 
   return (
     <>
@@ -73,24 +93,9 @@ const MapRender = ({ userLongitude, userLatitude, fields }) => {
             longitude={popupInfo.location[1]}
             latitude={popupInfo.location[0]}
             onClose={() => setPopupInfo(null)}
+            maxWidth={"500px"}
           >
-            <div>
-              {popupInfo.description} |{" "}
-              <a
-                target="_new"
-                href={`https://www.youtube.com/watch?v=dQw4w9WgXcQ`}
-              >
-                Infos
-              </a>
-            </div>
-            <img
-              width="100%"
-              src={
-                popupInfo?.image_path
-                  ? popupInfo?.image_path
-                  : "../../../assets/kirbok.jpg"
-              }
-            />
+            <PopupContent content={popupInfo}/>
           </Popup>
         )}
         {/* </Layer> */}
