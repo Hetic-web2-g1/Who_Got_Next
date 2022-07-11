@@ -11,23 +11,20 @@ cred = credentials.Certificate('./../credentials/account_key.json')
 firebase_admin.initialize_app(cred)
 
 
-def SecurityCheck(only_return_uid: bool = False, bearer_token: str = Depends(APIKeyHeader(name="Authorization"))) -> User | str:
+def SecurityCheck(bearer_token: str = Depends(APIKeyHeader(name="Authorization"))) -> User:
     try:
         if bearer_token is None:
             raise ValueError(name="Bearer token is required")
         else:
             decoded_token = auth.verify_id_token(bearer_token)
             uid = decoded_token['uid']
-            if only_return_uid:
-                return uid
-            else:
-                with engine.begin() as conn:
-                    authentified_user = UserManager.get_user_by_id(conn, uid)
-                    if authentified_user is None:
-                        raise HTTPException(
-                            status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
-                    else:
-                        return authentified_user
+            with engine.begin() as conn:
+                authentified_user = UserManager.get_user_by_id(conn, uid)
+                if authentified_user is None:
+                    raise HTTPException(
+                        status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+                else:
+                    return authentified_user
 
     except Exception as e:
         raise HTTPException(

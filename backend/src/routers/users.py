@@ -51,7 +51,7 @@ def create_user(create_user: UserCreate, bearer_token: str = Depends(APIKeyHeade
 
 # Update user by id
 @router.put("/update/{uid}")
-def update_user(user: UserCreate, uid: str, authentified_user: str = Depends(SecurityCheck)):
+def update_user(user: UserCreate, uid: str, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
         if authentified_user.id == uid or authentified_user.is_admin:
             return UserManager.update_user(conn, user, uid)
@@ -61,7 +61,7 @@ def update_user(user: UserCreate, uid: str, authentified_user: str = Depends(Sec
 
 # Delete one user by id
 @router.delete("/delete/{uid}", response_model=bool)
-def delete_user(uid: str, authentified_user: str = Depends(SecurityCheck)):
+def delete_user(uid: str, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
         if authentified_user.id == uid or authentified_user.is_admin:
             return UserManager.delete_user_by_id(conn, uid)

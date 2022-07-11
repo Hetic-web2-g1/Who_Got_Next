@@ -17,6 +17,7 @@ sqlalchemy = "*"
 sqlalchemy_utils = "*"
 python-dotenv = "*"
 faker = "*"
+firebase-admin = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
