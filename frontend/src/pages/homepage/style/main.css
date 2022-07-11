@@ -427,8 +427,8 @@ p.lorem-text {
     height: 25px;
     fill: transparent;
     stroke: black;
-    stroke-linecap: round;
-    stroke-width: 2;
+    strokeLinecap: round;
+    strokeWidth: 2;
 }
 
 .modal-body {
