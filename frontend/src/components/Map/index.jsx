@@ -74,7 +74,7 @@ const MapRender = ({ userLongitude, userLatitude }) => {
           zoom: zoom,
           maxBounds: bounds,
         }}
-        style={{ width: "100vw", height: "100vh" }}
+        style={{ width: "100%", height: "100vh" }}
         mapStyle="mapbox://styles/mapbox/light-v10"
         mapboxAccessToken={TOKEN}
         onMoveEnd={(e) => onMoveMapEnd(e.viewState.zoom)}
