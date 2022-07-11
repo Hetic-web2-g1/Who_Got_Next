@@ -1,0 +1,80 @@
+@font-face {
+    font-family: "QualtaBold";
+    src: local("QualtaBold"),
+    url("../../../fonts/Qualta/Qualta-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "MonumentBold";
+    src: local("MonumentBold"),
+    url("../../../fonts/Monument/PPMonumentExtended-Black.otf") format("opentype");
+    font-weight: bold;
+}
+
+body {
+    margin: 0;
+}
+
+.handisport-container {
+    background: #F7F7FC;
+    height: 100%;
+}
+
+.found_handisport-container {
+    background: white;
+    width: 100%;
+    position: relative;
+    padding: 45px 500px 60px 90px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.found_handisport-container img {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.found_handisport-title {
+    font-family: MonumentBold;
+    font-size: 56px;
+    line-height: 64px;
+    margin-bottom: 24px;
+}
+
+.found_handisport-desc {
+    font-family: QualtaBold;
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 39px;
+}
+
+.found_handisport-link {
+    font-family: QualtaBold;
+    color: white;
+    background: #171C4F;
+    padding: 15px 40px;
+    border-radius: 70px;
+    text-align: center;
+}
+
+.link_handisport {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 45px;
+    margin: 0 170px;
+}
+
+a {
+    font-family: QualtaBold;
+    color: #1758FF;
+    text-decoration: none;
+}
+
+a img {
+    margin-right: 8px;
+    vertical-align: top;
+}
+
