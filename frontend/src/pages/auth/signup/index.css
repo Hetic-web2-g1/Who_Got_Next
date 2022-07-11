@@ -195,11 +195,15 @@ input {
 
 #authentification-ui {
     display: flex;
+    height: 100vh;
 }
 
 #authentification-ui > .left-container{
     width: 50%;
     padding: 5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #authentification-ui > .right-container{
@@ -207,4 +211,8 @@ input {
     overflow: hidden;
     position: fixed;
     right: 0;
+}
+
+#authentification-ui > .right-container > img{
+    height: 100vh;
 }
