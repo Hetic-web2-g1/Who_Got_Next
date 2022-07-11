@@ -22,7 +22,7 @@ def get_all_fields():
 
 # Get field by id
 @router.get("/{field_id}", response_model=Field)
-def get_field(field_id: str, uid: str, authentified_user: str = Depends(SecurityCheck)):
+def get_field(field_id: str, uid: str, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
         field = FieldManager.get_field_by_id(conn, field_id)
         if field is None:
@@ -33,7 +33,7 @@ def get_field(field_id: str, uid: str, authentified_user: str = Depends(Security
 
 # Create field
 @router.post("/create")
-def create_field(field: FieldCreate, uid: str, authentified_user: str = Depends(SecurityCheck)):
+def create_field(field: FieldCreate, uid: str, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
         if authentified_user.id == uid or authentified_user.is_admin:
             return FieldManager.create_field(conn, field)
@@ -43,7 +43,7 @@ def create_field(field: FieldCreate, uid: str, authentified_user: str = Depends(
 
 # Update field by id
 @router.put("/update/{id}")
-def update_field(field: FieldCreate, field_id: str, uid: str, authentified_user: str = Depends(SecurityCheck)):
+def update_field(field: FieldCreate, field_id: str, uid: str, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
         if authentified_user.id == uid or authentified_user.is_admin:
             return FieldManager.update_field(conn, field, field_id)
@@ -53,7 +53,7 @@ def update_field(field: FieldCreate, field_id: str, uid: str, authentified_user:
 
 # Delete one field by id
 @router.delete("/delete/{field_id}", response_model=bool)
-def delete_field(field_id: str, uid: str, authentified_user: str = Depends(SecurityCheck)):
+def delete_field(field_id: str, uid: str, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
         if authentified_user.id == uid or authentified_user.is_admin:
             return FieldManager.delete_field_by_id(conn, field_id)
