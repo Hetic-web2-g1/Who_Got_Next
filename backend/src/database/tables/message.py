@@ -5,6 +5,7 @@ from uuid import uuid4
 
 from database.db_engine import metadata
 
+
 message_table = Table(
     "message",
     metadata,
@@ -14,7 +15,7 @@ message_table = Table(
            unique=True
            ),
     Column('id_user', UUID(as_uuid=True), nullable=True),
-    Column('id_field', UUID(as_uuid=True), nullable=True),
+    Column('id_field', String(), nullable=True),
     Column('id_event', UUID(as_uuid=True), nullable=True),
     Column('message_type', String()),
     Column('content', String()),

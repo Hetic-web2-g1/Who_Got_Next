@@ -1,0 +1,79 @@
+@font-face {
+    font-family: "QualtaBold";
+    src: local("QualtaBold"),
+    url("../../../fonts/Qualta/Qualta-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "QualtaRegular";
+    src: local("QualtaRegular"),
+    url("../../../fonts/Qualta/Qualta-Regular.ttf") format("truetype");
+    font-weight: normal;
+}
+
+.footer {
+    box-sizing: border-box;
+    width: 100%;
+    background: #F7F7FC;
+    padding: 100px 124px;
+}
+
+.footer_logo {
+    margin-bottom: 45px;
+}
+
+.footer_container-content {
+    display: flex;
+    column-gap: 100px;
+    margin-bottom: 45px;
+}
+
+.footer_content {
+}
+
+.footer_content-icon {
+    margin-bottom: 12px;
+    display: block;
+}
+
+.footer_content-title {
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: #1758FF;
+    font-family: QualtaBold;
+    line-height: 20px;
+}
+
+.footer_content-desc {
+    font-family: QualtaRegular;
+    color: #474D85;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.footer_container-link {
+    display: flex;
+    column-gap: 45px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.footer_link {
+
+}
+
+.footer_link-title {
+    font-family: QualtaBold;
+    color: #1758FF;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 24px;
+}
+
+.footer_link-link {
+    font-family: QualtaRegular;
+    color: #474D85;
+    font-size: 14px;
+    line-height: 20px;
+}

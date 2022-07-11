@@ -8,6 +8,7 @@ from uuid import UUID
 
 from .db_engine import metadata
 
+
 T = TypeVar("T")
 
 

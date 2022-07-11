@@ -5,6 +5,7 @@ from uuid import uuid4
 
 from database.db_engine import metadata
 
+
 event_table = Table(
     "event",
     metadata,
@@ -14,7 +15,7 @@ event_table = Table(
            unique=True
            ),
     Column('id_user', UUID(as_uuid=True)),
-    Column('id_field', UUID(as_uuid=True)),
+    Column('id_field', String()),
     Column('name', String()),
     Column('description', String()),
     Column('data', JSON),

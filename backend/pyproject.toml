@@ -6,8 +6,8 @@ authors = ["domino659 <martin@sionfamily.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-alembic = "^1.8.0"
 psycopg2-binary = "^2.9.3"
+firebase-admin = "^5.2.0"
 
 [tool.poetry.dev-dependencies]
 fastapi = "*"
@@ -17,6 +17,7 @@ sqlalchemy = "*"
 sqlalchemy_utils = "*"
 python-dotenv = "*"
 faker = "*"
+firebase-admin = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

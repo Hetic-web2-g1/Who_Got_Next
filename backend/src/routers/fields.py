@@ -1,28 +1,26 @@
-from uuid import UUID
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException, Depends
 from typing import List
-from fastapi.exceptions import HTTPException
 
+from utils.firebase import SecurityCheck
 from database.db_engine import engine
 from schema.field import Field, FieldCreate, GPSBounds
 from manager import FieldManager
 
 
-# TODO Need to be completed with more specific errror
 router = APIRouter(
     prefix="/fields",
     tags=["Fields"],
 )
 
 
-# Get all field
+# Get all fields
 @router.get("", response_model=List[Field | None])
 def get_all_fields():
     with engine.begin() as conn:
         return list(FieldManager.get_all_field(conn))
 
 
-# Get one field by id
+# Get field by id
 @router.get("/{field_id}", response_model=Field)
 def get_field(field_id: str):
     with engine.begin() as conn:
@@ -35,35 +33,32 @@ def get_field(field_id: str):
 
 # Create field
 @router.post("/create")
-def create_field(field: FieldCreate):
+def create_field(field: FieldCreate, uid: str, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
-        FieldManager.create_field(conn, field)
-        if field == 0:
-            return False
+        if authentified_user.id == uid or authentified_user.is_admin:
+            return FieldManager.create_field(conn, field)
         else:
-            return True
+            raise HTTPException(409, "Field already exists")
 
 
 # Update field by id
 @router.put("/update/{id}")
-def update_field(field: FieldCreate, id: UUID):
+def update_field(field: FieldCreate, field_id: str, uid: str, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
-        FieldManager.update_field(conn, field, id)
-        if field == 0:
-            return False
+        if authentified_user.id == uid or authentified_user.is_admin:
+            return FieldManager.update_field(conn, field, field_id)
         else:
-            return True
+            raise HTTPException(404, "Field not found")
 
 
 # Delete one field by id
 @router.delete("/delete/{field_id}", response_model=bool)
-def delete_field(field_id: str):
+def delete_field(field_id: str, uid: str, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
-        field = FieldManager.delete_field_by_id(conn, field_id)
-        if field == 0:
-            return False
+        if authentified_user.id == uid or authentified_user.is_admin:
+            return FieldManager.delete_field_by_id(conn, field_id)
         else:
-            return True
+            raise HTTPException(403, "Action not permitted")
 
 
 # Get field by location

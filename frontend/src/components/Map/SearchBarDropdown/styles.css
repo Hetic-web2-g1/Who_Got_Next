@@ -1,0 +1,11 @@
+.list-group-item {
+    width: -webkit-fill-available;
+    height: 50px;
+}
+.list-group {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    transform: translateY(10px);
+}

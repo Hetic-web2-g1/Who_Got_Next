@@ -7,7 +7,7 @@ from schema.event import Event, EventCreate
 from database.tables.event import event_table
 
 
-def get_all_events(conn):
+def get_all_events(conn: Connection):
     result = conn.execute(sa.select([event_table]).limit(100))
     if result is None:
         return []
@@ -32,5 +32,5 @@ def update_event(conn: Connection, event: EventCreate, id: UUID) -> Event | None
     return db_srv.update_object(conn, 'event', id, event)
 
 
-def delete_event_by_id(conn: Connection, id: str) -> Event | None:
+def delete_event_by_id(conn: Connection, id: UUID) -> Event | None:
     return db_srv.delete_object(conn, 'event', id)

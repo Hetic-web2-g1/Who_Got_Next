@@ -9,6 +9,8 @@ import Map, {
   ScaleControl,
   GeolocateControl,
 } from "react-map-gl";
+import PopupContent from "./PopupContent";
+import SearchBarDropdown from "./SearchBarDropdown";
 import Pin from "./Marker";
 import "./styles.css";
 
@@ -18,9 +20,9 @@ const TOKEN = (mapboxgl.accessToken =
 const MapRender = ({ userLongitude, userLatitude }) => {
   const [lng, setLng] = useState(userLongitude ? userLongitude : 0);
   const [lat, setLat] = useState(userLatitude ? userLatitude : 0);
-  const [radius, setRadius] = useState(0);
   const [zoom, setZoom] = useState(15);
   const [fields, setFields] = useState();
+  const [searchOptions, setSearchOptions] = useState();
   const [popupInfo, setPopupInfo] = useState(null);
   const southWest = new mapboxgl.LngLat(-5.0, 42.5);
   const northEast = new mapboxgl.LngLat(9.56, 51.15);
@@ -30,7 +32,7 @@ const MapRender = ({ userLongitude, userLatitude }) => {
 
   const pins = fields?.map((field) => (
     <Marker
-      key={`marker-${field.id}`}
+      key={`marker-${field.facility_name}-${field.facility_id}`}
       longitude={field.longitude}
       latitude={field.latitude}
       anchor="bottom"
@@ -43,85 +45,79 @@ const MapRender = ({ userLongitude, userLatitude }) => {
     </Marker>
   ));
 
-  async function onMoveMapEnd(map) {
-    let bounds = mapRef.current.getMap().getBounds()
+  async function onMoveMapEnd(zoom) {
+    let bounds = mapRef.current.getMap().getBounds();
 
     let body = {
-      north_east: {lat: bounds._ne.lat, lng: bounds._ne.lng},
-      south_west: {lat: bounds._sw.lat, lng: bounds._sw.lng}
+      north_east: { lat: bounds._ne.lat, lng: bounds._ne.lng },
+      south_west: { lat: bounds._sw.lat, lng: bounds._sw.lng },
+    };
+
+    if (zoom >= 10) {
+      fetch("http://localhost:8000/fields/location/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      })
+        .then((response) => response.json())
+        .then((response) => setFields(response));
+    } else {
+      setFields(null);
     }
-    
-    fetch('http://localhost:8000/fields/location/',
-    {
-      method: "POST", 
-      headers: {'Content-Type': 'application/json'},
-      body:JSON.stringify(body)
-    }
-    )
-    .then(response => response.json())
-    .then(response => setFields(response)
-    .catch(() => {
-      console.log("Error fetching data");
-    }))
   }
+
+  const onInputChange = (event) => {
+    const newOptions = fields?.filter((option) =>
+      option.facility_name
+        .toLowerCase()
+        .includes(event.target.value.toLowerCase())
+    );
+    setSearchOptions(newOptions);
+  };
+
   return (
     <>
-      <Map
-      ref={mapRef}
-        initialViewState={{
-          latitude: lat,
-          longitude: lng,
-          zoom: zoom,
-          maxBounds: bounds,
-        }}
-        style={{ width: "100vw", height: "100vh" }}
-        mapStyle="mapbox://styles/mapbox/light-v10"
-        mapboxAccessToken={TOKEN}
-        onMoveEnd={onMoveMapEnd}
-      >
-        <GeolocateControl position="top-left" />
-        <FullscreenControl position="top-left" />
-        <NavigationControl position="top-left" />
-        <ScaleControl />
-
-        {pins}
-
-        {popupInfo && (
-          <Popup
-            anchor="top"
-            longitude={popupInfo.longitude}
-            latitude={popupInfo.latitude}
-            onClose={() => setPopupInfo(null)}
-          >
-            <div>
-              {popupInfo.name} <br/>
-              {popupInfo.description} <br/>
-              <br/>
-              Acces Handicapé : {popupInfo.handicap ?  "oui" : "non"}<br/>
-              Toilettes : {popupInfo.bathroom ? "oui" : "non"}<br/>
-              Douches : {popupInfo.shower ? "oui" : "non"}<br/>
-              Vestiaires : {popupInfo.dressing_room ? "oui" : "non"}<br/>
-              Chauffage : {popupInfo.heating ? "oui" : "non"}<br/>
-              Parking : {popupInfo.parking ? "oui" : "non"}<br/>
-              Transport en commun : {popupInfo.public_transport ? "oui" : "non"}<br/>
-              <a
-                target="_new"
-                href={`https://www.youtube.com/watch?v=dQw4w9WgXcQ`}
-              >
-                Infos
-              </a>
-            </div>
-            <img
-              width="100%"
-              src={
-                popupInfo?.image_path
-                  ? popupInfo?.image_path
-                  : "../../../assets/kirbok.jpg"
-              }
+      <div className="heroImg">
+        <Map
+          ref={mapRef}
+          initialViewState={{
+            latitude: lat,
+            longitude: lng,
+            zoom: zoom,
+            maxBounds: bounds,
+          }}
+          style={{ width: "100%", height: "100vh" }}
+          mapStyle="mapbox://styles/mapbox/light-v10"
+          mapboxAccessToken={TOKEN}
+          onMoveEnd={(e) => onMoveMapEnd(e.viewState.zoom)}
+        >
+          <div className="searchHero">
+            <SearchBarDropdown
+              options={searchOptions}
+              onInputChange={onInputChange}
+              mapRef={mapRef}
             />
-          </Popup>
-        )}
-      </Map>
+          </div>
+          <GeolocateControl position="top-left" />
+          <FullscreenControl position="top-left" />
+          <NavigationControl position="top-left" />
+          <ScaleControl />
+
+          {pins}
+
+          {popupInfo && (
+            <Popup
+              anchor="top"
+              longitude={popupInfo.longitude}
+              latitude={popupInfo.latitude}
+              onClose={() => setPopupInfo(null)}
+              maxWidth={"500px"}
+            >
+              <PopupContent content={popupInfo} />
+            </Popup>
+          )}
+        </Map>
+      </div>
     </>
   );
 };

@@ -1,0 +1,218 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "Qualta";
+    margin: 0;
+}
+
+h1 {
+    font-family: "Monument";
+    font-size: 28px;
+    margin: 0;
+}
+
+h4 {
+    font-size: 12px;
+    margin: 0;
+}
+
+div {
+    margin: 0;
+}
+
+input {
+    height: 30px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    /* align-items:  center; */
+}
+
+.flex-field {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.password-field input[type=password] {
+    width: 99%;
+    z-index: 1;
+    width: -webkit-fill-available;
+}
+
+.password-field input[type=text] {
+    width: 99%;
+    z-index: 1;
+    width: -webkit-fill-available;
+}
+
+.flex-field input {
+    z-index: 2500;
+    border: 1px solid #E3E4E8;
+    border-radius: 8px;
+    margin-top: 12px;
+}
+
+
+.flex-field img {
+    position: absolute;
+    /* left: 0%; */
+    top: 54%;
+    display: inline-table;
+    z-index: 2;
+    padding-right: 2%;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+
+.img-container img {
+    height: 130px;
+}
+
+
+.connect-container {
+    width: 75%;
+}
+
+.inputwrapper{
+    display: flex;
+
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.margin {
+    margin-top: 27px;
+}
+
+.hr-div {
+    margin-top: 30px;
+    color: #878AAB;
+}
+
+.title h4{
+    font-weight: 200;
+}
+
+.line {
+    width: 250px;
+    border-bottom: 1px solid #878AAB;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.form {
+    margin-top: 27px;
+    z-index: 500;
+    font-size: 12px;
+    font-family: qualta;
+    color: #878AAB;
+}
+
+.r-image-container {
+    grid-column: 2 / 2;
+}
+
+.r-image-container img {
+    height: 100%;
+}
+
+.basket-img {
+    position: absolute;
+    top: 360px;
+    left: 450px;
+
+}
+
+.basket-img img {
+    z-index: 0;
+    width: 610px;
+    pointer-events: none;
+}
+
+.connectcontainer{
+    margin-top: 27px;
+}
+
+.inputwrappertwo{
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.inputwrapperthree{
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputwrapperthree > *{
+    width: 48%;
+    background-color: white;
+    font-family: 'Qualta';
+    margin-bottom: -1px;
+}
+
+.age{
+    width: 20%;
+    margin-right: 24px;
+}
+
+@media  screen and (max-width: 1280px) {
+    .r-image-container{
+        display: none;
+    }
+    .grid-container{
+        display: block;
+    }
+    .inscrip {
+        width: 100%;
+        text-align: center;
+    }
+    .connect{
+        width: 100%;
+    }
+}
+
+#authentification-ui {
+    display: flex;
+    height: 100vh;
+}
+
+#authentification-ui > .left-container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#authentification-ui > .right-container{
+    width: 50%;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+}
+
+#authentification-ui > .right-container > img{
+    height: 100vh;
+}

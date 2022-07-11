@@ -1,18 +1,20 @@
 from datetime import datetime
-from typing import Dict
+from typing import Dict, List
 from pydantic import BaseModel
 from uuid import UUID
 from typing import Optional
 
 
 class FieldCreate(BaseModel):
+    facility_id: Optional[str] = None
+    equipment_id: Optional[List[str]] = None
     id_user: Optional[UUID] = None
-    name: str
+    facility_name: str
+    equipments_name: Optional[List[str]] = None
     type: str
     longitude: float
     latitude: float
     img_path: Optional[str] = None
-    id_facility_number: Optional[str] = None
     id_sports_equipment: Optional[str] = None
     handicap: Optional[bool] = None
     parking: Optional[bool] = None
