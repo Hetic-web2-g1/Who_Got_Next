@@ -24,6 +24,9 @@ body {
     margin: 0;
 }
 
+html {
+    overflow-x: hidden;
+}
 
 /* header */
 
@@ -53,13 +56,19 @@ body {
     padding: 0;
 }
 
-li {
+li>a {
     font-family: Monument Extended Regular;
+    color: inherit;
+    list-style-type: none;
+    text-decoration: none;
+
+
 }
 
 ul,
 li,
 a {
+    font-family: Monument Extended Regular;
     list-style-type: none;
     text-decoration: none;
     color: inherit;
@@ -248,7 +257,8 @@ input[type=text]:focus {
     flex-grow: 0;
 }
 
-.insideSportsContainer img, .insideSportsContainer svg{
+.insideSportsContainer img,
+.insideSportsContainer svg {
     height: 3em;
 }
 
@@ -510,5 +520,56 @@ button.form-next {
     width: 11em;
 }
 
-
 /* End Form  */
+
+/* Explorer Start */
+.explorer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.slideshow-container>img {
+    width: 40em;
+}
+
+.evnCreation {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 3em;
+    width: 69em;
+}
+
+.titleEvn>h3 {
+    font-family: Monument Extended UltraBold;
+    font-size: 45px;
+    margin: 0;
+}
+
+.textEvn>p {
+    font-family: Qualta-Bold;
+    font-size: 20px;
+    width: 40em;
+    margin: 0;
+}
+
+button.evnButton {
+    font-family: Qualta-Bold;
+    font-size: 20px;
+    background-color: #1758FF;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+    width: 11em;
+    cursor:pointer;
+}
+
+/* Explorer End */
