@@ -52,12 +52,15 @@ export const ForgotPassword = () => {
                     <input onChange={e => setEmail(e.target.value)} placeholder='Entrez votre mail' type="email" />
                   </div>
 
-                  {/* <LandingRedirectionButton goto={"login"} innerButton={buttonTitle}/> */}
-                  <div className='flex' style={{paddingTop: "15px"}}>
-                    <button>Submit</button>
+                  <div className='flex' style={{paddingTop: "30px"}}>
+                    <div onClick={handleForm} className='connect submit-sign-form'>
+                      <p className='connectext'>Submit</p>
+                    </div>
                   </div>
-                  {error}
-                  {message}
+                  <div className='flex' style={{paddingTop: "20px"}}>
+                    {error}
+                    {message}
+                  </div>
                   <div className='flex' style={{paddingTop: "15px", fontSize: "12px"}}>
                     <Link to="/login">Se connecter ?</Link>
                   </div>
