@@ -9,13 +9,13 @@ function Router() {
       <div className="router">
         <ul className="list-router">
           <li className="homepage">
-            <Link to="/homepage"> Jouer </Link>{" "}
+            <Link to="/homepage" className="activelink"> Jouer </Link>{" "}
           </li>
           <li className="join">
             <Link to="/join"> Rejoindre </Link>{" "}
           </li>
           <li className="event">
-            <Link to="/event"> Evenements </Link>{" "}
+            <Link to="/evenement"> Evenements </Link>{" "}
           </li>
         </ul>
       </div>

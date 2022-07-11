@@ -4,11 +4,13 @@ import user from '../img/user.svg'
 function Account() {
 
     return (
-
-        <div className='account-logo'>
+        
+        <a href="login">
+        <div className='account'>
             <img src={user} alt="User" className='imgUser'/>
             <p> Mon Compte </p>
         </div>
+        </a>
     )
 }
 
