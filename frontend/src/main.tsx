@@ -11,7 +11,7 @@ import UpdateProfile from "./pages/auth/UpdateProfile/UpdateProfile.jsx";
 
 import App from "./App";
 import Evenement from "./pages/evenement";
-
+import Handisport from "./pages/handisport";
 import MapPage from "./pages/map";
 import LandingPage from './pages/landingPage';
 import Login from './pages/auth/login';
@@ -35,6 +35,7 @@ ReactDOM.createRoot(container).render(
           </Route>
           <Route path="forgot-password" element={<ForgotPassword />} />
           <Route path="evenement" element={<Evenement />} />
+          <Route path="handisport" element={<Handisport />} />
           <Route path="landingPage" element={<LandingPage />} />
           <Route path="map" element={<MapPage />} />
         </Routes>
