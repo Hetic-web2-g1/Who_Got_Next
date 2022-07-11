@@ -201,6 +201,19 @@
     color: #171C4F;
 }
 
+.sidebar_link-title {
+  text-align: center;
+}
+
+.sidebar_back-link {
+  display: flex;
+  font-family: QualtaRegular;
+  font-size: 18px;
+  line-height: 24px;
+  color: #474D85;
+  margin-top: 26px;
+}
+
 .sidebarContainer{
     display: flex;
     gap: 24px;
