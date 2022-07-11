@@ -3,10 +3,13 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { SidebarData1,SidebarData2,SidebarData3 } from './SidebarData1';
-import CartEvenement from "../CartEvenement";
 import './Navbar.css';
 import { IconContext } from 'react-icons';
 import Rejoints from "./rejoints/rejoints";
+import Info from "../../pages/info/info"
+import Form from "../../pages/profile/Form"
+import Contact from "../../pages/help/contact"
+import Sports from '../mysports/index';
 
 function Navbar() {
     const [sidebar, setSidebar] = useState(false);
@@ -94,6 +97,24 @@ function Navbar() {
               }
               { contentSidebar === 'Rejoints' &&
                   <Rejoints setContentSidebar={setContentSidebar}/>
+              }
+              { contentSidebar === 'Crées' &&
+                  <Rejoints setContentSidebar={setContentSidebar}/>
+              }
+              { contentSidebar === 'Sports' &&
+                  <Sports setContentSidebar={setContentSidebar}/>
+              }
+              {
+                contentSidebar === 'Mentions légales' &&
+                <Info setContentSidebar={setContentSidebar}/>
+              }
+              {
+                contentSidebar === 'Informations du compte' &&
+                <Form setContentSidebar={setContentSidebar}/>
+              }
+              {
+                contentSidebar === 'Nous contacter' &&
+                <Contact setContentSidebar={setContentSidebar}/>
               }
             <div className='trait' />
             <div className='sidebarTitle deco'>

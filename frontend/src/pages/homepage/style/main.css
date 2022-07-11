@@ -78,14 +78,7 @@ a {
 
 /* Account */
 
-.account {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-content: center;
-    gap: 1em;
 
-}
 
 .account>p {
     font-family: Monument Extended Regular;

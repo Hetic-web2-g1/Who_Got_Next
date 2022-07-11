@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "MonumentBold";
+    src: local("MonumentBold"),
+    url("../../../fonts/Monument/PPMonumentExtended-Black.otf") format("opentype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "MonumentRegular";
+    src: local("MonumentRegular"),
+    url("../../../fonts/Monument/PPMonumentExtended-Regular.otf") format("opentype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "QualtaBold";
+    src: local("QualtaBold"),
+    url("../../../fonts/Qualta/Fontspring-DEMO-pgf-qualta-bold.otf") format("opentype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "QualtaRegular";
+    src: local("QualtaRegular"),
+    url("../../../fonts/Qualta/Fontspring-DEMO-pgf-qualta-regular.otf") format("opentype");
+    font-weight: normal;
+}
+
+.bigContainer{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10%;
+    margin-left: 10%;
+    padding: 0px;
+    height: 60%;
+    overflow-y: scroll;
+    gap: 24px;
+}
+
+.bigText > span {
+    font-family: 'QualtaRegular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #878AAB;
+}
+
+H4 {
+    font-family: 'QualtaBold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #171C4F;
+}

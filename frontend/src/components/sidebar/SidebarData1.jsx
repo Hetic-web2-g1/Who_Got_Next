@@ -1,11 +1,6 @@
 import React from 'react';
 import * as FiIcons from 'react-icons/fi';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
 
-
-import rugby from './img/rugby.svg'
 
 export const SidebarData1 = [
   {
@@ -20,12 +15,7 @@ export const SidebarData1 = [
     icon: <FiIcons.FiUser />,
     cName: 'nav-text'
   },
-  {
-    title: 'Conversations',
-    path: '/',
-    icon: <FiIcons.FiMail />,
-    cName: 'nav-text'
-  },
+  
   
 ];
 

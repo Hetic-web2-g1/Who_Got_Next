@@ -4,6 +4,7 @@ import Router from '../atomes/router';
 import Account from '../atomes/account'
 import Play from '../atomes/play'
 import Sports from '../atomes/sport';
+import Navbar from '../../../components/sidebar/Navbar';
 
 export const Header = () => {
     return (
@@ -13,6 +14,7 @@ export const Header = () => {
                     <Logo />
                     <Router />
                     <Account />
+                    <Navbar/>
                 </div>
 
                 <div className='play'>
