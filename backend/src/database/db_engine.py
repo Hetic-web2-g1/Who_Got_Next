@@ -5,6 +5,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from utils.log import logging
 from utils.env import settings
 
+
 # Connection to database
 engine = create_engine(
     settings.database_url,

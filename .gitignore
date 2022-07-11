@@ -12,6 +12,8 @@
 # Environments
 .env
 env/
+.credentials
+credentials/
 Pipfile
 Pipfile.lock
 poetry.lock
