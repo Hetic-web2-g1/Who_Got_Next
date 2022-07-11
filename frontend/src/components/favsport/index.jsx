@@ -2,12 +2,7 @@ import React from "react";
 import { FavSports } from "../sidebar/usersports";
 import '../sidebar/Navbar.css';
 
-
-
-
 export const Favsport = () => {
-
-  
 
 
   return (

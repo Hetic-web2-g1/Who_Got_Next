@@ -9,8 +9,8 @@ export default function App() {
     <main>
       <Navbar/>
       <LandingPage/>
-      {/* <Mysport/> */}
-      {/* <Favsport/> */}
+      {/* <Mysport/>
+      <Favsport/> */}
       
     </main>
   )

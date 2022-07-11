@@ -262,6 +262,7 @@
 
   .sportadd > img{
     height: 50px;
+    margin-bottom: 15%;
   }
 
 
@@ -348,6 +349,11 @@
   height: 18px;
   width: 2px;
   background-color: #E3E4E8;
+}
+
+.prec{
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width:1200px) { 

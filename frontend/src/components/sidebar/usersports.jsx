@@ -33,7 +33,7 @@ export const UserData = [
 
     {
         title:'Ajouter un sport',
-        path:"/",
+        path:"/sports/favsport",
         url:'../../../public/assets/plus-circle.svg',
         level:"",
         cName:'addsport',
@@ -100,7 +100,7 @@ export const FavSports = [
     },
     {
         title:"Enfants",
-        url:'../../../public/assets/enfants.svg'
+        url:'../../../public/assets/children.svg'
     },
 
 ]

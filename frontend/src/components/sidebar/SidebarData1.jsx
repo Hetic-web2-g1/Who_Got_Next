@@ -5,7 +5,9 @@ import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
 
 
-import rugby from './img/rugby.svg'
+import rugby from './img/rugby.svg';
+
+
 
 export const SidebarData1 = [
   {
@@ -16,9 +18,9 @@ export const SidebarData1 = [
   },
   {
     title: 'Sports',
-    path: '/',
+    path: '/sports',
     icon: <FiIcons.FiUser />,
-    cName: 'nav-text'
+    cName: 'nav-text',
   },
   {
     title: 'Conversations',

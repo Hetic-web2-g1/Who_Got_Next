@@ -10,6 +10,8 @@ import MapPage from "./pages/map";
 import LandingPage from "./pages/landingPage";
 import Login from "./pages/auth/login";
 import Signup from "./pages/auth/signup";
+import Mysport from "./components/mysports";
+import Favsport from './components/favsport';
 
 const container = document.getElementById("root")
 
@@ -24,6 +26,8 @@ ReactDOM.createRoot(container).render(
         <Route path="joingroup" element={<JoinGroup />} />
         <Route path="landingPage" element={<LandingPage />} />
         <Route path="map" element={<MapPage />} />
+        <Route path='sports' element={<Mysport />}/>
+        <Route path='sports/favsport' element={<Favsport />}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

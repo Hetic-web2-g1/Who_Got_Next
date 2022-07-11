@@ -7,14 +7,15 @@ import { Link } from 'react-router-dom';
 
 export const Mysport = () => {
 
+
   return (
     <div className='yeahboy' >
-      <div>
+      <div className="prec">
       <img src="../../../public/assets/chevron-left.svg"></img>
       <div>Precedent</div>
       </div>
       <div className='sidebarTitle'>Mes sports</div>
-      <span className="spam">Sports favories et niveaux</span>
+      <span className="spam">Sports favoris et niveaux</span>
 
       <div className='sidebarContainer margfix'>
         {UserData.map((item, index) => {
