@@ -16,10 +16,6 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
 
-  fetch("http://localhost:8000/users/")        
-  // .then((response) => response.json())
-  // .then((response) => console.log(response))
-
     const [currentUser, setCurrentUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
