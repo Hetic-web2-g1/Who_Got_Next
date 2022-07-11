@@ -28,6 +28,7 @@ ReactDOM.createRoot(container).render(
           <Route path="/" element={<App />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="homepage" element={<Homepage />} />
           <Route path="/private" element={<Private />}>
             <Route path="/private/private-home" element={<PrivateHome />} />
             <Route path="/private/update-profile" element={<UpdateProfile />} />
