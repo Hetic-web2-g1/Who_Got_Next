@@ -145,7 +145,7 @@ label {
     flex-direction: column;
 }
 
-input[type=text] {
+.searchInput {
     height: 17px;
     border: 0;
     width: 15EM;
@@ -155,7 +155,7 @@ input[type=text] {
     transition: box-shadow 0.3s;
 }
 
-input[type=text]:focus {
+.searchInput:focus {
     outline: none;
     box-shadow: -8px 10px 0px -7px #4EA6EA, 8px 10px 0px -7px #4EA6EA;
 }
@@ -300,10 +300,18 @@ input[type=text]:focus {
 }
 
 .searchBar {
-    border-radius: 8px;
-    background-color: transparent;
-    border: none;
-    width: 30em;
+    height: 17px;
+    border: 0;
+    width: 15EM;
+    margin-left: 1px;
+    box-shadow: -8px 10px 0px -7px #ebebeb, 8px 10px 0px -7px #ebebeb;
+    -webkit-transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s;
+}
+
+.searchBar:focus {
+    outline: none;
+    box-shadow: -8px 10px 0px -7px #4EA6EA, 8px 10px 0px -7px #4EA6EA;
 }
 
 .searchBtn {
@@ -569,7 +577,7 @@ button.evnButton {
     gap: 10px;
     height: 50px;
     width: 11em;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 /* Explorer End */
