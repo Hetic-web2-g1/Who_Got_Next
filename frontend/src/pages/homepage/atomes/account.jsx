@@ -5,7 +5,7 @@ function Account() {
 
     return (
 
-        <div className='account'>
+        <div className='account-logo'>
             <img src={user} alt="User" className='imgUser'/>
             <p> Mon Compte </p>
         </div>

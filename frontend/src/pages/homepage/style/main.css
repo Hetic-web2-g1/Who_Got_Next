@@ -46,9 +46,28 @@ html {
     margin: 24px 10px 24px 10px;
 }
 
+.logoHome {
+    width: 5em;
+}
+
+.logoHome>img {
+    width: 100%;
+}
+
 /* End Logo */
 
 /* Router */
+.homepage>a {
+    color: #1758FF;
+}
+
+.list-router {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5em;
+}
+
 .list {
     display: flex;
     flex-direction: row;
@@ -78,7 +97,7 @@ a {
 
 /* Account */
 
-.account {
+.account-logo {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -87,7 +106,7 @@ a {
 
 }
 
-.account>p {
+.account-logo>p {
     font-family: Monument Extended Regular;
     color: #1758FF
 }
@@ -582,31 +601,83 @@ button.evnButton {
 
 /* Explorer End */
 
+/* Handisport start  */
+.backcomp1 {
+    background-image: url('../img/backpap_2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 60em;
+    overflow: hidden;
+    margin-top: 10em;
+}
 
+.infoHandi {
+    margin: 7em 0 0 7em;
+}
 
-/* Hero end */
+.titleHandi>h1 {
+    font-family: Monument Extended UltraBold;
+    font-size: 70px;
+    color: #171c4f;
+}
 
-.insideSportsContainer{
+.textHandi>p {
+    font-family: Qualta-Bold;
+    font-size: 31px;
+    width: 37em;
+    color: #171c4f;
+
+}
+
+.slideshow-handisport > img {
+    position: absolute;
+    bottom: -150px;
+    right: 0;
+    width: 45em;
+}
+
+.handiButton {
+    font-family: Qualta-Bold;
+    font-size: 20px;
+    background-color: #171c4f;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+    width: 11em;
     cursor: pointer;
 }
 
-.insideSportsContainer:hover{
+/* Handisport end  */
+
+
+
+
+.insideSportsContainer {
+    cursor: pointer;
+}
+
+.insideSportsContainer:hover {
     color: red;
 }
 
-.insideSportsContainer:hover svg path{
+.insideSportsContainer:hover svg path {
     fill: red;
 }
 
-select#lvl{
+select#lvl {
     height: 30px;
     border-radius: 5px;
     color: #1758FF;
     outline: none;
 }
 
-.searchBarPerso{
+.searchBarPerso {
     width: 60em !important;
 }
-
-
