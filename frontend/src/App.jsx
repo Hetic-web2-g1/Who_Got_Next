@@ -7,10 +7,10 @@ import Mysport from "./components/mysports";
 export default function App() {
   return (
     <main>
-      {/* <Navbar/>
-      <LandingPage/> */}
+      <Navbar/>
+      <LandingPage/>
       {/* <Mysport/> */}
-      <Favsport/>
+      {/* <Favsport/> */}
       
     </main>
   )

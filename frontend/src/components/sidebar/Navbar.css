@@ -209,7 +209,7 @@
   justify-content: center;
 }
 
-.sportpage > span{
+.sportpage > .spam{
   height: auto;
     color: #1758FF;
 
@@ -237,7 +237,7 @@
     color: white;
   }
 
-  .box2 > span{
+  .box2 > .spam{
     color: #1758FF;
   }
 
