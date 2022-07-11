@@ -132,25 +132,13 @@ export const Signup = () => {
     setUser(usrObject);
   }
 
-  useEffect(() => {
-    /* global google */
-    google.accounts.id.initialize({
-      client_id: "709733567706-5vqp12ru9cjqevbeetpvudn8qoube6hb.apps.googleusercontent.com",
-      callback: handleCallbackResponse
-    });
-
-    google.accounts.id.renderButton(
-      document.getElementById('signInDiv'),
-      { theme: 'outline', size: 'large'}
-    );
-
-    google.accounts.id.prompt();
-  }, []);
-
     return (
         <div id="authentification-ui">
+
           <div className='left-container'>
+
             <div className='connect-container'>
+
               <div className='img-container'>
                 <img src="./../../../../public/assets/whogotnext_logo.svg" alt="logo" />
               </div>
@@ -163,25 +151,10 @@ export const Signup = () => {
                   <h4>Ask Who Got Next</h4>
               </div>
 
-              <div className='flex' id='signInDiv'></div>
-              { user &&
-                <div>
-                  <img src={user.picture}></img>
-                  <h3>{user.name}</h3>
-                </div>
-              }
-
-              <div className='hr-div flex'> 
-                <div className='line'></div>
-                <span>Ou</span>
-                <div className='line'></div>
-
-              </div>
-
               <form className='form' ref={formRef} onSubmit={handleForm}>
                   <div className='hidden flex-field'>
                       <label htmlFor="prenom">Pseudo</label>
-                      <input onChange={e => setPseudo(e.target.value)} placeholder='Pseudo' type="text" />
+                      <input onChange={e => setPseudo(e.target.value)} placeholder='Pseudo' />
                   </div>
 
                   <div className='flex-field margin'>
@@ -192,8 +165,8 @@ export const Signup = () => {
                   <div className='flex-field password-field margin'>
                     <label htmlFor="password">Mot de passe</label>
                     <div className='inputwrapper'>
-                    <input onChange={e => setPassword(e.target.value)} className='input' placeholder='Entrez votre mot de passe' type={passwordShown ? "text" : "password"} />
-                    <img onClick={togglePassword} src="./../../../../public/assets/eye.svg" alt="see password" style={{cursor: "pointer"}} />
+                      <input onChange={e => setPassword(e.target.value)} className='input' placeholder='Entrez votre mot de passe' type={passwordShown ? "text" : "password"} />
+                      <img onClick={togglePassword} src="./../../../../public/assets/eye.svg" alt="see password" style={{cursor: "pointer"}} />
                     </div>
                   </div>
 
@@ -207,33 +180,38 @@ export const Signup = () => {
                   <div className='hidden flex-field margin'>
                     <label htmlFor='sexe'>Sexe</label>
                     <div className='inputwrapperthree'>
-                    <input onClick={e => setSexe(e.target.value)} value='Femme' type="button"/>
-                    <input onClick={e => setSexe(e.target.value)} value='Homme' type="button"/>
+                      <select onChange={e => setSexe(e.target.value)} name="test" aria-invalid="false">
+                        <option value="Homme">Homme</option>
+                        <option value="Femme">Femme</option>
+                        <option value="Autres">Autres</option>
+                      </select>
                     </div>
+                  </div>
                   
-                  </div>
-                  {/* <LandingRedirectionButton goto={"login"} innerButton={buttonTitle}/> */}
                   <div className='flex' style={{paddingTop: "30px"}}>
-                    <button>Submit</button>
+                    <div onClick={handleForm} className='connect submit-sign-form'>
+                      <p className='connectext'>Submit</p>
+                    </div>
                   </div>
-                  <p>
+                  <p className='flex'>
                     {validation}
                   </p>
-                  <div className='flex' style={{paddingTop: "15px"}}>
+                  <div className='flex' style={{paddingTop: "10px"}}>
                     <Link hidden={isLogin} to="/forgot-password">Vous avez oublié votre mot de passe ?</Link>
                     <Link hidden={!isLogin} to="/login">Déjà un compte ?</Link>
                   </div>
-                  <div hidden={isLogin} className='flex' style={{paddingTop: "15px"}}>
+                  <div className='flex' style={{paddingTop: "10px"}}>
                     <Link hidden={isLogin} to="/signup">Vous n'avez pas de compte ?</Link>
                   </div>
               </form>
 
             </div>
-          
           </div>
+
           <div className='right-container'>
             <img src="./../../../../public/assets/right-login.png" alt="" />
           </div>
+          
         </div>
     );
   }
