@@ -8,7 +8,7 @@ function Hero() {
             <div className='searchHero'>
 
                <div>
-                <input type="text" className='searchBar' placeholder='Choisissez un endroit où jouer' />
+                <input type="text" className='searchBar searchBarPerso' placeholder='Choisissez un endroit où jouer' />
                 </div>
 
                 <div>

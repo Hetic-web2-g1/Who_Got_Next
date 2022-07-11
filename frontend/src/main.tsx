@@ -8,6 +8,7 @@ import PrivateHome from "./pages/Private/PrivateHome/PrivateHome"
 import App from './App';
 import Evenement from './pages/evenement';
 import JoinGroup from './pages/joingroup';
+import Join from './join';
 import MapPage from "./pages/map";
 import LandingPage from './pages/landingPage';
 import Login from './pages/auth/login';
@@ -18,6 +19,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="join" element={<Join />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route path="/private" element={<Private />}>

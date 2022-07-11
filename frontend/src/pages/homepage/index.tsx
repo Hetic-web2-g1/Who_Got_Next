@@ -1,3 +1,4 @@
+import Evenement from './molecule/evenement';
 import Header from './molecule/header';
 import Hero from './molecule/hero';
 import './style/main.css'
@@ -8,9 +9,14 @@ export const Homepage = () => {
             <header >
                 <Header />
             </header>
-            
+
             <main>
-                <Hero />
+                <div className='hero'>
+                    <Hero />
+                </div>
+                <div className='evenement'>
+                    <Evenement />
+                </div>
             </main>
         </>
     )
