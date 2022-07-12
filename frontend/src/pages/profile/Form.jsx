@@ -1,8 +1,10 @@
 import React from "react";
 import "./form.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "./../../contexts/AuthContext";
 
 export const Form = ({ onSubmit, setContentSidebar }) => {
+  const { currentUser } = useAuth();
   return (
     <div className="formContainer">
       <Link
@@ -21,8 +23,8 @@ export const Form = ({ onSubmit, setContentSidebar }) => {
       <form onSubmit={onSubmit} className="formTrue">
         <div className="formHeader">
           <h4> Mon profil </h4>
-
-          <button className="formButton">Enregister</button>
+          {/* requête patch à faire la */}
+          <button className="formButton">Enregister</button> 
         </div>
         <div className="imgContainer">
           <img
@@ -33,7 +35,7 @@ export const Form = ({ onSubmit, setContentSidebar }) => {
 
         <div className="flex-field margin">
           <label htmlFor="description">Pseudo</label>
-          <input className="form-control" id="Prénom" />
+          <input className="form-control" id="Prénom" value={currentUser.pseudo} />
         </div>
 
         <div className="flex-field margin">
@@ -41,6 +43,7 @@ export const Form = ({ onSubmit, setContentSidebar }) => {
           <input
             type="email"
             className="form-control"
+            value={currentUser.email}
             id="email"
             placeholder="name@example.com"
           />
@@ -58,23 +61,23 @@ export const Form = ({ onSubmit, setContentSidebar }) => {
         <div className='hidden flex-field margin'>
           <label htmlFor="age">Age</label>
           <div className='inputwrappertwo'>
-            <input onChange={e => setAge(e.target.value)} className='age' placeholder='Mois' type="date"/>
+            <input onChange={e => setAge(e.target.value)} className='age' placeholder='Mois' type="date" value={currentUser.date_of_birth}/>
           </div>
         </div>
 
         <div className="flex-field margin">
           <label htmlFor="location">Adress </label>
-          <input className="form-control" id="Adress" />
+          <input placeholder="Veuillez indiquer votre adresse" className="form-control" id="Adress" />
         </div>
 
         <div className="flex-field margin">
           <label htmlFor="location">Ville</label>
-          <input className="form-control" id="Town" />
+          <input placeholder="Veuillez indiquer votre ville" className="form-control" id="Town" />
         </div>
 
         <div className="flex-field margin">
           <label htmlFor="location">Code postal</label>
-          <input className="form-control" id="PostalCode" />
+          <input placeholder="Veuillez indiquer votre code postal" className="form-control" id="PostalCode" />
         </div>
       </form>
       
