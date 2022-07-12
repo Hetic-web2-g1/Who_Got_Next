@@ -46,7 +46,7 @@
     color: #878AAB;
 }
 
-H4 {
+.bigContainer > h4 {
     font-family: 'QualtaBold';
     font-style: normal;
     font-weight: 400;

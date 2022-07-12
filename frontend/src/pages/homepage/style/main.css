@@ -334,6 +334,7 @@ label {
 .searchBtn {
     font-family: Qualta-Bold;
     font-size: 16px;
+    cursor: pointer;
     background-color: #1758FF;
     border: none;
     color: white;

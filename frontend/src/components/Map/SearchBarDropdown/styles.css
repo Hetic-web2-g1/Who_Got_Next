@@ -1,7 +1,15 @@
 .list-group-item {
     width: -webkit-fill-available;
     height: 50px;
+    background: #FFFFFF;
+    border: 1px solid #E3E4E8;
 }
+
+.list-group-item:hover {
+    background: #E3E4E8;
+    cursor: pointer;
+}
+
 .list-group {
     position: absolute;
     display: flex;
