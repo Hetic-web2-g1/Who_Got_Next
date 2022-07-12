@@ -30,13 +30,13 @@ export const Evenement = () => {
           {cardData
             ? cardData.map((cart, index) => (
                 <CartEvenement
-                  image={cart?.data?.data.image}
-                  sport={cart?.data?.data.sport}
-                  title={cart.name}
-                  place={cart?.data?.data.place}
-                  date={cart?.data?.data.date}
-                  capacity={cart?.data?.data.capacity}
-                  level={cart?.data?.data.level}
+                  image={cart?.image}
+                  sport={cart?.sport}
+                  title={cart?.name}
+                  place={cart?.place}
+                  date={cart?.date_start}
+                  capacity={cart?.capacite}
+                  level={cart?.niveau}
                   key={index}
                 />
               ))
