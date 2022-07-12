@@ -35,7 +35,7 @@ export function AuthProvider({ children }) {
     );
     setCurrentUser(user);
     await signInWithEmailAndPassword(auth, email, password);
-    navigate("/homepage");
+    navigate("/home");
   };
 
   const fetchUser = async () => {
@@ -48,7 +48,7 @@ export function AuthProvider({ children }) {
   const login = async (email, pwd) => {
     await signInWithEmailAndPassword(auth, email, pwd);
     setCurrentUser(await fetchUser());
-    navigate("/homepage");
+    navigate("/home");
   };
 
   const logout = () => {

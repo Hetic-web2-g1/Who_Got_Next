@@ -3,9 +3,9 @@ import "./styles/style.css";
 import "../../fonts/Qualta/Qualta-Bold.ttf";
 import "../../fonts/Monument/PPMonumentExtended-Black.otf";
 import { Link } from "react-router-dom";
-import CartEvenement from "../../components/CartEvenement";
-import Footer from "../../components/footer";
-import Header from '../homepage/molecule/header';
+import CartEvenement from "@components/CartEvenement";
+import Footer from "@components/footer";
+import TopNavigation from '@components/TopNavigation/TopNavigation';
 
 export const Handisport = () => {
 
@@ -24,7 +24,7 @@ export const Handisport = () => {
     return (
         <>
             <header >
-                <Header />
+                <TopNavigation />
             </header>
             <div className="handisport-container">
                 <div className="found_handisport-container">
@@ -35,7 +35,7 @@ export const Handisport = () => {
                         Augmenter ses capacités physiques c’est améliorer son indépendance
                     </p>
                     <Link className="found_handisport-link" to="#">Trouver une partie</Link>
-                    <img src="../../../public/images/handisport/handisport.png" alt="sportif handicapé" width="500" height="665"/>
+                    <img src="../../../assets/handisport/handisport.png" alt="sportif handicapé" width="500" height="665"/>
                 </div>
                 <div className="carts-container">
                     {cardData
@@ -56,7 +56,7 @@ export const Handisport = () => {
                 <div className="link_handisport">
                     <Link to="/evenement">
                         <img
-                            src="../../../public/assets/eye.svg"
+                            src="../../../assets/eye.svg"
                             alt="icon eye"
                             width="16"
                             height="16"

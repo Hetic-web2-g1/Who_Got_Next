@@ -11,23 +11,23 @@ export const Footer = ({
 }) => {
     const content = [
         {
-            'icon' : '../../../public/images/footer/jouer.jpg',
+            'icon' : '../../../assets/footer/jouer.jpg',
             'title': 'Jouer',
             'desc' : 'Invitez d’autres camarades de sport, renseignez les details de votre partie et attendez vos coéquipiers.'
         },
         {
-            'icon' : '../../../public/images/footer/rejoindre.jpg',
+            'icon' : '../../../assets/footer/rejoindre.jpg',
             'title': 'Rejoindre',
             'desc' : 'Trouvez le sport, la partie et les conditions qui vous conviennent. Rencontrez de nouveaux partenaires !'
         },
         {
-            'icon' : '../../../public/images/footer/évènement.jpg',
+            'icon' : '../../../assets/footer/évènement.jpg',
             'title': 'Évènement',
             'desc' : 'Participez, reunissez des communautés autour de tournois, matchs, initiations...\n' +
                 'Renforcez la cohesion, relevez le niveau'
         },
         {
-            'icon' : '../../../public/images/footer/handisport.jpg',
+            'icon' : '../../../assets/footer/handisport.jpg',
             'title': 'Handisport',
             'desc' : 'Invitez d’autres camarades de sport,\n' +
                 'renseignez les details de votre partie et attendez vos coéquipiers'

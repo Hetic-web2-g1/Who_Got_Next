@@ -1,7 +1,6 @@
 import React from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../../homepage/style/main.css";
-import Evenement from "../../evenement";
 
 function RouterJoin() {
   return (
@@ -9,7 +8,7 @@ function RouterJoin() {
       <div className="navbar">
         <ul className="list">
           <li>
-            <Link to="/homepage"> Jouer </Link>{" "}
+            <Link to="/home"> Jouer </Link>{" "}
           </li>
           <li>
             <Link to="/join" className="activelink"> Rejoindre </Link>{" "}

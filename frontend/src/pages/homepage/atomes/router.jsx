@@ -9,7 +9,7 @@ function Router() {
       <div className="router">
         <ul className="list-router">
           <li className="homepage">
-            <Link to="/homepage" className="activelink"> Jouer </Link>{" "}
+            <Link to="/home" className="activelink"> Jouer </Link>{" "}
           </li>
           <li className="join">
             <Link to="/join"> Rejoindre </Link>{" "}
