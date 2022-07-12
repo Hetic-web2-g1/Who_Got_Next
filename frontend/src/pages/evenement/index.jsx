@@ -66,8 +66,8 @@ export const Evenement = () => {
           <div>
             <h2>Créez un évènements à votre échelle</h2>
             <p>
-              Runissez des communautés autour de tournois, matchs,
-              initiations... Renforcez la cohesion, relevez le niveau
+            Réunissez des communautés autour de tournois, matchs, initiations…
+            Renforcez la cohésion, relevez le niveau.
             </p>
             <img
               className="create-mobile-img"
