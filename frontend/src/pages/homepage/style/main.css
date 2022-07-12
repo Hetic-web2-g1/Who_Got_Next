@@ -628,6 +628,10 @@ button.evnButton {
 
 /* Explorer End */
 
+.changeoption{
+    display: none;
+}
+
 /* Handisport start  */
 .backcomp1 {
     background-image: url('../img/backpap_2.png');
@@ -635,13 +639,16 @@ button.evnButton {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    height: 60em;
     overflow: hidden;
     margin-top: 10em;
 }
 
 .infoHandi {
-    margin: 7em 0 0 7em;
+    margin: 5% 0 0 5%;
+}
+
+.btnHandi{
+    margin-bottom: 8%;
 }
 
 .titleHandi>h1 {
@@ -727,7 +734,7 @@ select#lvl {
         display: none;
     }
     .playContainer > button{
-        display: none;
+        /* display: none; */
     }
     .hero{
         display: none;
@@ -741,10 +748,64 @@ select#lvl {
     .evnCreation{
         margin-right: 0;
     }
+    .changeoption{
+        display: block;
+        content: url(../../../../public/assets/chevron-right.svg);
+    }
+
+    .option {
+        font-family: Qualta-Regular;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: absolute;
+        width: 46%;
+        height: 290px;
+        left: 17%;
+        margin-top: 175px;
+        padding: 5px 70px;
+        background-color: white;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05), 0px 1px 10px rgba(0, 0, 0, 0.03), 0px 4px 5px rgba(0, 0, 0, 0.04);
+        border-radius: 20px;
+        z-index: 10;
+        overflow: hidden;
+        top:0;
+    }
 }
 
-@media screen and (max-width:350px) {
+@media screen and (max-width:580px) {
     .lieu{
-        width: 63%;
+        width: 30%;
+    }
+    .dateInput{
+        width: 30%;
+    }
+    .numberInput{
+        width: 30%;
+        /* font-size: 12px; */
+        margin-left: 8%;
+    }
+    .changeoption{
+        width: 20%;
+        max-width: 50px;
+    }
+
+    .playContainer > button{
+        width: 35%;
+    }
+    .playContainer{
+        padding:0 0 0 1%;
+    }
+}
+
+@media screen and (max-width:1680px) {
+    .handiImg{
+        display: none;
+    }
+    .textHandi >p{
+        width: 95%;
+    }
+    .titleHandi > h1{
+        font-size: 9vw;
     }
 }

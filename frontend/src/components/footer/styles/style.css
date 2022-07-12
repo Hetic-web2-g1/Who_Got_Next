@@ -16,7 +16,7 @@
     box-sizing: border-box;
     width: 100%;
     background: #F7F7FC;
-    padding: 100px 124px;
+    padding: 100px 5%;
 }
 
 .footer_logo {
@@ -25,7 +25,7 @@
 
 .footer_container-content {
     display: flex;
-    column-gap: 100px;
+    column-gap: 5%;
     margin-bottom: 45px;
 }
 
@@ -76,4 +76,13 @@
     color: #474D85;
     font-size: 14px;
     line-height: 20px;
+}
+
+@media screen and (max-width:600px) {
+    .footer_container-content{
+        display: grid;
+        grid-template-rows: repeat(2, auto);
+        grid-template-columns: repeat(2, auto);
+
+    }
 }
