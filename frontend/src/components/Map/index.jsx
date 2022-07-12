@@ -12,7 +12,6 @@ import Map, {
 import PopupContent from "./PopupContent";
 import SearchBarDropdown from "./SearchBarDropdown";
 import Pin from "./Marker";
-import "./styles.css";
 
 const TOKEN = (mapboxgl.accessToken =
   "pk.eyJ1IjoiZXJ6ZW5rZWwiLCJhIjoiY2t6eHZiempyMDRoZzJucDlmcmxjeTZjcyJ9.aJWheE8snFrd21W1ElV4_g");
@@ -53,7 +52,7 @@ const MapRender = ({ userLongitude, userLatitude }) => {
       south_west: { lat: bounds._sw.lat, lng: bounds._sw.lng },
     };
 
-    if (zoom >= 10) {
+    if (zoom >= 12) {
       fetch("http://localhost:8000/fields/location/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
