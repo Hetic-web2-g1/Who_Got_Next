@@ -712,7 +712,7 @@ select#lvl {
 }
 
 .searchBarPerso {
-    width: 280%;
+    width: 45vw;
 }
 
 .activelink{
@@ -720,6 +720,9 @@ select#lvl {
 }
 
 @media screen and (max-width:924px) {
+    .sportsContainer{
+        margin-top: 5%;
+    }
     .router{
         display: none;
     }
@@ -735,9 +738,9 @@ select#lvl {
     .playContainer > button{
         /* display: none; */
     }
-    .hero{
+    /* .hero{
         display: none;
-    }
+    } */
     .slideshow-container>img {
         width: 80%;
     }
@@ -795,6 +798,10 @@ select#lvl {
     .playContainer{
         padding:0 0 0 1%;
     }
+    .searchBtn{
+        width: auto;
+    }
+
 }
 
 @media screen and (max-width:1680px) {
