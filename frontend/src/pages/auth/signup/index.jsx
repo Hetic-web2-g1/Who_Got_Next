@@ -18,7 +18,7 @@ export const Signup = () => {
   
   const [email, setEmail] = useState('');
   const [pseudo, setPseudo] = useState('');
-  const [sexe, setSexe] = useState('');
+  const [sexe, setSexe] = useState('Homme');
   const [age, setAge] = useState("");
   const [password, setPassword] = useState("");
   
@@ -87,7 +87,7 @@ export const Signup = () => {
 
         formRef.current.reset();
         setValidation("");
-      } catch (err) {
+      } catch (err) { 
         if (err.code === "auth/email-already-in-use") {
           setValidation("Email already used");
         }
