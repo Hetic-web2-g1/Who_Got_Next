@@ -31,7 +31,7 @@ export const Evenement = () => {
             ? cardData.map((cart, index) => (
                 <CartEvenement
                   sport={cart?.sport}
-                  title={cart?.name}
+                  title={cart?.description}
                   place={cart?.place}
                   date={cart?.date_start}
                   capacity={cart?.capacite}
