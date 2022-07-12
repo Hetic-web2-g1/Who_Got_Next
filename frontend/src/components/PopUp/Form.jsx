@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import ToggleSwitch from "../ToogleSwitch/ToggleSwitch";
-import { useAuth } from "./../../contexts/AuthContext";
+import { useAuth, apiCall } from "./../../contexts/AuthContext";
 export const Form = () => {
     const [description, setDescription] = useState();
     const [place, setPlace] = useState();
@@ -29,11 +29,7 @@ export const Form = () => {
             "date_start": date,
         };
         console.log(form)
-        fetch("http://localhost:8000/events/create", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-        });
+        apiCall("http://localhost:8000/events/create", "POST", form)
     }
 
     return (
@@ -71,7 +67,7 @@ export const Form = () => {
       <div className="form-date">
         <div className="date">
           <label htmlFor="location"> Date </label>
-          <input type="date" className="form-control-date" id="location" onChange={e => setDate(e.target.value)}/>
+          <input type="date" className="form-control-date" id="location" onChange={e => setDate(Date(e.target.value))}/>
         </div>
         <div className="date">
           <label htmlFor="location"> À partir de </label>
