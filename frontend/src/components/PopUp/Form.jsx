@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import ToggleSwitch from "../ToogleSwitch/ToggleSwitch";
+import { useAuth } from "./../../contexts/AuthContext";
 export const Form = () => {
     const [description, setDescription] = useState();
     const [place, setPlace] = useState();
@@ -10,19 +11,29 @@ export const Form = () => {
     const [level, setLevel] = useState();
     const [handi, setHandi] = useState(false);
 
+    const { currentUser } = useAuth();
+
     const onSubmit = (e) => {
         e.preventDefault();
+        const userId = currentUser?.id;
         const form = {
-            "description": description,
+            "id_user": userId,
+            "name": sport,
             "place": place,
-            "date": date,
-            "capacity": capacity,
-            "access": access,
+            "description": description,
             "sport": sport,
-            "level": level,
-            "handi": handi,
-        }
+            "niveau": level,
+            "capacite": capacity,
+            "access_handicap": access,
+            "handisport": handi,
+            "date_start": date,
+        };
         console.log(form)
+        fetch("http://localhost:8000/events/create", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(form),
+        });
     }
 
     return (
