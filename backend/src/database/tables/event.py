@@ -24,7 +24,6 @@ event_table = Table(
     Column('handisport', Integer()),
     Column('acces_handicape', Boolean),
     Column('date_start', DateTime()),
-    Column('data', JSON),
     Column("created_at", DateTime(), default=datetime.utcnow),
     Column("edited_at", DateTime(), default=datetime.utcnow)
 )
