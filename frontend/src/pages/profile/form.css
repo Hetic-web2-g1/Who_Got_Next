@@ -116,7 +116,7 @@ line-height: 24px;
 
 color: #171C4F;
 }
-button{
+.formContainer > button{
     all: unset;
 }
 

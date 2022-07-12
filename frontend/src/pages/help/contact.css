@@ -89,7 +89,7 @@ input {
 }
 
 
-H4 {
+.contactContainer > h4{
     font-family: 'QualtaBold';
     font-style: normal;
     font-weight: 400;
@@ -97,7 +97,7 @@ H4 {
     line-height: 24px;
     color: #171C4F;
 }
-button{
+.contactContainer > button{
     all: unset;
 }
 

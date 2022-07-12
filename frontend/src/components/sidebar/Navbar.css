@@ -87,9 +87,8 @@
     background: #171C4F;
     opacity: 50%;
     z-index: 3;
-    margin-top: -1vh;
     width: 100%;
-    height: 101%;
+    height: 100vh;
     position: absolute;
 }
 
