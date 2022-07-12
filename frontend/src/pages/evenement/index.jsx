@@ -69,7 +69,7 @@ export const Evenement = () => {
           </p>
           <img
             className="create-mobile-img"
-            src="../../../public/images/evenement/create.png"
+            src="../../../public/assets/create.png"
             alt="judokas"
             width="347"
             height="332"
@@ -78,7 +78,7 @@ export const Evenement = () => {
         </div>
         <img
           className="create-desktop-img"
-          src="../../../public/images/evenement/create.png"
+          src="../../../public/assets/create.png"
           alt="judokas"
           width="540"
           height="470"
