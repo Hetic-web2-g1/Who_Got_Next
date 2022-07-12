@@ -24,9 +24,19 @@ function Navbar() {
     <>
       <IconContext.Provider value={{ color: "#171C4F" }}>
         <div className="navbar">
-          <Link to="#" className="menu-bars">
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
+        <div className="account" onClick={showSidebar}>
+                <img
+                  className="user"
+                  src="../../../assets/user.png"
+                  alt="user picture"
+                />
+                <div className="trait-vert" />
+                <div>Mon Compte</div>
+                <div className="trait-vert" />
+                <Link to="#" className="menu-bars">
+                  <FaIcons.FaBars/>
+                </Link>
+              </div>
         </div>
         <div className={sidebar ? "nav-flou" : ""} />
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>

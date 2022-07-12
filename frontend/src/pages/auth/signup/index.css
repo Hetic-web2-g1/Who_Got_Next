@@ -68,7 +68,6 @@ div {
 
 .flex-field img {
     position: absolute;
-    /* left: 0%; */
     top: 54%;
     display: inline-table;
     z-index: 2;
