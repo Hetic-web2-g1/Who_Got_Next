@@ -5,7 +5,7 @@ import Footer from '../../components/footer'
 import './styles/style.css'
 
 
-export const Error404 = () => {
+export const Error = () => {
     return(
         <>
         <main className="bgg">
@@ -15,7 +15,7 @@ export const Error404 = () => {
         <section className="fourfour">
             <h1>404</h1>
             <h2>Oups, re-ask Who Got Next</h2>
-            <button class='acc'>Retourner a l'accueil</button>
+            <button className='acc'>Retourner a l'accueil</button>
         </section>
         <section></section>
 
@@ -25,4 +25,4 @@ export const Error404 = () => {
     );
 };
 
-export default Error404;
+export default Error;
