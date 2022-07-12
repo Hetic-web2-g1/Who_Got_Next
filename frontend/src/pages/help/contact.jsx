@@ -23,10 +23,6 @@ export const Contact = ({ setContentSidebar, onSubmit }) => {
                 <input  className="form-control Message" 
                 />
             </div>
-
-            <div>
-                <input type="file" />
-            </div>
             
             </form>
             <div className="ContactButtonSubmit">
