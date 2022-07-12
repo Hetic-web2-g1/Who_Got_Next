@@ -25,11 +25,12 @@ export const Contact = ({ setContentSidebar, onSubmit }) => {
             </div>
             
             </form>
-            <div className="ContactButtonSubmit">
-                <button className="form-control btn btn-primary" type="submit">
+            <Link to="/home">
+                <a className="searchBtn-primary" >
                     Envoyer
-                </button>
-            </div>
+                </a>
+            </Link>
+
         </div>
     );
 };

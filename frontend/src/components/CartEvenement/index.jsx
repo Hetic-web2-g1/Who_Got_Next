@@ -33,19 +33,20 @@ export const CartEvenement = ({
       {date && capacity && level ? (
         <div className="details">
           <div>
-            {formated_date?.getDate()}{" "}
-            {formated_date?.toLocaleString("default", { month: "long" })} <br />{" "}
-            <span>Date</span>
+            <span>Date:</span><br/> 
+            {formated_date?.getDate()} {formated_date?.toLocaleString("default", { month: "long" })}{" "}
+          </div>
+          <div script={"font-variant-numeric: tabular-nums;"}>
+            <span>Heure:</span><br/>
+            {formated_date?.getHours()} : {formated_date?.getMinutes()}
           </div>
           <div>
-            {formated_date?.getHours()} {formated_date?.getMinutes()} <br />{" "}
-            <span>Heure</span>
+            <span>Capacité:</span><br/>
+            {capacity}
           </div>
           <div>
-            {capacity} <br /> <span>Capacité</span>
-          </div>
-          <div>
-            {level} <br /> <span>Niveau</span>
+            <span>Niveau:</span><br/>
+            {level}
           </div>
         </div>
       ) : null}

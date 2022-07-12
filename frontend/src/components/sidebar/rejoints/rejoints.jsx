@@ -30,25 +30,6 @@ export const Rejoints = ({ setContentSidebar }) => {
         Précédent
       </Link>
       <div className="sidebarTitle">
-        Parties
-        <div className="sidebarContainer">
-          {sideCardData
-            ? sideCardData.map((cart, index) => (
-                <CartEvenement
-                  sport={cart?.sport}
-                  title={cart?.name}
-                  place={cart?.place}
-                  date={cart?.date_start}
-                  capacity={cart?.capacite}
-                  level={cart?.niveau}
-                  key={index}
-                />
-              ))
-            : null}
-        </div>
-      </div>
-      <div className="trait" />
-      <div className="sidebarTitle">
         Événements
         <div className="sidebarContainer">
           {sideCardData

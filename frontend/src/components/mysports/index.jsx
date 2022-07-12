@@ -29,10 +29,12 @@ export const Sports = ({setContentSidebar}) => {
       return (
 
         <li key={index} className={item.cName}>
-                            <Link to='#' onClick={() => setContentSidebar2(item.tit)} className="sportadd">
+          {/* <div onClick={() => setContentSidebar2(item.tit)} className="sportadd"> */}
+
+          <div className="sportadd">
             <img src={item.url}></img>
             <span className="spam">{item.title}</span>
-          </Link>
+          </div>
           <div id="drop" className={item.ccname}>
 
             <select id={item.idname}>
