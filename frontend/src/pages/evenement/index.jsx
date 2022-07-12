@@ -66,8 +66,15 @@ export const Evenement = () => {
           <div>
             <h2>Créez un évènements à votre échelle</h2>
             <p>
-            Réunissez des communautés autour de tournois, matchs, initiations…
-            Renforcez la cohésion, relevez le niveau.
+            Réunissez des communautés autour de tournois, matchs, initiations...
+Renforcez la cohésion, relevez le niveau et rentrez dans la compétition !
+
+Créez votre événement et définissez vos critères, votre terrain et les participants
+recherchés ! 
+
+Que vous soyez en situation de handicap, que vous ayez un niveau débutant,
+que vous n’ayez pas de coéquipier ou simplement ne savez pas où pratiquer, 
+Who Got Next est là pour vous.
             </p>
             <img
               className="create-mobile-img"

@@ -558,6 +558,8 @@ button.form-next {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-items: center;
+    margin-top: 8em;
+
 }
 
 .slideshow-container>img {
@@ -631,7 +633,7 @@ button.evnButton {
     font-size: 31px;
     width: 37em;
     color: #171c4f;
-
+    font-size: 173%;
 }
 
 .slideshow-handisport > img {

@@ -16,9 +16,7 @@ user_table = Table(
            ),
     Column('is_admin', Boolean),
     Column('pseudo', String()),
-    Column('pseudo', String(),
-           unique=True
-           ),
+    Column('pseudo', String(),),
     Column('email', String(),
            unique=True
            ),
