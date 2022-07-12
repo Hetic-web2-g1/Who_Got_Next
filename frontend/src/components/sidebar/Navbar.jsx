@@ -17,26 +17,39 @@ function Navbar() {
   const [sidebar, setSidebar] = useState(false);
   const [contentSidebar, setContentSidebar] = useState("menu");
 
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
+  const [error, setError] = useState("");
   const showSidebar = () => setSidebar(!sidebar);
+
+  async function handleLogout() {
+    setError('')
+
+    try {
+        await logout()
+        navigate("/")
+
+    } catch {
+        setError("Nous n'avons pas pu vous déconnecter");
+    }
+  }
 
   return (
     <>
       <IconContext.Provider value={{ color: "#171C4F" }}>
         <div className="navbar">
-        <div className="account" onClick={showSidebar}>
-                <img
-                  className="user"
-                  src="../../../assets/user.png"
-                  alt="user picture"
-                />
-                <div className="trait-vert" />
-                <div>Mon Compte</div>
-                <div className="trait-vert" />
-                <Link to="#" className="menu-bars">
-                  <FaIcons.FaBars/>
-                </Link>
-              </div>
+          <div className="account" onClick={showSidebar}>
+            <img
+              className="user"
+              src="../../../assets/user.png"
+              alt="user picture"
+            />
+            <div className="trait-vert" />
+            <div>Mon Compte</div>
+            <div className="trait-vert" />
+            <Link to="#" className="menu-bars">
+              <FaIcons.FaBars/>
+            </Link>
+          </div>
         </div>
         <div className={sidebar ? "nav-flou" : ""} />
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
@@ -145,7 +158,7 @@ function Navbar() {
             )}
             <div className="trait" />
             <div className="sidebarTitle deco">
-              <a className="deco" href="">
+              <a className="deco" onClick={handleLogout}>
                 Se deconnecter
               </a>
             </div>
