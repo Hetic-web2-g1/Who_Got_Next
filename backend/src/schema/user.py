@@ -3,6 +3,13 @@ from typing import List
 from uuid import UUID
 from pydantic import BaseModel
 from typing import Optional
+from pydantic import Field
+
+
+class FirebaseUserCreate(BaseModel):
+    pseudo: str
+    email: str
+    password: str = Field(min_length=6, strip_whitespace=True)
 
 
 class UserCreate(BaseModel):
@@ -13,28 +20,18 @@ class UserCreate(BaseModel):
     favorite: Optional[List[str]] = None
     date_of_birth: Optional[date] = None
     sexe: Optional[str] = None
+    phone: str = None
     longitude: Optional[float] = None
     latitude: Optional[float] = None
-    img_path: Optional[str] = None
-    password: Optional[str] = None
     phone_number: Optional[str] = None
     adress: Optional[str] = None
     city: Optional[str] = None
     postal_code: Optional[str] = None
+    img_path: Optional[str] = None
 
 
-class User(BaseModel):
+class User(UserCreate):
     id: UUID
     created_at: datetime
     edited_at: datetime
     is_admin: Optional[bool] = False
-    pseudo: str
-    email: str
-    description: Optional[str] = None
-    sport_level: Optional[int] = None
-    favorite: Optional[List[str]] = None
-    date_of_birth: Optional[date] = None
-    sexe: Optional[str] = None
-    longitude: Optional[float] = None
-    latitude: Optional[float] = None
-    img_path: Optional[str] = None

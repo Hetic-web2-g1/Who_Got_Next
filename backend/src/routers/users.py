@@ -1,11 +1,10 @@
-from fastapi.security import APIKeyHeader
 from fastapi import APIRouter, HTTPException, Depends
 from typing import List
 from firebase_admin import auth
 
 from utils.firebase import SecurityCheck
 from database.db_engine import engine
-from schema.user import User, UserCreate
+from schema.user import User, UserCreate, FirebaseUserCreate
 from manager import UserManager
 
 
@@ -15,7 +14,6 @@ router = APIRouter(
 )
 
 
-# Get all users
 @router.get("", response_model=List[User | None])
 def get_all_users():
     with engine.begin() as conn:
@@ -38,12 +36,18 @@ def get_user(uid: str, authentified_user=Depends(SecurityCheck)):
 
 # Create User
 @router.post("/create")
-def create_user(create_user: UserCreate):
+def create_user(create_user: FirebaseUserCreate):
+    if create_user.password is None:
+        raise HTTPException(400, "Password is required")
     with engine.begin() as conn:
         user = UserManager.create_user(conn, create_user)
         if user is not None:
-            auth.create_user(uid=str(user.id), display_name=user.pseudo,
-                             email=user.email, password=create_user.password)
+            try:
+                auth.create_user(uid=str(user.id), display_name=user.pseudo,
+                                 email=user.email, password=create_user.password)
+            except (auth.EmailAlreadyExistsError):
+                UserManager.delete_user_by_id(conn, user.id)
+                raise ValueError("This email is already used")
 
 
 # Update user by id
