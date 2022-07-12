@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   sendPasswordResetEmail,
   signOut,
+  updateEmail
 } from "firebase/auth";
 
 import { useNavigate } from "react-router-dom";
@@ -19,6 +20,25 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   let navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
+
+  const updateInfo = async (pseudo, email, age, sexe, postal_code, adress, city, phone_number) => {
+    const body = {
+      pseudo: pseudo,
+      email: email,
+      date_of_birth: age,
+      sexe: sexe,
+      postal_code: postal_code,
+      adress: adress,
+      city: city,
+      phone_number: phone_number
+    }
+    let user = await apiCall(
+      `http://localhost:8000/users/update/${auth.currentUser.uid}`,
+      "PUT",
+      body
+    );
+    setCurrentUser(user);
+  }
 
   const signUp = async (email, password, pseudo, age, sexe) => {
     const body = {
@@ -107,6 +127,7 @@ export function AuthProvider({ children }) {
     logout,
     resetPassword,
     apiCall,
+    updateInfo
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

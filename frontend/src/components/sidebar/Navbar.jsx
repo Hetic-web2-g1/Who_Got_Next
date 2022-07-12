@@ -37,7 +37,7 @@ function Navbar() {
   return (
     <>
       <IconContext.Provider value={{ color: "#171C4F" }}>
-        <div className="navbar">
+        <div className="">
           <div className="account" onClick={showSidebar}>
             <img
               className="user"
@@ -45,14 +45,14 @@ function Navbar() {
               alt="user picture"
             />
             <div className="trait-vert" />
-            <div>Mon Compte</div>
+            <div style={{cursor: "pointer"}}>Mon Compte</div>
             <div className="trait-vert" />
             <Link to="#" className="menu-bars" >
               <FaIcons.FaBars/>
             </Link>
           </div>
         </div>
-        <div className={sidebar ? "nav-flou" : ""} />
+        <div className={sidebar ? "nav-flou" : "none"} />
         <nav id={sidebar ? 'nav-menu-show':'nav-menu-hide' }  className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items">
             <li className="navbar-toggle">

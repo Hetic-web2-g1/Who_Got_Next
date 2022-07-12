@@ -53,6 +53,7 @@ a img {
     background: white;
     position: relative;
     margin: 80px 170px;
+    margin: 80px 5%;
 }
 
 .create-evenement div {
@@ -122,4 +123,12 @@ a img {
         width: 121px;
     }
 
+}
+@media screen and (max-width: 900px) {
+
+    .create-mobile-img{
+    width: 80%;
+    min-width: 181px;
+    height: auto;
+    }
 }

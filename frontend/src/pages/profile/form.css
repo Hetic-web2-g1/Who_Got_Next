@@ -31,6 +31,10 @@
     justify-content: space-between;
 }
 
+.error-profile {
+    font-family: "Qualta";
+}
+
 .formContainer {
     display: flex;
     flex-direction: column;
