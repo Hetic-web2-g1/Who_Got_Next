@@ -29,12 +29,12 @@ ReactDOM.createRoot(container).render(
           <Route path="/" element={<App />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
-          <Route path="homepage" element={<Homepage />} />
+          <Route path="forgot-password" element={<ForgotPassword />} />
           <Route path="/private" element={<Private />}>
             <Route path="/private/private-home" element={<PrivateHome />} />
             <Route path="/private/update-profile" element={<UpdateProfile />} />
           </Route>
-          <Route path="forgot-password" element={<ForgotPassword />} />
+          <Route path="home" element={<Homepage />} />
           <Route path="evenement" element={<Evenement />} />
           <Route path="landingPage" element={<LandingPage />} />
           <Route path="map" element={<MapPage />} />
