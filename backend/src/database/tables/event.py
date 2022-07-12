@@ -17,6 +17,7 @@ event_table = Table(
     Column('id_user', UUID(as_uuid=True)),
     Column('id_field', String()),
     Column('name', String()),
+    Column('place', String()),
     Column('description', String()),
     Column('sport', String()),
     Column('niveau', String()),
