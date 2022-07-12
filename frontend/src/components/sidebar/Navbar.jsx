@@ -3,7 +3,7 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-import { SidebarData1, SidebarData2, SidebarData3 } from "./SidebarData1"; 
+import { SidebarData1, SidebarData2, SidebarData3 } from "./SidebarData1";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
 import Rejoints from "./rejoints/rejoints";
@@ -11,11 +11,13 @@ import Info from "../../pages/info/info";
 import Form from "../../pages/profile/Form";
 import Contact from "../../pages/help/contact";
 import Sports from "../mysports/index";
+import { useAuth } from "./../../contexts/AuthContext";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
   const [contentSidebar, setContentSidebar] = useState("menu");
 
+  const { currentUser } = useAuth();
   const showSidebar = () => setSidebar(!sidebar);
 
   return (
@@ -33,7 +35,9 @@ function Navbar() {
               <div className="q">
                 Bonjour,
                 <br />
-                <div className="username">Sammy</div>
+                <div className="username">
+                  {currentUser && currentUser.pseudo}
+                </div>
               </div>
               <div className="account">
                 <img

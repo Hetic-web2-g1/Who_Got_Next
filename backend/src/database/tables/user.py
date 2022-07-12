@@ -9,8 +9,9 @@ from database.db_engine import metadata
 user_table = Table(
     "user",
     metadata,
-    Column('id', String(),
+    Column('id', UUID(as_uuid=True),
            primary_key=True,
+           default=uuid4,
            unique=True
            ),
     Column('is_admin', Boolean),
