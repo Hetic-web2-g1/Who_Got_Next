@@ -3,9 +3,9 @@ import "./styles/style.css";
 import "../../fonts/Qualta/Qualta-Bold.ttf";
 import "../../fonts/Monument/PPMonumentExtended-Black.otf";
 import { Link } from "react-router-dom";
-import CartEvenement from "../../components/CartEvenement";
-import Footer from "../../components/footer";
-import Header from '../homepage/molecule/header';
+import CartEvenement from "@components/CartEvenement";
+import Footer from "@components/footer";
+import TopNavigation from '@components/TopNavigation/TopNavigation';
 
 export const Handisport = () => {
 
@@ -24,7 +24,7 @@ export const Handisport = () => {
     return (
         <>
             <header >
-                <Header />
+                <TopNavigation />
             </header>
             <div className="handisport-container">
                 <div className="found_handisport-container">
