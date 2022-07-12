@@ -10,6 +10,8 @@ class FirebaseUserCreate(BaseModel):
     pseudo: str
     email: str
     password: str = Field(min_length=6, strip_whitespace=True)
+    date_of_birth: date
+    sexe: str
 
 
 class UserCreate(BaseModel):
@@ -18,8 +20,8 @@ class UserCreate(BaseModel):
     description: Optional[str] = None
     sport_level: Optional[int] = None
     favorite: Optional[List[str]] = None
-    date_of_birth: Optional[date] = None
-    sexe: Optional[str] = None
+    date_of_birth: date
+    sexe: str = None
     phone: str = None
     longitude: Optional[float] = None
     latitude: Optional[float] = None
