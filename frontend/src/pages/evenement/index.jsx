@@ -4,7 +4,6 @@ import "../../fonts/Qualta/Qualta-Bold.ttf";
 import "../../fonts/Monument/PPMonumentExtended-Black.otf";
 import { Link } from "react-router-dom";
 import CartEvenement from "../../components/CartEvenement";
-import { useMemo } from "react";
 import Footer from "../../components/footer";
 import TopNavigation from '@components/TopNavigation/TopNavigation';
 
@@ -46,7 +45,7 @@ export const Evenement = () => {
         <div className="link">
           <Link to="/map">
             <img
-              src="../../../public/assets/map.svg"
+              src="../../../assets/map.svg"
               alt="icon map"
               width="16"
               height="16"
@@ -55,7 +54,7 @@ export const Evenement = () => {
           </Link>
           <Link to="#">
             <img
-              src="../../../public/assets/eye.svg"
+              src="../../../assets/eye.svg"
               alt="icon eye"
               width="16"
               height="16"
@@ -72,7 +71,7 @@ export const Evenement = () => {
             </p>
             <img
               className="create-mobile-img"
-              src="../../../public/images/evenement/create.png"
+              src="../../../assets/evenement/create.png"
               alt="judokas"
               width="347"
               height="332"
@@ -81,7 +80,7 @@ export const Evenement = () => {
           </div>
           <img
             className="create-desktop-img"
-            src="../../../public/images/evenement/create.png"
+            src="../../../assets/evenement/create.png"
             alt="judokas"
             width="540"
             height="470"

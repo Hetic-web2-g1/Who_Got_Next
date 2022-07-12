@@ -35,7 +35,7 @@ export const Handisport = () => {
                         Augmenter ses capacités physiques c’est améliorer son indépendance
                     </p>
                     <Link className="found_handisport-link" to="#">Trouver une partie</Link>
-                    <img src="../../../public/images/handisport/handisport.png" alt="sportif handicapé" width="500" height="665"/>
+                    <img src="../../../assets/handisport/handisport.png" alt="sportif handicapé" width="500" height="665"/>
                 </div>
                 <div className="carts-container">
                     {cardData
@@ -56,7 +56,7 @@ export const Handisport = () => {
                 <div className="link_handisport">
                     <Link to="/evenement">
                         <img
-                            src="../../../public/assets/eye.svg"
+                            src="../../../assets/eye.svg"
                             alt="icon eye"
                             width="16"
                             height="16"
