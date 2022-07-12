@@ -29,8 +29,8 @@ export const Footer = ({
         {
             'icon' : '../../../assets/footer/handisport.jpg',
             'title': 'Handisport',
-            'desc' : 'Invitez d’autres camarades de sport,\n' +
-                'renseignez les details de votre partie et attendez vos coéquipiers'
+            'desc' : 'Parce que les bienfaits du sport profitent à tous,\n' +
+                ' nous nous devons de proposer une activité sportive adaptée aux personnes en situation de handicape.'
         }
     ]
     return (
