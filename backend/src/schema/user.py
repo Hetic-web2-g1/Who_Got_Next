@@ -22,7 +22,7 @@ class UserCreate(BaseModel):
     favorite: Optional[List[str]] = None
     date_of_birth: date
     sexe: str
-    phone: str
+    phone: Optional[str] = None
     longitude: Optional[float] = None
     latitude: Optional[float] = None
     phone_number: Optional[str] = None
