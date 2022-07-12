@@ -8,7 +8,13 @@ class EventCreate(BaseModel):
     id_user: UUID
     id_field: UUID
     name: str
-    description: str
+    description: Optional[str] = None
+    sport: Optional[str] = None
+    niveau: Optional[str] = None
+    capacite: Optional[int] = None
+    handisport: Optional[int] = None
+    acces_handicape: Optional[bool] = None
+    date_start: Optional[datetime] = None
     data: Optional[dict] = None
 
 

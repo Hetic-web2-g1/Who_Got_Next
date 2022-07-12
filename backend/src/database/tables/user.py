@@ -30,6 +30,10 @@ user_table = Table(
     Column('longitude', Float),
     Column('latitude', Float),
     Column('img_path', String()),
+    Column('phone_number', String()),
+    Column('adress', String()),
+    Column('city', String()),
+    Column('postal_code', String()),
     Column("created_at", DateTime(), default=datetime.utcnow),
     Column("edited_at", DateTime(), default=datetime.utcnow)
 )

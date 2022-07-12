@@ -16,7 +16,11 @@ class UserCreate(BaseModel):
     longitude: Optional[float] = None
     latitude: Optional[float] = None
     img_path: Optional[str] = None
-    password: str
+    password: Optional[str] = None
+    phone_number: Optional[str] = None
+    adress: Optional[str] = None
+    city: Optional[str] = None
+    postal_code: Optional[str] = None
 
 
 class User(BaseModel):
