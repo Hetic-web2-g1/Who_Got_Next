@@ -2,26 +2,6 @@ import React from 'react';
 import './form.css'
 import { Link } from 'react-router-dom';
 
-async function getUser() {
-    const id = "4dc7a4ed-40b4-414c-a8a2-52eb28a50a6f"
-    try {
-      const response = await fetch(`http://127.0.0.1:8000/users/${id}`, {
-        method: 'GET',
-        headers: { "Content-Type": "application/json" },
-      });
-  
-      
-  
-      const result = await response.json();
-      return result;
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  
-  getUser();
-
-  
 
 export const Form = ({ onSubmit, setContentSidebar }) => {
     return (

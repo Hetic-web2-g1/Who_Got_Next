@@ -133,12 +133,6 @@ export const FavSports = [
         burl:'../../../public/assets/petanque-b.svg'
 
     },
-    {
-        title:"Enfants",
-        url:'../../../public/assets/children.svg',
-        burl:'../../../public/assets/enfant-b.svg'
-
-    },
 
 ]
 
