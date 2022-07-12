@@ -31,7 +31,7 @@ function Navbar() {
         <div className={sidebar ? "nav-flou" : ""} />
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items">
-            <li className="navbar-toggle" onClick={showSidebar}>
+            <li className="navbar-toggle">
               <div className="q">
                 Bonjour,
                 <br />
@@ -48,7 +48,7 @@ function Navbar() {
                 <div className="trait-vert" />
                 <div>Mon Compte</div>
                 <div className="trait-vert" />
-                <Link to="#" className="menu-bars">
+                <Link to="#" className="menu-bars" onClick={showSidebar}>
                   <AiIcons.AiOutlineClose />
                 </Link>
               </div>

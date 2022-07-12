@@ -1,20 +1,31 @@
-import React from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../style/main.css";
-import Evenement from "../../evenement";
 
 function Router() {
+  useEffect (() => {
+    if (window.location.pathname.includes('home')) {
+      document.getElementById('home').classList.add('activelink');
+    }
+    else if (window.location.pathname.includes('join')) {
+      document.getElementById('join').classList.add('activelink');
+    }
+    else if (window.location.pathname.includes('evenement')) {
+      document.getElementById('evenement').classList.add('activelink');
+    }
+  })
+
   return (
     <>
       <div className="router">
         <ul className="list-router">
-          <li className="homepage">
-            <Link to="/home" className="activelink"> Jouer </Link>{" "}
+          <li className="homepage" id="home">
+            <Link to="/home"> Jouer </Link>{" "}
           </li>
-          <li className="join">
-            <Link to="/join"> Rejoindre </Link>{" "}
+          <li className="join" id="join">
+            <Link to="/join" > Rejoindre </Link>{" "}
           </li>
-          <li className="event">
+          <li className="event" id="evenement">
             <Link to="/evenement"> Evenements </Link>{" "}
           </li>
         </ul>

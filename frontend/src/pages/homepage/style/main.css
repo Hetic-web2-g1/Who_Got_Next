@@ -57,9 +57,6 @@ html {
 /* End Logo */
 
 /* Router */
-.homepage>a {
-    color: #1758FF;
-}
 
 .list-router {
     display: flex;
