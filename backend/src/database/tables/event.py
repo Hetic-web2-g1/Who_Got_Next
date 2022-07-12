@@ -21,7 +21,7 @@ event_table = Table(
     Column('description', String()),
     Column('sport', String()),
     Column('niveau', String()),
-    Column('capacite', Integer()),
+    Column('capacite', String()),
     Column('handisport', Boolean),
     Column('acces_handicap', Boolean),
     Column('date_start', DateTime()),
