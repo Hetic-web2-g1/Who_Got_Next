@@ -13,7 +13,7 @@ function Handisport() {
                     <p> Parce que les bienfaits du sport profitent à tous, nous nous devons de proposer une activité sportive adaptée aux personnes en situation de handicape. </p>
                 </div>
                 <div className='btnHandi'>
-                    <Link to="/">
+                    <Link to="/handisport">
                         <button className="handiButton" type="button">
                             En savoir plus
                         </button>
