@@ -51,6 +51,10 @@ export const Form = () => {
         <option> BasketBall </option>
         <option> Judo </option>
         <option> Rugby </option>
+        <option> Tennis </option>
+        <option> Badminton </option>
+        <option> Gym </option>
+        <option> Running </option>
       </select>
 
       <div className="form-group">
