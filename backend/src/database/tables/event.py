@@ -22,7 +22,7 @@ event_table = Table(
     Column('niveau', String()),
     Column('capacite', Integer()),
     Column('handisport', Boolean),
-    Column('acces_handicape', Boolean),
+    Column('acces_handicap', Boolean),
     Column('date_start', DateTime()),
     Column("created_at", DateTime(), default=datetime.utcnow),
     Column("edited_at", DateTime(), default=datetime.utcnow)
