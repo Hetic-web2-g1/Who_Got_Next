@@ -45,7 +45,7 @@ function Navbar() {
               alt="user picture"
             />
             <div className="trait-vert" />
-            <div>Mon Compte</div>
+            <div style={{cursor: "pointer"}}>Mon Compte</div>
             <div className="trait-vert" />
             <Link to="#" className="menu-bars" >
               <FaIcons.FaBars/>
