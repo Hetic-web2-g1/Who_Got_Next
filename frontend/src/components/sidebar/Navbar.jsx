@@ -158,7 +158,7 @@ function Navbar() {
             )}
             <div className="trait" />
             <div className="sidebarTitle deco">
-              <a className="deco" onClick={handleLogout}>
+              <a className="deco" style={{cursor: "pointer"}} onClick={handleLogout}>
                 Se deconnecter
               </a>
             </div>
