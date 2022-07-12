@@ -14,8 +14,15 @@ function Evenement() {
                     <h3> Participez ou creez des évènements sportif </h3>
                 </div>
                 <div className='textEvn'>
-                    <p> Participez, reunissez des communautés autour de tournois, matchs, initiations...
-                        Renforcez la cohesion, relevez le niveau </p>
+                    <p> Réunissez des communautés autour de tournois, matchs, initiations... <br></br>
+Renforcez la cohésion, relevez le niveau et rentrez dans la compétition !
+<br></br><br></br>
+Créez votre événement et définissez vos critères, votre terrain et les participants
+recherchés ! 
+<br></br><br></br>
+Que vous soyez en situation de handicap, que vous ayez un niveau débutant,
+que vous n’ayez pas de coéquipier ou simplement ne savez pas où pratiquer, 
+Who Got Next est là pour vous.</p>
                 </div>
                 <div className='buttonEvn'>
                     <Link to="/evenement">
