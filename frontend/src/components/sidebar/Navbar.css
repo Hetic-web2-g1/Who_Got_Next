@@ -42,11 +42,18 @@
     background: none;
   }
   
+  #nav-menu-show{
+    display: flex;
+
+  }
+  #nav-menu-hide{
+    display: none;
+  }
+  
   .nav-menu {
     background-color: #FFFF;
     width: 850px;
     height: 100vh;
-    display: flex;
     justify-content: center;
     position: fixed;
     top: 0;
