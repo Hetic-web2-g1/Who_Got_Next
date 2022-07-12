@@ -10,7 +10,6 @@ export const Form = ({ onSubmit, setContentSidebar }) => {
   const [validation, setValidation] = useState("");
   
   let editedUser = {...currentUser};
-  console.log(editedUser);
 
   const [state, setState] = useState({
     pseudo: editedUser.pseudo,
