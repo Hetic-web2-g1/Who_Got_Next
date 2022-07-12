@@ -18,6 +18,7 @@ import LandingPage from "./pages/landingPage";
 import Login from "./pages/auth/login";
 import Signup from "./pages/auth/signup";
 import Homepage from "./pages/homepage";
+import Handisport from './pages/handisport'
 
 const container = document.getElementById("root");
 
@@ -37,6 +38,7 @@ ReactDOM.createRoot(container).render(
           <Route path="home" element={<Homepage />} />
           <Route path="evenement" element={<Evenement />} />
           <Route path="landingPage" element={<LandingPage />} />
+          <Route path="handisport" element={<Handisport />} />
           <Route path="map" element={<MapPage />} />
         </Routes>
       </AuthProvider>

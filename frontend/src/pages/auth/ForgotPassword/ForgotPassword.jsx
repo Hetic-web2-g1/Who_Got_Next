@@ -38,7 +38,7 @@ export const ForgotPassword = () => {
 
             <div className='connect-container'>
               <div className='img-container'>
-                <img src="./../../../../public/assets/logo.svg" alt="logo" />
+                <img src="./../../../../assets/logo.svg" alt="logo" />
               </div>
 
               <div className='flex'>
@@ -71,7 +71,7 @@ export const ForgotPassword = () => {
           </div>
 
           <div className='right-container'>
-            <img src="./../../../../public/assets/right-login.png" alt="" />
+            <img src="./../../../../assets/right-login.png" alt="" />
           </div>
         </div>
       </main>

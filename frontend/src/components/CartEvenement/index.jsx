@@ -29,7 +29,7 @@ export const CartEvenement = ({
         ) : (
           <img
             className="image"
-            src="../../../public/assets/kirbok.jpg"
+            src="../../../assets/kirbok.jpg"
             alt={sport}
             width="88"
             height="88"
@@ -61,7 +61,7 @@ export const CartEvenement = ({
         </div> ) : null }
       <img
         className="heart"
-        src="../../../public/assets/heart.svg"
+        src="../../../assets/heart.svg"
         alt="heart"
         width="19"
         height="19"

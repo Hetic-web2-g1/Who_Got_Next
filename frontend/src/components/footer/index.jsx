@@ -35,7 +35,7 @@ export const Footer = ({
     ]
     return (
         <div style={bgWhite ? {background: '#F7F7FC'} : {background: 'white'}} className="footer">
-            <img className="footer_logo" src="../../../public/assets/whogotnext_logo.svg" alt="WhoGotNext-logo" width="59.57" height="50"/>
+            <img className="footer_logo" src="../../../assets/whogotnext_logo.svg" alt="WhoGotNext-logo" width="59.57" height="50"/>
             <div className="footer_container-content">
                 {content.map((content) => (
                     <div className="footer_content">
@@ -56,9 +56,9 @@ export const Footer = ({
                 </div>
                 <div className="footer-link">
                     <div className="footer_link-title">Suivez-nous !</div>
-                    <Link to=""><img src="../../../public/assets/instagram.svg" alt="instagram" width="14" height="14"/></Link>
-                    <Link to=""><img src="../../../public/assets/twitter.svg" alt="twitter" width="17.23" height="14"/></Link>
-                    <Link to=""><img src="../../../public/assets/youtube.svg" alt="youtube" width="19.93" height="14"/></Link>
+                    <Link to=""><img src="../../../assets/instagram.svg" alt="instagram" width="14" height="14"/></Link>
+                    <Link to=""><img src="../../../assets/twitter.svg" alt="twitter" width="17.23" height="14"/></Link>
+                    <Link to=""><img src="../../../assets/youtube.svg" alt="youtube" width="19.93" height="14"/></Link>
                 </div>
             </div>
         </div>

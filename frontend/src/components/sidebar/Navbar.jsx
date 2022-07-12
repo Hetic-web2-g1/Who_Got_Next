@@ -42,7 +42,7 @@ function Navbar() {
               <div className="account">
                 <img
                   className="user"
-                  src="../../../public/assets/user.png"
+                  src="../../../assets/user.png"
                   alt="user picture"
                 />
                 <div className="trait-vert" />

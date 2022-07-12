@@ -17,7 +17,7 @@ export const Sports = ({setContentSidebar}) => {
     <>
       <div className='dhead'>
                   <Link className="sidebar_back-link" to="#" onClick={() => setContentSidebar('menu')}>
-                <img src="../../../public/assets/chevron-left.svg" alt="left arrow" width="18" height="18"/>
+                <img src="../../../assets/chevron-left.svg" alt="left arrow" width="18" height="18"/>
                 Précédent
             </Link>
       </div>

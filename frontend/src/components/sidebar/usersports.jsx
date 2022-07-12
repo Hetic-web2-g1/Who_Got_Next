@@ -135,11 +135,3 @@ export const FavSports = [
     },
 
 ]
-
-// export const UserAddSport= [
-//     {
-//         title:'Ajouter un sport',
-//         icon:'../../../public/assets/plus-circle,svg',
-//         Cname:''
-//     }
-// ]

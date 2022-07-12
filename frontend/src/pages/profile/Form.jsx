@@ -13,7 +13,7 @@ export const Form = ({ onSubmit, setContentSidebar }) => {
         onClick={() => setContentSidebar("menu")}
       >
         <img
-          src="../../../../public/assets/left_arrow.svg"
+          src="../../../../assets/left_arrow.svg"
           alt="left arrow"
           width="18"
           height="18"

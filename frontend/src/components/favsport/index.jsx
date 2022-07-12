@@ -12,7 +12,7 @@ export const Favsport = ({setContentSidebar2}) => {
     <div>
                 <div className='ed'>
                 <Link className="sidebar_back-link" to="#" onClick={() => setContentSidebar2('sous-menu')}>
-                <img src="../../../public/assets/chevron-left.svg" alt="left arrow" width="18" height="18"/>
+                <img src="../../../assets/chevron-left.svg" alt="left arrow" width="18" height="18"/>
                 Précédent
             </Link>
                 <div className='favsport'>Choisissez vos sports favoris</div>
