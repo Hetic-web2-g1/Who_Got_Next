@@ -23,7 +23,7 @@ export const CartEvenement = ({
           alt={sport}
           width="88"
           height="88"
-        />
+        /> 
         <div className="heading_details">
           <span className="sport">{sport}</span>
           {title ? <h4 className="evenement_title">{title}</h4> : null}
