@@ -21,25 +21,6 @@ export const Rejoints = ({setContentSidebar}) => {
                 <img src="../../../../assets/left_arrow.svg" alt="left arrow" width="18" height="18"/>
                 Précédent
             </Link>
-            <div className='sidebarTitle'>
-                Parties
-                <div className='sidebarContainer'>
-                    {sideCardData
-                        ? sideCardData.map((cart, index) => (
-                            <CartEvenement
-                                image={cart?.data?.data.image}
-                                sport={cart?.data?.data.sport}
-                                title={cart.name}
-                                place={cart?.data?.data.place}
-                                date={cart?.data?.data.date}
-                                capacity={cart?.data?.data.capacity}
-                                level={cart?.data?.data.level}
-                                key={index}
-                            />
-                        )) : null
-                    }
-                </div>
-            </div>
             <div className='trait' />
             <div className='sidebarTitle'>
                 Événements

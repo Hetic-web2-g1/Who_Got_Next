@@ -2,6 +2,8 @@ import { DateTime } from "luxon";
 import React, {useState} from "react";
 import ToggleSwitch from "../ToogleSwitch/ToggleSwitch";
 import { useAuth } from "./../../contexts/AuthContext";
+import { Link } from "react-router-dom";
+
 export const Form = () => {
     const [description, setDescription] = useState();
     const [place, setPlace] = useState();
@@ -104,15 +106,13 @@ export const Form = () => {
         <label htmlFor="read">J'ai lu et j'accepte... </label>
         <input type="checkbox" className="form-control" id="read" />
       </div>
-
-      <div className="form-submit">
-        <button className="form-cancel">
-          Annuler
-        </button>
-        <button className="form-next" type="submit">
-          Confirmer
-        </button>
-      </div>
+      <Link to="/evenement" className="spam">
+        <div className="form-submit">
+          <button className="form-next" type="submit">
+            Confirmer
+          </button>
+        </div>
+      </Link>
     </form>
   );
 };
