@@ -6,11 +6,6 @@ function Play() {
 
     const [openOptions, setOpenOptions] = useState(false);
     const triggerText = "Let's Go";
-    const onSubmit = (event) => {
-        event.preventDefault(event);
-        console.log(event.target.name.value);
-        console.log(event.target.email.value);
-    };
 
     return (
         <div className='playContainer'>
@@ -42,8 +37,7 @@ function Play() {
 
             </div>
 
-            <Container triggerText={triggerText} onSubmit={onSubmit} />
-            {/* <button> Let's Go  </button> */}
+            <Container triggerText={triggerText}  />
         </div>
     )
 }

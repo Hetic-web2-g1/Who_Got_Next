@@ -481,7 +481,7 @@ p.lorem-text {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    gap: 3em;
+    gap: 0.5em;
 }
 
 .form-group {
@@ -569,7 +569,7 @@ button.form-next {
     flex-direction: column;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 3em;
+    gap: 1em;
     width: 69em;
 }
 

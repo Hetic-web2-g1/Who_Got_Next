@@ -6,11 +6,6 @@ function PlayJoin() {
 
     const [openOptions, setOpenOptions] = useState(false);
     const triggerText = "Let's Go";
-    const onSubmit = (event) => {
-        event.preventDefault(event);
-        console.log(event.target.name.value);
-        console.log(event.target.email.value);
-    };
 
     return (
         <div className='playContainer'>
@@ -50,7 +45,7 @@ function PlayJoin() {
 
             </div>
 
-            <Container triggerText={triggerText} onSubmit={onSubmit} />
+            <Container triggerText={triggerText} />
             {/* <button> Let's Go  </button> */}
         </div>
     )
