@@ -12,7 +12,7 @@ class EventCreate(BaseModel):
     description: Optional[str] = None
     sport: Optional[str] = None
     niveau: Optional[str] = None
-    capacite: Optional[int] = None
+    capacite: Optional[str] = None
     handisport: Optional[bool] = None
     acces_handicap: Optional[bool] = None
     date_start: Optional[datetime] = None
