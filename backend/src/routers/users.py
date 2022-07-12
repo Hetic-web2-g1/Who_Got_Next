@@ -26,7 +26,7 @@ def get_all_users():
 @router.get("/{uid}", response_model=User)
 def get_user(uid: str, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
-        if authentified_user.id == uid or authentified_user.is_admin:
+        if str(authentified_user.id) == uid or authentified_user.is_admin:
             user = UserManager.get_user_by_id(conn, uid)
             if user is None:
                 raise HTTPException(404, "User not found")
@@ -38,15 +38,12 @@ def get_user(uid: str, authentified_user=Depends(SecurityCheck)):
 
 # Create User
 @router.post("/create")
-def create_user(create_user: UserCreate, bearer_token: str = Depends(APIKeyHeader(name="Authorization"))):
-    decoded_token = auth.verify_id_token(bearer_token)
-    uid = decoded_token['uid']
+def create_user(create_user: UserCreate):
     with engine.begin() as conn:
-        user = UserManager.get_user_by_id(conn, uid)
-        if user is None or user.is_admin:
-            return UserManager.create_user(conn, create_user, uid)
-        else:
-            raise HTTPException(409, "User already exists")
+        user = UserManager.create_user(conn, create_user)
+        if user is not None:
+            auth.create_user(uid=str(user.id), display_name=user.pseudo,
+                             email=user.email, password=create_user.password)
 
 
 # Update user by id

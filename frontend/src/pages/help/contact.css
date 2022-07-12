@@ -68,7 +68,7 @@
     color: #878AAB;
 }
 
-input {
+/* input {
     width: 100%;
     padding: 7px 20px;
     gap: 24px;
@@ -80,7 +80,7 @@ input {
     font-size: 14px;
     line-height: 20px;
     color: #171C4F;
-}
+} */
 
 .Message{
     display: inline-block;

@@ -1,118 +1,113 @@
-import  React, { useContext, useState, useEffect } from 'react'
-import { auth } from '../firebase-config'
+import React, { useContext, useState, useEffect } from "react";
+import { auth } from "../firebase-config";
 
 import {
-    signInWithEmailAndPassword,
-    createUserWithEmailAndPassword,
-    onAuthStateChanged,
-    sendPasswordResetEmail,
-    signOut,
-  } from 'firebase/auth'
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  signOut,
+} from "firebase/auth";
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-const AuthContext = React.createContext()
+const AuthContext = React.createContext();
 
 export function useAuth() {
-    return useContext(AuthContext)
+  return useContext(AuthContext);
 }
 
 export function AuthProvider({ children }) {
-    let navigate = useNavigate()
-    let firebaseCurrentUser = null
-    const [currentUser,setCurrentUser] = useState(null)
-    const [loading, setLoading] = useState(true)
+  let navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState(null);
 
-    const signUp = async (email, password, pseudo, age, sexe) => {
-      await createUserWithEmailAndPassword(auth, email, password)
-      const body = {"pseudo": pseudo, "email": email, "date_of_birth": age, "sexe": sexe};
-      let user = await apiCall("http://localhost:8000/users/create", "POST", body)
-      setCurrentUser(user)
+  const signUp = async (email, password, pseudo, age, sexe) => {
+    const body = {
+      pseudo: pseudo,
+      email: email,
+      date_of_birth: age,
+      sexe: sexe,
+      password: password,
+    };
+    let user = await apiCall(
+      "http://localhost:8000/users/create",
+      "POST",
+      body
+    );
+    setCurrentUser(user);
+    await signInWithEmailAndPassword(auth, email, password);
+    navigate("/homepage");
+  };
+
+  const fetchUser = async () => {
+    return await apiCall(
+      `http://localhost:8000/users/${auth.currentUser.uid}`,
+      "GET"
+    );
+  };
+
+  const login = async (email, pwd) => {
+    await signInWithEmailAndPassword(auth, email, pwd);
+    setCurrentUser(await fetchUser());
+    navigate("/homepage");
+  };
+
+  const logout = () => {
+    signOut(auth);
+    setCurrentUser(null);
+    navigate("/login");
+  };
+
+  const resetPassword = (email) => sendPasswordResetEmail(auth, email);
+
+  const apiCall = async (url, method = "GET", body, params, options) => {
+    if (options === undefined) {
+      options = { responseType: "json" };
+    } else if (options.responseType === undefined) {
+      options.responseType = "json";
     }
 
-    const fetchUser = async () =>{
-      return await apiCall(`http://localhost:8000/users/${firebaseCurrentUser.uid}`, "GET")
+    const headers = new Headers();
+    const requestInit = { method };
+    const urlParams = new URLSearchParams(params);
+    if (auth.currentUser) {
+      headers.append("authorization", await auth.currentUser.getIdToken());
     }
-
-    const login = async (email, pwd) => {
-      signInWithEmailAndPassword(auth, email, pwd)
+    if (body !== undefined) {
+      requestInit.body = JSON.stringify(body);
+      headers.append("content-type", "application/json");
     }
-
-    const logout = () => {
-      signOut(auth)
-      setCurrentUser(null)
-      firebaseCurrentUser =  null
-    }
-
-    const resetPassword = (email) => sendPasswordResetEmail(auth, email);
-
-    useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth , async (user) => {
-        firebaseCurrentUser = user
-        if (user) {
-          try{
-            setCurrentUser(await fetchUser())}
-          catch{}
-        }else{
-          navigate('/login')
-        }
-        setLoading(false);
-      })
-
-      return unsubscribe
-    }, [])
-
-    const apiCall = async (
-      url,
-      method = 'GET',
-      body,
-      params,
-      options,
-    ) => {
-    
-      if (options === undefined) {
-        options = { responseType: 'json' }
-      } else if (options.responseType === undefined) {
-        options.responseType = 'json'
+    requestInit.headers = headers;
+    const request = new Request(url + urlParams.toString(), requestInit);
+    const resp = await fetch(request);
+    if (resp.ok) {
+      let data;
+      if (options.responseType === "json") {
+        data = await resp.json();
+      } else if (options.responseType === "blob") {
+        data = await resp.blob();
       }
-      
-      const headers = new Headers()
-      const requestInit = { method }
-      const urlParams = new URLSearchParams(params)
-      if (auth.currentUser) {
-        headers.append('authorization', await auth.currentUser.getIdToken())
-      }
-      if (body !== undefined) {
-        requestInit.body = JSON.stringify(body)
-        headers.append('content-type', 'application/json')
-      }
-      requestInit.headers = headers
-      const request = new Request(url + urlParams.toString(), requestInit)
-      const resp = await fetch(request)
-      if (resp.ok) {
-        let data
-        if (options.responseType === 'json') {
-          data = await resp.json()
-        } else if (options.responseType === 'blob') {
-          data = await resp.blob()
-        }
-        return data
-      } else throw new Error("Error");
-    }
+      return data;
+    } else throw new Error("Error");
+  };
 
-    const value = {
-        currentUser,
-        firebaseCurrentUser,
-        login,
-        signUp,
-        logout,
-        resetPassword,
-        apiCall
-    }
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user && user.uid != (currentUser && currentUser.id)) {
+        setCurrentUser(await fetchUser());
+      }
+    });
 
-  return (
-    <AuthContext.Provider value={value}>
-        {!loading && children}
-    </AuthContext.Provider>
-  )
+    return unsubscribe;
+  }, []);
+
+  const value = {
+    currentUser,
+    login,
+    signUp,
+    logout,
+    resetPassword,
+    apiCall,
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
