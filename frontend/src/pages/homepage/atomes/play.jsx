@@ -36,7 +36,7 @@ function Play() {
                 </div>}
 
             </div>
-
+            {/* <input type='button'></input> */}
             <Container triggerText={triggerText}  />
         </div>
     )

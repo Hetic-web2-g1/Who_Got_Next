@@ -49,7 +49,7 @@
   #nav-menu-hide{
     display: none;
   }
-  
+
   .nav-menu {
     background-color: #FFFF;
     width: 850px;
@@ -224,6 +224,9 @@
   }
   
   #none{
+    display: none;
+  }
+  .none{
     display: none;
   }
   
