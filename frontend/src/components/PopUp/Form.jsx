@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import ToggleSwitch from "../ToogleSwitch/ToggleSwitch";
+import { useAuth } from "./../../contexts/AuthContext";
 export const Form = () => {
     const [description, setDescription] = useState();
     const [place, setPlace] = useState();
@@ -10,18 +11,24 @@ export const Form = () => {
     const [level, setLevel] = useState();
     const [handi, setHandi] = useState(false);
 
+    const { currentUser } = useAuth();
+
     const onSubmit = (e) => {
         e.preventDefault();
+        const userId = currentUser.id;
         const form = {
+            "id_user": userId,
+            "name": sport,
             "description": description,
-            "place": place,
-            "date": date,
-            "capacity": capacity,
-            "access": access,
             "sport": sport,
             "level": level,
-            "handi": handi,
+            "capacity": capacity,
+            "access_handicap": access,
+            "handisport": handi,
+            "date_start": date,
+            "place": place,
         }
+        console.log(currentUser)
         console.log(form)
     }
 
