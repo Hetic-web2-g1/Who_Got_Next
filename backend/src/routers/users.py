@@ -54,7 +54,7 @@ def create_user(create_user: FirebaseUserCreate):
 @router.put("/update/{uid}")
 def update_user(user: UserCreate, uid: str, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
-        if authentified_user.id == uid or authentified_user.is_admin:
+        if str(authentified_user.id) == uid or authentified_user.is_admin:
             return UserManager.update_user(conn, user, uid)
         else:
             raise HTTPException(404, "User not found")
