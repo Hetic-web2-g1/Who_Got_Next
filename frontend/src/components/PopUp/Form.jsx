@@ -15,21 +15,25 @@ export const Form = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const userId = currentUser.id;
+        const userId = currentUser?.id;
         const form = {
             "id_user": userId,
             "name": sport,
+            "place": place,
             "description": description,
             "sport": sport,
-            "level": level,
-            "capacity": capacity,
+            "niveau": level,
+            "capacite": capacity,
             "access_handicap": access,
             "handisport": handi,
             "date_start": date,
-            "place": place,
-        }
-        console.log(currentUser)
+        };
         console.log(form)
+        fetch("http://localhost:8000/events/create", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(form),
+        });
     }
 
     return (
