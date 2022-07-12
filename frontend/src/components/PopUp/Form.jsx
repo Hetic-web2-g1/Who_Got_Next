@@ -10,7 +10,7 @@ export const Form = () => {
   const [date, setDate] = useState();
   const [capacity, setCapacity] = useState();
   const [access, setAccess] = useState(false);
-  const [sport, setSport] = useState();
+  const [sport, setSport] = useState("football");
   const [level, setLevel] = useState();
   const [handi, setHandi] = useState(false);
   const [hour, setHour] = useState();
