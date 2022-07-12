@@ -16,7 +16,7 @@ def get_all_events(conn: Connection):
             yield Event(**event)
 
 
-def get_event_by_id(conn: Connection, id: str):
+def get_event_by_id(conn: Connection, id: UUID):
     stmt = sa.select([event_table]).where(event_table.c.id == id)
     row = conn.execute(stmt).first()
 

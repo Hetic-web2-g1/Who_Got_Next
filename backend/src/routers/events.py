@@ -23,7 +23,7 @@ def get_all_events():
 
 # Get event by id
 @router.get("/{event_id}", response_model=Event)
-def get_event(event_id: str):
+def get_event(event_id: UUID):
     with engine.begin() as conn:
         event = EventManager.get_event_by_id(conn, event_id)
         if event is None:
@@ -34,9 +34,9 @@ def get_event(event_id: str):
 
 # Create event
 @router.post("/create")
-def create_event(event: EventCreate, uid: str, authentified_user=Depends(SecurityCheck)):
+def create_event(event: EventCreate, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
-        if authentified_user.id == uid or authentified_user.is_admin:
+        if authentified_user.id == event.id_user or authentified_user.is_admin:
             return EventManager.create_event(conn, event)
         else:
             raise HTTPException(409, "Event already exists")
@@ -44,9 +44,9 @@ def create_event(event: EventCreate, uid: str, authentified_user=Depends(Securit
 
 # Update event by id
 @router.put("/update/{id}")
-def update_event(event: EventCreate, event_id: UUID, uid: str, authentified_user=Depends(SecurityCheck)):
+def update_event(event: EventCreate, event_id: UUID, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
-        if authentified_user.id == uid or authentified_user.is_admin:
+        if authentified_user.id == event.id_user or authentified_user.is_admin:
             return EventManager.update_event(conn, event, event_id)
         else:
             raise HTTPException(404, "Event not found")
@@ -54,9 +54,12 @@ def update_event(event: EventCreate, event_id: UUID, uid: str, authentified_user
 
 # Delete one event by id
 @router.delete("/delete/{event_id}", response_model=bool)
-def delete_event(event_id: UUID, uid: str, authentified_user=Depends(SecurityCheck)):
+def delete_event(event_id: UUID, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
-        if authentified_user.id == uid or authentified_user.is_admin:
+        event = EventManager.get_event_by_id(conn, event_id)
+        if event is None:
+            raise HTTPException(404, "Event not found")
+        if authentified_user.id == event.id_user or authentified_user.is_admin:
             return EventManager.delete_event_by_id(conn, event_id)
         else:
             raise HTTPException(403, "Action not permitted")

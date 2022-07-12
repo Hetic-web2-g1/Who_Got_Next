@@ -1,3 +1,4 @@
+from uuid import UUID
 from faker import Faker
 import sqlalchemy as sa
 from sqlalchemy.engine import Connection
@@ -26,7 +27,7 @@ def get_all_field_unlimited(conn: Connection):
             yield Field(**field)
 
 
-def get_field_by_id(conn: Connection, id: str):
+def get_field_by_id(conn: Connection, id: UUID):
     stmt = sa.select([field_table]).where(field_table.c.id == id)
     row = conn.execute(stmt).first()
 
