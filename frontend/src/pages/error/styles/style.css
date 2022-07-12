@@ -1,0 +1,54 @@
+.bgg{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: url(/public/assets/backpap1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.acc{
+    width: 209px;
+    height: 45px;
+    border-radius: 25px;
+    background-color: #1758FF;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.fourfour{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -15%;
+
+}
+
+
+.fourfour > h1{
+    font-size: 72px;
+    color:#1758FF;
+    font-family: 'MonumentBold';
+
+}
+.fourfour > h2{
+    font-size: 20px;
+    color:#171C4F;
+    font-family: 'MonumentBold';
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width:700px) {
+    .fourfour > h1{
+        font-size: 50px;
+    }
+    .fourfour > h2{
+        font-size: 12px;
+    }
+}
