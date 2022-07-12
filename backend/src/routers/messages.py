@@ -23,7 +23,7 @@ def get_all_messages():
 
 # Get message by id
 @router.get("/{message_id}", response_model=Message)
-def get_message(message_id: str):
+def get_message(message_id: UUID):
     with engine.begin() as conn:
         message = MessageManager.get_message_by_id(conn, message_id)
         if message is None:
@@ -34,9 +34,9 @@ def get_message(message_id: str):
 
 # Create message
 @router.post("/create")
-def create_message(message: MessageCreate, uid: str, authentified_user=Depends(SecurityCheck)):
+def create_message(message: MessageCreate, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
-        if authentified_user.id == uid or authentified_user.is_admin:
+        if authentified_user.id == message.id_user or authentified_user.is_admin:
             return MessageManager.create_message(conn, message)
         else:
             raise HTTPException(409, "Message already exists")
@@ -44,9 +44,9 @@ def create_message(message: MessageCreate, uid: str, authentified_user=Depends(S
 
 # Update message by id
 @router.put("/update/{id}")
-def update_message(message: MessageCreate, message_id: UUID, uid: str, authentified_user=Depends(SecurityCheck)):
+def update_message(message: MessageCreate, message_id: UUID, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
-        if authentified_user.id == uid or authentified_user.is_admin:
+        if authentified_user.id == message.id_user or authentified_user.is_admin:
             return MessageManager.update_message(conn, message, message_id)
         else:
             raise HTTPException(404, "Message not found")
@@ -54,9 +54,12 @@ def update_message(message: MessageCreate, message_id: UUID, uid: str, authentif
 
 # Delete one message by id
 @router.delete("/delete/{message_id}", response_model=bool)
-def delete_event(message_id: str, uid: str, authentified_user=Depends(SecurityCheck)):
+def delete_event(message_id: UUID, authentified_user=Depends(SecurityCheck)):
     with engine.begin() as conn:
-        if authentified_user.id == uid or authentified_user.is_admin:
+        message = MessageManager.get_message_by_id(conn, message_id)
+        if message is None:
+            raise HTTPException(404, "Event not found")
+        if authentified_user.id == message.id_user or authentified_user.is_admin:
             return MessageManager.delete_message_by_id(conn, message_id)
         else:
             raise HTTPException(403, "Action not permitted")

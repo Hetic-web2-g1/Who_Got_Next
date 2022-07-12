@@ -6,9 +6,16 @@ from typing import Optional
 
 class EventCreate(BaseModel):
     id_user: UUID
-    id_field: UUID
+    id_field: Optional[UUID] = None
     name: str
-    description: str
+    place: Optional[str] = None
+    description: Optional[str] = None
+    sport: Optional[str] = None
+    niveau: Optional[str] = None
+    capacite: Optional[str] = None
+    handisport: Optional[bool] = None
+    acces_handicap: Optional[bool] = None
+    date_start: Optional[datetime] = None
     data: Optional[dict] = None
 
 

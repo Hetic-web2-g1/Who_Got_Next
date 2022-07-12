@@ -17,7 +17,7 @@ export const Sports = ({setContentSidebar}) => {
     <>
       <div className='dhead'>
                   <Link className="sidebar_back-link" to="#" onClick={() => setContentSidebar('menu')}>
-                <img src="../../../public/assets/chevron-left.svg" alt="left arrow" width="18" height="18"/>
+                <img src="../../../assets/chevron-left.svg" alt="left arrow" width="18" height="18"/>
                 Précédent
             </Link>
       </div>
@@ -29,10 +29,12 @@ export const Sports = ({setContentSidebar}) => {
       return (
 
         <li key={index} className={item.cName}>
-                            <Link to='#' onClick={() => setContentSidebar2(item.tit)} className="sportadd">
+          {/* <div onClick={() => setContentSidebar2(item.tit)} className="sportadd"> */}
+
+          <div className="sportadd">
             <img src={item.url}></img>
             <span className="spam">{item.title}</span>
-          </Link>
+          </div>
           <div id="drop" className={item.ccname}>
 
             <select id={item.idname}>

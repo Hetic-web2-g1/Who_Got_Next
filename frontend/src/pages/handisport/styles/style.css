@@ -28,6 +28,7 @@ body {
     padding: 45px 500px 60px 90px;
     box-sizing: border-box;
     overflow: hidden;
+    min-height: 635px;
 }
 
 .found_handisport-container img {
@@ -48,6 +49,8 @@ body {
     font-size: 20px;
     line-height: 24px;
     margin-bottom: 39px;
+    /* min-width: 430px; */
+    max-width: 880px;
 }
 
 .found_handisport-link {
@@ -78,3 +81,15 @@ a img {
     vertical-align: top;
 }
 
+@media screen and (max-width:940px) {
+    .hideem{
+        display: none;
+    }
+    .found_handisport-container{
+        min-height: none;
+        padding: 45px 5% 60px 5%;
+    }
+    .found_handisport-title{
+        font-size: 9vw;
+    }
+}

@@ -5,7 +5,7 @@ export const Contact = ({ setContentSidebar, onSubmit }) => {
     return (
         <div className='contactContainer'>
             <Link className="sidebar_back-link" to="#" onClick={() => setContentSidebar('menu')}>
-                <img src="../../../../public/assets/left_arrow.svg" alt="left arrow" width="18" height="18"/>
+                <img src="../../../../assets/left_arrow.svg" alt="left arrow" width="18" height="18"/>
                 Précédent
             </Link>
              <form onSubmit={onSubmit}>
@@ -23,17 +23,14 @@ export const Contact = ({ setContentSidebar, onSubmit }) => {
                 <input  className="form-control Message" 
                 />
             </div>
-
-            <div>
-                <input type="file" />
-            </div>
             
             </form>
-            <div className="ContactButtonSubmit">
-                <button className="form-control btn btn-primary" type="submit">
+            <Link to="/home">
+                <a className="searchBtn-primary" >
                     Envoyer
-                </button>
-            </div>
+                </a>
+            </Link>
+
         </div>
     );
 };

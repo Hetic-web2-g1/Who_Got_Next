@@ -6,7 +6,7 @@ export const Info = ({setContentSidebar}) => {
     return (
         <div className='bigContainer'>
             <Link className="sidebar_back-link" to="#" onClick={() => setContentSidebar('menu')}>
-                <img src="../../../../public/assets/left_arrow.svg" alt="left arrow" width="18" height="18"/>
+                <img src="../../../../assets/left_arrow.svg" alt="left arrow" width="18" height="18"/>
                 Précédent
             </Link>
             <div>

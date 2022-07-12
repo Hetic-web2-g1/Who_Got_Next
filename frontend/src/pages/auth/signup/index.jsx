@@ -18,7 +18,7 @@ export const Signup = () => {
   
   const [email, setEmail] = useState('');
   const [pseudo, setPseudo] = useState('');
-  const [sexe, setSexe] = useState('');
+  const [sexe, setSexe] = useState('Homme');
   const [age, setAge] = useState("");
   const [password, setPassword] = useState("");
   
@@ -87,7 +87,7 @@ export const Signup = () => {
 
         formRef.current.reset();
         setValidation("");
-      } catch (err) {
+      } catch (err) { 
         if (err.code === "auth/email-already-in-use") {
           setValidation("Email already used");
         }
@@ -132,7 +132,7 @@ export const Signup = () => {
             <div className='connect-container'>
 
               <div className='img-container'>
-                <img src="./../../../../public/assets/whogotnext_logo.svg" alt="logo" />
+                <img src="./../../../../assets/whogotnext_logo.svg" alt="logo" />
               </div>
 
               <div className='flex'>
@@ -158,7 +158,7 @@ export const Signup = () => {
                     <label htmlFor="password">Mot de passe</label>
                     <div className='inputwrapper'>
                       <input onChange={e => setPassword(e.target.value)} className='input' placeholder='Entrez votre mot de passe' type={passwordShown ? "text" : "password"} />
-                      <img onClick={togglePassword} src="./../../../../public/assets/eye.svg" alt="see password" style={{cursor: "pointer"}} />
+                      <img onClick={togglePassword} src="./../../../../assets/eye.svg" alt="see password" style={{cursor: "pointer"}} />
                     </div>
                   </div>
 
@@ -201,7 +201,7 @@ export const Signup = () => {
           </div>
 
           <div className='right-container'>
-            <img src="./../../../../public/assets/right-login.png" alt="" />
+            <img src="./../../../../assets/right-login.png" alt="" />
           </div>
           
         </div>

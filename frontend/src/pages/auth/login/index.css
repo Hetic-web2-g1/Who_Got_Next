@@ -8,7 +8,7 @@ body {
 }
 
 h1 {
-    font-family: "Monument";
+    font-family: "Monument Extended Regular";
     font-size: 28px;
     margin: 0;
 }
@@ -63,7 +63,6 @@ input {
 
 .flex-field img {
     position: absolute;
-    /* left: 0%; */
     top: 54%;
     display: inline-table;
     z-index: 2;
@@ -110,6 +109,7 @@ input {
 
 .title h4{
     font-weight: 200;
+    font-family: "QualtaBold";
 }
 
 .line {

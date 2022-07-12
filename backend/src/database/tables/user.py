@@ -9,15 +9,14 @@ from database.db_engine import metadata
 user_table = Table(
     "user",
     metadata,
-    Column('id', String(),
+    Column('id', UUID(as_uuid=True),
            primary_key=True,
+           default=uuid4,
            unique=True
            ),
     Column('is_admin', Boolean),
     Column('pseudo', String()),
-    Column('pseudo', String(),
-           unique=True
-           ),
+    Column('pseudo', String(),),
     Column('email', String(),
            unique=True
            ),
@@ -29,6 +28,10 @@ user_table = Table(
     Column('longitude', Float),
     Column('latitude', Float),
     Column('img_path', String()),
+    Column('phone_number', String()),
+    Column('adress', String()),
+    Column('city', String()),
+    Column('postal_code', String()),
     Column("created_at", DateTime(), default=datetime.utcnow),
     Column("edited_at", DateTime(), default=datetime.utcnow)
 )

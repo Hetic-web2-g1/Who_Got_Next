@@ -57,7 +57,7 @@ const SearchBarDropdown = ({ options, onInputChange, mapRef }) => {
         })}
       </ul>
       <button className="searchBtn" id="MapSearchButton">
-        Chercher <img src={searchWhite} />
+        <span className="out">Chercher</span> <img src={searchWhite} />
       </button>
     </div>
   );

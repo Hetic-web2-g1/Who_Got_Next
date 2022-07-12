@@ -133,19 +133,5 @@ export const FavSports = [
         burl:'../../../public/assets/petanque-b.svg'
 
     },
-    {
-        title:"Enfants",
-        url:'../../../public/assets/children.svg',
-        burl:'../../../public/assets/enfant-b.svg'
-
-    },
 
 ]
-
-// export const UserAddSport= [
-//     {
-//         title:'Ajouter un sport',
-//         icon:'../../../public/assets/plus-circle,svg',
-//         Cname:''
-//     }
-// ]

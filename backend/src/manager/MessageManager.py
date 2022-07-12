@@ -16,7 +16,7 @@ def get_all_messages(conn: Connection):
             yield Message(**message)
 
 
-def get_message_by_id(conn: Connection, id: str):
+def get_message_by_id(conn: Connection, id: UUID):
     stmt = sa.select([message_table]).where(message_table.c.id == id)
     row = conn.execute(stmt).first()
 
@@ -32,5 +32,5 @@ def update_message(conn: Connection, message: MessageCreate, id: UUID) -> Messag
     return db_srv.update_object(conn, 'message', id, message)
 
 
-def delete_message_by_id(conn: Connection, id: str) -> Message | None:
+def delete_message_by_id(conn: Connection, id: UUID) -> Message | None:
     return db_srv.delete_object(conn, 'message', id)
