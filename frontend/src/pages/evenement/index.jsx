@@ -43,7 +43,7 @@ export const Evenement = () => {
             : null}
         </div>
         <div className="link">
-          <Link to="/map">
+          <Link to="/home">
             <img
               src="../../../assets/map.svg"
               alt="icon map"
@@ -52,7 +52,7 @@ export const Evenement = () => {
             />
             Voir la carte
           </Link>
-          <Link to="#">
+          {/* <Link to="#">
             <img
               src="../../../assets/eye.svg"
               alt="icon eye"
@@ -60,7 +60,7 @@ export const Evenement = () => {
               height="16"
             />
             Voir plus
-          </Link>
+          </Link> */}
         </div>
         <div className="create-evenement">
           <div>
