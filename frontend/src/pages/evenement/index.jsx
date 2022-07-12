@@ -30,7 +30,6 @@ export const Evenement = () => {
           {cardData
             ? cardData.map((cart, index) => (
                 <CartEvenement
-                  image={cart?.image}
                   sport={cart?.sport}
                   title={cart?.name}
                   place={cart?.place}

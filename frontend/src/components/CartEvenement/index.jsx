@@ -6,7 +6,6 @@ import "../../fonts/Qualta/Qualta-Regular.ttf";
 import PropTypes from "prop-types";
 
 export const CartEvenement = ({
-  image,
   sport,
   title,
   place,
@@ -14,43 +13,33 @@ export const CartEvenement = ({
   capacity,
   level,
 }) => {
-  const formated_date = new Date(date)
+  const formated_date = new Date(date);
   return (
     <div className="cart-container">
       <div className="heading">
-        {image ? (
-          <img
-            className="image"
-            src={image}
-            alt={sport}
-            width="88"
-            height="88"
-          />
-        ) : (
-          <img
-            className="image"
-            src="../../../assets/kirbok.jpg"
-            alt={sport}
-            width="88"
-            height="88"
-          />
-        )}
+        <img
+          className="image"
+          src={`../../../assets/${sport}.svg`}
+          alt={sport}
+          width="88"
+          height="88"
+        />
         <div className="heading_details">
           <span className="sport">{sport}</span>
-          { title ? (
-              <h4 className="evenement_title">{title}</h4>
-          ) : null }
+          {title ? <h4 className="evenement_title">{title}</h4> : null}
           <span className="place">{place}</span>
         </div>
       </div>
-      { date && capacity && level ? (
+      {date && capacity && level ? (
         <div className="details">
           <div>
-            {formated_date?.getDate()} {formated_date?.toLocaleString("default", { month: "long" })}{" "}
-            <br /> <span>Date</span>
+            {formated_date?.getDate()}{" "}
+            {formated_date?.toLocaleString("default", { month: "long" })} <br />{" "}
+            <span>Date</span>
           </div>
           <div>
-            {formated_date?.getHours()} {formated_date?.getMinutes()} <br /> <span>Heure</span>
+            {formated_date?.getHours()} {formated_date?.getMinutes()} <br />{" "}
+            <span>Heure</span>
           </div>
           <div>
             {capacity} <br /> <span>Capacité</span>
@@ -58,7 +47,8 @@ export const CartEvenement = ({
           <div>
             {level} <br /> <span>Niveau</span>
           </div>
-        </div> ) : null }
+        </div>
+      ) : null}
       <img
         className="heart"
         src="../../../assets/heart.svg"
@@ -71,7 +61,6 @@ export const CartEvenement = ({
 };
 
 CartEvenement.propTypes = {
-  image: PropTypes.string,
   sport: PropTypes.string,
   title: PropTypes.string,
   place: PropTypes.string,
