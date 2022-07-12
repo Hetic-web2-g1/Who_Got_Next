@@ -1,22 +1,22 @@
 /* Font */
 @font-face {
     font-family: Monument Extended Regular;
-    src: url(../../../font/MonumentExtended-Regular.otf);
+    src: url(../../../fonts/Monument/PPMonumentExtended-Regular.otf);
 }
 
 @font-face {
     font-family: Monument Extended UltraBold;
-    src: url(../../../font/MonumentExtended-Ultrabold.otf);
+    src: url(../../../fonts/Monument/MonumentExtended-Ultrabold.otf);
 }
 
 @font-face {
     font-family: Qualta-Bold;
-    src: url(../../../font/Qualta-Bold.ttf);
+    src: url(../../../fonts/Qualta/Qualta-Bold.ttf);
 }
 
 @font-face {
     font-family: Qualta-Regular;
-    src: url(../../../font/Qualta-Regular.ttf);
+    src: url(../../../fonts/Qualta/Qualta-Regular.ttf);
 }
 
 /* Font end  */
@@ -69,6 +69,10 @@ html {
     padding: 0 !important;
 }
 
+.list-router a{
+    font-weight: bolder;
+}
+
 .list {
     display: flex;
     flex-direction: row;
@@ -108,7 +112,8 @@ a {
 
 .account-logo>p {
     font-family: Monument Extended Regular;
-    color: #1758FF
+    color: #1758FF;
+    font-weight: bolder;
 }
 
 .imgUser {
@@ -526,7 +531,7 @@ select#lvl {
 button.form-cancel {
     background: transparent;
     border: none;
-    font-family: 'QUALTA-BOLD';
+    font-family: 'Qualta-Bold';
     font-size: 20px;
     color: #05092E;
 }

@@ -1,51 +1,31 @@
 /* Font */
-/* Font */
 @font-face {
   font-family: Monument Extended Regular;
-  src: url(../../../font/MonumentExtended-Regular.otf);
+  src: url(../../fonts/Monument/PPMonumentExtended-Regular.otf);
 }
 
 @font-face {
   font-family: Monument Extended UltraBold;
-  src: url(../../../font/MonumentExtended-Ultrabold.otf);
+  src: url(../../fonts/Monument/MonumentExtended-Ultrabold.otf);
 }
 
 @font-face {
   font-family: Qualta-Bold;
-  src: url(../../font/Qualta-Bold.ttf);
+  src: url(../../fonts/Qualta/Qualta-Bold.ttf);
 }
 
 @font-face {
   font-family: Qualta-Regular;
-  src: url(../../font/Qualta-Regular.ttf);
+  src: url(../../fonts/Qualta/Qualta-Regular.ttf);
 }
+
 @font-face {
   font-family: "MonumentBold";
   src: local("MonumentBold"),
-  url("../../../fonts/Monument/PPMonumentExtended-Black.otf") format("opentype");
+  url("../../fonts/Monument/PPMonumentExtended-Black.otf") format("opentype");
   font-weight: bold;
 }
 
-@font-face {
-  font-family: "MonumentRegular";
-  src: local("MonumentRegular"),
-  url("../../../fonts/Monument/PPMonumentExtended-Regular.otf") format("opentype");
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: "QualtaBold";
-  src: local("QualtaBold"),
-  url("../../../fonts/Qualta/Fontspring-DEMO-pgf-qualta-bold.otf") format("opentype");
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: "QualtaRegular";
-  src: local("QualtaRegular"),
-  url("../../../fonts/Qualta/Fontspring-DEMO-pgf-qualta-regular.otf") format("opentype");
-  font-weight: normal;
-}
 .navbar {
     
     height: 80px;

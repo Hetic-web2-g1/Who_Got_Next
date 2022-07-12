@@ -15,17 +15,16 @@
 @font-face {
     font-family: "QualtaBold";
     src: local("QualtaBold"),
-    url("../../../fonts/Qualta/Fontspring-DEMO-pgf-qualta-bold.otf") format("opentype");
+    url("../../fonts/Qualta/Qualta-Bold.ttf") format("opentype");
     font-weight: bold;
 }
 
 @font-face {
     font-family: "QualtaRegular";
     src: local("QualtaRegular"),
-    url("../../../fonts/Qualta/Fontspring-DEMO-pgf-qualta-regular.otf") format("opentype");
+    url("../../fonts/Qualta/Qualta-Regular.ttf") format("opentype");
     font-weight: normal;
 }
-
 
 .formHeader {
     display: flex;
