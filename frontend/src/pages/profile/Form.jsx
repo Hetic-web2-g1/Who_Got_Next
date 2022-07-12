@@ -22,8 +22,6 @@ export const Form = ({ onSubmit, setContentSidebar }) => {
     sexe: editedUser.sexe
   })
 
-  console.log(state)
-
   const handleForm = async (e) => {
     e.preventDefault();
 
@@ -31,22 +29,6 @@ export const Form = ({ onSubmit, setContentSidebar }) => {
     if (state.pseudo === '') {
       setValidation("Veuillez renseignez votre pseudonyme");
       return;
-    }
-
-    try {
-      console.log('coucou')
-      await updateInfo(
-        state.pseudo,
-        state.email,
-        state.date_of_birth,
-        state.sexe,
-        state.postal_code,
-        state.adress,
-        state.city,
-        state.phone_number
-      )
-    } catch (err) {
-      console.log('err', err);
     }
   }
 

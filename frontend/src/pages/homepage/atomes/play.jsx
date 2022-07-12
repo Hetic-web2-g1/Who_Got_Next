@@ -24,7 +24,6 @@ function Play() {
 
         if (i < optlen){
             i++;
-            console.log(i)
             opt[i].style.display = 'flex';
 
             if (i ==0){
