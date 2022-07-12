@@ -12,6 +12,7 @@ import Form from "../../pages/profile/Form";
 import Contact from "../../pages/help/contact";
 import Sports from "../mysports/index";
 import { useAuth } from "./../../contexts/AuthContext";
+import { func } from "prop-types";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -19,7 +20,7 @@ function Navbar() {
 
   const { currentUser, logout } = useAuth();
   const [error, setError] = useState("");
-  const showSidebar = () => setSidebar(!sidebar);
+  const showSidebar = () => {setSidebar(!sidebar);}
 
   async function handleLogout() {
     setError('')
@@ -46,13 +47,13 @@ function Navbar() {
             <div className="trait-vert" />
             <div>Mon Compte</div>
             <div className="trait-vert" />
-            <Link to="#" className="menu-bars">
+            <Link to="#" className="menu-bars" >
               <FaIcons.FaBars/>
             </Link>
           </div>
         </div>
         <div className={sidebar ? "nav-flou" : ""} />
-        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+        <nav id={sidebar ? 'nav-menu-show':'nav-menu-hide' }  className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items">
             <li className="navbar-toggle">
               <div className="q">
