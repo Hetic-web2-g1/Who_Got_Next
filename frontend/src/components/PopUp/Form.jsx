@@ -1,6 +1,7 @@
+import { DateTime } from "luxon";
 import React, {useState} from "react";
 import ToggleSwitch from "../ToogleSwitch/ToggleSwitch";
-import { useAuth, apiCall } from "./../../contexts/AuthContext";
+import { useAuth } from "./../../contexts/AuthContext";
 export const Form = () => {
     const [description, setDescription] = useState();
     const [place, setPlace] = useState();
@@ -10,12 +11,14 @@ export const Form = () => {
     const [sport, setSport] = useState();
     const [level, setLevel] = useState();
     const [handi, setHandi] = useState(false);
+    const [hour, setHour] = useState();
 
-    const { currentUser } = useAuth();
+    const User = useAuth();
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const userId = currentUser?.id;
+        const userId = User?.currentUser.id;
+        const event_date = date+" "+hour+":00"
         const form = {
             "id_user": userId,
             "name": sport,
@@ -26,10 +29,9 @@ export const Form = () => {
             "capacite": capacity,
             "access_handicap": access,
             "handisport": handi,
-            "date_start": date,
+            "date_start": event_date,
         };
-        console.log(form)
-        apiCall("http://localhost:8000/events/create", "POST", form)
+        User.apiCall("http://localhost:8000/events/create", "POST", form)
     }
 
     return (
@@ -67,11 +69,11 @@ export const Form = () => {
       <div className="form-date">
         <div className="date">
           <label htmlFor="location"> Date </label>
-          <input type="date" className="form-control-date" id="location" onChange={e => setDate(Date(e.target.value))}/>
+          <input type="date" className="form-control-date" id="location" onChange={e => setDate(e.target.value)}/>
         </div>
         <div className="date">
           <label htmlFor="location"> À partir de </label>
-          <input type="time" className="form-control-hour" id="location"/>
+          <input type="time" className="form-control-hour" id="location" onChange={e => setHour(e.target.value)}/>
         </div>
         <div className="date">
           <label htmlFor="location"> Jusqu'à </label>
